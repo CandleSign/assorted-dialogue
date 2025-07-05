@@ -23526,8 +23526,8 @@
 				findres.innerHTML = '';
 				var regexpr = new RegExp(findfu.checked?'\\b'+rftx+'\\b':rftx, findca.checked?'':'i');
 				//var regexprfa = new RegExp((findfa.value.match('_')?'^':'')+findfa.value.toLowerCase());
-				var regexprfa = new RegExp('\\b'+findfa.value.toLowerCase().replace(/([\.\-])/, '\\$1')+'\\b');
-				var regexprfa2 = new RegExp('\\b'+findfa.value.toLowerCase().replace(/([\.\-])/, '\\$1')+'_');
+				var regexprfa = new RegExp('\\b'+findfa.value.toLowerCase()+'\\b');
+				var regexprfa2 = new RegExp('\\b'+findfa.value.toLowerCase()+'_');
 				var resarr = [];
 				//document.querySelectorAll(findfa.value=='choice'?'choice':'text').forEach(function(v) {
 				//document.querySelectorAll(findfa.value=='choice'?'choice':'choice, text').forEach(function(v) {
