@@ -1,7 +1,7 @@
 # assorted-dialogue
 A collection of text I've documented from some games. Not exactly text dumps as they aren't retrieved from the code, but parsed (by a custom program) from screenshots I've taken myself with manual touchups and fixes. Compared to existing text dumps the aim is to more closely resemble in-game text while maintaining readability (by providing a textbox layout, but not making all dialogue textboxes at all times) - though there are many arbitrary choices, limitations I haven't solved yet, a little missing dialogue, possible mistakes... and it's primarily a personal project so wide support was never a concern. Very homemade! very in progress! but hopefully usable enough.
 ### Currently includes:
-- <a href="https://candlesign.github.io/assorted-dialogue/deltarune/deltarune.html">Deltarune (ch1-2-3, in progress)</a>
+- <a href="https://candlesign.github.io/assorted-dialogue/deltarune/deltarune.html">Deltarune (ch1-3, in progress)</a>
 
 ## Misc info:
 - in addition to LMB, useful keys include:
