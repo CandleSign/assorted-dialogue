@@ -24016,7 +24016,24 @@
 					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>Who the HECK <br>are you!?</text><face data-name="ralsei_35">Ralsei</face></span><!--REMINDER: double face support required-->
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Haha, I was hoping you'd ask!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>MIKE, PLAY THE VHS!!!</text></span>
-					<lnk class="textunit" data-link="3_189_1"></lnk>
+					<pause></pause>
+					<ul class="choicelevel">
+						<li>
+							<lnk class="textunit" data-link="3_189_1"></lnk>
+						</li>
+						<li>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>W-Wait! The VHS isn't working!</text></span>
+							<span class="textunit"><text><br></text><choice><span>Skip the <br>video</span><span>Try and <br>watch anyway</span></choice></span>
+							<ul class="choicelevel">
+								<li><choice>Skip the <br>video</choice>
+									<lnk class="textunit" data-link="3_95_1"></lnk>
+								</li>
+								<li><choice>Try and <br>watch anyway</choice>
+									<lnk class="textunit" data-link="3_189_1"></lnk>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</pp>
 			<hr><roomname>(104)</roomname>
 				<pp class="darkworld">
@@ -24550,7 +24567,7 @@
 							<span class="textunit couchbubble"><face data-name="tenna"></face><text>Anyway, onto the results!!</text></span>
 						</li>
 						<li><choice>PIE</choice>
-							<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Uhh, well, <br>you'd know.</text></span>
+							<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Uhh, well, <br>you'd know.</text></span><!--REMINDER: actually anything that Kris chooses before Susie waits-->
 							<pause></pause>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>That's right, Kris! <br>Who can resist <br>your mother's homemade pie!</text></span>
 							<span class="textunit couchbubble"><face data-name="tenna"></face><text>Nothing better than <br>chowing down with <br>the family...</text></span>
@@ -24617,10 +24634,8 @@
 				<pp class="mantlegame">
 					<span class="textunit"><face data-name="tenna"></face><text>APPARENTLY YOU MADE <br>THIS AWFUL THING. <br>EXCEPT FOR... WHAT?</text><choice><span>HEAD</span><span>BODY</span><span>LEGS</span><span>IT'S ACCURATE</span></choice></span>
 					<ul class="choicelevel"><!--REMINDER: the correct one seems random actually-->
-						<li><choice>HEAD/BODY/LEGS</choice>
+						<li><choice>HEAD/BODY/LEGS/IT'S ACCURATE</choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Next question!</text></span>
-						</li>
-						<li><choice>IT'S ACCURATE</choice><!--REMINDER: missing option-->
 						</li>
 						<li><add>Waiting</add>
 							<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>I dunno. I didn't <br>make this.</text></span>
@@ -24629,13 +24644,8 @@
 					</ul>
 					<add>Duck</add><span class="textunit"><face data-name="tenna"></face><text>THIS THING SEEMS TO <br>SUCK ASS. WHAT'S WRONG <br>WITH IT?</text><choice><span>HEAD</span><span>BODY</span><span>LEGS</span><span>IT'S ACCURATE</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>HEAD</choice><!--REMINDER: missing option-->
-						</li>
-						<li><choice>BODY</choice><!--REMINDER: missing option-->
-						</li>
-						<li><choice>LEGS</choice><!--REMINDER: missing option-->
-						</li>
-						<li><choice>SEEMS FINE</choice><!--REMINDER: missing option-->
+						<li><choice>HEAD/BODY/LEGS/SEEMS FINE</choice>
+							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Next question!</text></span>
 						</li>
 						<li><add>Waiting</add><!--REMINDER: Ralsei chooses LEGS (correct)-->
 							<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Everything.</text></span>
@@ -24644,10 +24654,8 @@
 					</ul>
 					<span class="textunit"><face data-name="tenna"></face><text>WHAT'S THE NAME OF <br>THIS AWFUL GUY?</text><choice><span>PIPPS</span><span>DICER</span><span>TOYLET</span><span>PIPPINS</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>PIPPS/DICER/PIPPINS</choice>
+						<li><choice>PIPPS/DICER/PIPPINS/TOYLET</choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Next question!</text></span>
-						</li>
-						<li><choice>TOYLET</choice><!--REMINDER: missing option-->
 						</li>
 						<li><add>Waiting</add><!--REMINDER: Susie chooses TOYLET, then Ralsei PIPPS-->
 							<pause></pause>
@@ -25176,10 +25184,19 @@
 					<span class="textunit"><face data-name="shadow mantle"></face><text>... and the SHADOW <br>MANTLE that I'm <br>holding!</text></span>
 					<span class="textunit"><face data-name="shadow mantle"></face><text>Do you honestly think <br>it'll get you what you <br>want...?</text></span>
 					<span class="textunit"><face data-name="shadow mantle"></face><text>... no, part of you is <br>just... enjoying this, <br>isn't it?</text></span>
-					<span class="textunit"><face data-name="shadow mantle"></face><text>Oh, don't make that <br>sour face.</text></span>
-					<span class="textunit"><face data-name="shadow mantle"></face><text>I can see in the dark, <br>you know!</text></span>
-					<span class="textunit"><face data-name="shadow mantle"></face><text>The question is...</text></span>
-					<span class="textunit"><face data-name="shadow mantle"></face><text>Can you?</text></span>
+					<ul class="choicelevel">
+						<li>
+							<span class="textunit" id="3_117.3_1"><face data-name="shadow mantle"></face><text>Oh, don't make that <br>sour face.</text></span>
+							<span class="textunit"><face data-name="shadow mantle"></face><text>I can see in the dark, <br>you know!</text></span>
+							<span class="textunit"><face data-name="shadow mantle"></face><text>The question is...</text></span>
+							<span class="textunit"><face data-name="shadow mantle"></face><text>Can you?</text></span>
+						</li>
+						<li><add>Weird route</add>
+							<span class="textunit"><face data-name="shadow mantle"></face><text>The same part of you <br>that enjoyed <br>yesterday.</text></span>
+							<span class="textunit"><face data-name="shadow mantle"></face><text>Knowing you could say <br>it wasn't really you.</text></span>
+							<lnk class="textunit" data-link="3_117.3_1"></lnk>
+						</li>
+					</ul>
 				</pp>
 			<hr><roomname>(118)</roomname>
 				<pp class="mantlegame">
@@ -25198,8 +25215,14 @@
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(You opened the treasure <br>chest.) <br><star></star>(Inside was <yellow>ShadowMantle</yellow>.)</text></span>
-					<span class="textunit"><text><star></star>(<yellow>ShadowMantle</yellow> was added to your <br><yellow>ARMORs</yellow>.)</text></span>
-					<br>
+					<ul class="choicelevel">
+						<li>
+							<span class="textunit"><text><star></star>(<yellow>ShadowMantle</yellow> was added to your <br><yellow>ARMORs</yellow>.)</text></span>
+						</li>
+						<li><add>Not enough space</add>
+							<span class="textunit"><text><star></star>(You have too many <yellow>ARMORs</yellow> to <br>take <yellow>ShadowMantle</yellow>.)</text></span>
+						</li>
+					</ul>
 					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
 				</pp>
 				<pp class="darkworld">
@@ -25215,10 +25238,19 @@
 							<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>...</text></span>
 							<span class="textunit"><face data-name="susie_49"></face><text><star></star>If you get all sweaty <br>playing games alone...</text></span>
 							<span class="textunit"><face data-name="susie_22"></face><text><star></star>You're gonna end up like <br>Berdly, right?</text></span>
-							<span class="textunit"><face data-name="susie_30"></face><text><star></star>... Okay, enough bird <br>noises. I get it.</text></span>
-							<span class="textunit" id="3_120_1"><face data-name="susie_19"></face><text><star></star>Anyway.</text></span>
-							<span class="textunit"><face data-name="susie_15"></face><text><star></star>Here. Stole you a drink.</text></span>
-							<span class="textunit"><face data-name="susie_49"></face><text><star></star>Now stop making us wait <br>already.</text></span>
+							<ul class="choicelevel">
+								<li>
+									<span class="textunit"><face data-name="susie_30"></face><text><star></star>... Okay, enough bird <br>noises. I get it.</text></span>
+									<span class="textunit" id="3_120_1"><face data-name="susie_19"></face><text><star></star>Anyway.</text></span>
+									<span class="textunit"><face data-name="susie_15"></face><text><star></star>Here. Stole you a drink.</text></span>
+									<span class="textunit"><face data-name="susie_49"></face><text><star></star>Now stop making us wait <br>already.</text></span>
+								</li>
+								<li><add>Weird route</add>
+									<span class="textunit"><face data-name="susie_19"></face><text><star></star>...</text></span>
+									<span class="textunit"><face data-name="susie_30"></face><text><star></star>Hey, uh, it's just a <br>joke. Chill.</text></span>
+									<lnk class="textunit" data-link="3_120_1"></lnk>
+								</li>
+							</ul>
 						</li>
 						<li><choice>No</choice>
 							<span class="textunit"><face data-name="susie_41">Susie</face><text><star></star>...</text></span>
@@ -25229,10 +25261,30 @@
 							<lnk class="textunit" data-link="3_120_1"></lnk>
 						</li>
 					</ul>
+					<add>Mini-Kris attack</add>
+					<span class="textunit"><face data-name="susie_35">Susie</face><text><star></star>K-Kris...? What are <br>you...</text></span>
+					<span class="textunit"><face data-name="susie_41"></face><text><star></star>...</text></span>
+					<span class="textunit"><face data-name="susie_41"></face><text><star></star>Alright, I... I get it.</text></span>
+					<span class="textunit"><face data-name="susie_45"></face><text><star></star>Well, if... if you <br>really want to.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_46"></face><text><star></star>Go ahead.</text></span>
+					<span class="textunit"><face data-name="susie_39"></face><text><star></star>I tasted your shampoo in <br>your bathroom, here, you <br>can taste mine.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_27"></face><text><star></star>WHAT? HOW AM I THE WEIRD <br>ONE HERE!?</text></span>
+					<span class="textunit"><face data-name="susie_34"></face><text><star></star>Jeez.</text></span>
+							<lnk class="textunit" data-link="3_120_1"></lnk>
+					<pause></pause>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(You found a <yellow>FlatSoda</yellow>.)</text></span>
-					<span class="textunit"><text><star></star>(<yellow>FlatSoda</yellow> was added to your <br><yellow>ITEMs</yellow>.)</text></span>
+					<ul class="choicelevel">
+						<li>
+							<span class="textunit"><text><star></star>(<yellow>FlatSoda</yellow> was added to your <br><yellow>ITEMs</yellow>.)</text></span>
+						</li>
+						<li><add>Not enough space</add>
+							<span class="textunit"><text><star></star>(You have too many <yellow>ITEMs</yellow> to <br>take <yellow>FlatSoda</yellow>.)</text></span>
+						</li>
+					</ul>
 				</pp>
 			<hr><roomname>(121)</roomname>
 				<pp class="mantlegame">
@@ -25671,7 +25723,7 @@
 				</pp>
 				<pp class="mantlegame"><!--REMINDER: recheck all quizzes to see if there's a "QUIZ!" intro every time and add it-->
 					<span class="textunit"><face data-name="tenna"></face><text>AREN'T YOU HAVING SO <br>MUCH FUN?</text><choice><span>OF COURSE!</span><span>OF COURSE!</span><span>OF COURSE!</span><span>OF COURSE!</span></choice></span>
-					<ul class="choicelevel">
+					<ul class="choicelevel"><!--in all of these Ralsei seems to choose random options-->
 						<li><choice>OF COURSE!</choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>THAT'S WHAT I THOUGHT!</text></span>
 						</li>
@@ -25704,7 +25756,7 @@
 				<pp class="mantlegame">
 					<span class="textunit"><face data-name="tenna"></face><text>WHAT'S ANOTHER WORD <br>FOR, "TELEVISION?"</text><choice><span>MAN'S BEST FRIEND</span><span>"THE GOOD STUFF"</span><span>BETTER THAN EMAIL</span><span>NEVER THROWN AWAY</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>MAN'S BEST FRIEND/"THE GOOD STUFF"/BETTER THAN EMAIL/NEVER THROWN AWAY</choice><!--REMINDER: Ralsei chooses "THE GOOD STUFF"... or not... or something else-->
+						<li><choice>MAN'S BEST FRIEND/"THE GOOD STUFF"/BETTER THAN EMAIL/NEVER THROWN AWAY</choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>All great answers!</text></span>
 						</li>
 						<li><add>Waiting</add>
@@ -25734,7 +25786,7 @@
 				<pp class="mantlegame">
 					<span class="textunit"><face data-name="tenna"></face><text>WHAT'S THIS BUTTON ON <br>THE TELEVISION DO? <br><br><yellow>OFF</yellow></text><choice><span>NEVER PRESS IT</span><span>I DON'T KNOW</span><span>UNUSED</span><span>I'M SORRY. I'M SORRY</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>NEVER PRESS IT/I DON'T KNOW/UNUSED/I'M SORRY. I'M SORRY</choice><!--REMINDER: Ralsei chooses I'M SORRY. I'M SORRY... or not... or something else-->
+						<li><choice>NEVER PRESS IT/I DON'T KNOW/UNUSED/I'M SORRY. I'M SORRY</choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>That's right. That's <br>right, isn't it.</text></span>
 						</li>
 						<li><add>Waiting</add>
@@ -25764,16 +25816,11 @@
 				<pp class="mantlegame">
 					<span class="textunit"><face data-name="tenna"></face><text>WHAT TIME ARE YOU <br>GONNA WATCH TV <br>TOMORROW?</text><choice><span>MORNING TIL NIGHT</span><span>DUSK TIL DAWN</span><span>BREAKFAST TO DINNER</span><span>I WON'T EVEN GO TO CHURCH. I'LL <br>WATCH IT FOREVER. IT'S ALL I HAVE. <br>IT'S EVERYTHING TO ME.</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>MORNING TIL NIGHT</choice><!--REMINDER: Ralsei chooses DUSK TIL DAWN-->
+						<li><choice>MORNING TIL NIGHT/DUSK TIL DAWN/BREAKFAST TO DINNER/I WON'T EVEN GO TO CHURCH. I'LL <br>WATCH IT FOREVER. IT'S ALL I HAVE. <br>IT'S EVERYTHING TO ME.</choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Whaddya know! RIGHT ANSWERS!!!</text></span>
 						</li>
-						<li><choice>DUSK TIL DAWN</choice><!--REMINDER: missing option?-->
-						</li>
-						<li><choice>BREAKFAST TO DINNER</choice><!--REMINDER: missing option?-->
-						</li>
-						<li><choice>I WON'T EVEN GO TO CHURCH. I'LL <br>WATCH IT FOREVER. IT'S ALL I HAVE. <br>IT'S EVERYTHING TO ME.</choice><!--REMINDER: missing option?-->
-						</li>
-						<li><add>Waiting</add><!--REMINDER: missing option-->
+						<li><add>Waiting</add>
+							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>ANSWER, DARN YOU!!! ANSWER!!!</text></span>
 						</li>
 					</ul>
 				</pp>
@@ -25798,6 +25845,8 @@
 				</pp>
 				<pp><!--before another paragraph-->
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Wow! <br>A healing spot! <br>That way, <br>everyone can <br>keep playing!</text></span>
+					<br>
+					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Oh... <br>a healing spot...</text></span>
 					<br>
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Here comes <br>a healing spring!</text></span>
 				</pp>
@@ -25907,7 +25956,7 @@
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="ramb"></face><text><star></star>Kris! Bang-up job getting <br><fillin>S</fillin>-rank, luv! For that, a little <br>prize...</text></span>
 					<ul class="choicelevel">
-						<li><add>Round 1, S</add>
+						<li><add>Round 1, T/S</add>
 							<span class="textunit"><text><star></star>(<yellow>Pink Ribbon</yellow> was added to your <br><yellow>ARMORs</yellow>.)</text></span>
 						</li>
 						<li><add>Round 1, A/B</add>
@@ -25916,10 +25965,10 @@
 						<li><add>Round 1, C</add>
 							<span class="textunit"><text><star></star>(<yellow>TVDinner</yellow> was added to your <br><yellow>ITEMs</yellow>.)</text></span>
 						</li>
-						<li><add>Round 2, S</add>
+						<li><add>Round 2, T/S</add>
 							<span class="textunit"><text><star></star>(<yellow>White Ribbon</yellow> was added to your <br><yellow>ARMORs</yellow>.)</text></span>
 						</li>
-						<li><add>Round 2, A</add>
+						<li><add>Round 2, A/B</add>
 							<span class="textunit"><text><star></star>(<yellow>TensionGem</yellow> was added to your <br><yellow>ITEMs</yellow>.)</text></span>
 						</li>
 						<li><add>Round 2, C</add>
@@ -25971,8 +26020,15 @@
 						</li>
 						<li><choice>Eh</choice>
 							<span class="textunit"><face data-name="ramb"></face><text><star></star>See, I KNEW you wouldn't like <br>it. Something's missing, right?</text></span>
-							<span class="textunit"><face data-name="ramb"></face><text><star></star>Some action... Some mystery... <br>Maybe some more... freedom?</text></span>
-							<span class="textunit"><face data-name="ramb"></face><text><star></star>(Just between you and me, if <br>you can get in the S-Ranker's <br>room...)</text></span>
+							<ul class="choicelevel">
+								<li>
+									<span class="textunit"><face data-name="ramb"></face><text><star></star>Some action... Some mystery... <br>Maybe some more... freedom?</text></span>
+									<span class="textunit"><face data-name="ramb"></face><text><star></star>(Just between you and me, if <br>you can get in the S-Ranker's <br>room...)</text></span>
+								</li>
+								<li>
+									<span class="textunit"><face data-name="ramb"></face><text><star></star>(Good thing we've got the REAL <br>game, eh, luv?)</text></span>
+								</li>
+							</ul>
 						</li>
 					</ul>
 					<span class="textunit"><face data-name="ramb"></face><text><star></star>Kris, games are supposed to be <br>fun. Don't let it feel like a <br>job, alright?</text></span>
@@ -26199,6 +26255,18 @@
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(The door is locked.)</text></span>
 				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(You opened the treasure <br>chest.) <br><star></star>(Inside was <yellow>ShadowMantle</yellow>.)</text></span>
+					<ul class="choicelevel">
+						<li>
+							<span class="textunit"><text><star></star>(<yellow>ShadowMantle</yellow> was added to your <br><yellow>ARMORs</yellow>.)</text></span>
+						</li>
+						<li><add>Not enough space</add>
+							<span class="textunit"><text><star></star>(You have too many <yellow>ARMORs</yellow> to <br>take <yellow>ShadowMantle</yellow>.)</text></span>
+						</li>
+					</ul>
+					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
+				</pp>
 			<hr><roomname>(135.1)</roomname>
 				<pp class="darkworld">
 					<span class="textunit" id="3_135.1_1"><text><star></star>(It's a vending <br>machine.)</text></span>
@@ -26315,6 +26383,10 @@
 					<br>
 					<span class="textunit"><face data-name="ramb"></face><text><star></star>Kris, you sure you're <br>feeling... normal?</text></span>
 					<span class="textunit"><face data-name="ramb"></face><text><star></star>... Well, you are talking to a <br>power strip. So maybe not. <br>Haha!</text></span>
+					<br>
+					<span class="textunit"><face data-name="ramb"></face><text><star></star>How was the game, luv...?</text></span>
+					<span class="textunit"><face data-name="ramb"></face><text><star></star>... what? You couldn't finish <br>it?</text></span>
+					<span class="textunit"><face data-name="ramb"></face><text><star></star>Blast it. Maybe you missed <br>something from the first <br>stage...?</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(POINTs to ITEMs!) <br><star></star>(Use the vending machine?)</text></span>
@@ -26329,7 +26401,11 @@
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>Hey hey, looks like you rolled <br>an S-Rank! (wink wink nudge <br>nudge)</text></span>
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>Actually, I've heard there's an <br>even higher rank for true TV <br>Lovers.</text></span>
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>... More like, TV Losers! Who <br>wants to get THAT!? Nyuk huk <br>huk...</text></span>
-					<br>
+					<ul class="choicelevel">
+						<li><!--T-rank-->
+							<span class="textunit"><face data-name="pippins"></face><text><star></star>... huh? Why do you look so <br>embarrassed...?</text></span>
+						</li>
+					</ul>
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>Kris, heheh! Just between us... <br>You like gambling?</text></span>
 					<span class="textunit"><text><br><br></text><choice><span>Yes</span><span>No</span></choice></span>
 					<ul class="choicelevel">
@@ -26340,6 +26416,9 @@
 							<span class="textunit"><face data-name="pippins"></face><text><star></star>... What happened to your GUTS? <br>Come on, have some higher <br>stats!</text></span>
 						</li>
 					</ul>
+					<span class="textunit"><face data-name="pippins"></face><text><star></star>... you have T-Rank, don't you. <br>Heheh... Well, don't sweat it.</text></span>
+					<span class="textunit"><face data-name="pippins"></face><text><star></star>I know Tenna must have given it <br>to you himself. Dang, he's <br>corny...!</text></span>
+					<br>
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>Hey, want a hint about RUDE <br>BUSTER? It's only 1 POINT...</text></span>
 					<span class="textunit"><text><br><br></text><choice><span>Pay</span><span>Don't</span></choice></span>
 					<ul class="choicelevel">
@@ -27019,6 +27098,10 @@
 					<span class="textunit couchbubble"><face data-name="ralsei">Ralsei</face><text>Susie!! That was <br>amazing!!</text></span>
 					<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>You doubted my <br>geniusness?</text></span>
 					<lnk class="textunit" data-link="3_141.996_1"></lnk>
+					<br>
+					<span class="textunit couchbubble"><face data-name="ralsei">Ralsei</face><text>Wow!! Great job, <br>Susie!!</text></span>
+					<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Yeah, great job, <br>"Susie."</text></span>
+					<lnk class="textunit" data-link="3_141.996_1"></lnk>
 				</pp>
 				<pp>
 					<span class="textunit couchbubble"><face data-name="ralsei">Ralsei</face><text>Umm, nice job on this <br>puzzle, Kris...</text></span>
@@ -27047,10 +27130,9 @@
 					<span class="textunit"><text>RIBBON</text></span>
 					<ul class="choicelevel">
 						<li><add>Susie</add>
-							<span class="textunit"><face data-name="pippins"></face><text>WOW, SUSIE <br>WEARS RIBBONS?</text></span><!--REMINDER: not sure when exactly this appears; also check if there's one for the deodorant-->
-							<span class="textunit couchbubble" id="3_141.996_2"><face data-name="susie">Susie</face><text>HEY! WHAT THE --</text></span>
-							<pause></pause>
-							<span class="textunit couchbubble"><face data-name="susie"></face><text>Kris, you dumbass! <br>Why'd you make me <br>wear that!?</text></span>
+							<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>HEY! WHAT THE --</text></span>
+							<span class="textunit"><face data-name="pippins">(-)</face><text>WOW, SUSIE <br>WEARS RIBBONS?</text></span>
+							<span class="textunit couchbubble" id="3_141.996_2"><face data-name="susie">Susie</face><text>Kris, you dumbass! <br>Why'd you make me <br>wear that!?</text></span>
 							<span class="textunit couchbubble"><face data-name="ralsei">Ralsei</face><text>M... Make you?</text></span>
 							<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Ugh, take it off!!</text></span>
 							<lnk class="textunit" data-link="3_141.994_1"></lnk>
@@ -27065,6 +27147,8 @@
 					<span class="textunit"><text>PIZZA <br>DEODORANT <br>(FOR NERDS)</text></span>
 					<ul class="choicelevel">
 						<li><add>Susie</add>
+							<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>HEY! WHAT THE --</text></span>
+							<span class="textunit"><face data-name="pippins">(-)</face><text>SMELLS LIKE <br>PEBBERONI</text></span>
 							<lnk class="textunit" data-link="3_141.996_2"></lnk>
 						</li>
 						<li><add>Kris</add>
@@ -27383,14 +27467,10 @@
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>The secret lawnmower <br>game! Everybody's <br>favorite!</text></span>
 					<span class="textunit couchbubble"><face data-name="tenna"></face><text>Push the lawnmower <br>and it will fly! The <br>grass will grow as <br>you mow!</text></span>
 					<span class="textunit couchbubble"><face data-name="tenna"></face><text>Cut as much grass as <br>you can before the <br>timer runs out to get <br>some points!!!</text></span>
-					<ul class="choicelevel">
-						<li>
-							<span class="textunit couchbubble"><face data-name="tenna"></face><text>When you're ready, <br>push the lawn mower <br>to start!</text></span>
-						</li>
-						<li><add>Interrupting</add>
-							<span class="textunit couchbubble"><face data-name="tenna"></face><text>Sure, yeah. I was <br>done. Go ahead.</text></span>
-						</li>
-					</ul>
+					<span class="textunit couchbubble"><face data-name="tenna"></face><text>When you're ready, <br>push the lawn mower <br>to start!</text></span>
+					<br>
+					<add>Interrupting</add>
+					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Sure, yeah. I was <br>done. Go ahead.</text></span>
 				</pp>
 				<pp>
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>A score of <fillin></fillin>?! <br>IMPRESSIVE!</text></span>
@@ -27421,69 +27501,89 @@
 							<pause></pause>
 							<span class="textunit"><face data-name="ralsei_30">Ralsei</face><text><star></star>Okay.</text></span>
 						</li>
-						<li><choice>Yes</choice><add>Dealmaker</add>
+						<li><choice>Yes</choice><add>Dealmaker/PuppetScarf</add>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>What the-- how did THIS get out <br>here!?</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>My secret...! No! Everyone... <br>Everyone's gonna know I...</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>It's... It's over.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>I'm at my limit... If only <br>anyone was here for me...</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>I'd even take that little <br>mailman...</text></span>
-							<span class="textunit"><text><star></star>(Suddenly the <yellow>[Dealmaker]</yellow> came <br>out of your inventory...!?)</text></span>
-							<pause></pause>
-							<span class="textunit"><text><star></star>[Trash heap]!!! YOU KEPT IT!!! <br>YOU REALLY DO CARE!!!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE...!?</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>HOW THE WHAT THE MAMA WHAT THE <br>HECK THE</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MA WHAT'S</text></span><!--REMINDER: 15 randomly generated ones-->
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT'S MAMA MIA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>HEY MAMMA MAMA MIA WOAH HEY <br>MAMMA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT'S MAMMA HECK WHAT THE</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT'S MAMMA HECK</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH WHAT'S HECK WHAT'S MAMMA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE WHAT'S WHAT'S MAMMA <br>HEY MAMA MIA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MA MA MAMMA WHAT THE WOH HECK</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK WHAT THE HECK HEY HECK</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH WHAT'S WOAH HEY</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MAMA MIA MAMMA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MA HECK WHAT'S HECK MAMA MIA <br>HEY HEY</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMMA WOAH WHAT'S</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE WOAH</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MA HECK WOAH MA MA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMMA</text></span>
-							<pause></pause>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>HOW THE WHAT THE MAMA WHAT THE <br>HECK THE</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WOH MA WOAH HECK</text></span><!--REMINDER: 10 randomly generated ones-->
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH HECK WHAT'S WOH WOAH MA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MA HECK</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE HEY MAMMA WHAT THE</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMA MIA HECK HECK HEY WHAT THE</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMA MIA WOAH</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WOH MAMMA WHAT'S MA HECK MA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK HEY</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH WOH MA MA MAMMA MAMA MIA <br>MAMA MIA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMMA</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>What the HECK is THAT THING!?</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Some kind of RAT!? Some kind of <br>CREATURE!?</text></span>
-							<span class="textunit"><face data-name="spamton"></face><text><star></star>DON'T YOU RECOGNIZE...</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>STAY AWAY FROM HER, you <br>FIEND!!!</text></span>
-							<pause></pause>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh, my little darling! Are you <br>okay!?</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Did that overly small weird <br>unidentifiable thing hurt you!?</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Don't worry! You're gonna go <br>someplace SAFE!!!</text></span>
-							<pause></pause>
-							<span class="textunit"><face data-name="spamton"></face><text><star></star>KRIS.</text></span>
-							<span class="textunit"><face data-name="spamton"></face><text><star></star>I'M NEVER [Doing that] AGAIN.</text></span>
-							<pause></pause>
-							<span class="textunit"><text><star></star>(<yellow>[Dealmaker]</yellow> returned to your <br>inventory.)</text></span>
-							<pause></pause>
-							<span class="textunit"><face data-name="ralsei_30">Ralsei</face><text><star></star>Okay.</text></span>
+							<ul class="choicelevel"><!--the same but split because of a different line break-->
+								<li><add>Dealmaker</add>
+									<span class="textunit"><text><star></star>(Suddenly the <yellow>[Dealmaker]</yellow> came <br>out of your inventory...!?)</text></span>
+									<pause></pause>
+									<span class="textunit" id="3_142_3"><text><star></star>[Trash heap]!!! YOU KEPT IT!!! <br>YOU REALLY DO CARE!!!</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE...!?</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>HOW THE WHAT THE MAMA WHAT THE <br>HECK THE</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MA WHAT'S</text></span><!--REMINDER: 15 randomly generated ones-->
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT'S MAMA MIA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>HEY MAMMA MAMA MIA WOAH HEY <br>MAMMA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT'S MAMMA HECK WHAT THE</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT'S MAMMA HECK</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH WHAT'S HECK WHAT'S MAMMA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE WHAT'S WHAT'S MAMMA <br>HEY MAMA MIA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MA MA MAMMA WHAT THE WOH HECK</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK WHAT THE HECK HEY HECK</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH WHAT'S WOAH HEY</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MAMA MIA MAMMA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MA HECK WHAT'S HECK MAMA MIA <br>HEY HEY</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMMA WOAH WHAT'S</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE WOAH</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MA HECK WOAH MA MA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMMA</text></span>
+									<pause></pause>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>HOW THE WHAT THE MAMA WHAT THE <br>HECK THE</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WOH MA WOAH HECK</text></span><!--REMINDER: 10 randomly generated ones-->
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH HECK WHAT'S WOH WOAH MA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MA HECK</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE HEY MAMMA WHAT THE</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMA MIA HECK HECK HEY WHAT THE</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMA MIA WOAH</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WOH MAMMA WHAT'S MA HECK MA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK HEY</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH WOH MA MA MAMMA MAMA MIA <br>MAMA MIA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMMA</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>What the HECK is THAT THING!?</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>Some kind of RAT!? Some kind of <br>CREATURE!?</text></span>
+									<span class="textunit"><face data-name="spamton"></face><text><star></star>DON'T YOU RECOGNIZE...</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>STAY AWAY FROM HER, you <br>FIEND!!!</text></span>
+									<pause></pause>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh, my little darling! Are you <br>okay!?</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>Did that overly small weird <br>unidentifiable thing hurt you!?</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>Don't worry! You're gonna go <br>someplace SAFE!!!</text></span>
+									<pause></pause>
+									<span class="textunit"><face data-name="spamton"></face><text><star></star>KRIS.</text></span>
+									<span class="textunit"><face data-name="spamton"></face><text><star></star>I'M NEVER [Doing that] AGAIN.</text></span>
+									<pause></pause>
+									<span class="textunit"><text><star></star>(<yellow>[<fillin>Dealmaker/PuppetScarf</fillin>]</yellow> returned to your <br>inventory.)</text></span>
+									<pause></pause>
+									<span class="textunit"><face data-name="ralsei_30">Ralsei</face><text><star></star>Okay.</text></span>
+								</li>
+								<li><add>PuppetScarf</add>
+									<span class="textunit"><text><star></star>(Suddenly the <yellow>[PuppetScarf]</yellow> <br>came out of your <br>inventory...!?)</text></span>
+									<pause></pause>
+									<lnk class="textunit" data-link="3_142_3"></lnk>
+								</li>
+							</ul>
 						</li>
 					</ul>
 					<span class="textunit"><text><star></star>(No need to look in here <br>anymore.)</text></span>
-					<span class="textunit" id="3_142_1"><face data-name="susie_27">Susie</face><text><star></star>(Why...)</text><face data-name="ralsei_29">Ralsei</face></span><!--REMINDER: double face support required--><!--possibly a bug due to drawer/pipis hitboxes overlapping-->
+					<ul class="choicelevel"><!--probably a bug due to pipis hitboxes overlapping-->
+						<li>
+							<lnk class="textunit" data-link="3_142_1"></lnk>
+						</li>
+						<li><add>Not enough space</add>
+							<lnk class="textunit" data-link="3_142_2"></lnk>
+						</li>
+					</ul>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(Pipis was added to your <br>ITEMs.)</text></span>
-					<lnk class="textunit" data-link="3_142_1"></lnk>
+					<span class="textunit" id="3_142_1"><face data-name="susie_27">Susie</face><text><star></star>(Why...)</text><face data-name="ralsei_29">Ralsei</face></span><!--REMINDER: double face support required-->
+					<br>
+					<add>Not enough space</add>
+					<span class="textunit"><text><star></star>(You don't have room in your <br>ITEMs to hold the Pipis.)</text></span>
+					<span class="textunit" id="3_142_2"><face data-name="susie_30">Susie</face><text><star></star>(Good...)</text><face data-name="ralsei_38">Ralsei</face></span><!--REMINDER: double face support required-->
 				</pp>
 			<hr><roomname>(147)</roomname>
 				<pp class="darkworld">
@@ -28024,7 +28124,7 @@
 					<span class="textunit"><face data-name="zapper"></face><text><star></star>...</text></span>
 					<ul class="choicelevel">
 						<li>
-							<span class="textunit"><face data-name="zapper"></face><text><star></star>... I see! S-rank on Board <fillin>1/2</fillin>. <br>Please enjoy our luxury <br>facilities.</text></span>
+							<span class="textunit"><face data-name="zapper"></face><text><star></star>... I see! <fillin>S/T</fillin>-rank on Board <fillin>1/2</fillin>. <br>Please enjoy our luxury <br>facilities.</text></span>
 						</li>
 						<li>
 							<span class="textunit"><face data-name="zapper"></face><text><star></star>... Hmm. Says here you got only <br><fillin>A</fillin>-Rank on Board 1. Try harder <br>next time.</text></span>
@@ -28490,6 +28590,9 @@
 					<span class="textunit"><face data-name="bibliox"></face><text><star></star>Mumble, mumble...</text></span>
 					<span class="textunit"><face data-name="bibliox"></face><text><star></star>You know, it's quite hard to <br>understand you sometimes.</text></span>
 					<span class="textunit"><face data-name="bibliox"></face><text><star></star>Perhaps you should try speaking <br>up!</text></span>
+					<br>
+					<span class="textunit"><face data-name="bibliox"></face><text><star></star>Mumble, mumble...</text></span>
+					<span class="textunit"><face data-name="bibliox"></face><text><star></star>My favorite game, what a <br>shame...</text></span>
 				</pp>
 				<pp class="mantlegame">
 					<span class="textunit"><text>Mumble, Mumble... <br>where could this <br>be...?</text></span>
@@ -28533,6 +28636,9 @@
 				<pp class="mantlegame">
 					<span class="textunit"><text>YOU LOOKED IN THE <br>WARDROBE.</text></span>
 					<span class="textunit"><text>ALAS, THE WARDROBE WAS <br>EMPTY!</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(You tried to use the console, <br>but nothing happened.)</text></span>
 				</pp>
 			<hr><roomname>(187)</roomname>
 				<pp class="darkworld">
@@ -28764,9 +28870,17 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>No more POINTs until you <br>CAPTURE them!! You like POINTs, <br>right!?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Okay, then we're CLEAR, right! <br>You guys...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>What do you MEAN you don't want <br>to fight them!?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Wh... What the!?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Read the FINE PRINT in your <br>CONTRACT, buddy! Now QUIT <br>complaining and GO!</text></span>
+					<ul class="choicelevel">
+						<li>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>What do you MEAN you don't want <br>to fight them!?</text></span>
+							<span class="textunit" id="3_197_1"><face data-name="tenna"></face><text><star></star>Wh... What the!?</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>Read the FINE PRINT in your <br>CONTRACT, buddy! Now QUIT <br>complaining and GO!</text></span>
+						</li>
+						<li><add>Violence</add>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>What do you MEAN you're scared <br>to fight them!?</text></span>
+							<lnk class="textunit" data-link="3_197_1"></lnk>
+						</li>
+					</ul>
 				</pp>
 			<hr><roomname>(198)</roomname>
 				<pp class="darkworld">
@@ -28787,7 +28901,7 @@
 					<span class="textunit"><text><star></star>(Someone was watching you flirt <br>with the watercooler.)</text></span>
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>How nice... her water... was <br>always so nourishing... wasn't <br>it...</text></span>
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>She... was so brave... to put <br>herself out there like that.</text></span>
-					<span class="textunit"><face data-name="unnamed"></face><text><star></star>I'm sure you two... will be... <br>very happy together...</text></span>
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>I'm sure you two... will be... <br>very happy together...</text></span><!--even if beaten violently-->
 					<span class="textunit"><text><star></star>(But, something about the words <br>sounded sad.)</text></span>
 				</pp>
 				<pp class="darkworld">
@@ -28861,6 +28975,10 @@
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>Amazing, you shredded their <br>contracts! ... legally, I'm not <br>sure that means anything..</text></span>
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>But hey, if they knew legal <br>stuff, they wouldn't have <br>signed in the first place!</text></span>
 					<br>
+					<span class="textunit"><face data-name="pippins"></face><text><star></star>The Shadowguys are supposed to <br>be doing Tenna's contract <br>work...</text></span>
+					<span class="textunit"><face data-name="pippins"></face><text><star></star>But, seems like the whole <br>system got shut down somehow.</text></span>
+					<span class="textunit"><face data-name="pippins"></face><text><star></star>No one knows what they should <br>do now...</text></span>
+					<br>
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>Heh, looks like they decided <br>that if the game doesn't work, <br>why should they?</text></span>
 					<br>
 					<add>Violence</add>
@@ -28868,6 +28986,11 @@
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>But, they got scared you beat <br>them up, so they split.</text></span>
 					<br>
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>Hey, at least you SPAREd them <br>from doing some work!</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(You attempted to use the <br>console... but realized it <br>wouldn't do anything.)</text></span>
+					<span class="textunit"><text><star></star>(You started to leave.)</text></span>
+					<span class="textunit"><text><star></star>(Suddenly, everyone else <br>started to notice it might be <br>okay to leave, too...)</text></span>
 				</pp>
 			<hr><roomname>(205)</roomname>
 				<pp class="darkworld">
@@ -29110,7 +29233,7 @@
 							<span class="textunit" id="3_225_1"><text></text><choice><span>My rank, <br>my rewards?</span><span>Don't</span><span>What's in <br>each door?</span></choice></span>
 							<ul class="choicelevel">
 								<li><choice>My rank, <br>my rewards?</choice><add>S</add>
-									<span class="textunit"><face data-name="zapper"></face><text><star></star>On the previous BOARD, you <br>earned RANK S. You're a STAR!</text></span>
+									<span class="textunit"><face data-name="zapper"></face><text><star></star>On the previous BOARD, you <br>earned RANK <fillin>S/T</fillin>. You're a STAR!</text></span>
 									<span class="textunit"><face data-name="zapper"></face><text><star></star>This means you can use door A, <br>B, and C!</text></span>
 									<span class="textunit"><face data-name="zapper"></face><text><star></star>We also recommend checking out <br>our Star Changing Room.</text></span>
 									<span class="textunit"><face data-name="zapper"></face><text><star></star>Look in the "S" Door in the <br>Green Room below. Enjoy!</text></span>
@@ -29934,6 +30057,19 @@
 													<span class="textunit"><face data-name="ralsei_26"></face><text><star></star>Noelle would probably <br>really appreciate it!</text></span>
 													<span class="textunit"><face data-name="ralsei_31"></face><text><star></star>I'm sure the three of <br>you would have a lot of <br>fun!</text></span>
 													<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>Umm, if it's... the <br>three of you.</text></span>
+													<pause></pause>
+													<lnk class="textunit" data-link="3_240_2"></lnk>
+												</li>
+												<li><choice>Noelle</choice><add>Weird route</add>
+													<span class="textunit"><face data-name="ralsei_33">Ralsei</face><text><star></star>N... Noelle?</text></span>
+													<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>Kris, I...</text></span>
+													<span class="textunit"><face data-name="ralsei_55"></face><text><star></star>I think that's...</text></span>
+													<span class="textunit"><face data-name="ralsei_44"></face><text><star></star>...</text></span>
+													<pause></pause>
+													<span class="textunit"><face data-name="ralsei_56"></face><text><star></star>A bad choice.</text></span>
+													<span class="textunit"><face data-name="ralsei_29"></face><text><star></star>I mean, I'm sorry! A bad <br>choice to, make alone.</text></span>
+													<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>Noelle, might want to go <br>with Susie...</text></span>
+													<span class="textunit"><face data-name="ralsei_55"></face><text><star></star>I hope you can... figure <br>out a nice solution!</text></span>
 													<pause></pause>
 													<lnk class="textunit" data-link="3_240_2"></lnk>
 												</li>
@@ -31391,11 +31527,16 @@
 					<br>
 					<span class="textunit"><text><star></star>Your heartbeat becomes twisted.</text></span>
 					<br>
-					<span class="textunit"><text><star></star>Susie grew pale.</text></span>
+					<span class="textunit"><text><star></star>Susie grew pale.</text></span><!--if susie up-->
+					<br>
+					<span class="textunit"><text><star></star>Susie struggled to give some <br>kind of warning.</text></span><!--if susie down-->
 					<br>
 					<span class="textunit"><text><star></star>The Knight's hands glow a <br>strange color...</text></span>
 					<br>
 					<span class="textunit"><text><star></star>The enemy suddenly let down its <br>guard!</text></span>
+					<br>
+					<add>No hit</add>
+					<span class="textunit"><text><star></star>Kris coughed. <br><star></star>The enemy slowly tilted its <br>head...</text></span>
 					<br>
 					<add>Kris down</add>
 					<span class="textunit"><text><star></star>Kris kneeled in silence.</text></span>
@@ -31544,6 +31685,11 @@
 					<br>
 					<span class="textunit"><face data-name="tenna_1">Tenna</face><text><star></star>Ouch! Cover your nose, <br>kids!!!</text></span>
 					<br>
+					<add>Hit more</add>
+					<span class="textunit"><face data-name="tenna_1">Tenna</face><text><star></star>Ever heard of dodging!?</text></span>
+					<br>
+					<span class="textunit"><face data-name="tenna_1">Tenna</face><text><star></star>Dan called! He wants his <br>maku back!!</text></span>
+					<br>
 					<add>Down</add>
 					<span class="textunit"><face data-name="tenna_1">Tenna</face><text><star></star>Downed!? Down't worry!!! <br>We'll edit that out in <br>post!!!</text></span>
 					<br>
@@ -31569,14 +31715,16 @@
 					<br>
 					<span class="textunit"><face data-name="tenna_1">Tenna</face><text><star></star>A brutal smack-down from our <br>heroes!!!</text></span>
 					<br>
+					<span class="textunit"><face data-name="tenna_1">Tenna</face><text><star></star>Ouch for the enemies!! Too <br>bad they don't get <br>healthcare, folks!!</text></span>
+					<br>
 					<add>Game over</add><!--REMINDER: not restricted to battles but not sure where else to put it-->
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>What the...!? You actually <br>LOST!?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>We can't have THAT on TV!! The <br>SHOW MUST GO ON!!</text></span>
+					<span class="textunit" id="3_default_1"><face data-name="tenna"></face><text><star></star>We can't have THAT on TV!! The <br>SHOW MUST GO ON!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You're gonna continue RIGHT <br>where you left off!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>... Well, except for a LITTLE <br>punishment.</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>I WILL be taking some of your <br>POINTs!</text></span>
 					<br>
-					<span class="textunit" id="3_default_1"><face data-name="tenna"></face><text><star></star>GAME OVER!!! Another LOSS, <br>another PUNISHMENT!!!</text></span>
+					<span class="textunit" id="3_default_2"><face data-name="tenna"></face><text><star></star>GAME OVER!!! Another LOSS, <br>another PUNISHMENT!!!</text></span>
 					<ul class="choicelevel">
 						<li>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>I WILL be taking some of your <br>POINTs!</text></span>
@@ -31593,7 +31741,14 @@
 						</li>
 					</ul>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>HEY! I was just out of the room <br>and I heard you got a GAME <br>OVER!!</text></span>
-					<lnk class="textunit" data-link="3_default_1"></lnk>
+					<ul class="choicelevel">
+						<li>
+							<lnk class="textunit" data-link="3_default_1"></lnk>
+						</li>
+						<li>
+							<lnk class="textunit" data-link="3_default_2"></lnk>
+						</li>
+					</ul>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span></choice></span>
