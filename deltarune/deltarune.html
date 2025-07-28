@@ -25,6 +25,10 @@
 				font-family:"fnt_8bit";
 				src:url("fonts/8bit.ttf") format("truetype");
 			}
+			@font-face {
+				font-family:"fnt_legend";
+				src:url("fonts/legend.ttf") format("truetype");
+			}
 			:root {
 				--color:none;
 				--char-icon:none;
@@ -124,6 +128,10 @@
 				0% {filter:saturate(0);}
 				50% {filter:saturate(1);}
 			}
+			@keyframes legenddepth {
+				0% {background-position:top 0 left 0;}
+				100% {background-position:top 238px left 316px;}
+			}
 
 			body {
 				background-color:black;
@@ -152,6 +160,17 @@
 			.mantlegame:not(.couchbubble) {
 				font-family:fnt_8bit, fnt_main, "Determination Mono Web", "8bitoperator JVE";
 				font-size:50%;
+			}
+			.legend text, #textbox.legend li {
+				font-family:fnt_legend, fnt_main, "Determination Mono Web", "8bitoperator JVE";
+				background-color:#51EBF7d0;
+				background-image:url("img/DEPTH.png");
+				background-size:316px 238px;
+				background-clip:text;
+				color:transparent;
+				background-blend-mode:overlay;
+				animation:10s linear infinite legenddepth;
+				text-shadow:none;
 			}
 			.musicvideo {
 				text-shadow:-1.5px 0 black, 0 -1.5px black, 1.5px 0 black, 0 1.5px black;
@@ -34966,6 +34985,7 @@
 							<pause></pause>
 							<span class="textunit"><text><star></star>(You leaned down to look inside <br>the guitar.)</text></span>
 							<span class="textunit"><text><star></star>(You began to read the numbers <br>in the pass code...  1  2  2</text></span>
+							<pause></pause>
 						</li>
 					</ul>
 				</pp>
@@ -35958,6 +35978,39 @@
 					<span class="textunit"><text><star></star>(The scent of glass and <br>incense.)</text></span>
 					<span class="textunit"><text><star></star>(A certain power steels within <br>you.)</text></span>
 				</pp>
+			<hr><roomname>(110)</roomname>
+				<pp class="legend">
+					<span class="textunit"><text>A WORLD BASKED IN PUREST LIGHT. <br>BENEATH IT, GREW ETERNAL NIGHT.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>Hey, what're these... <br>word things we keep <br>seeing?</text></span>
+					<span class="textunit"><face data-name="ralsei_25">Ralsei</face><text><star></star>That's...</text></span>
+					<span class="textunit"><face data-name="ralsei_46"></face><text><star></star>... the prophecy, Susie.</text></span>
+				</pp>
+				<pp class="legend">
+					<span class="textunit"><text>IF FOUNTAINS FREED, THE ROARING CRIES. <br>AND TITANS SHAPE FROM DARKENED EYES.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>Isn't this... kinda <br>different from the <br>prophecy you told us?</text></span>
+					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>... Yes, I...</text></span>
+					<span class="textunit"><face data-name="ralsei_46"></face><text><star></star>... My version was... <br>more of... a summary.</text></span>
+				</pp>
+			<hr><roomname>(146)</roomname>
+				<pp class="legend">
+					<span class="textunit"><text>JOCKINGTON GROWS THE BEARD.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>Come five o'clock, the shadow <br>will grow.</text></span>
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>... So sayeth our ancestors.</text></span>
+					<br>
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>The truth is written in glass.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(You opened the treasure <br>chest.) <br><star></star>(Inside was <yellow>Rhapsotea</yellow>.)</text></span>
+					<span class="textunit"><text><star></star>(<yellow>Rhapsotea</yellow> was added to your <br><yellow>ITEMs</yellow>.)</text></span>
+					<br>
+					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
+				</pp>
 			<hr><roomname>(154)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey, what's that room <br>over there? Your room?</text></span>
@@ -36135,6 +36188,201 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Hotcha HOTCHA! Don't touch that <br>podium, folks, or TV TIME <br>Season 2 will begin!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You don't want episodic content <br>that deteriorates in quality <br>over time, do ya!? DO YA!?</text></span>
 				</pp>
+			<hr><roomname>(171)</roomname>
+				<pp class="legend">
+					<span class="textunit"><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_15"></face><text><star></star>Hey, that's us, right?</text></span>
+					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>Yes, Susie! We are the <br>Heroes of the <br>Prophecy...</text></span>
+					<span class="textunit"><face data-name="susie_26">Susie</face><text><star></star>Yeah, guess you said <br>something like that, <br>huh.</text></span>
+					<span class="textunit"><face data-name="susie_15"></face><text><star></star>Still... kinda... cool <br>to see us up there, <br>y'know?</text></span>
+					<span class="textunit"><face data-name="susie_50"></face><text><star></star>... Kinda makes me feel <br>like...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_35"></face><text><star></star>H-huh!?</text></span>
+					<span class="textunit"><face data-name="susie_27"></face><text><star></star>Hey, who the hell's <br>messing with us!?</text></span>
+					<span class="textunit"><face data-name="susie_19"></face><text><star></star>...</text></span>
+					<span class="textunit"><face data-name="susie_18"></face><text><star></star>(No answer...)</text></span>
+					<span class="textunit"><face data-name="susie_19"></face><text><star></star>... Let's be careful.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Look! Light!</text></span>
+					<span class="textunit"><face data-name="susie_45"></face><text><star></star>Alright you losers...</text></span>
+					<span class="textunit"><face data-name="susie_39"></face><text><star></star>BRING IT ON!!!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Whatcha doin'?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>Wh... who... huh... what <br>the HELL are YOU doing!?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Lookin' for the light switch.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>But, hrm. Seems I got a little <br>lost.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>You wouldn't mind walking me <br>back to my study, wouldja?</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Got something I gotta finish <br>writing, y'see...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Yeah, uh, no. We're <br>kinda in a hurry here.</text></span>
+					<span class="textunit"><face data-name="susie_19"></face><text><star></star>We can't just babysit <br>every random Darkner we <br>meet.</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Ah, I see, I see. Good enough <br>reason, that one.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_18">Susie</face><text><star></star>So anyway, we'll be...</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>What's a Darkner, anyhoo?</text></span>
+					<span class="textunit"><face data-name="susie_47">Susie</face><text><star></star>You mean you don't...</text></span>
+					<span class="textunit"><face data-name="susie_44"></face><text><star></star>(Kris, if this guy's not <br>a Darkner, then...)</text></span>
+					<span class="textunit"><face data-name="susie_27"></face><text><star></star>(Ugh, things'll get <br>messy if he gets hurt!)</text></span>
+					<span class="textunit"><face data-name="susie_28"></face><text><star></star>Fine! You can go with <br>us. Just don't slow us <br>down.</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Hmm, alright, alright. You got <br>it, little missy!</text></span>
+				</pp>
+			<hr><roomname>(173)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_55">Susie</face><text><star></star>Damnit... what is it <br>doing here...?</text></span>
+					<span class="textunit"><face data-name="susie_56"></face><text><star></star>I guess it made the <br>fountain, and now...</text></span>
+					<span class="textunit"><face data-name="susie_58"></face><text><star></star>... it's looking for <br>someone else to...</text></span>
+					<span class="textunit"><face data-name="susie_41"></face><text><star></star>...</text></span>
+					<span class="textunit"><face data-name="susie_41"></face><text><star></star>... let's go.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(The glass is broken.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_35">Susie</face><text><star></star>K... Kris!?</text></span>
+					<span class="textunit"><face data-name="susie_35"></face><text><star></star>Kris, you... the glass, <br>I didn't notice... it...</text></span>
+					<span class="textunit"><face data-name="susie_53"></face><text><star></star>You're bleeding...</text></span>
+					<span class="textunit"><face data-name="susie_52"></face><text><star></star>Umm, I'll... Here, let <br>me heal it!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_37"></face><text><star></star>Th... that wasn't <br>enough, huh...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="ralsei">(-)</face><text><star></star>... where... is it...</text></span>
+					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey, Ralsei! Ralsei!</text></span>
+					<span class="textunit"><face data-name="ralsei_33">Ralsei</face><text><star></star>... S-Susie!?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_53">Susie</face><text><star></star>Hey, Ralsei, Kris is...</text></span>
+					<span class="textunit"><face data-name="ralsei_33">Ralsei</face><text><star></star>Kris...!?</text></span>
+					<span class="textunit"><face data-name="susie_51">Susie</face><text><star></star>Could you tell me how <br>to...</text></span>
+					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>Susie, could you move <br>out of the way?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>Kris... Kris, are you <br>okay?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>Umm, I tried to uh, <br>heal, but...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="ralsei_54">Ralsei</face><text><star></star>Susie, I know you were <br>just trying to help, <br>but...</text></span>
+					<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>If someone's really <br>hurt, don't... try to <br>fix it alone, okay?</text></span>
+					<span class="textunit"><face data-name="susie_52">Susie</face><text><star></star>... uh, yeah. Okay. Got <br>it.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_17">Susie</face><text><star></star>So, hey, uh, Gang's <br>together!</text></span>
+					<span class="textunit"><face data-name="susie_15"></face><text><star></star>We gonna, uh, pose now?</text></span>
+					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>Right! Um, sure!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>Anyway, let's go...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>...</text></span>
+				</pp>
+			<hr><roomname>(174)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Kris... Kris, hey, <br>wait!! Look!!</text></span>
+					<span class="textunit"><face data-name="susie_21"></face><text><star></star>The fountain's just up <br>there!!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_15"></face><text><star></star>Well, that was easy.</text></span>
+					<span class="textunit"><face data-name="susie_49"></face><text><star></star>Heh, too bad, was <br>looking forward to <br>another adventure...</text></span>
+					<span class="textunit"><face data-name="susie_26"></face><text><star></star>But, guess we gotta do <br>what we gotta...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_58"></face><text><star></star>What the...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_43"></face><text><star></star>Y... You!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_56"></face><text><star></star>D... dammit...</text></span>
+					<span class="textunit"><face data-name="susie_40"></face><text><star></star>Kris! Don't waste any <br>time on me! I'll heal <br>myself!</text></span>
+					<span class="textunit"><face data-name="susie_56"></face><text><star></star>This is... our chance to <br>get them...! Go!</text></span>
+				</pp>
+				<pp class="legend">
+					<span class="textunit"><text>THE LEGEND OF THIS WORLD. <br>&lt;DELTARUNE.&gt;</text></span>
+				</pp>
+			<hr><roomname>(176)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(It's an actual stool.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(The door is locked with some <br>mechanism.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(There's a suspicious book <br>here, but it's a bit too high <br>to reach.)</text></span>
+				</pp>
+			<hr><roomname>(177)</roomname>
+				<pp class="legend">
+					<span class="textunit"><text>THE PROPHECY, WHICH WHISPERS <br>AMONG THE SHADOWS.</text></span>
+				</pp>
+				<pp class="legend">
+					<span class="textunit"><text>THE LEGEND OF THIS WORLD. <br>&lt;DELTARUNE.&gt;</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(A glass tapestry rings above <br>you. Strangely, no matter how <br>you turn to look...)</text></span>
+					<span class="textunit"><text><star></star>(... its perspective never <br>changes.)</text></span>
+				</pp>
+			<hr><roomname>(211)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(Perhaps if you play part of a <br>bar, the bars will part.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(It looks like you'd be able to <br>climb this if you had the right <br>tools.)</text></span>
+				</pp>
+			<hr><roomname>(212)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>The others here believe you <br>will bring trouble to this <br>place.</text></span>
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>They say, "the knight with the <br>blade casts a great shadow on <br>the land..."</text></span>
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>I have no proof that's you. But <br>don't be harsh to those that <br>fight you.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(It looks like you'd be able to <br>climb this if you had the right <br>tools.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(Huh...!? There's a hidden <br>treasure chest here!)</text></span>
+					<span class="textunit"><text><star></star>(It contains... some kind of <br>strangely slippery gloves!)</text></span>
+					<span class="textunit"><text><star></star>(They're labeled, "gloves that <br>make you worse at climbing".)</text></span>
+					<span class="textunit"><text><star></star>(...)</text></span>
+					<span class="textunit"><text><star></star>(You didn't take these.)</text></span>
+					<br>
+					<span class="textunit"><text><star></star>(You still didn't take the <br>gloves.)</text></span>
+				</pp>
+			<hr><roomname>(227)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Don't let me slow ya down!</text></span>
+					<br>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>I'll be right behind ya!</text></span>
+					<br>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Did you need somethin'?</text></span>
+					<span class="textunit"><text><br></text><choice><span>All <br>good</span><span>Speed <br>it up</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Speed <br>it up</choice><!--REMINDER: only after many iterations, or a certain point?-->
+							<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Hey, if we're gonna have <br>to watch you...</text></span>
+							<span class="textunit"><face data-name="susie_27"></face><text><star></star>... Can you walk ANY <br>FASTER!?</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Of course, miss!</text></span>
+						</li>
+					</ul>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(It appears to be a light <br>switch.)</text></span>
+					<span class="textunit"><text><star></star>(... It won't budge!)</text></span>
+					<span class="textunit"><text><star></star>(Seems it's actually a heavy <br>switch.)</text></span>
+					<br>
+					<span class="textunit"><text><star></star>(It's a heavy light switch.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>... know what?</text></span>
+					<span class="textunit"><face data-name="susie_18"></face><text><star></star>YOU GUYS handle the old <br>man. I'm gone.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>I, um... should go <br>follow her...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>... Gee, guess I better catch <br>up, too.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(The old man's existence made <br>you imagine Ralsei with a <br>beard.)</text></span>
+					<span class="textunit"><text><star></star>(You are filled with the power <br>of conceptual bearded Ralsei.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(It looks like you'd be able to <br>climb this if you had the right <br>tools.)</text></span>
+				</pp>
 			<hr><roomname>(233)</roomname>
 				<pp>
 					<span class="textunit"><face data-name="susie"></face><text><star></star>So, uh...</text></span>
@@ -36285,6 +36533,28 @@
 					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>Damn...</text></span>
 					<lnk class="textunit" data-link="4_48_1"></lnk>
 				</pp>
+			<hr><roomname>(241)</roomname>
+				<pp class="legend">
+					<span class="textunit"><text>THE LIGHT AND DARK, BOTH BURNING DIRE. <br>A COUNTDOWN TO THE EARTH'S EXPIRE.</text></span>
+				</pp>
+				<pp class="legend">
+					<span class="textunit"><text>THE POINTY-HEADED WILL SAY <br>"TOOTHPASTE," AND THEN  "BOY."</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Hahaha! Dude, that <br>totally happened!</text></span>
+					<span class="textunit"><face data-name="susie_15"></face><text><star></star>Didn't know the prophecy <br>was supposed to be this <br>accurate.</text></span>
+					<span class="textunit"><face data-name="ralsei_25">Ralsei</face><text><star></star>It... it is, Susie.</text></span>
+					<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>Everything it says... <br>will come to pass.</text></span>
+					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>Damn... So it like, <br>actually predicts the <br>future?</text></span>
+					<span class="textunit"><face data-name="susie_21"></face><text><star></star>Dude, that's actually <br>like a big deal.</text></span>
+					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>Yes... it is, a big <br>deal, Susie!</text></span>
+					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>... there, uh, aren't <br>any where I do anything <br>cool, right?</text></span>
+					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>Umm...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_35">Susie</face><text><star></star>H-hey!</text></span>
+					<span class="textunit"><face data-name="susie_28"></face><text><star></star>Dude, did you see that? <br>Someone's sneaking <br>around...</text></span>
+					<span class="textunit"><face data-name="susie_18"></face><text><star></star>Kris, keep your guard <br>up...</text></span>
+				</pp>
 			<hr><roomname>(246)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>... H-huh? Our rooms... <br>they're... combined?</text></span>
@@ -36359,6 +36629,7 @@
 							</ul>
 						</li>
 						<li>
+							<pause></pause>
 							<span class="textunit"><face data-name="susie_26">Susie</face><text><star></star>There.</text></span>
 							<span class="textunit"><face data-name="ralsei_30">Ralsei</face><text><star></star>Umm, and here's the tea.</text></span>
 							<pause></pause>
@@ -36406,6 +36677,22 @@
 					<span class="textunit"><face data-name="ralsei_21">Ralsei</face><text><star></star>Kris, if you want any <br>kind of award...</text></span>
 					<span class="textunit"><face data-name="ralsei_19"></face><text><star></star>I can add it for you...!</text></span>
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>(He can't, though.)</text></span>
+				</pp>
+			<hr><roomname>(283)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(You opened the treasure <br>chest.) <br><star></star>(Inside was <yellow>Scarlixir</yellow>.)</text></span>
+					<span class="textunit"><text><star></star>(<yellow>Scarlixir</yellow> was added to your <br><yellow>ITEMs</yellow>.)</text></span>
+					<br>
+					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="ralsei_44">Ralsei</face><text><star></star>It's... awfully dark in <br>here, isn't it...?</text></span>
+					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Yeah, it's the Dark <br>World.</text></span>
+					<span class="textunit"><face data-name="ralsei_44">Ralsei</face><text><star></star>Right... but I mean...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_42">Susie</face><text><star></star>?</text></span>
+					<span class="textunit"><face data-name="susie_47"></face><text><star></star>Hey, did you just... <br>hear something?</text></span>
+					<span class="textunit"><face data-name="ralsei_47">Ralsei</face><text><star></star>KRIS!!! RUN LEFT, NOW!!!</text></span>
 				</pp>
 			<hr><roomname>(289)</roomname>
 				<pp>
@@ -36778,10 +37065,6 @@
 					<add>Lanino</add>
 					<span class="textunit"><text></text><choice><span>Check</span><span>Telescope</span><span>Sunglasses</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>Check</choice>
-							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Useless <br>analysis</colspan></text></span>
-							<add>Same as Ch3</add>
-						</li>
 						<li><choice>Telescope</choice>
 							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Blocks <br>bullets</colspan></text></span>
 							<ul class="choicelevel">
@@ -36835,6 +37118,133 @@
 									<span class="textunit"><text><star></star>Took a warm hat to block snow!</text></span>
 								</li>
 							</ul>
+						</li>
+					</ul>
+				</pp>
+			<hr><roomname>Guei (62)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>Guei wisps in your way!</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Guei rattles its claws.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Guei howls hauntingly.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Guei turns its head like a <br>bird.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Guei wags its tail.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Smells like teens. <br><star></star>Smells like spirits.</text></span>
+					<br>
+					<add>Pacified</add>
+					<span class="textunit"><text><star></star>Guei looks satisfied in some <br>odd way.</text></span>
+					<br>
+					<add>Tired</add>
+					<span class="textunit"><text><star></star>Guei looks <blue>TIRED</blue>. <yellow>DEFEND</yellow> to <br>gain <yellow>TP</yellow>, then try Ralsei's <br>MAGIC, <blue>PACIFY</blue>...!</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Guei looks <blue>TIRED</blue>. Perhaps <br>Ralsei's MAGIC, <blue>PACIFY</blue> would be <br>effective...</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text></text><choice><span>Check</span><span>Exercism</span><span><ralsei></ralsei>Xercism</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Check</choice>
+							<span class="textunit"><text><star></star>GUEI - A strange spirit said to <br>appear when the moon waxes.</text></span>
+						</li>
+						<li><choice>Exercism</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">20% &amp; <br>Delayed <br>TIRED</colspan></text></span>
+							<span class="textunit"><text><star></star>You started the exercism! <br><star></star>You encouraged Guei to <br>exercise!</text></span>
+						</li>
+						<li><choice><ralsei></ralsei>Xercism</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">60% &amp; <br>Delayed <br>TIRED</colspan></text></span>
+							<span class="textunit"><text><star></star>Everyone encouraged Guei to <br>exercise!</text></span>
+						</li>
+						<li><choice><pink>S-Action</pink></choice>
+							<span class="textunit"><text><star></star>Susie told a story about the <br>living dead!</text></span>
+						</li>
+						<li><choice><pink>S-Action</pink></choice><add>Combined</add>
+							<span class="textunit"><text><star></star>Susie told a ghost story!</text></span>
+						</li>
+						<li><choice><mint>R-Action</mint></choice>
+							<span class="textunit"><text><star></star>Ralsei told a family-friendly <br>story about a lovable yet <br>lonely ghost!</text></span>
+						</li>
+						<li><choice><mint>R-Action</mint></choice><add>Combined</add>
+							<span class="textunit"><text><star></star>Ralsei quoted a holy book!</text></span>
+						</li>
+					</ul>
+				</pp>
+			<hr><roomname>Balthizard (63)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>Balthizard swings in!</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Balthizard clambers slowly.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Balthizard coughs plumes like <br>old pillows on golden hair.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Balthizard breathes a fog of <br>sunbeam on warm wood.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Balthizard releases a plume of <br>sickly sweet nostalgia.</text></span>
+					<br>
+					<add>Lit up</add>
+					<span class="textunit"><text><star></star>Balthizard burns with <br>taco-scented excitement.</text></span>
+					<br>
+					<add>Pacified</add>
+					<span class="textunit"><text><star></star>Balthizard laughs plumes of <br>heart-shaped gas.</text></span>
+					<br>
+					<add>Tired</add>
+					<span class="textunit"><text><star></star>Balthizard releases a scent of <br>candles and chamomile.</text></span>
+				</pp>
+				<pp>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>Slow down.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>Glory, <br>memory.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>Take it easy.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>Sit back, <br>relax.</text></span>
+					<br>
+					<add>Lit up</add>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>Strike while <br>the iron <br>is hot!</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>Inferno, <br>Inferno!</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>Let's burn <br>rubber!</text></span>
+					<br>
+					<add>Shake/<susie></susie>ShakeX</add>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>A nice <br>massage.</text></span>
+					<br>
+					<add>Shake/<susie></susie>ShakeX, lit up</add>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>What a <br>blast! <br>Hoh hoh!</text></span>
+					<br>
+					<add><ralsei></ralsei>LightUp</add>
+					<span class="textunit battlebubble"><face data-name="balthizard"></face><text>Ah! That <br>wakes <br>me up!!!</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text></text><choice><span>Check</span><span>Shake</span><span><susie></susie>ShakeX</span><span><ralsei></ralsei>LightUp</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Check</choice>
+							<span class="textunit"><text><star></star>BALTHIZARD - An ancient <br>aromancer. Punishes intruders <br>with beautiful scent.</text></span>
+						</li>
+						<li><choice>Shake/<susie></susie>ShakeX</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Left &amp; <br>Right= <br>Mercy</colspan></text></span>
+							<span class="textunit"><text><star></star>Press Left and Right rapidly to <br>shake!</text></span>
+						</li>
+						<li><choice><ralsei></ralsei>LightUp</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">50% &amp; <br>TIRE <br>others</colspan></text></span>
+							<span class="textunit"><text><star></star>Ralsei lit up!</text></span>
+							<pause></pause>
+							<ul class="choicelevel">
+								<li>
+									<span class="textunit"><text><star></star>The room got smokey! <br><star></star>Other enemies became TIRED!</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>The room got smokey!</text></span>
+								</li>
+							</ul>
+						</li>
+						<li><choice><pink>S-Action</pink></choice>
+							<span class="textunit"><text><star></star>Susie shakes Balthizard!</text></span>
+						</li>
+						<li><choice><mint>R-Action</mint></choice>
+							<span class="textunit"><text><star></star>Ralsei shakes Balthizard!</text></span>
 						</li>
 					</ul>
 				</pp>
@@ -37019,9 +37429,18 @@
 				</pp>
 			<hr><roomname>(Default)</roomname>
 				<pp class="darkworld">
+					<span class="textunit"><text></text><choice><span>Check</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Check</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Useless <br>analysis</colspan></text></span>
+						</li>
+					</ul>
 					<choice><susie></susie>SPELL/OKHeal</choice>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">OK <br>healing</colspan> <br><colspan style="color:rgb(255,160,64)">85% TP</text></span>
-					<span class="textunit"><text><star></star>Susie cast ULTRAHEAL!</text></span>
+					<span class="textunit"><text><star></star>Susie cast ULTRAHEAL!</text></span><!--REMINDER: replace-->
+					<br>
+					<choice><susie></susie>SPELL/Heal</choice>
+					<span class="textunit"><text>Can't <br>use</colspan> <br><colspan style="color:rgb(255,160,64)">102% TP</colspan></text></span>
 				</pp>
 				
 			<br><hr><hr><br>
@@ -37308,7 +37727,7 @@
 					el.scrollIntoView({behavior:"smooth", block:"nearest"});
 			};
 			
-			const copyclass = ['darkworld', 'typer-666', 'battlebubble', 'couchbubble', 'tinynoelle', 'comicsans', 'mantlegame', 'musicvideo'];
+			const copyclass = ['darkworld', 'typer-666', 'battlebubble', 'couchbubble', 'tinynoelle', 'comicsans', 'mantlegame', 'musicvideo', 'legend'];
 			function updatetextbox(el, mini) {
 				copyclass.forEach(function(v) {
 					if ((el.classList.contains(v) || el.closest('pp').classList.contains(v)) != textbox.classList.contains(v))
