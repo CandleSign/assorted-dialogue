@@ -47,6 +47,9 @@
 			blue {
 				--color:rgb(0,0,255); /*all colors should be double-checked, I believe they change between chapters*/
 			}
+			azure {
+				--color:#00aeff;
+			}
 			pink {
 				--color:rgb(255,128,255); /*judging by action colors those are correct*/
 			}
@@ -66,6 +69,10 @@
 			}
 			noelle {
 				--char-icon:url("img/NOELLE.png");
+				--char-margin:0 16px;
+			}
+			gerson {
+				--char-icon:url("img/GERSON.png");
 				--char-margin:0 16px;
 			}
 			clover1 {
@@ -353,7 +360,7 @@
 					}
 					.choicecols:not(.choicelike) {
 						text-shadow:none;
-						line-height:40.5px; /*arbitrarily 75% so that 4 lines fit instead of 3*/
+						/*line-height:40.5px; disabled because both inaccurate and messing with 4-option choices height*/ /*arbitrarily 75% so that 4 lines fit instead of 3*/
 						div {
 							position:relative;
 							cursor:pointer;
@@ -370,7 +377,7 @@
 							}
 						}
 					}
-					:is(ralsei, susie, noelle)::before {
+					:is(ralsei, susie, noelle, gerson)::before {
 						transform:scale(1.5);
 						margin:var(--char-margin);
 					}
@@ -514,13 +521,13 @@
 				&#textbox {
 					text-shadow:rgb(21,21,107) 1.5px 1.5px; /*somehow I can't manage to scale it independently*/
 				}
-				colspan, yellow, cream, red, blue, pink, green, mint {
+				colspan, yellow, cream, red, blue, pink, green, mint, azure {
 					color:transparent;
 					background-clip:text;
 					text-shadow:none; /*actually colored text also has its own colored shadow but that's unimplementable*/
 				}
 			}
-			yellow, cream, red, blue, pink, green, mint { /*legacy support but ideally all instances should be replaced with proper colspans*/ /*nevermind much easier this way considering gradients*/
+			yellow, cream, red, blue, pink, green, mint, azure { /*legacy support but ideally all instances should be replaced with proper colspans*/ /*nevermind much easier this way considering gradients*/
 				&:not(.darkworld *), &:is(.darkworld :is(choice, .choicecols) *) {
 					color:var(--color);
 				}
@@ -528,7 +535,7 @@
 					background-image:linear-gradient(white,var(--color));
 				}
 			}
-			:is(ralsei, susie, noelle)::before {
+			:is(ralsei, susie, noelle, gerson)::before {
 				content:var(--char-icon);
 				display:inline-grid;
 			}
@@ -12184,7 +12191,7 @@
 					<span class="textunit"><face data-name="cap'n"></face><text><capn></capn>Ya hear that, chief? Keep up <br>the recruiting...</text></span>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>I got to keep my box.</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>I got to keep my box.</text></span>
 				</pp>
 			<hr><roomname>(58)</roomname>
 				<pp class="darkworld">
@@ -13756,9 +13763,9 @@
 					<span class="textunit"><text><star></star>(It appears to be some kind of <br>forcefield.)</text></span>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="kk/cap'n"></face><text><kk></kk>Want to buy a bagel? Only $80. <br><capn></capn>K_K, no! It's 400! 400!</text></span>
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>Got it.</text></span>
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>Want to buy 400 bagels? <br>Only $80.</text></span>
+					<span class="textunit"><face data-name="k_k/cap'n"></face><text><kk></kk>Want to buy a bagel? Only $80. <br><capn></capn>K_K, no! It's 400! 400!</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>Got it.</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>Want to buy 400 bagels? <br>Only $80.</text></span>
 					<span class="textunit" id="2_84_2"><text></text><choice><span>Buy 400 bagels</span><span>Don't Buy</span><span>Buy 1 bagel</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>Buy 400 bagels</choice>
@@ -13769,28 +13776,28 @@
 							<span class="textunit"><text><star></star>(You just can't carry that <br>many.)</text></span>
 						</li>
 						<li><choice>Don't Buy</choice>
-							<span class="textunit"><face data-name="kk"></face><text><kk></kk>That's OK. I haven't bought <br>one either.</text></span>
+							<span class="textunit"><face data-name="k_k"></face><text><kk></kk>That's OK. I haven't bought <br>one either.</text></span>
 						</li>
 						<li><choice>Buy 1 bagel</choice>
 							<span class="textunit"><text><star></star>(You paid $80 for a bagel.)</text></span>
-							<span class="textunit"><face data-name="kk/cap'n"></face><text><kk></kk>Can I have one, too? <br><capn></capn>You're selling them!</text></span>
+							<span class="textunit"><face data-name="k_k/cap'n"></face><text><kk></kk>Can I have one, too? <br><capn></capn>You're selling them!</text></span>
 						</li>
 						<li><choice>Buy 1 bagel</choice><add>Not enough space</add>
-							<span class="textunit"><face data-name="cap'n/kk"></face><text><capn></capn>No room for a bagel! <br><kk></kk>What about the hole?</text></span>
+							<span class="textunit"><face data-name="cap'n/k_k"></face><text><capn></capn>No room for a bagel! <br><kk></kk>What about the hole?</text></span>
 						</li>
 						<li><choice>Buy 1 bagel</choice><add>Not enough D$</add>
-							<span class="textunit"><face data-name="kk"></face><text><kk></kk>You can't afford it? Don't <br>worry, this one's on me!</text></span>
+							<span class="textunit"><face data-name="k_k"></face><text><kk></kk>You can't afford it? Don't <br>worry, this one's on me!</text></span>
 							<span class="textunit"><text><star></star>(You got a bagel.)</text></span>
 						</li>
 					</ul>
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>One bagel, $80. 400 bagels, <br>$80.</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>One bagel, $80. 400 bagels, <br>$80.</text></span>
 					<lnk class="textunit" id="2_84_2"></lnk>
 					<br>
-					<span class="textunit"><face data-name="kk/cap'n"></face><text><kk></kk>Sorry, I'm out of bagels. <br><capn></capn>Don't you have 400!? <br><kk></kk>I had 406.</text></span><!--REMINDER: try to get cap'n out of bagels too? He has at least 10-->
+					<span class="textunit"><face data-name="k_k/cap'n"></face><text><kk></kk>Sorry, I'm out of bagels. <br><capn></capn>Don't you have 400!? <br><kk></kk>I had 406.</text></span><!--REMINDER: try to get cap'n out of bagels too? He has at least 10-->
 					<span class="textunit"><face data-name="cap'n"></face><text><capn></capn>Then why can't you sell <br>anymore?!</text></span>
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>What if someone asked for <br>400 bagels?</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>What if someone asked for <br>400 bagels?</text></span>
 					<br>
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>Sorry, I'm out of bagels.</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>Sorry, I'm out of bagels.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a lone doorframe.) <br><star></star>(But for some reason, you can't <br>see through it...)</text></span>
@@ -13835,7 +13842,7 @@
 					<br>
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>Bagels, doughnuts ...</text></span>
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>Why is it round dough is always <br>so overpriced?</text></span>
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>The hole is expensive!</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>The hole is expensive!</text></span>
 				</pp>
 			<hr><roomname>(85)</roomname>
 				<pp class="darkworld">
@@ -13877,7 +13884,7 @@
 					<span class="textunit"><face data-name="cap'n"></face><text><star></star>Heh, good luck figuring out <br>which ride to take!</text></span>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="kk"></face><text><star></star>This right ride is the right <br>one.</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><star></star>This right ride is the right <br>one.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
@@ -13904,29 +13911,29 @@
 					<span class="textunit"><face data-name="cap'n/sweet"></face><text><capn></capn>We're rebels that play. <br><sweet></sweet>We don't play!! We don't <br>play!!</text></span>
 					<span class="textunit"><face data-name="cap'n"></face><text><capn></capn>That's it!! K_K!!! Get over <br>here!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="cap'n/kk"></face><text><capn></capn>K_K, are we players!? <br><kk></kk>...</text></span>
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>I'm a CD player.</text></span>
+					<span class="textunit"><face data-name="cap'n/k_k"></face><text><capn></capn>K_K, are we players!? <br><kk></kk>...</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>I'm a CD player.</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>Wait! They're getting away!</text></span>
 					<span class="textunit"><face data-name="cap'n/sweet"></face><text><capn></capn>Sweet, chill. There'll be <br>other bad guys! <br><sweet></sweet>No, this is our chance!</text></span>
 					<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>Are you ready!? Let's fight!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="cap'n/kk"></face><text><capn></capn>... K_K. <br><kk></kk>Yeah?</text></span>
-					<span class="textunit"><face data-name="sweet/kk"></face><text><sweet></sweet>Play some battle music! <br><kk></kk>OK!</text></span>
+					<span class="textunit"><face data-name="cap'n/k_k"></face><text><capn></capn>... K_K. <br><kk></kk>Yeah?</text></span>
+					<span class="textunit"><face data-name="sweet/k_k"></face><text><sweet></sweet>Play some battle music! <br><kk></kk>OK!</text></span>
 					<lnk class="textunit" data-link="2_sweetcapncakes_1"></lnk>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit" id="2_88_1"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Feel the beat! <br><capn></capn>Watch my moves! <br><kk></kk>Dance, dance!!</text></span>
+					<span class="textunit" id="2_88_1"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Feel the beat! <br><capn></capn>Watch my moves! <br><kk></kk>Dance, dance!!</text></span>
 					<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>Hey, losers!! Wrap it <br>up!! Battle's over!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="kk/cap'n/sweet">(-)</face><text><kk></kk>Over? <br><capn></capn>In other-type words... <br><sweet></sweet>We lost!?</text></span>
-					<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>... <br><capn></capn>... <br><kk></kk>...</text></span>
-					<span class="textunit"><face data-name="kk/sweet"></face><text><kk></kk>Does that mean we can be <br>friends? <br><sweet></sweet>K_K!! No!!</text></span>
+					<span class="textunit"><face data-name="k_k/cap'n/sweet">(-)</face><text><kk></kk>Over? <br><capn></capn>In other-type words... <br><sweet></sweet>We lost!?</text></span>
+					<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>... <br><capn></capn>... <br><kk></kk>...</text></span>
+					<span class="textunit"><face data-name="k_k/sweet"></face><text><kk></kk>Does that mean we can be <br>friends? <br><sweet></sweet>K_K!! No!!</text></span>
 					<span class="textunit"><face data-name="cap'n/sweet"></face><text><capn></capn>Fighting's not really my style <br>anyways... <br><sweet></sweet>Yeah! Because you're a coward!</text></span>
-					<span class="textunit"><face data-name="sweet/kk"></face><text><sweet></sweet>... I mean, it was fun <br>dancing, but... <br><kk></kk>Sweet. Don't worry.</text></span>
-					<span class="textunit"><face data-name="kk/sweet/cap'n"></face><text><kk></kk> I think our dancing beat them.<br><sweet></sweet> Beat them...?<br><capn></capn>Yeah, all mercy-like.</text></span>
+					<span class="textunit"><face data-name="sweet/k_k"></face><text><sweet></sweet>... I mean, it was fun <br>dancing, but... <br><kk></kk>Sweet. Don't worry.</text></span>
+					<span class="textunit"><face data-name="k_k/sweet/cap'n"></face><text><kk></kk> I think our dancing beat them.<br><sweet></sweet> Beat them...?<br><capn></capn>Yeah, all mercy-like.</text></span>
 					<span class="textunit"><face data-name="cap'n/sweet"></face><text><capn></capn>See, when we danced with them, <br>it convinced them we're cool. <br><sweet></sweet>Now they're on our side?</text></span>
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>Yes.</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>Yes.</text></span>
 					<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>Hey!! You three!! Welcome to <br>good side!!</text><minitext><face data-name="susie_27">Susie</face><text>WE ARE the good side!!!</text></minitext><minitext><face data-name="ralsei_27">Ralsei</face><text>Just go with it, Susie...</text></minitext></span><!--REMINDER: multi-minitext support required-->
 					<span class="textunit"><face data-name="cap'n">(-)</face><text><capn></capn>Let's ronday-voo at our Junk <br>Shop...</text></span>
 					<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>We jammed the door shut, but <br>we'll kick it open!</text></span>
@@ -15059,11 +15066,11 @@
 					<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>Yo! How's it hangin'?</text></span>
 					<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>We're making some extra <br>money by selling in the city!</text></span>
 					<span class="textunit"><face data-name="cap'n"></face><text><capn></capn>We gotta make those <br>bucks somehow!! Heheh!!</text></span>
-					<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Gotta buy new gear!! <br><capn></capn>Gotta get new kicks!! <br><kk></kk>I wanna be a car.</text></span>
-					<span class="textunit"><face data-name="sweet/kk"></face><text><sweet></sweet>Good thinkin', K_K! Gotta <br>have a way to get around! <br><kk></kk>Honk! Honk!</text></span>
+					<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Gotta buy new gear!! <br><capn></capn>Gotta get new kicks!! <br><kk></kk>I wanna be a car.</text></span>
+					<span class="textunit"><face data-name="sweet/k_k"></face><text><sweet></sweet>Good thinkin', K_K! Gotta <br>have a way to get around! <br><kk></kk>Honk! Honk!</text></span>
 					<br>
 					<span class="textunit"><face data-name="sweet/cap'n"></face><text><sweet></sweet>K_K's always got it right! <br><capn></capn>That's why he's <br>second-in-command!</text></span>
-					<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>... who's first? <br><capn></capn>Huh? I'm not the leader? <br><kk></kk>Can I be third?</text></span>
+					<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>... who's first? <br><capn></capn>Huh? I'm not the leader? <br><kk></kk>Can I be third?</text></span>
 					<br>
 					<add>Weird route</add>
 					<span class="textunit"><text><star></star>(It's a box.)</text></span>
@@ -15084,28 +15091,28 @@
 							</ul>
 						</li>
 						<li><choice>Buy</choice><add>Not enough space</add>
-							<span class="textunit"><face data-name="cap'n/kk"></face><text><capn></capn>Too much stuff, chief! <br>It won't fit! <br><kk></kk>I can't fit either.</text></span>
+							<span class="textunit"><face data-name="cap'n/k_k"></face><text><capn></capn>Too much stuff, chief! <br>It won't fit! <br><kk></kk>I can't fit either.</text></span>
 						</li>
 						<li><choice>Buy</choice><add>Not enough D$</add>
-							<span class="textunit"><face data-name="cap'n/kk"></face><text><capn></capn>Hey, you can't <br>shortchange me! <br><kk></kk>Only me.</text></span>
+							<span class="textunit"><face data-name="cap'n/k_k"></face><text><capn></capn>Hey, you can't <br>shortchange me! <br><kk></kk>Only me.</text></span>
 						</li>
 						<li><choice>Talk</choice>
 							<span class="textunit"><face data-name="cap'n/sweet"></face><text><capn></capn>And who is that, ahem, <br>madimoyzel? <br><sweet></sweet>Leave here alone, Cap!</text></span>
 							<span class="textunit"><face data-name="cap'n/sweet"></face><text><capn></capn>Nice radio antenna you <br>got there... <br><sweet></sweet>Those are antlers, Cap!</text></span>
 							<span class="textunit"><face data-name="cap'n"></face><text><capn></capn>H-huh!? I, uhh... hmm. <br><capn></capn>...</text></span>
-							<span class="textunit"><face data-name="kk"></face><text><kk></kk>Let's play her a song!</text></span>
+							<span class="textunit"><face data-name="k_k"></face><text><kk></kk>Let's play her a song!</text></span>
 						</li>
 						<li><choice>Talk</choice>
-							<span class="textunit"><face data-name="cap'n/kk"></face><text><capn></capn>This music, it's nice music. <br><kk></kk>That's my favorite genre.</text></span>
+							<span class="textunit"><face data-name="cap'n/k_k"></face><text><capn></capn>This music, it's nice music. <br><kk></kk>That's my favorite genre.</text></span>
 						</li>
 					</ul>
 					<add>Weird route</add>
 					<span class="textunit"><text><star></star>(It's a box.)</text></span>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="kk/cap'n/sweet"></face><text><kk></kk>Did you like the big statue? <br><capn></capn>Building it sucked! <br><sweet></sweet>Took a lot of scrap.</text></span>
-					<span class="textunit"><face data-name="sweet/kk"></face><text><sweet></sweet>The other job we did was <br>way better! <br><kk></kk>It was big.</text></span>
-					<span class="textunit"><face data-name="cap'n/kk"></face><text><capn></capn>It's gonna blow your mind! <br><kk></kk>It was big.</text></span>
+					<span class="textunit"><face data-name="k_k/cap'n/sweet"></face><text><kk></kk>Did you like the big statue? <br><capn></capn>Building it sucked! <br><sweet></sweet>Took a lot of scrap.</text></span>
+					<span class="textunit"><face data-name="sweet/k_k"></face><text><sweet></sweet>The other job we did was <br>way better! <br><kk></kk>It was big.</text></span>
+					<span class="textunit"><face data-name="cap'n/k_k"></face><text><capn></capn>It's gonna blow your mind! <br><kk></kk>It was big.</text></span>
 					<br>
 					<add>Weird route</add>
 					<span class="textunit"><text><star></star>(It's a box filled with bagels. <br>Take one?)</text></span>
@@ -18301,7 +18308,7 @@
 									<span class="textunit"><face data-name="cap'n"></face><text><capn></capn>You've made all sorts of <br>buddies, right?!</text></span>
 									<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>Using our junk-making <br>skills...</text></span>
 									<span class="textunit"><face data-name="cap'n"></face><text><capn></capn>We modified everyone...</text></span>
-									<span class="textunit"><face data-name="kk"></face><text><kk></kk>To work together!</text><minitext><face data-name="rouxls_5">Rouxls</face><text>I shalt also take Credite for This</text></minitext></span>
+									<span class="textunit"><face data-name="k_k"></face><text><kk></kk>To work together!</text><minitext><face data-name="rouxls_5">Rouxls</face><text>I shalt also take Credite for This</text></minitext></span>
 									<pause></pause>
 									<span class="textunit"><face data-name="berdly_26">Berdly</face><text><star></star>Kris!! Susie!! Behold!!</text></span>
 									<span class="textunit"><face data-name="berdly_23"></face><text><star></star>The ULTIMATE Group <br>Project!!</text></span>
@@ -19179,13 +19186,13 @@
 				</pp>
 			<hr><roomname>Music Shop (230)</roomname>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Yo! <br><capn></capn>What's up? <br><kk></kk>Hey!</text></span>
+					<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Yo! <br><capn></capn>What's up? <br><kk></kk>Hey!</text></span>
 					<br>
-					<span class="textunit"><face data-name="cap'n/sweet/kk"></face><text><capn></capn>Don't forget to <br>buy something! <br><sweet></sweet>If you want! <br><kk></kk>Can I buy <br>something too?</text></span>
+					<span class="textunit"><face data-name="cap'n/sweet/k_k"></face><text><capn></capn>Don't forget to <br>buy something! <br><sweet></sweet>If you want! <br><kk></kk>Can I buy <br>something too?</text></span>
 					<br>
-					<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Welcome to... <br><capn></capn>The Music Room! <br><kk></kk>We don't sell <br>anything!</text></span>
+					<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Welcome to... <br><capn></capn>The Music Room! <br><kk></kk>We don't sell <br>anything!</text></span>
 					<br>
-					<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Crash! <br><capn></capn>Bang! <br><kk></kk>Boom!</text></span>
+					<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Crash! <br><capn></capn>Bang! <br><kk></kk>Boom!</text></span>
 				</pp>
 				<pp class="darkworld"><!--REMINDER: needs better presentation but needs to be specified since Spamton-->
 					<span class="textunit"><text></text><choice><span>Buy</span><span>Sell</span><span>Talk</span><span>Exit</span></choice></span>
@@ -19211,7 +19218,7 @@
 							<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>Thanks, <br>guys!</text></span>
 						</li>
 						<li><choice>Yes</choice>
-							<span class="textunit"><face data-name="kk"></face><text><kk></kk>I can't <br>see.</text></span>
+							<span class="textunit"><face data-name="k_k"></face><text><kk></kk>I can't <br>see.</text></span>
 						</li>
 						<li><choice>Yes</choice><add>To storage</add>
 							<span class="textunit"><face data-name="cap'n"></face><text><capn></capn>Cool! <br>It's in <br>your <br>STORAGE.</text></span>
@@ -19242,7 +19249,7 @@
 							<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>OK, <br>hit us <br>with an <br>ARMOR!</text></span>
 						</li>
 						<li><add>Empty</add>
-							<span class="textunit"><face data-name="kk"></face><text><kk></kk>You <br>got <br>nothin!</text></span>
+							<span class="textunit"><face data-name="k_k"></face><text><kk></kk>You <br>got <br>nothin!</text></span>
 						</li>
 					</ul>
 					<add>Nothing</add><span class="textunit"><face data-name="cap'n"></face><text><capn></capn>That's <br>nothin!</text></span>
@@ -19255,7 +19262,7 @@
 							<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>Sweet! <br>This'll <br>be great <br>scrap!</text></span>
 						</li>
 						<li><choice>Yes</choice><add>Last</Add>
-							<span class="textunit"><face data-name="kk"></face><text><kk></kk>That's <br>all you <br>had?</text></span>
+							<span class="textunit"><face data-name="k_k"></face><text><kk></kk>That's <br>all you <br>had?</text></span>
 						</li>
 						<li><choice>No</choice>
 							<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>OK, <br>hold <br>onto <br>that.</text></span>
@@ -19267,18 +19274,18 @@
 					<span class="textunit"><text></text><choice><span>About yourselves</span><span>Performance</span><span>About Queen</span><span>Junk Work</span><span>Exit</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>About yourselves</choice>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>I'm Sweet. <br><capn></capn>The ladies call me Cap'n! <br><kk></kk>K_K!</text></span>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>We used to work the sound in <br>this town. <br><capn></capn>... until Queen came around. <br><kk></kk>(K_K is short for Cakes.)</text></span>
-							<span class="textunit"><face data-name="sweet/kk/cap'n"></face><text><sweet></sweet>She made music against the law. <br><kk></kk>Unless you make a song she likes. <br><capn></capn>But the only JUNK she enjoys...</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>I'm Sweet. <br><capn></capn>The ladies call me Cap'n! <br><kk></kk>K_K!</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>We used to work the sound in <br>this town. <br><capn></capn>... until Queen came around. <br><kk></kk>(K_K is short for Cakes.)</text></span>
+							<span class="textunit"><face data-name="sweet/k_k/cap'n"></face><text><sweet></sweet>She made music against the law. <br><kk></kk>Unless you make a song she likes. <br><capn></capn>But the only JUNK she enjoys...</text></span>
 							<span class="textunit"><face data-name="sweet/cap'n"></face><text><sweet></sweet>Are reverse diss-tracks, where <br>the vocalist puts themselves <br>down, and praises Queen... <br><capn></capn>Or noise music.</text></span>
 							<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>But even if Queenie tries to put <br>a limiter on us...</text></span>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>You can't STOP ! THE ! MUSIC! <br><capn></capn>Hear that!? We'll just go <br>underground!! <br><kk></kk>Crash! Boom! Bang!</text></span>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>That's why we made this junk <br>shop! <br><capn></capn>We'll fund our musical rebellion! <br><kk></kk>Can we make noise music, too?</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>You can't STOP ! THE ! MUSIC! <br><capn></capn>Hear that!? We'll just go <br>underground!! <br><kk></kk>Crash! Boom! Bang!</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>That's why we made this junk <br>shop! <br><capn></capn>We'll fund our musical rebellion! <br><kk></kk>Can we make noise music, too?</text></span>
 						</li>
 						<li><choice>Performance</choice>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>What, wanna see what we got!? <br><capn></capn>Yo, yo, can you handle this!? <br><kk></kk>Hold onto your antennas!!</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>What, wanna see what we got!? <br><capn></capn>Yo, yo, can you handle this!? <br><kk></kk>Hold onto your antennas!!</text></span>
 							<pause></pause>
-							<span class="textunit"><face data-name="cap'n/sweet/kk"></face><text><capn></capn>Yo, how was that!? <br><sweet></sweet>Did you get rocked?! <br><kk></kk>All our songs are only 4 seconds <br>long!!</text></span>
+							<span class="textunit"><face data-name="cap'n/sweet/k_k"></face><text><capn></capn>Yo, how was that!? <br><sweet></sweet>Did you get rocked?! <br><kk></kk>All our songs are only 4 seconds <br>long!!</text></span>
 						</li>
 						<li><choice>About Queen</choice>
 							<span class="textunit"><face data-name="sweet/cap'n"></face><text><sweet></sweet>Queen wasn't always so... harsh. <br><capn></capn>No, she WAS! She just got WORSE <br>somehow!</text></span>
@@ -19286,26 +19293,26 @@
 							<span class="textunit"><face data-name="sweet/cap'n"></face><text><sweet></sweet>"Knight" this, "Knight" that, <br>"Fountain" that... <br><capn></capn>Like, what does that Knight <br>even have going for it that I <br>don't!? C'mon!!</text></span>
 							<span class="textunit"><face data-name="sweet/cap'n"></face><text><sweet></sweet>But like I said. She wasn't <br>ALWAYS so bad. She used to <br>give me sweets. For being so <br>sweet! <br><capn></capn>H... huh!? I never got candy!!</text></span>
 							<span class="textunit"><face data-name="sweet/cap'n"></face><text><sweet></sweet>You kept calling her a <br>"hot mama," Cap. <br><capn></capn>Yeah!? Is that wrong!? She <br>looks like a mom and tends to <br>overheat!!</text></span>
-							<span class="textunit"><face data-name="cap'n/sweet/kk"></face><text><capn></capn>K_K! Help me out here!! <br><sweet></sweet>K_K! What do you think? <br><kk></kk>Huh? Me?</text></span>
-							<span class="textunit"><face data-name="kk"></face><text><kk></kk>... I like candy.</text></span>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Yeah, you're right, K_K! We gotta <br>focus on what's important! <br><capn></capn>If the band fights, we'll get <br>outta tune! <br><kk></kk>Anyone have any lemon drops?</text></span>
+							<span class="textunit"><face data-name="cap'n/sweet/k_k"></face><text><capn></capn>K_K! Help me out here!! <br><sweet></sweet>K_K! What do you think? <br><kk></kk>Huh? Me?</text></span>
+							<span class="textunit"><face data-name="k_k"></face><text><kk></kk>... I like candy.</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Yeah, you're right, K_K! We gotta <br>focus on what's important! <br><capn></capn>If the band fights, we'll get <br>outta tune! <br><kk></kk>Anyone have any lemon drops?</text></span>
 						</li>
 						<li><choice>Junk Work</choice>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Our main gig is making scrap <br>into machines. <br><capn></capn>Our clients are sometimes a <br>bit off-key though. <br><kk></kk>They smell off-key too!!</text></span>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Like some... little weird guy. <br><capn></capn>He wanted us to sneak into <br>Queen's mansion... <br><kk></kk>We're just rebels, we don't <br>wanna get in trouble!</text></span>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>But recently we got a <br>real-high-class-client. <br><capn></capn>A man of TASTE! He had a way <br>with words!! <br><kk></kk>I couldn't even understand him!</text></span>
-							<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>Now, all we gotta do is follow <br>the blueprints, right? <br><capn></capn>It'll be our big time break!! <br><kk></kk>Yeah!! Haha!! It's gonna break <br>apart!! Big time!!</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Our main gig is making scrap <br>into machines. <br><capn></capn>Our clients are sometimes a <br>bit off-key though. <br><kk></kk>They smell off-key too!!</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Like some... little weird guy. <br><capn></capn>He wanted us to sneak into <br>Queen's mansion... <br><kk></kk>We're just rebels, we don't <br>wanna get in trouble!</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>But recently we got a <br>real-high-class-client. <br><capn></capn>A man of TASTE! He had a way <br>with words!! <br><kk></kk>I couldn't even understand him!</text></span>
+							<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>Now, all we gotta do is follow <br>the blueprints, right? <br><capn></capn>It'll be our big time break!! <br><kk></kk>Yeah!! Haha!! It's gonna break <br>apart!! Big time!!</text></span>
 						</li>
 					</ul>
-					<span class="textunit"><face data-name="cap'n/sweet/kk"></face><text><capn></capn>Nice town, chief. <br><sweet></sweet>I think we're gonna like it <br>here! <br><kk></kk>Cool city.</text></span>
+					<span class="textunit"><face data-name="cap'n/sweet/k_k"></face><text><capn></capn>Nice town, chief. <br><sweet></sweet>I think we're gonna like it <br>here! <br><kk></kk>Cool city.</text></span>
 					<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>As thanks, you can listen to <br>all sorts of songs here.</text></span>
-					<span class="textunit"><face data-name="cap'n/kk"></face><text><capn></capn>Don't think it'll be cheap, <br>though! <br><kk></kk>It's free. <br><capn></capn>What!?</text></span>
+					<span class="textunit"><face data-name="cap'n/k_k"></face><text><capn></capn>Don't think it'll be cheap, <br>though! <br><kk></kk>It's free. <br><capn></capn>What!?</text></span>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="sweet/cap'n/kk"></face><text><sweet></sweet>See ya! <br><capn></capn>Smell ya! <br><kk></kk>Hear ya!</text></span>
+					<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>See ya! <br><capn></capn>Smell ya! <br><kk></kk>Hear ya!</text></span>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="kk"></face><text><kk></kk>Good song.</text></span>
+					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>Good song.</text></span>
 				</pp>
 			<hr><roomname>Color Cafe (231)</roomname>
 				<pp class="darkworld">
@@ -20247,23 +20254,23 @@
 					<span class="textunit battlebubble"><face data-name="sweet"></face><text>W-wait, I can't dance <br>with bad guys!!</text></span>
 					<br>
 					<add>K_K</add>
-					<span class="textunit battlebubble"><face data-name="kk"></face><text>I like this song.</text></span>
+					<span class="textunit battlebubble"><face data-name="k_k"></face><text>I like this song.</text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="kk"></face><text>Can we dance?</text></span>
+					<span class="textunit battlebubble"><face data-name="k_k"></face><text>Can we dance?</text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="kk"></face><text>Are we having fun?</text></span>
+					<span class="textunit battlebubble"><face data-name="k_k"></face><text>Are we having fun?</text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="kk"></face><text>Ring-a-ding-dong.</text></span>
+					<span class="textunit battlebubble"><face data-name="k_k"></face><text>Ring-a-ding-dong.</text></span>
 					<br>
 					<add>Dance</add>
-					<span class="textunit battlebubble"><face data-name="kk"></face><text>Dance! Dance! <br>Everybody dance!</text></span>
+					<span class="textunit battlebubble"><face data-name="k_k"></face><text>Dance! Dance! <br>Everybody dance!</text></span>
 					<br>
 					<add>After Dance</add><!--phase 1-->
 					<span class="textunit"><text><star></star>(K_K snapped out of the dance!)</text></span>
-					<span class="textunit battlebubble"><face data-name="kk"></face><text>I forgot my next <br>dance move!</text></span>
+					<span class="textunit battlebubble"><face data-name="k_k"></face><text>I forgot my next <br>dance move!</text></span>
 					<br>
 					<add>Other hurt</add>
-					<span class="textunit battlebubble"><face data-name="kk"></face><text>Does anyone want <br>this milk I found?</text></span>
+					<span class="textunit battlebubble"><face data-name="k_k"></face><text>Does anyone want <br>this milk I found?</text></span>
 					<br>
 					<add>Cap'n</add>
 					<span class="textunit battlebubble"><face data-name="cap'n"></face><text>So did they pay <br>the venue fee?</text></span>
@@ -20292,7 +20299,7 @@
 					<span class="textunit"><text><star></star>CAPN's HP went up!</text></span>
 					<br>
 					<add>Sweet & K_K healing themselves</add>
-					<span class="textunit battlebubble"><face data-name="sweet/kk"></face><text></text><choice class="choicelike">
+					<span class="textunit battlebubble"><face data-name="sweet/k_k"></face><text></text><choice class="choicelike">
 						<span>Even if we're all beat, we...</span><!--sweet-->
 						<span>Can all drink from one milk.</span><!--k_k-->
 					</choice></text></span>
@@ -20306,7 +20313,7 @@
 					<span class="textunit"><text><star></star>SWEET's and CAPN's HP went up!</text></span>
 					<br>
 					<add>K_K & Cap'n healing themselves</add>
-					<span class="textunit battlebubble"><face data-name="kk/cap'n"></face><text></text><choice class="choicelike">
+					<span class="textunit battlebubble"><face data-name="k_k/cap'n"></face><text></text><choice class="choicelike">
 						<span>Even if we're all beat, we...</span><!--k_k-->
 						<span>Can all drink from one milk.</span><!--cap'n-->
 					</choice></text></span>
@@ -20320,7 +20327,7 @@
 					<span class="textunit"><text><star></star>SWEET's HP went up!</text></span>
 					<br>
 					<add>Cap'n healing K_K</add>
-					<span class="textunit battlebubble"><face data-name="kk/cap'n"></face><text></text><choice class="choicelike">
+					<span class="textunit battlebubble"><face data-name="k_k/cap'n"></face><text></text><choice class="choicelike">
 						<span>Mmm... I'm thirsty.</span><!--k_k-->
 						<span>(Don't ya mean <br>you're WOUNDED!?)</span><!--cap'n-->
 					</choice></text></span>
@@ -35995,6 +36002,19 @@
 					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>... Yes, I...</text></span>
 					<span class="textunit"><face data-name="ralsei_46"></face><text><star></star>... My version was... <br>more of... a summary.</text></span>
 				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>I came here to seek the sage's <br>advice on my journey.</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Surely this legend shall make <br>me a righteous hero.</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>If it doesn't make me a <br>righteous hero, then it really <br>sucks.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="bibliox"></face><text><star></star>... mumble, mumble...</text></span>
+					<span class="textunit"><face data-name="bibliox"></face><text><star></star>... o, m'cup, m'lad... <br>Listen... to my long tale...</text></span>
+					<span class="textunit"><face data-name="bibliox"></face><text><star></star>A is for Apple... B... is for <br>Bee... C... is for...</text></span>
+					<br>
+					<span class="textunit"><face data-name="bibliox"></face><text><star></star>...Ñ is for  Ñu... mumble, <br>mumble...</text></span><!--REMINDER: Ñ is weird-->
+				</pp>
 			<hr><roomname>(113)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>Kris, don't make me <br>babysit this guy by <br>myself.</text></span>
@@ -36168,6 +36188,13 @@
 									<span class="textunit"><face data-name="gerson"></face><text><star></star>But, it ain't just hidden. It's <br>locked away by some doohickey, <br>yessir.</text></span>
 									<span class="textunit"><face data-name="gerson"></face><text><star></star>Maybe if ya search around, ya <br>might figure somethin' out...</text></span>
 								</li>
+								<li><choice>Magic Axe</choice>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>Magic Axe? Hmm, hmm...</text></span>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>By the by, ain't it getting a <br>bit drafty in here? I wonder <br>why.</text></span>
+								</li>
+								<li><choice>Magic Axe</choice>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>Enjoy yourselves! You got a lot <br>ahead of you...</text></span>
+								</li>
 							</ul>
 						</li>
 					</ul>
@@ -36180,6 +36207,8 @@
 							<lnk class="textunit" data-link="4_115_2"></lnk>
 						</li>
 					</ul>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>That crystal's got some kinda <br>strange power.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Gave me the skeevies, so I <br>didn't use it! Wahaha!</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="gerson"></face><text><star></star>Oh-ho, interested in my wares? <br>Don't be shy, take a gander...</text></span>
@@ -36666,6 +36695,9 @@
 					<span class="textunit"><face data-name="susie_21"></face><text><star></star>Hey, the door opened! <br>Let's go!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Much obliged.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>(It's a stool.)</text></span>
+					<span class="textunit"><text><star></star>(It's not much use as long as <br>Ralsei is around.)</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(The door is locked with some <br>mechanism.)</text></span>
@@ -36891,6 +36923,166 @@
 					<span class="textunit"><face data-name="susie_50"></face><text><star></star>(... can't guarantee it <br>will be any good, but, <br>uh...)</text></span>
 					<span class="textunit"><face data-name="susie_15"></face><text><star></star>(Y'know, feel free to <br>ask me to heal again. If <br>you need it.)</text></span>
 				</pp>
+			<hr><roomname>(185)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>Damn... so this is the <br>Magic Axe, huh.</text></span>
+					<pause></pause>
+					<span class="textunit"><face>(-)</face><text><star></star>(You got the</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Wait a tick! You gotta pay for <br>that!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>... Pay!? The heck are <br>you talking about?</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>This is still the inside of my <br>study, ain't it?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Nothin' else was free, so why'd <br>ya think we'd start here?</text></span>
+					<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>Haha, good one. I'm <br>taking the axe now.</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>... don't think I'm serious? <br>Check the price tag!</text></span>
+					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>Huh...? Price... what?</text></span>
+					<span class="textunit"><face data-name="susie_32"></face><text><star></star>... it says it costs... <br>uh...</text></span>
+					<span class="textunit"><face data-name="susie_44"></face><text><star></star>$999,999,999!?</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Geh heh heh, didn't realize it <br>was still on discount!</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>... But I know. You worked real <br>hard to get here. So how 'bout <br>a trade?</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>If you, and you alone, can best <br>my challenge... I give it to <br>ya. For free.</text></span>
+					<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>Heh, knew you'd say <br>that. What do you want?</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Hmm... how about...</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>... a haircut?</text></span>
+					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>... a HAIRCUT?</text></span>
+					<span class="textunit"><face data-name="susie_22"></face><text><star></star>Alright, sure. Which <br>hair you want me to cut?</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Oh, any of 'em.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>They're all too long, see! Just <br>get one, and I'll give it to <br>ya.</text></span>
+					<span class="textunit"><face data-name="susie_26">Susie</face><text><star></star>Alright, I'll start with <br>your beard...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_20"></face><text><star></star>H... huh?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_27"></face><text><star></star>STAY STILL!!!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_49"></face><text><star></star>... Heheheh...  I get <br>it.</text></span>
+					<span class="textunit"><face data-name="susie_15"></face><text><star></star>You think I'm gonna go <br>easy on you, huh?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_20"></face><text><star></star>What the...</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Ah, so you wanna get serious, <br>do ya...?</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Then tell me first, can you <br>hear it?</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Can you hear its song, singing <br>from the deep...?</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>That... is the ringing...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>... of the Hammer of Justice!</text></span>
+					<lnk class="textunit" data-link="4_hammerofjustice_1"></lnk>
+				</pp>
+				<pp class="darkworld">
+					<add>Victory</add>
+					<span class="textunit" id="4_185_1"><face data-name="susie_15">Susie</face><text><star></star>H... How's that, old <br>man!?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Wahahahahaha!! That was the <br>most fun I ever had!</text></span>
+					<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>See how I used my <br>healing just now!?</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Geheheheh!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_26">Susie</face><text><star></star>Guess this is mine now, <br>huh.</text></span>
+					<span class="textunit"><face>(-)</face><text><star></star>(JusticeAxe was added to your <br>WEAPONS.)</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>And... take this, too.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>For some reason, I found this <br>weird piece-a glass in my desk.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Felt like someone really wanted <br>me to use this thing.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>But it didn't interest me, so <br>you can take it.</text></span>
+					<span class="textunit"><text><star></star>(ShadowCrystal was added to <br>your KEY ITEMS.)</text></span>
+					<ul class="choicelevel">
+						<li>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>The truth is, I was gonna give <br>you it all if you beat me or <br>not.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>But woomph, you actually put up <br>quite a fight!</text></span>
+							<pause></pause>
+							<span class="textunit"><face data-name="susie_38">Susie</face><text><star></star>Well, maybe you're <br>losing your touch.</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Oh, far from it!</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>... You weren't truly fighting <br>by yourself, were ya?</text></span>
+							<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>... huh?</text></span>
+							<span class="textunit"><face data-name="susie_20"></face><text><star></star>... oh, you mean Kris. <br>Yeah.</text></span>
+							<span class="textunit"><face data-name="susie_30"></face><text><star></star>Guess I kinda needed <br>their help to win.</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Well, don't sell your own <br>skills short either.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>You're something real special <br>yourself...</text></span>
+							<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Heh. You weren't bad <br>either.</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Now go enjoy that Axe! Geh heh <br>heh!</text></span>
+							<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>Alright. Heh.</text></span>
+						</li>
+						<li>
+							<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Knew it was worth having <br>a rematch!</text></span>
+							<span class="textunit" id="4_185_2"><face data-name="gerson">(-)</face><text><star></star>Perseverance. Each time, you <br>get a little better.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>... that's all I wanted to see.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>Can't think I'm gonna be the <br>toughest thing you'll face.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>But next time, you'll be ready.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>Don't give up, and give 'em <br>hell!</text></span>
+							<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Don't have to tell me <br>that, old man!!</text></span>
+						</li>
+						<li>
+							<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>FINALLY!!</text></span>
+							<span class="textunit"><face data-name="susie_15"></face><text><star></star>Was starting to wonder <br>if I'd ever win...</text></span>
+							<lnk class="textunit" data-link="4_185_2"></lnk>
+						</li>
+					</ul>
+					<add>Defeat</add>
+					<span class="textunit"><face data-name="susie_41">Susie</face><text><star></star>... damn... I... <br>couldn't keep up...</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Geheheh... well, you gave it <br>your best shot!</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Here.</text></span>
+					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>... huh?</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>I saw the fire in your eyes... <br>that's proof enough for me.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Take it. And this crystal, too.</text></span>
+					<span class="textunit"><face data-name="susie_41">Susie</face><text><star></star>...</text></span>
+					<span class="textunit"><face data-name="susie_38"></face><text><star></star>Nah. Keep it.</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>... you don't want it?</text></span>
+					<span class="textunit"><face data-name="susie_41">Susie</face><text><star></star>Of course I do. But...</text></span>
+					<span class="textunit"><face data-name="susie_45"></face><text><star></star>You're gonna need <br>something to give me...</text></span>
+					<span class="textunit"><face data-name="susie_39"></face><text><star></star>... after our rematch!</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>... Wahahahaha!!!</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>You've got guts, kid! I like <br>that!</text></span>
+					<br>
+					<span class="textunit"><face data-name="susie_41">Susie</face><text><star></star>D... damnit!</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>You aren't giving up, are ya?</text></span>
+					<span class="textunit"><face data-name="susie_49">Susie</face><text><star></star>Hell no! Kris, let's try <br>again!</text></span>
+					<br>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>It's all right, it's all right.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>How 'bout you give it another <br>shot?</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>What, ready to fight again!?</text></span>
+					<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>Whaddya say, Kris?</text></span>
+					<span class="textunit"><face>(-)</face><text><br></text><choice><span>Go Susie! <br>Go Susie!</span><span>Sorry, not <br>enough time.</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Go Susie! <br>Go Susie!</choice>
+							<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>Get ready, 'cause I'm <br>not gonna hold anything <br>back!</text></span>
+							<lnk class="textunit" data-link="4_hammerofjustice_1"></lnk>
+						</li>
+						<li><choice>Sorry, not <br>enough time.</choice>
+							<span class="textunit"><face data-name="susie_26">Susie</face><text><star></star>Sorry. We'll kick your <br>ass later, old man.</text></span>
+						</li>
+					</ul>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>...</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Well, I'll be seeing you around <br>now.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>... yeah. I guess we <br>will.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_37"></face><text><star></star>Why'd you... help me so <br>much?</text></span>
+					<span class="textunit"><face data-name="susie_37"></face><text><star></star>You didn't have to.</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>You remind me a bit of someone <br>I used to know.</text></span>
+					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>... Who?</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Just a character from that old <br>story...</text></span>
+					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>... Lord of the Hammer, <br>huh. Hell if I'm reading <br>that.</text></span>
+					<span class="textunit"><face data-name="susie_19"></face><text><star></star>... though, wait a sec.</text></span>
+					<span class="textunit"><face data-name="susie_18"></face><text><star></star>Isn't that... what <br>Dragon Blazers was based <br>on?</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Yep, yep. And so they changed <br>parts of the story.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Of course, the biggest fans got <br>mad... but, isn't it <br>interesting?</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>The book was already just an <br>interpretation of something <br>else.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Stories can be retold. They can <br>be changed... That's what I <br>believe.</text></span>
+					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>... huh.</text></span>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>The words on a wall called you <br>a hero.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>... Whatever you end up being, <br>I'm sure it'll be tremendous.</text></span>
+					<span class="textunit"><face data-name="susie_41">Susie</face><text><star></star>...</text></span>
+					<span class="textunit"><face data-name="susie_21"></face><text><star></star>... anyway, which Dragon <br>Blazers character am I?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Gahahaha, right!</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>You are... the Dragon.</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Heheh. That's what I was <br>hoping.</text></span>
+				</pp>
 			<hr><roomname>(211)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(Perhaps if you play part of a <br>bar, the bars will part.)</text></span>
@@ -37070,6 +37262,13 @@
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>... boy, that was <br>annoying.</text></span>
 				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Back, you zombie!</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Your beastly existence offends <br>m'lady!</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>I don't have a m'lady yet, but <br>if I did, she would be <br>offended!</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>I sure hope a m'lady sees me <br>doing this!</text></span>
+				</pp>
 			<hr><roomname>(217)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey, don't you think <br>this would be sweet for <br>Ralsei's room?</text></span>
@@ -37207,6 +37406,15 @@
 				<pp class="legend">
 					<span class="textunit"><text>THE QUEEN'S CHARIOT <br>CANNOT BE STOPPED.</text></span>
 				</pp>
+			<hr><roomname>(226)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>Melodies three, there be. <br><star></star>Two in the southern towers <br><star></star>One where gold strikes water.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>... Did you just hear <br>something?</text></span>
+					<span class="textunit"><face data-name="ralsei_30">Ralsei</face><text><star></star>It sounded a bit like a <br>fireplace opening up.</text></span>
+					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Dude, too specific. But <br>yeah.</text></span>
+				</pp>
 			<hr><roomname>(227)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="gerson"></face><text><star></star>Don't let me slow ya down!</text></span>
@@ -37244,6 +37452,18 @@
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It looks like you'd be able to <br>climb this if you had the right <br>tools.)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(It's a wall... It looks <br>solid.)</text></span>
+					<span class="textunit"><text><br><br></text><choice><span>Hug the wall</span><span>Don't</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Hug the wall</choice>
+							<span class="textunit"><text><star></star>(You hug the wall...)</text><minitext><face data-name="ralsei_36">Ralsei</face><text>Kris?</text></minitext><minitext><face data-name="susie_33">Susie</face><text>Kris?</text></minitext></span>
+						</li>
+						<li><choice>Don't</choice>
+							<span class="textunit"><text><star></star>(Too solid.)</text></span>
+						</li>
+					</ul>
 				</pp>
 			<hr><roomname>(233)</roomname>
 				<pp>
@@ -37416,7 +37636,7 @@
 					<span class="textunit"><text><star></star>(It's some sort of statue.)</text></span>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><text><star></star>When you <blue>pass to the other <br>side, a great donation</blue> will <br>show your remembrance.</text></span>
+					<span class="textunit"><text><star></star>When you <azure>pass to the other <br>side, a great donation</azure> will <br>show your remembrance.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Kinda weird that you'd throw <br>dollars into a fountain. Didn't <br>have any change?</text></span>
@@ -37471,6 +37691,55 @@
 					<span class="textunit"><face data-name="susie_28"></face><text><star></star>Dude, did you see that? <br>Someone's sneaking <br>around...</text></span>
 					<span class="textunit"><face data-name="susie_18"></face><text><star></star>Kris, keep your guard <br>up...</text></span>
 				</pp>
+			<hr><roomname>(242)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Above she waits, our beloved <br>Holiness... Surely pining for <br>the salvation of a great hero.</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>But, our legs, small and sweaty <br>in excitement, find no hold in <br>this accursed wall,</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>And so we fall, tumbling a'gain <br>and a'gain.</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Doomed are we, who thirst for <br>love just out of reach!</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Blessed are you, who walks with <br>our Lady!</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>And blessed be your legs, for <br>they have nary a bead of sweat.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Oh, Holy Princess far above! If <br>you would spare but a drop of <br>your love...</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>I promise I should never spill <br>it,</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Or mix it with powders to <br>modify its flavor.</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Excepting, of course, such <br>flavors of sweet Lemon and <br>Orange,</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Which are clean to the taste <br>and invigorate the Humours.</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>To think our Holy Princess <br>would join your court... oh, <br>joy!</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>I shall rejoice, and throw my <br>greatest powders...</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Electrolytic, and few in <br>calorie!</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Ah, my legs! So they tremble, <br>I'm afeared I cannot clamber <br>any further.</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Young soldier, if you should <br>meet her, could you tell her of <br>my exploits...</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>That I may earn so much as a <br>small thimble of her love.</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Go on, young soldier! I am but <br>too sweaty to continue...</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>Oh, so you found her! Did she <br>have any extra thimbles of her <br>love?</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>No...? Well, I hope she knows I <br>could have also recruited <br>her...</text></span>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>... If I had just climbed up <br>there... you see.</text></span>
+					<br>
+					<span class="textunit"><face data-name="cuptain"></face><text><star></star>... well done and all that!</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(It's a regular container of <br>water.)</text></span>
+					<span class="textunit"><text><star></star>(... There's no reason to <br>expect interacting with it to <br>do anything.)</text></span>
+				</pp>
+			<hr><roomname>(243)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>(You hear whispering...)</text></span>
+					<br>
+					<span class="textunit"><text><star></star>(Its expression is frozen in <br>worship...)</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>Should be up there... up North.</text></span>
+				</pp>
 			<hr><roomname>(244)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a wall made of bells. <br>Climb it?)</text></span>
@@ -37478,6 +37747,145 @@
 					<ul class="choicelevel">
 						<li><choice>Yes</choice>
 							<span class="textunit"><text><star></star>It's too slippery to climb... <br>If only you had something to <br>help you climb.</text></span>
+						</li>
+						<li><choice>Yes</choice><add>ClaimbClaws</add>
+							<span class="textunit"><text><star></star>(You climbed the wall of <br>bells...)</text></span>
+						</li>
+					</ul>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey, we finally got to <br>the end of this stupid <br>room!</text></span>
+					<span class="textunit"><face data-name="susie_47"></face><text><star></star>... huh?</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="ralsei_48">Ralsei</face><text><star></star>Something... Something's <br>coming...</text></span>
+					<span class="textunit"><face data-name="ralsei_47"></face><text><star></star>Run!!!!</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Hey... Wait a gosh darn <br>minute...</text></span>
+					<pause></pause>
+					<lnk class="textunit" data-link="4_245_1"></lnk>
+				</pp>
+			<hr><roomname>(245)</roomname>
+				<pp class="darkworld">
+					<span class="textunit" id="4_245_1"><face data-name="gerson"></face><text><star></star>What are we running from?</text></span>
+					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>There was... that <br>thing... you know...</text></span>
+					<pause></pause>
+					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Y'know, I was just about to <br>have some tea.</text></span>
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Feel free to join me if you <br>like!</text></span>
+					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Uhh, sure!</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="gerson"></face><text><star></star>Fancy a drink?</text></span>
+					<span class="textunit"><text></text><choice><span>Yes</span><span>We already had tea</span><span>No</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Yes</choice>
+							<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Sure, why the hell not.</text></span>
+							<pause></pause>
+							<span class="textunit" id="4_245_2"><face data-name="gerson">(-)</face><text><star></star>So, you three have had a mighty <br>journey so far, have you?</text></span>
+							<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>Uh... Yeah. I guess you <br>could say that.</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Well now, how about telling me <br>about your adventures?</text></span>
+							<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>Uh...</text></span>
+							<span class="textunit"><face data-name="susie_17"></face><text><star></star>(Hey Ralsei, would it be <br>okay to tell him <br>that...?)</text></span>
+							<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>(I don't see why not...)</text></span>
+							<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Sure, all right then, <br>listen up!</text></span>
+							<pause></pause>
+							<span class="textunit"><face>(-)</face><text><star></star>(Susie animatedly explained all <br>of your adventures so far...)</text></span>
+							<pause></pause>
+							<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>... and now we're here! <br>Pretty awesome, huh!?</text></span>
+							<pause></pause>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Geheheh! Yes, what an excellent <br>tale.</text></span>
+							<span class="textunit"><face data-name="ralsei_30">Ralsei</face><text><star></star>I especially liked the <br>part where you acted out <br>the battles...</text></span>
+							<span class="textunit"><face data-name="ralsei_19"></face><text><star></star>...using the silverware <br>and sugar cubes.</text></span>
+							<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>Hey, how else is he <br>gonna know how cool we <br>were?</text></span>
+							<pause></pause>
+							<span class="textunit"><face data-name="susie_22"></face><text><star></star>... Well, thanks for the <br>tea, old man.</text></span>
+							<pause></pause>
+							<span class="textunit"><face data-name="susie_26"></face><text><star></star>We gotta go get back to <br>our hero stuff.</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Will ya come by my study later?</text></span>
+							<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Yeah, sure. Not like we <br>got a choice.</text></span>
+							<pause></pause>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>...</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>Ain't no better story than one <br>told with sparkling eyes.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>She ain't got no fear, that <br>one. Doubt, irony, that's what <br>poisons your story...</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>That, and too much <br>predictability.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>So, young man... What do you <br>think happens next?</text></span>
+							<span class="textunit"><face data-name="ralsei_33">Ralsei</face><text><star></star>H... huh?</text></span>
+							<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>I... I guess we'll... <br>just have to see.</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Hmm, hmm.</text></span>
+							<pause></pause>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>Drink up. It's still hot now.</text></span>
+							<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>... thank you.</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>You, I noticed you haven't <br>touched your tea yet.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>... Close your eyes.</text></span>
+							<pause></pause>
+							<span class="textunit"><text><star></star>(Thunk...)</text></span>
+							<span class="textunit"><text><star></star>(Sounds like someone put <br>another sugar cube into your <br>tea.)</text></span>
+							<span class="textunit"><text><br><br></text><choice><span>Drink it</span><span>Don't drink</span></choice></span>
+							<ul class="choicelevel">
+								<li><choice>Drink it</choice>
+									<span class="textunit"><text><star></star>(You sipped the tea. ... it's <br>very sweet.)</text></span>
+									<span class="textunit"><text><star></star>(You drank it slowly, feeling a <br>warmth spread across your <br>body...)</text></span>
+									<span class="textunit"><text><star></star>(Until, only a thin, sickly <br>syrup was left cold at the <br>bottom.)</text></span>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>That's the nice thing about <br>tea. You can always count on <br>it, geheheh...</text></span>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>Right, young man?</text></span>
+									<span class="textunit"><face data-name="ralsei"></face><text><star></star>Yes... Yes, that's right.</text></span>
+									<span class="textunit"><face data-name="ralsei"></face><text><star></star>Kris, whenever you want, I can <br>make you tea as well, with lots <br>of sugar...</text></span>
+									<span class="textunit"><face data-name="ralsei"></face><text><star></star>No, even... I mean, even if you <br>don't especially ask for it...!</text></span>
+									<span class="textunit"><face data-name="ralsei"></face><text><star></star>And...</text></span>
+									<pause></pause>
+									<span class="textunit" id="4_245_3"><face data-name="ralsei_37">Ralsei</face><text><star></star>Huh? When did, um, the <br>old man leave?</text></span>
+									<pause></pause>
+									<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>Anyway, let's go, Kris.</text></span>
+								</li>
+								<li><choice>Don't drink</choice>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>... Well, if tea's not your <br>fancy, how about...</text></span>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>(Shine... shine...)</text></span>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>How about an apple?</text></span>
+									<span class="textunit"><text><star></star>(... You heard something being <br>placed in front of you.)</text></span>
+									<span class="textunit"><text><star></star>(...)</text></span>
+									<span class="textunit"><text><star></star>(...)</text></span>
+									<span class="textunit"><face data-name="ralsei"></face><text><star></star>Umm, Kris...? Here, um... <br>I'll... I'll help!</text></span>
+									<span class="textunit"><face data-name="ralsei"></face><text><star></star>Here, umm, I'm holding it in <br>front of your...</text></span>
+									<span class="textunit"><text><star></star>(Your teeth lurched forward to <br>bite the apple.)</text></span>
+									<span class="textunit"><text><star></star>(A sweet sensation spread <br>through your mouth...)</text></span>
+									<span class="textunit"><face data-name="ralsei"></face><text><star></star>That's right! Just take a bite, <br>Kris...</text></span>
+									<span class="textunit"><text><star></star>(Each time you felt a new piece <br>of the apple, your teeth would <br>bite it...)</text></span>
+									<pause></pause>
+									<span class="textunit"><text><star></star>(... until nothing was left but <br>the core.)</text></span>
+									<pause></pause>
+									<lnk class="textunit" data-link="4_245_3"></lnk>
+								</li>
+							</ul>
+						</li>
+						<li><choice>We already had tea</choice>
+							<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>We already had tea. This <br>afternoon.</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Right. That was the afternoon <br>tea. The relaxation tea.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>This is the midnight tea. That <br>stuff that sets your heart and <br>mind afire...</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>Ready for a long night's <br>journey sittin' at your desk.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>... it ain't for the faint of <br>heart.</text></span>
+							<span class="textunit"><face data-name="ralsei_53">Ralsei</face><text><star></star>Umm, what's... in it?</text></span>
+							<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Chamomile, mostly. ... And what <br>else, what else.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>Oh right. Water.</text></span>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>Geheheheh eheheh!!!</text></span>
+							<span class="textunit"><face data-name="ralsei_30">Ralsei</face><text><star></star>(Well, at least it seems <br>safe to drink...)</text></span>
+							<pause></pause>
+							<lnk class="textunit" data-link="4_245_2"></lnk>
+						</li>
+						<li><choice>No</choice>
+							<span class="textunit"><face data-name="gerson"></face><text><star></star>Really? Well, it'll only be hot <br>now. Are ya sure?</text></span>
+							<span class="textunit"><text><br><br></text><choice><span>Not now</span><span>Actually I <br>will have tea</span></choice></span>
+							<ul class="choicelevel">
+								<li><choice>Not now</choice>
+									<span class="textunit"><face data-name="susie_33">Susie</face><text><star></star>Yeah, it would be cool <br>but we got stuff to do.</text></span>
+									<pause></pause>
+									<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Geh heh, alright! Guess I won't <br>have any either!</text></span>
+								</li>
+								<li><choice>Actually I <br>will have tea</choice>
+									<span class="textunit"><face data-name="gerson"></face><text><star></star>Good! Geh heh heh...</text></span>
+									<pause></pause>
+									<lnk class="textunit" data-link="4_245_2"></lnk>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</pp>
@@ -38687,6 +39095,339 @@
 						</li>
 					</ul>
 				</pp>
+			<hr><roomname>HolywaterCooler / Miss Mizzle (69)</roomname>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>This is not your typical <br>watercooler!</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Smells like water with holes in <br>it.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The watercooler babbles to <br>itself sesquipedalianarily.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The watercooler stays its <br>breath, too precious to <br>waste... and keeps talking.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The watercooler considers the <br>precise gemstone to compare its <br>own hue to.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The watercooler emits an aura <br>of magnanimous condescension.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>You feel a strong presence from <br>the watercooler.</text></span>
+					<br>
+					<add>Miss Mizzle</add>
+					<span class="textunit"><text><star></star>You hear a distant thunder.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Waves crash far, far, far <br>below.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>You hear the sound of <br>raindrops.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Smells like a rainstorm.</text></span>
+				</pp>
+				<pp>
+					<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>... What? <br>A battle?</text></span>
+					<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>I merely wanted to <br>investigate the water <br>container...</text></span>
+					<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>And suddenly, <br>you have drawn <br>me into a battle?</text></span>
+					<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>You are brash, <br>young soldier! <br>If you seek <br>my love...</text></span>
+					<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>You must prove <br>yourself worthy <br>of a princess.</text></span>
+					<br>
+					<add>Same as Watercooler</add>
+					<br>
+					<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>It seems your affection <br>has caused some change <br>in my form...</text></span>
+					<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Ah, it's breaking!</text></span>
+					<br>
+					<add>Miss Mizzle</add>
+					<span class="textunit battlebubble"><face data-name="miss mizzle"></face><text>Glory, glory.</text></span>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text></text><choice><span>Check</span><span>Flirt</span><span>BegForMercy</span><span><susie></susie><ralsei></ralsei>Chat</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Check</choice>
+							<span class="textunit"><text><star></star>HOLYWATERCOOLER - Just seems <br>like a Watercooler with an ego.</text></span>
+						</li>
+						<li><choice>Flirt</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">???</colspan></text></span>
+							<span class="textunit"><text><star></star>You FLIRTED with <br>HolyWatercooler!</text></span>
+							<ul class="choicelevel">
+								<li>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Romantic are <br>your words...</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Young soldier, <br>your words are <br>sweet like honeydew. <br>Is it the first <br>time you have <br>spoken to a lady <br>such as I?</text></span>
+									<span class="textunit"><text><br></text><choice><span>First time</span><span>I flirt <br>with everyone</span></choice></span>
+									<ul class="choicelevel">
+										<li><choice>First time</choice>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>A young knight's <br>first love...</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>No wellspring <br>may be so pure.</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>I shall accept your <br>affection from afar,</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>And store it humbly <br>in a masonry jar.</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>On lonely eves, when <br>I hear naught <br>but the bubbling <br>of my heart,</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>I should open it and <br>listen once more,</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>To the tender whispers <br>of your kindness.</text></span>
+										</li>
+										<li><choice>I flirt <br>with everyone</choice>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>You think then, that <br>I shall drink the words</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>From those that would <br>flatter and cajole <br>and find them sweet?</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Nay! You would do well <br>to save such tangy powders <br>for a man or woman <br>of the tap.</text></span>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Young knight, your words <br>were accepted once before.</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Already, they are <br>bottled up in a masonry jar,</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Where, aged with time, <br>they will one day <br>be opened in a far season <br>To blossom <br>with the whisper <br>of old grapes.</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Continue babbling, and <br>the chalice shall overflow <br>into turbulence, <br>and lose all meaning.</text></span>
+								</li>
+								<li>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Disgusting.</text></span>
+								</li>
+							</ul>
+						</li>
+						<li><choice>BegForMercy</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">???</colspan></text></span>
+							<span class="textunit"><text><star></star>You begged for mercy...</text></span>
+							<ul class="choicelevel">
+								<li>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Blessed are those <br>who kneel to me, <br>for my waves shall <br>cleanse you.</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Close your eyes, <br>for as long as you <br>adore my purity, <br>no harm shall <br>follow you.</text></span>
+									<span class="textunit"><text><star></star>(HolyWatercooler took mercy on <br>you!)</text></span>
+								</li>
+								<li>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Again you pray! <br>With renewed vigor,</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>But now your hands <br>shake with <br>carbonated nerves</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>And fear <br>drips down your face <br>in painted horror.</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>You beg not <br>for salvation <br>by my purity, but</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>For fear of some <br>ugliness you see <br>reflected <br>in the glass.</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Once again <br>I shall show mercy, <br>but no more.</text></span>
+									<span class="textunit"><text><star></star>(HolyWatercooler took mercy on <br>you!)</text></span>
+								</li>
+								<li>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Disgusting.</text></span>
+								</li>
+							</ul>
+						</li>
+						<li><choice><susie></susie><ralsei></ralsei>Chat</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">???</colspan></text></span>
+							<span class="textunit"><text><star></star>Everyone chatted around the <br>Watercooler!</text></span>
+							<ul class="choicelevel">
+								<li>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>All around me <br>did you chatter, <br>but your tepid words</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Have not once <br>been decantered <br>in my direction. <br>Your ignorance <br>bescorns me...</text></span>
+									<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Speak well of my nature, <br>and you shall be spared.</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>(Seems like you should choose a <br>topic...)</text></span>
+									<span class="textunit"><text></text><choice><span>Recruit</span><span>Cactuses are better</span><span>Beauty</span><span>Flowers</span></choice></span>
+									<ul class="choicelevel">
+										<li><choice>Recruit</choice>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Ah, I see... <br>So you offer yourselves <br>to be my recruits.</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Despite my stature, <br>I hardly hold a court here,</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>For, given respect even <br>by Lightners, I have all <br>I could desire.</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>But, should you behave <br>with quiet dedication,</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>There may be <br>some use for you yet. <br>Impress me!</text></span>
+										</li>
+										<li><choice>Cactuses are better</choice>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Disgusting.</text></span>
+										</li>
+										<li><choice>Beauty</choice>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Remember me not <br>as a vainglory,</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Though my face, shining <br>back both sun and moon <br>is brighter and more <br>holy than all stars,</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>And as such, my beauty <br>is more <br>of an objective science, <br>that cannot be denied.</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Well said.</text></span>
+										</li>
+										<li><choice>Flowers</choice>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>The Bluest Flower, <br>A disciple of my speech</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Shy to no camera, <br>And a specimen of</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Elegance and kindness.</text></span>
+											<span class="textunit battlebubble"><face data-name="holywatercooler"></face><text>Should you meet, <br>Please give my regards.</text></span>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>(Everyone talked around the <br>watercooler, explicitly about <br>watercoolers!)</text></span>
+								</li>
+							</ul>
+						</li>
+						<add>S/R-Actions same as Watercooler</Add>
+					</ul>
+					<add>Miss Mizzle</add>
+					<span class="textunit"><text></text><choice><span>Check</span><span>Dazzle</span><span><susie></susie>Embezzle</span><span><ralsei></ralsei>Nuzzle</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Check</choice>
+							<span class="textunit"><text><star></star>MISS MIZZLE - A Mizzle <br>transformed with affection.</text></span>
+						</li>
+						<li><choice>Dazzle</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">???</colspan></text></span>
+							<span class="textunit"><text><star></star>You DAZZLEd MISS MIZZLE!</text></span>
+						</li>
+						<li><choice><susie></susie>Embezzle</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Chance <br>to steal <br>item</colspan></text></span>
+							<span class="textunit"><text><star></star>Susie EMBEZZLED an item!</text></span>
+							<ul class="choicelevel">
+								<li>
+									<span class="textunit"><text><star></star>Stole BitterTear!</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>But, she failed!</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>But, there was nothing to <br>steal!</text></span>
+								</li>
+							</ul>
+						</li>
+						<li><choice><ralsei></ralsei>Nuzzle</choice>
+							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">???</colspan></text></span>
+							<span class="textunit"><text><star></star>Ralsei NUZZLEd MISS MIZZLE!</text></span>
+							<ul class="choicelevel">
+								<li>
+									<span class="textunit"><text><star></star>MISS MIZZLE got a little bit <br>tired...!</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>MISS MIZZLE became TIRED!</text></span>
+								</li>
+							</ul>
+						</li>
+						<add>S/R-Actions same as Mizzle</Add>
+					</ul>
+				</pp>
+			<hr><roomname>Hammer of Justice (105)</roomname>
+				<pp class="darkworld">
+					<span class="textunit" id="4_hammerofjustice_1"><text><star></star>(The bell of justice rings...) <br>(ATTACK to show what you've <br>got!)</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The bells ring in justice...</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The air crackles green with <br>freedom.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Things are finally starting to <br>get serious!</text></span>
+					<br>
+					<span class="textunit"><text><star></star>A bead of sweat forms on the <br>old man's forehead...</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The white wind howls!</text></span>
+					<br>
+					<span class="textunit"><text><star></star>Smells like steel and leather.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The bell of justice is <br>ringing... it's for you.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>It's one shell of a battle!</text></span>
+					<br>
+					<span class="textunit"><text><star></star>The opponent is finally slowing <br>down! ... or speeding up!?</text></span>
+					<br>
+					<add>Attacking</add>
+					<span class="textunit"><text><star></star>The opponent seems impressed <br>with Susie's guts!</text></span>
+					<br>
+					<add>Not attacking</add>
+					<span class="textunit"><face data-name="susie_26">Susie</face><text><star></star>(Hey Kris, if this guy <br>wants a haircut, let's <br>ATTACK...!)</text></span>
+					<br>
+					<add>ITEM</add>
+					<span class="textunit"><text><star></star>Your ITEMs were taken!</text></span>
+					<br>
+					<add><susie></susie>SPELL/Rude Buster</add>
+					<span class="textunit"><text><star></star>The opponent is reeling from <br>the Rude Buster!</text></span>
+					<br>
+					<add><susie></susie>SPELL/OKHeal</add>
+					<span class="textunit"><text><star></star>The opponent's seems very <br>impressed with Susie's <br>magic...!</text></span>
+				</pp>
+				<pp>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>So you got moves, <br>so what?</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>You're facing a hero. <br>There isn't anything <br>that's gonna stand <br>in our way!</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>So the story goes, <br>so the story goes.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>But ain't every story <br>better with a little <br>twist?</text></span>
+					<pause></pause>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>H... huh? <br>Something <br>feels... off...</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>You won't <br>learn anything <br>runnin' away, <br>y'know!</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>If you've got <br>guts, let's see <br>how you deal <br>facing everything <br>head-on!!</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>(Kris, help <br>me out!)</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>You gotta BLOCK, you <br>understand?!</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>(Kris, don't mess <br>this up)</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>As long as you're GREEN, <br>you can't run away!</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Unless you FACE DANGER <br>HEAD ON... These bullets <br>will do you in!</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Did you ever hear <br>that old tale?</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Yes, the old tale, <br>based upon the <br>prophecy...</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Lord of the Hammer.</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>Think I heard about it. <br>What happens?</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Chapter 1 <br>The March of <br>the Dark King.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>The heroes defeat <br>the king and <br>stop the dragon.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Chapter 2 <br>The City of <br>the Shining.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>The heroes do <br>battle in chariots <br>to save the Queen.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Chapter 3, The <br>Isles of <br>Northernlight.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>The heroes travel <br>among the islands <br>and catch a glimpse <br>of a lost land.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Chapter 4, The <br>Trials of the <br>Holy Hammer.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>A great smith gives <br>the heroes a <br>terrible weapon.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Chapter 5, The <br>Field of Pink <br>and Gold.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>The vast garden is <br>charred in an inferno <br>of jealousy.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>...What happens next?</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Geheheh! Who knows?</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>There was only one more <br>chapter... After that,</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>It all stopped.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>That next book, it <br>never did get written.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>The story, it became so <br>grand, so overwhelming,</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Some say it swallowed up <br>the author himself.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>The ones who could write <br>the next, the youth, <br>the pen was lying <br>there for them to <br>pick up.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>To make the next page.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>...they never did.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>But you, my dear? <br>I see a story lit <br>up in your eyes...</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Burnin' bright... <br>Burnin' black. <br>Burnin' up <br>everything.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>The bell's ringin' now. <br>Seems we've reached <br>the final rounds.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>So... how do you <br>think it all ends?</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>No, how do you want <br>it to end?</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>An ending, huh...</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>...If I could choose <br>I guess...</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>I wouldn't have an <br>ending!</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>It's just better if <br>stuff just... <br>goes on forever, right?</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Gah ha ha ha <br>ha ha ha!!! Well <br>ain't that somethin'.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>At this late hour, <br>with the bells ringing <br>out their justice.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>You choose eternity.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Miss, hold on <br>dearly to that thought.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>For the tides of fate <br>are drawing close.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>And soon, an ocean <br>of ink shall wash <br>across the pages.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Before, you said you <br>fancied yourself a <br>hero, didn't ya? <br>Hmmm... That's <br>real interesting.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Now, I don't know <br>much about "heroes"... <br>... But I know that <br>whatever ya call 'em, <br>there is someone.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Someone who'll never <br>give up trying to <br>do the right thing, <br>no matter what.</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>There's no prophecy <br>or legend 'bout anyone <br>like that.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>It's just something <br>I know is true.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Now, where's my <br>haircut!? Geh ha ha!!</text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>But... there is one <br>thing that can <br>overwrite the dark.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>A white pen, <br>known as hope.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Miss! I believe... <br>this is what you hold.</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>Me? Nah, Kris <br>has the pen.</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>My weapon's like a <br>hairbrush or something.</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Geh-hahahahaha! <br>Is that so? <br>Is that SO???</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>Yep. <br>Now shut up <br>and give me <br>that axe!</text></span>
+					<pause></pause>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>... Alright, <br>I figured it out.</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>You wanna see what <br>I got, then...</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>Take THIS!!!</text></span>
+					<pause></pause>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Ha, ya missed.</text></span>
+					<pause></pause>
+					<lnk class="textunit" data-link="4_185_1"></lnk>
+				</pp>
+				<pp class="darkworld">
+					<choice><susie></susie>SPELL/Rude Buster</choice>
+					<span class="textunit"><text><star></star>Susie used RUDE BUSTER!</text></span>
+					<pause></pause>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>Wh... what kind <br>of cheap trick <br>was that!?</text></span>
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Sorry, thought you'd hit <br>it back! Geh heh heh!</text></span>
+					<span class="textunit battlebubble"><face data-name="susie"></face><text>Oh yeah!? I'll show <br>you!! Kris, let's use <br>it again!!</text></span>
+					<br>
+					<choice>ITEM</choice>
+					<span class="textunit"><text><star></star>Susie <fillin></fillin> <br>... but it was stolen!!</text></span><!--REMINDER: horribly confusing due to items that have use text different from "used the"-->
+					<span class="textunit battlebubble"><face data-name="gerson"></face><text>Woah there! <br>I ain't usin' items, <br>so fair's fair, <br>ain't it!?</text></span>
+				</pp>
 			<hr><roomname>Mike <!--(???)--></roomname>
 				<pp class="darkworld">
 					<add>Small Mike</add>
@@ -38876,7 +39617,7 @@
 					</ul>
 					<choice><susie></susie>SPELL/OKHeal</choice>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">OK <br>healing</colspan> <br><colspan style="color:rgb(255,160,64)">85% TP</text></span>
-					<span class="textunit"><text><star></star>Susie cast ULTRAHEAL!</text></span><!--REMINDER: replace-->
+					<span class="textunit"><text><star></star>Susie cast OKHEAL!</text></span>
 					<br>
 					<choice><susie></susie>SPELL/Heal</choice>
 					<span class="textunit"><text>Can't <br>use</colspan> <br><colspan style="color:rgb(255,160,64)">102% TP</colspan></text></span>
@@ -38903,6 +39644,11 @@
 				<pp class="darkworld">
 					<choice>Battle</choice>
 					<span class="textunit"><text><star></star><fillin>Kris</fillin> used the SCARLIXIR!</text></span>
+				</pp>
+			<hr><roomname>BitterTear (63)</roomname>
+				<pp class="darkworld">
+					<choice>Battle</choice>
+					<span class="textunit"><text><star></star><fillin>Kris</fillin> used the BITTERTEAR!</text></span>
 				</pp>
 				
 			<br><hr><hr><br>
@@ -39039,7 +39785,7 @@
 				var regexpr = new RegExp(findfu.checked?'\\b'+rftx+'\\b':rftx, findca.checked?'':'i');
 				//var regexprfa = new RegExp((findfa.value.match('_')?'^':'')+findfa.value.toLowerCase());
 				var regexprfa = new RegExp('\\b'+findfa.value.toLowerCase()+'\\b');
-				var regexprfa2 = new RegExp('\\b'+findfa.value.toLowerCase()+'_');
+				var regexprfa2 = new RegExp('\\b'+findfa.value.toLowerCase()+'_');//\d+$');
 				var resarr = [];
 				//document.querySelectorAll(findfa.value=='choice'?'choice':'text').forEach(function(v) {
 				//document.querySelectorAll(findfa.value=='choice'?'choice':'choice, text').forEach(function(v) {
@@ -39075,7 +39821,7 @@
 									if (copyclass.find((el) => el==v))
 										fontclasses += v+' ';
 								});
-								resarr.push('<li class="'+fontclasses+'" data-findlink="'+v.closest('.textunit').dataset.id+'" onclick="resultjump()">'+(fac?'<face data-name="'+fac.replace(/_.+/, '')+'">'+fac.replace(/_.+/, '')+'</face>':'')+(findfa.value=='choice'?'<choice>'+v.innerHTML+'</choice>':v.tagName=='CHOICE'?v.innerHTML.replace(/<\/span>/g,' </span>'):v.innerHTML)+'</li>');
+								resarr.push('<li class="'+fontclasses+'" data-findlink="'+v.closest('.textunit').dataset.id+'" onclick="resultjump()">'+(fac?'<face data-name="'+fac.replace(/_\d+/, '')+'">'+fac.replace(/_\d+/, '')+'</face>':'')+(findfa.value=='choice'?'<choice>'+v.innerHTML+'</choice>':v.tagName=='CHOICE'?v.innerHTML.replace(/<\/span>/g,' </span>'):v.innerHTML)+'</li>');
 							};
 						};
 					};
@@ -39156,7 +39902,17 @@
 					var chs = units[Number(event.currentTarget.parentNode.dataset.origid)].nextElementSibling.getElementsByTagName('choice');
 					for (var i=0; i<chs.length; i++) {
 						if (chs[i].parentNode.parentNode == units[Number(event.currentTarget.parentNode.dataset.origid)].nextElementSibling) {
-							var chstrs = chs[i].innerHTML.match(/[^\/]+/g);
+							var prechstrs = chs[i].innerHTML.match(/[^\/]+/g);
+							var chstrs = [];
+							var chstrconstr = false;
+							for (var i2=0; i2<prechstrs.length; i2++) {
+								if (chstrconstr) {
+									chstrs[chstrs.length-1] += '/'+prechstrs[i2];
+								} else {
+									chstrs.push(prechstrs[i2]);
+								};
+								chstrconstr = prechstrs[i2].match(/<$/); //for compatibility with tags like <susie></susie>
+							};
 							for (var i2=0; i2<chstrs.length; i2++) {
 								if (event.currentTarget.innerHTML == chstrs[i2]) {
 									var el = chs[i].nextElementSibling;
