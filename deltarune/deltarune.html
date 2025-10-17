@@ -542,14 +542,29 @@
 				content:var(--char-icon);
 				display:inline-grid;
 			}
-			funnytext {
+			imgalt {
 				position:absolute;
 				opacity:0;
-			}
-			.funnytext {
-				vertical-align:middle;
-				max-height:1em;
-				margin:-100% 0;
+				~img {
+					&.inv:not(#textbox.battlebubble *),
+					&.uninv:is(#textbox.battlebubble *) {
+						filter:invert(1) hue-rotate(180deg);
+					}
+					&[src^="img/werewire"] { /*needs weird custom css because the images are too wide*/
+						width:42px;
+						transform:translateX(100%) scaleX(3);
+						height:68px;
+						&:is(#textbox.battlebubble *) {
+							width:63 !important;
+							height:102px;
+						}
+					}
+					&.funnytext {
+						vertical-align:middle;
+						max-height:1em;
+						margin:-100% 0;
+					}
+				}
 			}
 			hr:not(#uicont *) {
 				margin-top:30px;
@@ -576,7 +591,7 @@
 					user-select:none;
 					z-index:2;
 					max-height:100%;
-				> * {
+				> *:not(#randomizer) {
 					padding:10px 10px 5px;
 					background-color:#000d;
 					border:1px solid #e0f8cf88;
@@ -716,6 +731,32 @@
 						}
 					}
 				}
+				#randomizer {
+					&::before {
+						position:absolute;
+						right:0;
+						transform:translateY(5px);
+						cursor:pointer;
+					}
+					&.rand1::before {
+						content:url("data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\"%3E%3Crect xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"3\" fill=\"white\" stroke=\"white\" rx=\"3\" ry=\"3\" height=\"20\" width=\"20\" y=\"3\" x=\"3\"/%3E%3Ccircle r=\"3\" cx=\"13\" cy=\"13\" fill=\"black\"/%3E%3C/svg%3E");
+					}
+					&.rand2::before {
+						content:url("data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\"%3E%3Crect xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"3\" fill=\"white\" stroke=\"white\" rx=\"3\" ry=\"3\" height=\"20\" width=\"20\" y=\"3\" x=\"3\"/%3E%3Ccircle r=\"3\" cx=\"8\" cy=\"8\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"18\" cy=\"18\" fill=\"black\"/%3E%3C/svg%3E");
+					}
+					&.rand3::before {
+						content:url("data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\"%3E%3Crect xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"3\" fill=\"white\" stroke=\"white\" rx=\"3\" ry=\"3\" height=\"20\" width=\"20\" y=\"3\" x=\"3\"/%3E%3Ccircle r=\"3\" cx=\"13\" cy=\"13\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"6\" cy=\"6\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"20\" cy=\"20\" fill=\"black\"/%3E%3C/svg%3E");
+					}
+					&.rand4::before {
+						content:url("data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\"%3E%3Crect xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"3\" fill=\"white\" stroke=\"white\" rx=\"3\" ry=\"3\" height=\"20\" width=\"20\" y=\"3\" x=\"3\"/%3E%3Ccircle r=\"3\" cx=\"8\" cy=\"8\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"18\" cy=\"18\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"8\" cy=\"18\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"18\" cy=\"8\" fill=\"black\"/%3E%3C/svg%3E");
+					}
+					&.rand5::before {
+						content:url("data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\"%3E%3Crect xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"3\" fill=\"white\" stroke=\"white\" rx=\"3\" ry=\"3\" height=\"20\" width=\"20\" y=\"3\" x=\"3\"/%3E%3Ccircle r=\"3\" cx=\"13\" cy=\"13\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"6\" cy=\"6\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"20\" cy=\"20\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"6\" cy=\"20\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"20\" cy=\"6\" fill=\"black\"/%3E%3C/svg%3E");
+					}
+					&.rand6::before {
+						content:url("data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\"%3E%3Crect xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"3\" fill=\"white\" stroke=\"white\" rx=\"3\" ry=\"3\" height=\"20\" width=\"20\" y=\"3\" x=\"3\"/%3E%3Ccircle r=\"3\" cx=\"8\" cy=\"6\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"18\" cy=\"6\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"8\" cy=\"13\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"18\" cy=\"13\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"8\" cy=\"20\" fill=\"black\"/%3E%3Ccircle r=\"3\" cx=\"18\" cy=\"20\" fill=\"black\"/%3E%3C/svg%3E");
+					}
+				}
 			}
 		</style>
 	</head>
@@ -737,6 +778,7 @@
 					<div id="findresults"></div>
 					<div id="closefind" onclick="findres.innerHTML='';">X</div>
 				</div>
+				<div id="randomizer" onclick="Randomize()"></div>
 			</pp>
 			
 		<chapter>CHAPTER 1</chapter>
@@ -744,7 +786,7 @@
 			<hr><roomname>Goner Maker (1)</roomname>
 				<add>Title: CONTACT</add><br><br>
 				<pp>
-					<span class="textunit typer-666"><face data-name="gaster"></face><face data-name="gaster"></face><text>ARE YOU <br>THERE?</text></span>
+					<span class="textunit typer-666"><face data-name="gaster"></face><text>ARE YOU <br>THERE?</text></span>
 					<span class="textunit typer-666"><face data-name="gaster"></face><text>ARE WE <br>CONNECTED?</text></span>
 					<pause></pause>
 					<span class="textunit typer-666"><face data-name="gaster"></face><text>EXCELLENT.</text></span>
@@ -778,14 +820,14 @@
 							<ul class="choicelevel">
 								<li>
 									<span class="textunit typer-666"><face data-name="gaster"></face><text>WE CALLED IT <br>"<fillin></fillin>."</text></span>
-									<span class="textunit typer-666" id="1_1_2"><face data-name="gaster"><text>AND WHAT ABOUT <br>THE CREATOR?</text></span>
+									<span class="textunit typer-666" id="1_1_2"><face data-name="gaster"></face><text>AND WHAT ABOUT <br>THE CREATOR?</text></span>
 									<span class="textunit typer-666"><face data-name="gaster"></face><text>YOUR OWN NAME.</text><choice class="fakechoice"><span>...</span></choice></span>
 									<span class="textunit typer-666"><face data-name="gaster"></face><text>"<fillin></fillin>."</text></span>
 									<ul class="choicelevel">
 										<li>
 											<span class="textunit typer-666"><face data-name="gaster"></face><text>EXCELLENT.</text></span>
 											<span class="textunit typer-666"><face data-name="gaster"></face><text>TRULY <br>EXCELLENT.</text></span>
-											<span class="textunit typer-666" id="1_1_3"><face data-name="gaster"><text>"<fillin></fillin>."</text></span>
+											<span class="textunit typer-666" id="1_1_3"><face data-name="gaster"></face><text>"<fillin></fillin>."</text></span>
 											<span class="textunit typer-666"><face data-name="gaster"></face><text>THANK YOU <br>FOR YOUR TIME.</text></span>
 											<span class="textunit typer-666"><face data-name="gaster"></face><text>YOUR ANSWERS</text></span>
 											<span class="textunit typer-666"><face data-name="gaster"></face><text>YOUR WONDERFUL <br>CREATION</text></span>
@@ -891,7 +933,7 @@
 					<span class="textunit"><text><star></star>It's stained.</text></span>
 				</pp>
 				<pp>
-					<add>Cell Phone - Call Home</add>
+					<add>CELL - Call Home</add>
 					<span class="textunit"><text><star></star>Ring...</text></span>
 					<span class="textunit"><face data-name="toriel_2">Toriel</face><text><star></star>Hello? <br><star></star>Dreemurr residence... <br><star></star>Who might this be...?</text></span>
 					<span class="textunit"><face data-name="toriel_4"></face><text><star></star>... Kris?</text></span>
@@ -1019,7 +1061,7 @@
 					</ul>
 				</pp>
 				<pp>
-					<add>Cell Phone - Call Home</add>
+					<add>CELL - Call Home</add>
 					<span class="textunit"><text><star></star>Ring...</text></span>
 					<span class="textunit"><text><star></star>(The phone is ringing, but you <br>can't get it.)</text></span>
 					<span class="textunit"><text><star></star>(You're already on the phone, <br>after all...)</text></span>
@@ -1657,7 +1699,7 @@
 					<span class="textunit"><face data-name="snowy"></face><text><star></star>... That's actually not even <br>remotely funny.</text></span>
 				</pp>
 				<pp>
-					<add>Cell Phone - Sans's Number</add>
+					<add>CELL - Sans's Number</add>
 					<span class="textunit"><text><star></star>(Ring, ring...)</text></span>
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>Hello.</text></span>
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>You have reached the Hotline <br>for Idiot Babies.</text></span>
@@ -1684,7 +1726,7 @@
 							<span class="textunit"><text><star></star>(Click...)</text></span>
 						</li>
 					</ul>
-					<add>Cell Phone - Not Sans's Number</add>
+					<add>CELL - Not Sans's Number</add>
 					<span class="textunit"><text><star></star>(Ring, ring...) <br><star></star>(Ring, ring...) <br><star></star>(Ring, ring...)</text></span>
 					<span class="textunit"><text><star></star>(The phone kept ringing <br>infinitely.)</text></span>
 				</pp>
@@ -2549,6 +2591,7 @@
 					<span class="textunit"><face data-name="susie_1"></face><text><star></star>Nah, I get it.</text></span>
 					<span class="textunit"><face data-name="susie_2"></face><text><star></star>Not used to walking <br>around without someone <br>holding your hand?</text></span>
 					<span class="textunit" id="1_29_1"><face data-name="susie_3"></face><text><star></star>C'mon, freak.</text></span>
+					<lnk class="textunit" data-link="1_31_1"></lnk>
 					<br>
 					<span class="textunit"><face data-name="susie_2">Susie</face><text><star></star>Hey, you walk pretty <br>fast.</text></span>
 					<span class="textunit"><face data-name="susie_1"></face><text><star></star>Then again...</text></span>
@@ -2793,13 +2836,13 @@
 					<span class="textunit"><face data-name="snowy"></face><text><star></star>Hey Kris, if you die, can I <br>have your brother's CDs?</text></span>
 				</pp>
 				<pp>
-					<add>Cell Phone - Call Home</add>
+					<add>CELL - Call Home</add>
 					<span class="textunit"><text><star></star>Ring...</text></span>
 					<span class="textunit"><text><star></star>No one picked up.</text></span>
 				</pp>
 			<hr><roomname>School Hallway 2 (31)</roomname>
 				<pp>
-					<span class="textunit"><face data-name="susie_1">Susie</face><text><star></star>Well, here's the closet. <br><star></star>Too bad...</text></span>
+					<span class="textunit" id="1_31_1"><face data-name="susie_1">Susie</face><text><star></star>Well, here's the closet. <br><star></star>Too bad...</text></span>
 					<span class="textunit"><face data-name="susie_3"></face><text><star></star>We were just starting to <br>have fun.</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_6"></face><text><star></star>...</text></span>
@@ -2811,6 +2854,7 @@
 					<span class="textunit"><face data-name="susie_8"></face><text><star></star>Fine! <br><star></star>If you're gonna be a <br>WIMP, then I'll...</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_8"></face><text><star></star>We'll both go in at the <br>same time!!</text></span>
+					<lnk class="textunit" data-link="1_32_1"></lnk>
 				</pp>
 				<pp>
 					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>Man, the sun's already <br>setting...</text></span>
@@ -2835,7 +2879,7 @@
 				</pp>
 			<hr><roomname>School Closet (32)</roomname>
 				<pp>
-					<span class="textunit"><face data-name="susie_1">Susie</face><text><star></star>See? <br><star></star>Why are you so scared?</text></span>
+					<span class="textunit" id="1_32_1"><face data-name="susie_1">Susie</face><text><star></star>See? <br><star></star>Why are you so scared?</text></span>
 					<span class="textunit"><face data-name="susie_1"></face><text><star></star>There's nothing in here <br>but old papers.</text></span>
 					<span class="textunit"><face data-name="susie_1"></face><text><star></star>Let's try to find a <br>lightswitch.</text></span>
 				</pp>
@@ -2848,7 +2892,7 @@
 				</pp>
 				<pp>
 					<span class="textunit"><face data-name="susie_1">Susie</face><text><star></star>...</text></span>
-					<span class="textunit"><face data-name="susie_1"></face><text><star></star>Uh... kind of big for <br>a closet, huh...?</text></span>
+					<span class="textunit"><face data-name="susie_1"></face><text><star></star>Uhhh... kind of big for <br>a closet, huh...?</text></span>
 					<span class="textunit"><face data-name="susie_1"></face><text><star></star>You'd think we'd have <br>reached the end by <br>now...</text></span>
 				</pp>
 				<pp>
@@ -2910,7 +2954,7 @@
 					<span class="textunit"><text><star></star>(The door is locked.)</text></span>
 				</pp>
 				<pp>
-					<add>Cell Phone - Call Home</add>
+					<add>CELL - Call Home</add>
 					<lnk class="textunit" data-link="1_29_1"></lnk>
 					<br>
 					<span class="textunit"><text><star></star>(Ring, ring...)</text></span>
@@ -3497,6 +3541,11 @@
 					<span class="textunit"><text><star></star>(The chest is empty.) <br><star></star>(Well, except for some paper <br>scraps.)</text></span>
 				</pp>
 				<pp class="darkworld">
+					<span class="textunit"><face data-name="ralsei_5">Ralsei</face><text><star></star>K... Kris? <br><star></star>You're giving it to <br>me...?</text></span>
+					<span class="textunit"><face data-name="ralsei_5"></face><text><star></star>...</text></span>
+					<span class="textunit"><face data-name="ralsei_1"></face><text><star></star>Well? <br><star></star>Does it look pretty...?</text></span>
+				</pp>
+				<pp class="darkworld">
 					<span class="textunit"><face data-name="jigsawry"></face><text><star></star>W-woah! Wait a minute! Even if <br>you're my enemy, I've got to <br>warn you!</text></span>
 					<span class="textunit"><face data-name="jigsawry"></face><text><star></star>A purple beast is roaming, <br>clobbering anyone who dares <br>block her way...!</text></span>
 					<span class="textunit"><face data-name="jigsawry"></face><text><star></star>(Sob...) We don't even like <br>fighting... th-the King left us <br>no choice...</text></span>
@@ -3522,6 +3571,7 @@
 					<span class="textunit"><face data-name="lancer_2">Lancer</face><text><star></star>Ho ho ho! <br><star></star>Somehow, you survived <br>the maze!</text></span>
 					<span class="textunit"><face data-name="lancer_1"></face><text><star></star>But don't count your <br>blessings before they <br>hatch...!</text></span>
 					<span class="textunit"><face data-name="lancer_4"></face><text><star></star>Let's see how you fare <br>against THIS team!</text></span>
+					<lnk class="textunit" data-link="1_hathy_1"></lnk>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="lancer_2">Lancer</face><text><star></star>Sup.</text></span>
@@ -7639,7 +7689,7 @@
 				<pp class="darkworld">
 					<span class="textunit"><choice><span>Check</span><span>Hug</span><span><ralsei></ralsei>Hug Ralsei</span></choice></span>
 					<ul class="choicelevel">
-						<choice>Check</choice>
+						<li><choice>Check</choice>
 							<span class="textunit"><text><star></star>DUMMY - AT 0 DF 0 <br><star></star>Cotton heart and button eye <br><star></star>Looks just like a fluffy guy.</text></span>
 							<ul class="choicelevel">
 								<li>
@@ -7659,7 +7709,7 @@
 									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>OK, next let's try <br>DEFENDING. (<defend></defend>)</text></span>
 									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Simply (<defend></defend>), and the <br>enemy's attack will hurt <br>you less...</text></span>
 									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Not only that, but <br>you'll also gather <yellow>TP</yellow>!</text></span>
-									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>(Watch the orange big <br>bar on the left! I'll <br>explain it next!</text></span>
+									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>(Watch the orange big <br>bar on the left! I'll <br>explain it next!</text></span><!--REMINDER: in-game typo-->
 								</li>
 								<li>
 									<span class="textunit"><face data-name="ralsei_3">Ralsei</face><text><star></star>How caring, Kris!</text></span>
@@ -7794,7 +7844,7 @@
 					<lnk class="textunit" data-link="1_rudinn_1"></lnk>
 					<br>
 					<add>With Hathys</add>
-					<span class="textunit"><text><star></star>Three Hathys blocked the way!</text></span>
+					<span class="textunit" id="1_hathy_1"><text><star></star>Three Hathys blocked the way!</text></span>
 					<br>
 					<span class="textunit"><face data-name="lancer_2">Lancer</face><text><star></star>Hey, why aren't you guys <br>thrashed?! You're <br>totally outnumbered!</text></span>
 					<span class="textunit"><face data-name="ralsei_9">Ralsei</face><text><star></star>You made a team purely <br>of SUPPORT ENEMIES.</text></span>
@@ -7819,6 +7869,17 @@
 					<br>
 					<add>With Rudinn & Jigswary</add>
 					<span class="textunit"><text><star></star>Smorgasboard.</text></span>
+				</pp>
+				<pp>
+					<span class="textunit battlebubble"><face data-name="hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_1.gif" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_2.gif" /></text></span>
+					<br>
+					<add>Flatter</add>
+					<span class="textunit battlebubble"><face data-name="hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_act1.gif" /></text></span>
+					<br>
+					<add><ralsei></ralsei>X-Flatter</add>
+					<span class="textunit battlebubble"><face data-name="hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_act2.gif" /></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><choice><span>Check</span><span>Flatter</span><span><ralsei></ralsei>X-Flatter</span></choice></span>
@@ -8168,8 +8229,10 @@
 					<br>
 					<span class="textunit"><text><star></star>Smells like freshly-printed <br>plastic.</text></span>
 					<br>
+					<add>Pacified</add>
 					<span class="textunit"><text><star></star>Bloxer radiates with the spirit <br>of joy.</text></span>
 					<br>
+					<add>Tired</add>
 					<span class="textunit"><text><star></star>Bloxer is starting to break <br>apart with exhaustion.</text></span>
 					<br>
 					<add>With Bloxer</add>
@@ -8651,6 +8714,17 @@
 					<br>
 					<add>Tired/Hurt</add>
 					<span class="textunit"><text><star></star>Head Hathy's beat seems to <br>stutter.</text></span>
+				</pp>
+				<pp>
+					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><imgalt></imgalt><img class=inv src="img/headhathy_1.gif" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><imgalt></imgalt><img class=inv src="img/headhathy_2.gif" /></text></span>
+					<br>
+					<add>Flirt</add>
+					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_act1.gif" /></text></span>
+					<br>
+					<add><ralsei></ralsei>X-Flirt</add>
+					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_act2.gif" /></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><choice><span>Check</span><span>Flirt</span><span><susie></susie>X-Flirt</span></choice></span>
@@ -15267,7 +15341,7 @@
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(Knock, knock, knock)</text></span>
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>You found the only knockable <br>door in the city.</text></span>
-					<span class="textunit"><face data-name="unnamed"></face><text><star></star>This here is my pride and <br>joy...</text></span>
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>This here is my pride and <br>joy...</text></span><!--probably not narration?-->
 				</pp>
 			<hr><roomname>(124)</roomname>
 				<pp class="darkworld">
@@ -19164,7 +19238,7 @@
 							<span class="textunit"><face data-name="seam"></face><text><star></star>Didn't you defeat him? Didn't <br>you defeat Jevil?</text></span>
 							<span class="textunit"><face data-name="seam"></face><text><star></star>Here, I'll take that Crystal. <br>Now, you have collected 2 of <br>them! Huzzah!</text></span>
 						</li>
-					<</ul>
+					</ul>
 					<span class="textunit"><face data-name="seam"></face><text><star></star>Well, what have we here! You <br>managed to find another Shadow <br>Crystal...</text></span>
 					<span class="textunit"><face data-name="seam"></face><text><star></star>Oh, is that so? That salesman <br>had found the crystal in the <br>old machine...?</text></span>
 					<span class="textunit"><face data-name="seam"></face><text><star></star>I wonder... if perhaps, long <br>ago, that old machine was very <br>important to someone.</text></span>
@@ -19797,7 +19871,7 @@
 				<pp>
 					<span class="textunit battlebubble"><face data-name="jigsaw joe"></face><text>Boss!</text></span>
 					<span class="textunit battlebubble"><face data-name="jigsaw joe"></face><text>You can ACT <br>and SPARE on <br>the same turn!</text></span>
-					<span class="textunit battlebubble"><face data-name="jigsaw joe"></face><text>If you know Kris's <br>ACT will give an <br>enemy 1OO% mercy...</text></span>
+					<span class="textunit battlebubble"><face data-name="jigsaw joe"></face><text>If you know Kris's <br>ACT will give an <br>enemy 100% mercy...</text></span>
 					<span class="textunit battlebubble"><face data-name="jigsaw joe"></face><text>SPARE them on <br>the same turn <br>with Susie <br>or Ralsei!</text></span>
 					<br>
 					<span class="textunit battlebubble"><face data-name="jigsaw joe"></face><text>Boss! <br>You gotta ACT <br>and SPARE on <br>the same turn!</text></span>
@@ -19922,6 +19996,9 @@
 					<br>
 					<add>Ch2 All Stars</add>
 					<span class="textunit"><text><star></star>Round One!</text></span>
+				</pp>
+				<pp>
+					<span class="textunit battlebubble RAND_zzt"><face data-name="werewire"></face><text><imgalt>ZZT!</imgalt><img src="img/werewire_z.gif" /><img src="img/werewire_z.gif" /><img src="img/werewire_t.gif" /><img src="img/werewire_!.gif" /></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>JiggleJiggle</span><span><susie></susie>ThrowWire</span></choice></span>
@@ -20517,7 +20594,7 @@
 					<br>
 					<span class="textunit battlebubble"><face data-name="poppup"></face><text>Click Here! Click Here! <br>Click Here! Click Here!</text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="poppup"></face><text>This application is only <br>supported by OS 2OOO.</text></span>
+					<span class="textunit battlebubble"><face data-name="poppup"></face><text>This application is only <br>supported by OS 2000.</text></span>
 					<br>
 					<span class="textunit battlebubble"><face data-name="poppup"></face><text>...OTANJOBY.. <br>OMEDETOH...?</text></span>
 					<br>
@@ -21012,7 +21089,6 @@
 									<span class="textunit"><face data-name="noelle_17">Noelle</face><text><star></star>I'm telling you, I... <br>I...</text></span>
 									<span class="textunit"><face data-name="noelle_32"></face><text><star></star>I don't know what you're <br>talking about.</text></span>
 								</li>
-								</li>
 								<li>
 									<span class="textunit"><face data-name="noelle_32">Noelle</face><text><star></star>I'm telling you, stop!</text></span>
 									<span class="textunit"><face data-name="noelle_36"></face><text><star></star>I... I don't know what <br>you're talking about!</text></span>
@@ -21170,7 +21246,7 @@
 						<li><choice>Deal</choice>
 							<span class="textunit battlebubble"><face data-name="spamton"></face><text>DON'T WORRY KIDS <br>I'M AN [HonestMan]</text></span>
 							<span class="textunit battlebubble"><face data-name="spamton"></face><text>I JUST NEED YOUR <br>[Account Details] AND <br>THE <br>[Number on theB4ck]!</text></span>
-							<span class="textunit battlebubble"><face data-name="spamton"></face><text>THEN YOU CAN ENJOY <br>1OOO Fr3e KROmer</text></span>
+							<span class="textunit battlebubble"><face data-name="spamton"></face><text>THEN YOU CAN ENJOY <br>1000 Fr3e KROmer</text></span>
 							<span class="textunit" id="2_spamton_6"><text><br></text><choice><span>GIVE ACCOUNT <br>ACCESS</span><span>REFUSE</span></choice></span>
 							<ul class="choicelevel">
 								<li><choice>GIVE ACCOUNT <br>ACCESS</choice>
@@ -21183,7 +21259,7 @@
 									<span class="textunit battlebubble"><face data-name="spamton"></face><text>THAT'S A REAL BIGSHOT <br>MOVE KID!!! <br>YOU'RE LIKE ME...</text></span>
 									<span class="textunit battlebubble"><face data-name="spamton"></face><text>[Desperate]</text></span>
 									<span class="textunit battlebubble"><face data-name="spamton"></face><text>BUT WE KNOW WHAT <br>WE WANT, <br>DON'T WE!?</text></span>
-									<span class="textunit battlebubble"><face data-name="spamton"></face><text>W1LD PR1ZES, <br>HOTSINGLE, <br>1OO CUSTOMER, <br>AND MOST OF ALL...</text></span>
+									<span class="textunit battlebubble"><face data-name="spamton"></face><text>W1LD PR1ZES, <br>HOTSINGLE, <br>100 CUSTOMER, <br>AND MOST OF ALL...</text></span>
 									<span class="textunit battlebubble"><face data-name="spamton"></face><text>[Hyperlink Blocked].</text></span>
 									<span class="textunit battlebubble"><face data-name="spamton"></face><text>WILL YOU TAKE <br>THE FINAL DEAL!?</text></span>
 									<span class="textunit battlebubble"><face data-name="spamton"></face><text>REMEMBER... <br>THIS IS UP TO YOU! <br>I WOn'T FORCE YOU.</text></span>
@@ -21431,6 +21507,15 @@
 					<br>
 					<add>Devilsknife equipped</add>
 					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text>Chaos, chaos!? <br>No, no! Order, order! <br>Now get rid of that <br>silly Devilsknife!</text></span>
+					<br>
+					<add>Tasque Manager Says</add>
+					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>A</imgalt><img class=uninv src="img/tasquemanager_a.png" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>B</imgalt><img class=uninv src="img/tasquemanager_b.png" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>C</imgalt><img class=uninv src="img/tasquemanager_c.png" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>D</imgalt><img class=uninv src="img/tasquemanager_d.png" /></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Order</span><span><susie></susie><ralsei></ralsei>OrderX</span></choice></span>
@@ -21541,7 +21626,7 @@
 					<br>
 					<span class="textunit"><text><star></star>Your city is lacking Crime.</text></span>
 					<br>
-					<span class="textunit"><text><star></star>You can't help but notice the <br>enemy's ship is very hot.</text></span>
+					<span class="textunit"><text><star></star>You can't help but notice the <br>enemy's ship is very <fillin>elegant/lively/cute/hot/cool/gun's</fillin>.</text></span>
 					<br>
 					<span class="textunit"><text><star></star>Your city is lacking Parks.</text></span>
 					<br>
@@ -21580,7 +21665,7 @@
 					<span class="textunit battlebubble"><face data-name="rouxls"></face><text>STOP HITTINGETH <br>ME AND PLAYETH <br>MY MINI-GAME, <br>YOU ROGUES!!!</text></span>
 					<br>
 					<add>End of song</add>
-					<span class="textunit battlebubble"><face data-name="rouxls"></face><text>Hey</text></span><!--custom font-->
+					<span class="textunit battlebubble"><face data-name="rouxls"></face><text><imgalt>Hey</imgalt><img class=inv src="img/rouxls_hey.png" /></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Take House</span><span>Take House 2</span><span><ralsei></ralsei>Take House 3</span><span><ralsei></ralsei>Take House 4</span></choice></span>
@@ -21590,35 +21675,57 @@
 						</li>
 						<li><choice>Take House</choice><!--REMINDER: awful presentation-->
 							<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Press arrows to move!</text></span>
-							<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>You can take this tile!</text></span>
-							<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Too far from own territory!</text></span>
-							<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Can't build on enemy territory!</text></span>
-							<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Can't build on acid!</text></span>
-							<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Swan is lacking <br>structural support</text></span>
-							<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>A familiar-looking machine.</text></span>
-							<add>Duck</add><span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>It seems to be in love with your swan.</text></span>
-							<span class="textunit"><face data-name="rouxls"></face><text><star></star>Claim with [Z]! <br><star></star>Thoust admireth moi...?</text></span>
-							<span class="textunit"><text><star></star>Finished!</text></span>
 							<ul class="choicelevel">
 								<li>
-									<span class="textunit"><face data-name="rouxls_12">Rouxls</face><text><star></star>It seemseth the Game <br>hath been Overed!</text></span>
+									<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>You can take this tile!</text></span>
 									<ul class="choicelevel">
 										<li>
-											<span class="textunit"><face data-name="rouxls_10"></face><text><star></star>What!? Howst doth you <br>have more Houstes?!</text></span>
-											<span class="textunit"><face data-name="rouxls_14"></face><text><star></star>CUT THE BATTLE!!!</text></span>
-											<lnk class="textunit" data-link="2_192_4"></lnk>
-										</li>
-										<li>
-											<span class="textunit"><face data-name="rouxls_14"></face><text><star></star>I haveth noe idea who <br>won or lost.</text></span>
-											<span class="textunit"><face data-name="rouxls_14"></face><text><star></star>CUT THE BATTLE!!!</text></span>
-											<lnk class="textunit" data-link="2_192_5"></lnk>
-										</li>
-										<li>
-											<span class="textunit"><face data-name="rouxls_9"></face><text><star></star>And lo! I haveth the <br>moste Real Estate!</text></span>
-											<span class="textunit"><face data-name="rouxls_14"></face><text><star></star>CUT THE BATTLE!!!</text></span>
-											<lnk class="textunit" data-link="2_192_6"></lnk>
+											<span class="textunit"><text><star></star>Finished!</text></span>
+											<ul class="choicelevel">
+												<li>
+													<span class="textunit"><face data-name="rouxls_12">Rouxls</face><text><star></star>It seemseth the Game <br>hath been Overed!</text></span>
+													<ul class="choicelevel">
+														<li>
+															<span class="textunit"><face data-name="rouxls_10"></face><text><star></star>What!? Howst doth you <br>have more Houstes?!</text></span>
+															<span class="textunit"><face data-name="rouxls_14"></face><text><star></star>CUT THE BATTLE!!!</text></span>
+															<lnk class="textunit" data-link="2_192_4"></lnk>
+														</li>
+														<li>
+															<span class="textunit"><face data-name="rouxls_14"></face><text><star></star>I haveth noe idea who <br>won or lost.</text></span>
+															<span class="textunit"><face data-name="rouxls_14"></face><text><star></star>CUT THE BATTLE!!!</text></span>
+															<lnk class="textunit" data-link="2_192_5"></lnk>
+														</li>
+														<li>
+															<span class="textunit"><face data-name="rouxls_9"></face><text><star></star>And lo! I haveth the <br>moste Real Estate!</text></span>
+															<span class="textunit"><face data-name="rouxls_14"></face><text><star></star>CUT THE BATTLE!!!</text></span>
+															<lnk class="textunit" data-link="2_192_6"></lnk>
+														</li>
+													</ul>
+												</li>
+											</ul>
 										</li>
 									</ul>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Too far from own territory!</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Can't build on enemy territory!</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Can't build on acid!</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>Swan is lacking <br>structural support</text></span>
+								</li>
+								<li>
+									<span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>A familiar-looking machine.</text></span>
+								</li>
+								<li>
+									<add>Duck</add><span class="textunit"><text><star></star>Claim with [Z]! <br><star></star>It seems to be in love with your swan.</text></span>
+								</li>
+								<li>
+									<span class="textunit"><face data-name="rouxls"></face><text><star></star>Claim with [Z]! <br><star></star>Thoust admireth moi...?</text></span>
 								</li>
 							</ul>
 						</li>
@@ -21658,6 +21765,9 @@
 					<br>
 					<add>Ch2 All Stars</add>
 					<span class="textunit"><text><star></star>Final Round!</text></span>
+				</pp>
+				<pp>
+					<span class="textunit battlebubble RAND_zzt"><face data-name="werewerewire"></face><text><imgalt>ZZT!</imgalt><img src="img/werewire_z.gif" /><img src="img/werewire_z.gif" /><img src="img/werewire_t.gif" /><img src="img/werewire_!.gif" /></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>BeCold</span><span><susie></susie>BeTough</span><span><ralsei></ralsei>BeSweet</span></choice></span>
@@ -22066,7 +22176,7 @@
 					<span class="textunit battlebubble"><face data-name="spamton"></face><text>I CAN'T STAND IT!!! <br>I THINK I'M GONNA <br>HAVE A [HeartAttack]!</text></span>
 					<br>
 					<span class="textunit battlebubble"><face data-name="spamton"></face><text>KRIS, I'LL EVEN <br>GIVE YOU A <br>[Free Value]</text></span>
-					<span class="textunit battlebubble"><face data-name="spamton"></face><text>[Die Now] AND I'LL <br>THROW IN [5O] <br>[Bullets] FOR FREE!</text></span>
+					<span class="textunit battlebubble"><face data-name="spamton"></face><text>[Die Now] AND I'LL <br>THROW IN [50] <br>[Bullets] FOR FREE!</text></span>
 					<br>
 					<span class="textunit battlebubble"><face data-name="spamton"></face><text>KRIS. IF YOU GIVE <br>ME THAT [Soul] I <br>WILL GIVE YOU <br>EVERYTHING I HAVE.</text></span>
 					<span class="textunit battlebubble"><face data-name="spamton"></face><text>I WILL GIVE YOU <br>[3 Easy Payments <br>of $9.99!]</text></span>
@@ -22079,7 +22189,7 @@
 					<span class="textunit battlebubble"><face data-name="spamton"></face><text>KRIS!! THINK!! <br>WHAT ARE MY <br>[Eggs] GOING TO DO!?</text></span>
 					<br>
 					<span class="textunit battlebubble"><face data-name="spamton"></face><text>BUT KRIS, IF YOU <br>REFUSE. THAT'S YOUR <br>CHOICE. I CAN'T <br>FORCE YOU.</text></span>
-					<span class="textunit battlebubble"><face data-name="spamton"></face><text>I CAN ONLY [Kill] <br>YOU [5O-percent faster <br>than similar products] <br>OR [No Money Back!]</text></span>
+					<span class="textunit battlebubble"><face data-name="spamton"></face><text>I CAN ONLY [Kill] <br>YOU [50-percent faster <br>than similar products] <br>OR [No Money Back!]</text></span>
 					<br>
 					<span class="textunit battlebubble"><face data-name="spamton"></face><text>DON'T YOU <br>WANNA BE A <br>BIG SHOT?</text></span>
 					<br>
@@ -22130,7 +22240,7 @@
 							<lnk class="textunit" data-link="2_177_1"></lnk>
 						</li>
 						<li>
-							<span class="textunit battlebubble"><face data-name="spamton"></face><text>HAHAHA... KRIS!!! <br>YOU THINK DEPLETING <br>MY [8OOO Life Points]</text></span>
+							<span class="textunit battlebubble"><face data-name="spamton"></face><text>HAHAHA... KRIS!!! <br>YOU THINK DEPLETING <br>MY [8000 Life Points]</text></span>
 							<span class="textunit battlebubble"><face data-name="spamton"></face><text>MEANS YOU'VE WON <br>[A Free Meal] TO <br>[Winning]?!</text></span>
 							<span class="textunit battlebubble"><face data-name="spamton"></face><text>NO!!! NO!!! NE-O!!</text></span>
 							<span class="textunit battlebubble"><face data-name="spamton"></face><text>KRIS!! <br>YOUR [Deal] HAS FAILED!! <br>[NEO] NEVER LOSES!!</text></span>
@@ -22369,8 +22479,8 @@
 				</pp>
 			<hr><roomname>SpinCake (7)</roomname>
 				<pp>
-					<span class="textunit"><text>A pastry in the shape of a top. <br>Heals 80 HP to the team.</text></span>
-					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>80HP</colspan></text></span>
+					<span class="textunit"><text>A pastry in the shape of a top. <br>Heals 140 HP to the team.</text></span>
+					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>140HP</colspan></text></span>
 				</pp>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>My eyes are spinning...</minitext></text></span>
@@ -22702,6 +22812,11 @@
 			<hr><roomname>Ball of Junk (5)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>"Ball of Junk" - A small ball <br>of accumulated things in your <br>pocket.</text></span>
+					<ul class="choicelevel">
+						<li><add>Dark Candy</add>
+							<span class="textunit"><text><star></star>It smells like scratch'n'sniff <br>marshmallow stickers.</text></span>
+						</li>
+					</ul>
 				</pp>
 				<pp>
 					<span class="textunit"><text><star></star>You took it from your pocket. <br><star></star>You have a <colspan style="color:rgb(255,255,0)">very, very, bad <br>feeling</colspan> about throwing it away.</text></span>
@@ -23610,22 +23725,29 @@
 					<span class="textunit typer-666"><face data-name="gaster"></face><text>YOUR POWER.</text></span>
 					<span class="textunit typer-666"><face data-name="gaster"></face><text>A LITTLE FURTHER.</text></span>
 					<lnk class="textunit" data-link="3_73_1"></lnk>
+					<br>
+					<add>Without Shadow Mantle</Add>
+					<span class="textunit typer-666"><face data-name="gaster"></face><text>VERY <br><br>INTERESTING.</text></span>
+					<span class="textunit typer-666"><face data-name="gaster"></face><text>YOU ARE MISSING <br>SOMETHING <br>IMPORTANT.</text></span>
+					<span class="textunit typer-666"><face data-name="gaster"></face><text>YOU WON'T WIN <br>LIKE THIS.</text></span>
+					<span class="textunit typer-666"><face data-name="gaster"></face><text>STILL... <br>WILL YOU <br>PERSIST?</text></span>
+					<lnk class="textunit" data-link="3_73_1"></lnk>
 				</pp>
 			<hr><roomname>(95)</roomname>
 				<pp class="darkworld">
-					<span class="textunit" id="3_95_1"><face data-name="tenna"></face><text><star></star>What <funnytext>Lovely</funnytext><img class=funnytext src="img/funnytext_lovely.png" /> contestants <br>we've got today, folks---!!!</text></span>
+					<span class="textunit" id="3_95_1"><face data-name="tenna"></face><text><star></star>What <imgalt>Lovely</imgalt><img class=funnytext src="img/funnytext_lovely.png" /> contestants <br>we've got today, folks---!!!</text></span>
 					<span class="textunit"><face data-name="ralsei_37">Ralsei</face><text><star></star>Con... Contestants?</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>YES!!! You three are the <br><funnytext>STARS</funnytext><img class=funnytext src="img/funnytext_stars.png" /> of today's SHOW!!!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>YES!!! You three are the <br><imgalt>STARS</imgalt><img class=funnytext src="img/funnytext_stars.png" /> of today's SHOW!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Mr. Tenna's Marvelous Mystery <br>Board...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>TV TIME!</funnytext><img class=funnytext src="img/funnytext_tv_time.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>TV TIME!</imgalt><img class=funnytext src="img/funnytext_tv_time.png" />!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_42">Susie</face><text><star></star>Wh... what!?</text></span>
 					<span class="textunit"><face data-name="susie_27"></face><text><star></star>What the hell are you <br>doing!?</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>What am <yellow>I</yellow> doing? You should be <br>wondering what <yellow>YOU'RE</yellow> doing!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You're about to play the <br>greatest game of YOUR life!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Answer CRAZY QUESTIONS!! Pass <br><funnytext>PHYSICAL CHALLENGES</funnytext><img class=funnytext src="img/funnytext_physical_challenges.gif" />...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>And you'll all win some <br>TV-Tastic <funnytext>PRIZES</funnytext><img class=funnytext src="img/funnytext_prizes.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Answer CRAZY QUESTIONS!! Pass <br><imgalt>PHYSICAL CHALLENGES</imgalt><img class=funnytext src="img/funnytext_physical_challenges.gif" />...</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>And you'll all win some <br>TV-Tastic <imgalt>PRIZES</imgalt><img class=funnytext src="img/funnytext_prizes.png" />!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>FLORAL COWBOY BATH CURTAINS!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>A BRAND NEW FAMILY CAR!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>BIG BRO'S TALKER-BACKER!!</text></span>
@@ -23638,18 +23760,18 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>ALL!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey Doctor Tennaville! What's <br>today's prescription?</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Why, it looks like a <br>prescription for... ONE <br><funnytext>GRAND PRIZE</funnytext><img class=funnytext src="img/funnytext_grand_prize.png" />!?</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Why, it looks like a <br>prescription for... ONE <br><imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png" />!?</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>That's right! Today's <br><funnytext>GRAND PRIZE</funnytext><img class=funnytext src="img/funnytext_grand_prize.png" /> is this <br>season's MOST popular item...</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>That's right! Today's <br><imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png" /> is this <br>season's MOST popular item...</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text>Encased in our patented MYSTERY <br>BALL...</text></span><!--REMINDER: black-on-white-->
 					<span class="textunit"><face data-name="tenna"></face><text>This Dark World's ONE AND <br>GREATEST TREASURE!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey, bet you wanna know what's <br>INSIDE, don't ya, folks!?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Well, great news, CADOOS and <br>CADETTES! EVERYTHING can be <br>YOURS!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>All you have to do is...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><br><funnytext>WIN!</funnytext><img class=funnytext src="img/funnytext_win_big.gif" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>WIN!</imgalt><img class=funnytext src="img/funnytext_win_big.gif" /></text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>WOW!!! I've never seen the <br><funnytext>FUN-O-METER</funnytext><img class=funnytext src="img/funnytext_fun_o_meter.png" /> like THIS, <br>folks!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>WOW!!! I've never seen the <br><imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png" /> like THIS, <br>folks!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now don't touch that DIAL, <br>because TONIGHT, WE are gonna <br>have one HECK of a...</text></span>
 					<span class="textunit"><face data-name="susie_41">Susie</face><text><star></star>Who the hell is "WE"?</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Well, uh... this is a GAME <br>SHOW, and you guys are the <br>CONTESTANTs... right?</text></span>
@@ -23680,7 +23802,7 @@
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Oh, you WILL!?!? Oh, you <br>THRILL!?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Mike!! The lights!! The <br>sounds!! The whatzits!! The <br>doo-zits!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Turn 'em all on!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>(And get me a cup of coffee.)</funnytext><img class=funnytext src="img/funnytext_coffee.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(And get me a cup of coffee.)</imgalt><img class=funnytext src="img/funnytext_coffee.png" /></text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Right over here, ladies and <br>germs!!</text></span>
 				</pp>
 			<hr><roomname>(96)</roomname>
@@ -23693,12 +23815,12 @@
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>That's right! Get out your <br>lighters for the LIGHTNERS, <br>ladies and germs!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Because it's time for a <br>crashing, banging, booming, <br>crooning...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>ROCK CONCERT</funnytext><img class=funnytext src="img/funnytext_rock_concert.gif" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>ROCK CONCERT</imgalt><img class=funnytext src="img/funnytext_rock_concert.gif" />!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh, Kris! Remember DECEMBER? <br>Oh, that little musical <br>prodigy...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Remember when she'd grab the <br>remote and swap it from <br>cartoons...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>... to that WILD music video <br>channel Toriel FORBID you to <br>see?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>(Guess your mother's never been <br>a fan of alligators in bikinis.)</funnytext><img class=funnytext src="img/funnytext_alligator.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Guess your mother's never been <br>a fan of alligators in bikinis.)</imgalt><img class=funnytext src="img/funnytext_alligator.png" /></text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Dess, rocking her guitar and <br>singing along with those nasty, <br>nasty songs!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Didn't you all think she was <br>just so... COOL?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK! Maybe you could get her <br>to come back and watch again <br>sometime!?</text></span>
@@ -23733,7 +23855,7 @@
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>RALSEI! Got those lyrics <br>ready!?</text></span>
 									<span class="textunit"><face data-name="ralsei_36">Ralsei</face><text><star></star>Umm, they seem a <br>little... inappropriate. <br>Do I have to...?</text></span>
 									<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>TOO BAD! NOW, AUDIENCE! Give it <br>up one last time...</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><br><funnytext>IT'S!! TV!! TIME!!!</funnytext><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
 								</li>
 								<li>
 									<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Hey, Kris, way to make <br>us fail the song.</text></span>
@@ -23832,14 +23954,14 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>But don't worry. I, your loving <br>agent, have booked you ANOTHER <br>show!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>It starts in...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>What!? 3 seconds!?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Well, what are you doing!? Go <br>and <funnytext>CHALLENGE</funnytext><img class=funnytext src="img/funnytext_challenge.png" /> again!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Well, what are you doing!? Go <br>and <imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png" /> again!</text></span>
 					<br>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh no! Another GAME OVER!?</text></span>
 					<ul class="choicelevel">
 						<li>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>The audience would be throwing <br>tomatoes...</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>... if we didn't use them all <br>on the cooking show!</text></span>
-							<span class="textunit" id="3_96_3"><face data-name="tenna"></face><text><star></star>Alright, one more try! Let's <br><funnytext>CHALLENGE</funnytext><img class=funnytext src="img/funnytext_challenge.png" /> again!!</text></span>
+							<span class="textunit" id="3_96_3"><face data-name="tenna"></face><text><star></star>Alright, one more try! Let's <br><imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png" /> again!!</text></span>
 						</li>
 						<li>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey, this isn't time to <br>practice your free-form jazz!</text></span>
@@ -24056,8 +24178,8 @@
 					<span class="textunit"><face data-name="susie_56"></face><text><star></star>Just...</text></span>
 					<span class="textunit"><face data-name="susie_57"></face><text><star></star>... just...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wow, what an <br><funnytext>AMAZING</funnytext><img class="funnytext funtxt_amazing" src="img/funnytext_amazing_01.png" /> <br><span>performance!!!</span></text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>The audience has been brought <br>to <funnytext>TEARS</funnytext><img class=funnytext src="img/funnytext_tears.gif" />, folks!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wow, what an <br><imgalt>AMAZING</imgalt><img class="funnytext funtxt_amazing" src="img/funnytext_amazing_01.png" /> <br><span>performance!!!</span></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>The audience has been brought <br>to <imgalt>TEARS</imgalt><img class=funnytext src="img/funnytext_tears.gif" />, folks!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>Who the HECK <br>are you!?</text><face data-name="ralsei_35">Ralsei</face></span><!--REMINDER: double face support required-->
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Haha, I was hoping you'd ask!</text></span>
@@ -24184,7 +24306,7 @@
 					<span class="textunit"><face data-name="susie_55"></face><text><star></star>We were so busy with the <br>game, I forgot she'd...</text></span>
 					<span class="textunit"><face data-name="susie_56"></face><text><star></star>Obviously she'd be part <br>of the Dark World, too!</text></span>
 					<span class="textunit"><face data-name="susie_55"></face><text><star></star>Damn, Kris, we have to <br>get to the Fountain <br>right now, or...</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Oh <funnytext>TORIEL</funnytext><img class=funnytext src="img/funnytext_toriel.gif" />...!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Oh <imgalt>TORIEL</imgalt><img class=funnytext src="img/funnytext_toriel.gif" />...!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Phew! There you are, still <br>sleeping like a little angel!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Haha! Who the HECK knows what <br>I'D do if you woke up!</text></span>
@@ -24305,7 +24427,7 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You're INCREDIBLE! You're <br>AMAZING!! No... you're <br>MARVELOUS!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>I feel electric!! I feel like a <br>million bucks!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>This... this must be what HOPE <br>feels like!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>We're inventing a <br><funnytext>Hall of Fame</funnytext><img class=funnytext src="img/funnytext_hall_of_fame.png" /> just for you!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>We're inventing a <br><imgalt>Hall of Fame</imgalt><img class=funnytext src="img/funnytext_hall_of_fame.png" /> just for you!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>But... you gotta give <br>back Toriel.</text></span>
 					<span class="textunit"><face data-name="susie_51"></face><text><star></star>She's got people that <br>need her, too.</text></span>
@@ -24327,7 +24449,7 @@
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Audience, would you please <br>stand up and clap for our <br>winners!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>For outstanding kindness and <br>bravery, the Lightners have <br>won...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>THE <funnytext>GRAND PRIZE</funnytext><img class=funnytext src="img/funnytext_grand_prize.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>THE <imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png" />!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Here you go!! She's all yours, <br>folks!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>How wonderful!! The family's <br>all together again!!</text></span>
@@ -24661,14 +24783,14 @@
 				</pp>
 			<hr><roomname>(112.5)</roomname>
 				<pp class="mantlegame">
-					<span class="textunit"><face data-name="tenna"></face><text>HEY FOLKS! IT'S <br>SPHINX-TENNA!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text>ANSWER MY RIDDLE AND <br>I'LL GIVE YOU ONE KEY!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text>... IS WHAT I WOULD <br>SAY, BUT, YA SEE, IT'S <br>A BIT EMBARRASSING...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text>SEE, I'M MISSING MY <br>Q'S! BRING TWO OF 'EM <br>HERE AND I'LL QUIZ YA!</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>HEY FOLKS! IT'S <br>SPHINX-TENNA!</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>ANSWER MY RIDDLE AND <br>I'LL GIVE YOU ONE KEY!</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>... IS WHAT I WOULD <br>SAY, BUT, YA SEE, IT'S <br>A BIT EMBARRASSING...</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>SEE, I'M MISSING MY <br>Q'S! BRING TWO OF 'EM <br>HERE AND I'LL QUIZ YA!</text></span>
 					<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>So it's not a boss?</text></span>
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>A BOSS!? ME!? I'm <br>offended!!!</text></span>
 					<br>
-					<span class="textunit"><face data-name="tenna"></face><text>I'M MISSING MY Q'S! <br>BRING TWO OF 'EM HERE <br>AND I'LL QUIZ YA!</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>I'M MISSING MY Q'S! <br>BRING TWO OF 'EM HERE <br>AND I'LL QUIZ YA!</text></span>
 					<ul class="choicelevel">
 						<li><add>Power Croissant</add>
 							<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Know what else you're <br>missing?</text></span>
@@ -24676,16 +24798,16 @@
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>HEY!!! THAT'S <br>CROISSANT MISUSE!!!</text></span>
 						</li>
 					</ul>
-					<span class="textunit"><face data-name="tenna"></face><text>WOW, YOU GOT TWO Q'S <br>JUST FOR ME!?</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>WOW, YOU GOT TWO Q'S <br>JUST FOR ME!?</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text>OH, OH, THAT'S MUCH <br>BETTER!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text>NOW THAT I'M <br>DRESSED...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text>IT'S A QUIZ TO THE <br>DEATH!</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>OH, OH, THAT'S MUCH <br>BETTER!</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>NOW THAT I'M <br>DRESSED...</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>IT'S A QUIZ TO THE <br>DEATH!</text></span>
 					<br>
-					<span class="textunit"><face data-name="tenna"></face><text>MY NOSE IS THE ONLY <br>NOSE THAT KNOWS.</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text>DON'T TRY TO USE THE <br>LONG NOSE OF ANY OTHER <br>SUSPICIOUS CHARACTER!</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>MY NOSE IS THE ONLY <br>NOSE THAT KNOWS.</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>DON'T TRY TO USE THE <br>LONG NOSE OF ANY OTHER <br>SUSPICIOUS CHARACTER!</text></span>
 					<br>
-					<span class="textunit"><face data-name="tenna"></face><text>NOSE-PICKING, ER, <br>LOCK-PICKING IS NOT <br>ALLOWED!</text></span>
+					<span class="textunit"><face data-name="sphinx-tenna"></face><text>NOSE-PICKING, ER, <br>LOCK-PICKING IS NOT <br>ALLOWED!</text></span>
 				</pp>
 				<pp class="mantlegame">
 					<span class="textunit"><face data-name="tenna"></face><text>APPARENTLY YOU MADE <br>THIS AWFUL THING. <br>EXCEPT FOR... WHAT?</text><choice><span>HEAD</span><span>BODY</span><span>LEGS</span><span>IT'S ACCURATE</span></choice></span>
@@ -25571,14 +25693,14 @@
 					<span class="textunit"><face data-name="susie"></face><text><star></star>(Quit messing with your ears! <br>We're about to be on!)</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Would everyone please give a <br>warm welcome...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>To today's <funnytext>STAR</funnytext><img class=funnytext src="img/funnytext_star.png" /> <br>contestants!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>To today's <imgalt>STAR</imgalt><img class=funnytext src="img/funnytext_star.png" /> <br>contestants!!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Everyone! Please cheer their <br><funnytext>NAMES</funnytext><img class=funnytext src="img/funnytext_names.gif" />!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Everyone! Please cheer their <br><imgalt>NAMES</imgalt><img class=funnytext src="img/funnytext_names.gif" />!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh, right.</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>CONTESTANTS!!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Your <funnytext>NAMES</funnytext><img class=funnytext src="img/funnytext_names.gif" /> please!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Your <imgalt>NAMES</imgalt><img class=funnytext src="img/funnytext_names.gif" /> please!!!</text></span>
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Sorry, you've <br>only got 3 letters <br>to work with!!</text></span>
 					<span class="textunit couchbubble"><face data-name="tenna"></face><text>I'd give you 4, <br>but the censors <br>would kill me!</text></span>
 					<span class="textunit" id="3_131_9"><face>(-)</face><text></text><choice class="fakechoice"><span>...</span></choice></span>
@@ -25601,15 +25723,15 @@
 								<li><add>KRS (default)</add>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>"KRS"? I told you! No KuRSing <br>or the censors will kill me!</text></span>
 									<span class="textunit" id="3_131_2"><face data-name="tenna"></face><text><star></star>Now that we've all been <br>(im)properly introduced...</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><star></star>Mike, the <funnytext>BOARD</funnytext><img class=funnytext src="img/funnytext_board.png" />, <br>please!</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>Mike, the <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png" />, <br>please!</text></span>
 									<pause></pause>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's "GAME" SHOW will be... <br>A VIRTUAL ADVENTURE through TV <br>DESERT!</text></span>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>Each of you will use our <br>CUTTING EDGE, PROPRIETARY <br>CONTROLLER PADS...</text></span>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>To control FANTASY VERSIONS OF <br>YOURSELF in a world so REAL, <br>you'll forget IT'S NOT!</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><star></star>On your QUEST you will fight <br>BATTLES... quiz <funnytext>QUIZZES</funnytext><img class=funnytext src="img/funnytext_quizzes.png" />... <br>gain POINTs...</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><star></star>And maybe learn to <funnytext>LOVE</funnytext><img class=funnytext src="img/funnytext_love.png" /> <br>each other a little along the <br>way.</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>On your QUEST you will fight <br>BATTLES... quiz <imgalt>QUIZZES</imgalt><img class=funnytext src="img/funnytext_quizzes.png" />... <br>gain POINTs...</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>And maybe learn to <imgalt>LOVE</imgalt><img class=funnytext src="img/funnytext_love.png" /> <br>each other a little along the <br>way.</text></span>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, don't TOUCH THAT DIAL, and <br>don't STOP THOSE SMILES!! <br>Because...</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><br><funnytext>IT'S!! TV!! TIME!!!</funnytext><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span><!--REMINDER: could use a gif-->
+									<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span><!--REMINDER: could use a gif-->
 									<lnk class="textunit" data-link="3_193_1"></lnk>
 								</li>
 								<li><add>KRI</add>
@@ -25652,54 +25774,54 @@
 					<pause></pause>
 					<span class="textunit"><face>(-)</face><text>TV TIME CREDITS <br><br>Director <br>Mr. "Ant" Tenna <br><br>Special Thanks <br>Dark Fountain That Gives The World Form</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>STOP! STOP! <funnytext>STOP</funnytext><img class=funnytext src="img/funnytext_stop.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>STOP! STOP! <imgalt>STOP</imgalt><img class=funnytext src="img/funnytext_stop.png" />!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>It CAN'T be over already!! NO!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>The <funnytext>FUN-O-METER</funnytext><img class=funnytext src="img/funnytext_fun_o_meter.png" />'s still <br>only at 80%!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>The <imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png" />'s still <br>only at 80%!!</text></span>
 					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>Huh?</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Ah, you see...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>That was just...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>... <funnytext>ROUND 1!</funnytext><img class=funnytext src="img/funnytext_round_1.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>... <imgalt>ROUND 1!</imgalt><img class=funnytext src="img/funnytext_round_1.png" /></text></span>
 					<span class="textunit"><face data-name="ralsei_37">Ralsei</face><text><star></star>There's... more than one <br>round...?</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Of course!! There's 2 <br><funnytext>ROUNDS</funnytext><img class=funnytext src="img/funnytext_rounds.png" />!! 2!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>You haven't ever heard of a <br>game show with just ONE <br><funnytext>ROUND</funnytext><img class=funnytext src="img/funnytext_round.png" />, have you!?</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Of course!! There's 2 <br><imgalt>ROUNDS</imgalt><img class=funnytext src="img/funnytext_rounds.png" />!! 2!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>You haven't ever heard of a <br>game show with just ONE <br><imgalt>ROUND</imgalt><img class=funnytext src="img/funnytext_round.png" />, have you!?</text></span>
 					<span class="textunit"><face data-name="susie_33">Susie</face><text><star></star>Uhh, nobody except <br>grandmas really even <br>watch -</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Exactly!! It's preposterous!! <br>Outrageous!! It'd be bad TV!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>(And trust me. I know TV.)</funnytext><img class=funnytext src="img/funnytext_know_tv.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(And trust me. I know TV.)</imgalt><img class=funnytext src="img/funnytext_know_tv.png" /></text></span>
 					<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>... heh, well, I guess <br>we WERE having fun.</text></span>
 					<span class="textunit"><face data-name="ralsei_20">Ralsei</face><text><star></star>... Yeah! We can play <br>another round!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="ralsei_30"></face><text><star></star>Can we... change Susie's <br>name though?</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Great!! And no!! And now, a <br><funnytext>WORD</funnytext><img class=funnytext src="img/funnytext_word.png" /> from our sponsors!!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Great!! And no!! And now, a <br><imgalt>WORD</imgalt><img class=funnytext src="img/funnytext_word.png" /> from our sponsors!!</text></span>
 					<pause></pause>
 					<lnk class="textunit" data-link="3_135_1"></lnk>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit" id="3_131_4"><face data-name="tenna"></face><text><star></star>WELCOME back, everyone, to the <br>show that'll make you SCREAM at <br>your SCREEN,</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>TV TIME!</funnytext><img class=funnytext src="img/funnytext_tv_time.png" />!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>TV TIME!</imgalt><img class=funnytext src="img/funnytext_tv_time.png" />!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's episode is brought to <br>you by our sponsor...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>The gushing pillar of darkness <br>that gives us all form - <br><funnytext>DARK FOUNTAIN</funnytext><img class=funnytext src="img/funnytext_dark_fountain.gif" />!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>The gushing pillar of darkness <br>that gives us all form - <br><imgalt>DARK FOUNTAIN</imgalt><img class=funnytext src="img/funnytext_dark_fountain.gif" />!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now available in unsettling <br>obsidian and pulsating rainbow!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, MIKE, the <funnytext>BOARD</funnytext><img class=funnytext src="img/funnytext_board.png" />, <br>please!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, MIKE, the <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png" />, <br>please!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Slather on that sunscreen, <br>everyone! Because...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's second - and FINAL - <br>board will be an aquatic <br>adventure to a desert island!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>That's right -- an all-expenses <br>paid trip to a beautiful <br>tropical paradise!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Haha! Wish I could go but I'm <br>just a big electric box <br>attached to the wall!! Haha!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>(Though I would look good with a tan.)</funnytext><img class=funnytext src="img/funnytext_tan.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Though I would look good with a tan.)</imgalt><img class=funnytext src="img/funnytext_tan.png" /></text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>For this BOARD's GOAL, you'll <br>be aiming to enter the floating <br>ATLANTIS STADIUM!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Legend has it, the best way <br>there is our super high budget <br>RAINBOW BRIDGE!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>However, the RAINBOW only <br>appears if TWO <funnytext>LOVERS</funnytext><img class=funnytext src="img/funnytext_lovers.gif" /> meet <br>at LOVER'S CLIFF!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>However, the RAINBOW only <br>appears if TWO <imgalt>LOVERS</imgalt><img class=funnytext src="img/funnytext_lovers.gif" /> meet <br>at LOVER'S CLIFF!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>By the way, don't forget to <br>take lots of PHOTOS while <br>you're on vacation!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, we're gonna have some real <br>fun in the sun today, SO DON'T <br>TOUCH THAT DIAL!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>(Well, okay, you can touch it. <br>Just be gentle.)</funnytext><img class=funnytext src="img/funnytext_gentle.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Well, okay, you can touch it. <br>Just be gentle.)</imgalt><img class=funnytext src="img/funnytext_gentle.png" /></text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><br><funnytext>IT'S!! TV!! TIME!!!</funnytext><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
 					<lnk class="textunit" data-link="3_141_1"></lnk>
 				</pp>
 				<pp class="darkworld">
@@ -25709,18 +25831,18 @@
 					<span class="textunit"><face data-name="susie_21"></face><text><star></star>We should have our own <br>band for REAL!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="ralsei_26">Ralsei</face><text><star></star>Okay!</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wow, folks! Looks like they've <br>reached the end of our <br>FINAL <funnytext>BOARD</funnytext><img class=funnytext src="img/funnytext_board.png" />!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wow, folks! Looks like they've <br>reached the end of our <br>FINAL <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png" />!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>It's sad to say goodbye, but <br>when you gotta go... you gotta <br>go!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>MIKE, roll the credits...!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>STOP!!! <funnytext>BREAKING NEWS</funnytext><img class=funnytext src="img/funnytext_breaking_news.png" />!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>STOP!!! <imgalt>BREAKING NEWS</imgalt><img class=funnytext src="img/funnytext_breaking_news.png" />!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Due to your SPEED, viewer <br>donations have been POURING <br>IN...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>And we have met the SPECIAL <br>INCENTIVE!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="ralsei_29">Ralsei</face><text><star></star>I... Incentive?</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>YES! The <funnytext>FUN-O-METER</funnytext><img class=funnytext src="img/funnytext_fun_o_meter.png" /> <br>doesn't lie! The viewers' <br>voices are in...!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>YES! The <imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png" /> <br>doesn't lie! The viewers' <br>voices are in...!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You've qualified for...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>The <funnytext>BONUS ROUND</funnytext><img class=funnytext src="img/funnytext_bonus_round.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>The <imgalt>BONUS ROUND</imgalt><img class=funnytext src="img/funnytext_bonus_round.png" />!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="ralsei_37">Ralsei</face><text><star></star>Err... there's ANOTHER <br>round...?</text></span>
 					<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>I mean, yeah, it was <br>FUN, but...</text></span>
@@ -25755,7 +25877,7 @@
 					<span class="textunit" id="3_131_6"><text><star></star>WELCOME BACK to another <br>ELECTRIFYING episode of TV <br>TIME!</text></span>
 					<span class="textunit"><face data-name="ralsei_37">Ralsei</face><text><star></star>W-wait a second...</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Today's board will take place <br>in beautiful TV CITY...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><funnytext>(But don't ask why the cars <br>don't have feet!)</funnytext><img class=funnytext src="img/funnytext_city_feet.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(But don't ask why the cars <br>don't have feet!)</imgalt><img class=funnytext src="img/funnytext_city_feet.png" /></text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Collect two Q's from each <br>corner of the CITY, and...</text></span>
 					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>ENOUGH ALREADY!</text></span>
 					<span class="textunit"><face data-name="susie_16"></face><text><star></star>The game's over. Give <br>back Toriel and let us <br>go home. Now.</text></span>
@@ -25775,13 +25897,13 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Until you LIKE IT.</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_43">Susie</face><text><star></star>H-hey, what the heck are <br>you...</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star><funnytext>GAME OVER!?</funnytext><img class=funnytext src="img/funnytext_game_over.gif" /></text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>THE <funnytext>GAME</funnytext><img class=funnytext src="img/funnytext_game.gif" />'S never <funnytext>OVER</funnytext><img class=funnytext src="img/funnytext_over_small.gif" />!!!</text></span><!--REMINDER: gif colors are somehow broken-->
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star><imgalt>GAME OVER!?</imgalt><img class=funnytext src="img/funnytext_game_over.gif" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>THE <imgalt>GAME</imgalt><img class=funnytext src="img/funnytext_game.gif" />'S never <imgalt>OVER</imgalt><img class=funnytext src="img/funnytext_over_small.gif" />!!!</text></span><!--REMINDER: gif colors are somehow broken-->
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>And if YOU don't wanna play <br>anymore...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>It's time for ME to TAKE <br>CONTROL!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>MIKE, crank it all up to MAX!!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><br><funnytext>IT'S!! TV!! TIME!!!</funnytext><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
 					<pause></pause>
 					<span class="textunit couchbubble"><face data-name="tenna"></face><text>Now it's <br>my turn <br>to play!!!</text></span>
 					<pause></pause>
@@ -25936,8 +26058,8 @@
 			<hr><roomname>[Green Room] (135)</roomname>
 				<pp class="darkworld">
 					<span class="textunit" id="3_135_1"><face data-name="ralsei_37">Ralsei</face><text><star></star>This place is...</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>How do you like my <br><funnytext>Green Room</funnytext><img class=funnytext src="img/funnytext_green_room.png" />?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>It'll take some time before <br>round 2, so <funnytext>Relax and Enjoy...</funnytext><img class=funnytext src="img/funnytext_relax.gif" />!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>How do you like my <br><imgalt>Green Room</imgalt><img class=funnytext src="img/funnytext_green_room.png" />?</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>It'll take some time before <br>round 2, so <imgalt>Relax and Enjoy...</imgalt><img class=funnytext src="img/funnytext_relax.gif" />!</text></span>
 					<br>
 					<span class="textunit" id="3_135_5"><face data-name="ralsei_53">Ralsei</face><text><star></star>I suppose... we should <br>get ready for the next <br>round.</text></span>
 					<pause></pause>
@@ -27586,8 +27708,8 @@
 											<pause></pause>
 											<span class="textunit" id="3_142_3"><face data-name="spamton"></face><text><star></star>[Trash heap]!!! YOU KEPT IT!!! <br>YOU REALLY DO CARE!!!</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE...!?</text></span>
-											<span class="textunit"><face data-name="tenna"></face><text><star></star>HOW THE WHAT THE MAMA WHAT THE <br>HECK THE</text></span>
-											<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MA WHAT'S</text></span><!--REMINDER: 15 randomly generated ones-->
+											<span class="textunit RAND_mamma"><face data-name="tenna"></face><text><star></star>HOW THE WHAT THE MAMA WHAT THE <br>HECK THE</text></span>
+											<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MA WHAT'S</text></span><!--15 randomly generated ones-->
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT'S MAMA MIA</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>HEY MAMMA MAMA MIA WOAH HEY <br>MAMMA</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT'S MAMMA HECK WHAT THE</text></span>
@@ -27605,7 +27727,7 @@
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMMA</text></span>
 											<pause></pause>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>HOW THE WHAT THE MAMA WHAT THE <br>HECK THE</text></span>
-											<span class="textunit"><face data-name="tenna"></face><text><star></star>WOH MA WOAH HECK</text></span><!--REMINDER: 10 randomly generated ones-->
+											<span class="textunit"><face data-name="tenna"></face><text><star></star>WOH MA WOAH HECK</text></span><!--10 randomly generated ones-->
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH HECK WHAT'S WOH WOAH MA</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>MA HECK</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT THE HEY MAMMA WHAT THE</text></span>
@@ -27614,7 +27736,7 @@
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>WOH MAMMA WHAT'S MA HECK MA</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK MA</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK HEY</text></span>
-											<span class="textunit"><face data-name="tenna"></face><text><star></star>WOAH WOH MA MA MAMMA MAMA MIA <br>MAMA MIA</text></span>
+											<span class="textunit RAND_mamma_end"><face data-name="tenna"></face><text><star></star>WOAH WOH MA MA MAMMA MAMA MIA <br>MAMA MIA</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>MAMMA</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>What the HECK is THAT THING!?</text></span>
 											<span class="textunit"><face data-name="tenna"></face><text><star></star>Some kind of RAT!? Some kind of <br>CREATURE!?</text></span>
@@ -28087,11 +28209,11 @@
 				</pp>
 			<hr><roomname>(166)</roomname>
 				<pp class="darkworld">
-					<span class="textunit" id="3_166_1"><face data-name="tenna"></face><text><star></star>Welcome to EXTRA GAME! Tonight, <br>our <funnytext>PHYSICAL CHALLENGE</funnytext><img class=funnytext src="img/funnytext_physical_challenge.gif" /> <br>will be...</text></span>
+					<span class="textunit" id="3_166_1"><face data-name="tenna"></face><text><star></star>Welcome to EXTRA GAME! Tonight, <br>our <imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif" /> <br>will be...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>W-Wait just a moment!! I'm <br>receiving an EMERGENCY <br>BROADCAST...</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Something MASSIVE has begun <br>ASSAULTING the CITY!!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Multiple buildings are up in <br><funnytext>FLAMES</funnytext><img class=funnytext src="img/funnytext_flames.gif" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Multiple buildings are up in <br><imgalt>FLAMES</imgalt><img class=funnytext src="img/funnytext_flames.gif" />!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>At this rate... everything... <br>EVERYONE will be destroyed!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Can anyone PLEASE tell me who <br>this MONSTER IS!?</text></span>
 					<pause></pause>
@@ -28103,16 +28225,16 @@
 							<span class="textunit"><face data-name="susie_39">Susie</face><text><star></star>That's SusieZILLA, <br>chump.</text></span>
 							<span class="textunit"><face data-name="ralsei_20">Ralsei</face><text><star></star>Aww! Susie, your costume <br>is so adora... umm, <br>scary.</text></span>
 							<span class="textunit"><face data-name="susie_49">Susie</face><text><star></star>Heh, obviously.</text></span>
-							<span class="textunit" id="3_166_2"><face data-name="tenna">(-)</face><text><star></star>RIGHT! <funnytext>SUSIEZILLA</funnytext><img class=funnytext src="img/funnytext_susiezilla.gif" /> will be our <br>baddie smashing, hyper spinning <br>star of the day!</text></span>
+							<span class="textunit" id="3_166_2"><face data-name="tenna">(-)</face><text><star></star>RIGHT! <imgalt>SUSIEZILLA</imgalt><img class=funnytext src="img/funnytext_susiezilla.gif" /> will be our <br>baddie smashing, hyper spinning <br>star of the day!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Ms. Zilla!! You were watching <br>the monster marathon until you <br>fell asleep.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>I was so HAPPY to see someone <br>so excited to tune in!!!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>So this final event's a <br><funnytext>Special</funnytext><img class=funnytext src="img/funnytext_special.png" /> SERVICE just for you!!</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>So this final event's a <br><imgalt>Special</imgalt><img class=funnytext src="img/funnytext_special.png" /> SERVICE just for you!!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>And haha, by all means, please! <br>Come over to Kris's and watch <br>MORE TV ANYTIME!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>You don't even have to come in! <br>Stand outside and watch me <br>through the window!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>I won't tell anyone!! The <br>police will never know!! <br>Promise!! Hahaha!!</text></span>
 							<pause></pause>
 							<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Uhh... so I do what. <br>Kick your ass?</text></span>
-							<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>No. Uhh, no. <funnytext>SUSIEZILLA</funnytext><img class=funnytext src="img/funnytext_susiezilla.gif" /> had a <br>change in her TV-loving heart.</text></span>
+							<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>No. Uhh, no. <imgalt>SUSIEZILLA</imgalt><img class=funnytext src="img/funnytext_susiezilla.gif" /> had a <br>change in her TV-loving heart.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>She may wreck the city, but <br>she'll protect me, TV statue, <br>with her life.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>For if the bad guys take me <br>down... There's no more TV!!!</text></span>
 							<ul class="choicelevel">
@@ -28133,7 +28255,7 @@
 											<pause></pause>
 											<span class="textunit" id="3_166_4"><face data-name="tenna"></face><text><star></star>Now, all READY!? Tail on <br>tight!? Taken your radioactive <br>breath mints!?</text></span>
 											<pause></pause>
-											<span class="textunit"><face data-name="tenna"></face><text><br><funnytext>IT'S!! TV!! TIME!!!</funnytext><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+											<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
 										</li>
 										<li><choice>Let's go!</choice>
 											<lnk class="textunit" data-link="3_166_4"></lnk>
@@ -28373,32 +28495,32 @@
 					<span class="textunit"><face data-name="susie_27"></face><text><star></star>The hell did you do to <br>us!?</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Hon hon!! Cool your burners, <br>folks!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's <br><funnytext>PHYSICAL CHALLENGE</funnytext><img class=funnytext src="img/funnytext_physical_challenge.gif" />...</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's <br><imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif" />...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Is the COOKING CHANNEL!</text></span>
 					<span class="textunit"><face data-name="susie_38">Susie</face><text><star></star>Oh, okay. That actually <br>makes sense.</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Kris, your mother used to <br><funnytext>LOVE</funnytext><img class=funnytext src="img/funnytext_love.png" /> cooking shows, didn't <br>she?</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Kris, your mother used to <br><imgalt>LOVE</imgalt><img class=funnytext src="img/funnytext_love.png" /> cooking shows, didn't <br>she?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh, how she'd LAUGH, glowingly, <br>along with each new recipe,</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Feverishly taking notes on each <br>step to make them for her <br>family...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>As you and your <funnytext>BROTHER</funnytext><img class=funnytext src="img/funnytext_brother.gif" /> <br>pretended the chefs were <br>bungling the simplest parts!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>As you and your <imgalt>BROTHER</imgalt><img class=funnytext src="img/funnytext_brother.gif" /> <br>pretended the chefs were <br>bungling the simplest parts!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>"Darn!! I overcooked the <br>water!!"</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>"Oops!! No!! I keep breaking <br>the eggs!! Oops!!"</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>AHAHAHA!! Hahaha!! That sure <br>was <funnytext>FUN</funnytext><img class=funnytext src="img/funnytext_fun_loop.gif" />, wasn't it?</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>AHAHAHA!! Hahaha!! That sure <br>was <imgalt>FUN</imgalt><img class=funnytext src="img/funnytext_fun_loop.gif" />, wasn't it?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, are you ready or what!?</text></span>
 					<span class="textunit"><text><br></text><choice><span>Instructions <br>please</span><span>Let's go</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>Instructions <br>please</choice>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Here are the instructions for <br>the <funnytext>CHALLENGE</funnytext><img class=funnytext src="img/funnytext_challenge.png" />.</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>Here are the instructions for <br>the <imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png" />.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>FOOD is FALLING! KRIS, CATCH <br>the food on your head to STACK <br>IT UP!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>THROW it to customers with [Z]! <br>If the food touches them, <br>they'll gobble it up!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>SPECIAL CUSTOMERS will <br>sometimes appear! They're worth <br><funnytext>BIG</funnytext><img class=funnytext src="img/funnytext_big.png" /> POINTs, don't miss 'em!</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>SPECIAL CUSTOMERS will <br>sometimes appear! They're worth <br><imgalt>BIG</imgalt><img class=funnytext src="img/funnytext_big.png" /> POINTs, don't miss 'em!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>SUSIE will probably cook <br>BURNING FIRE. JUMP over it with <br>[X]!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Missed food will also turn into <br>BURNING FIRE, so be careful!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Big stack, <funnytext>BIG</funnytext><img class=funnytext src="img/funnytext_big.png" /> POINTs! <br>But... You'll MOVE and JUMP <br>slower! Be careful!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Last until the end to <funnytext>WIN!</funnytext><img class=funnytext src="img/funnytext_win.gif" /> <br>But if the POPULARITY GAUGE <br>runs out, it's GAME OVER!</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>Big stack, <imgalt>BIG</imgalt><img class=funnytext src="img/funnytext_big.png" /> POINTs! <br>But... You'll MOVE and JUMP <br>slower! Be careful!</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>Last until the end to <imgalt>WIN!</imgalt><img class=funnytext src="img/funnytext_win.gif" /> <br>But if the POPULARITY GAUGE <br>runs out, it's GAME OVER!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Now don't touch that dial, OR <br>that fire!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Because...</text></span>
 							<pause></pause>
-							<span class="textunit" id="3_169_2"><face data-name="tenna"></face><text><br><funnytext>IT'S!! TV!! TIME!!!</funnytext><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+							<span class="textunit" id="3_169_2"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
 						</li>
 						<li><choice>Let's go</choice>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>THAT's what I like to hear!</text></span>
@@ -28425,7 +28547,7 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey, you know those famous <br>STARS they award to incredible <br>restaurants...?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You just got a NEGATIVE ONE!! <br>The world's first Anti-Good <br>Restaurant!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Gotta give it to ya, you're <br>trailblazers!</text></span>
-					<span class="textunit" id="3_169_3"><face data-name="tenna"></face><text><star></star>Alright, one more try! Let's <br><funnytext>CHALLENGE</funnytext><img class=funnytext src="img/funnytext_challenge.png" /> again!!</text></span>
+					<span class="textunit" id="3_169_3"><face data-name="tenna"></face><text><star></star>Alright, one more try! Let's <br><imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png" /> again!!</text></span>
 					<br>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You lost 2 TIMES?!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Can someone go check if the <br>fire is defective!?</text></span>
@@ -28681,10 +28803,10 @@
 					<br>
 					<span class="textunit"><face data-name="bibliox"></face><text><star></star>Mumble, mumble...</text></span>
 					<span class="textunit"><face data-name="bibliox"></face><text><star></star>You know, it's quite hard to <br>understand you sometimes.</text></span>
-					<span class="textunit"><face data-name="bibliox"></face><text><star></star>Perhaps you should try speaking <br>up!</text></span>
+					<span class="textunit"><face data-name="bibliox"></face><text><star></star>Perhaps you should try speaking <br>up!</text></span><!--
 					<br>
 					<span class="textunit"><face data-name="bibliox"></face><text><star></star>Mumble, mumble...</text></span>
-					<span class="textunit"><face data-name="bibliox"></face><text><star></star>My favorite game, what a <br>shame...</text></span>
+					<span class="textunit"><face data-name="bibliox"></face><text><star></star>My favorite game, what a <br>shame...</text></span> REMINDER: supposedly unused now since he disappears after the ticket+sword route-->
 					<br>
 					<span class="textunit"><face data-name="bibliox"></face><text><star></star>Mumble... no more characters... <br>all gone...</text></span>
 					<span class="textunit"><face data-name="bibliox"></face><text><star></star>What? You want to find them?</text></span>
@@ -28769,7 +28891,7 @@
 					<span class="textunit" id="3_190_1"><face data-name="tenna"></face><text><star></star>And, I've been having SO much <br>fun playing with you all,</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>I... just don't want it to end!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>So... please... just say it <br>with me.</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><br><funnytext>IT'S!! TV!! TIME!!!</funnytext><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
 					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>Enough already!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wh-what are you doing!? I just <br>had this suit DE-AXED!!!</text></span>
@@ -28780,7 +28902,7 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Talking!! I've been doing too <br>much... TALKING!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>NO MORE questions!! What you <br>need...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Is another <br><funnytext>PHYSICAL CHALLENGE</funnytext><img class=funnytext src="img/funnytext_physical_challenge.gif" />!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Is another <br><imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif" />!!</text></span>
 					<lnk class="textunit" data-link="3_tenna_1"></lnk>
 				</pp>
 			<hr><roomname>(192)</roomname>
@@ -30115,7 +30237,7 @@
 									<span class="textunit"><face data-name="susie_39"></face><text><star></star>Then YOU'RE gonna wear <br>doggy ears and do my <br>homework.</text></span>
 									<span class="textunit"><face data-name="susie_22"></face><text><star></star>... stop howling! Man, <br>you're such a pain in <br>the ass. Heh.</text></span>
 									<pause></pause>
-									<span class="textunit"><face data-name="susie_52"></face><text><star></star>... But yeah, maybe it's <br>not real. The dark <br>world.</text></span>
+									<span class="textunit" id="3_240_5"><face data-name="susie_52"></face><text><star></star>... But yeah, maybe it's <br>not real. The dark <br>world.</text></span>
 									<span class="textunit"><face data-name="susie_50"></face><text><star></star>(I just wish Ralsei <br>would realize...)</text></span>
 									<span class="textunit"><face data-name="susie_37"></face><text><star></star>(That doesn't matter to <br>me so much.)</text></span>
 									<pause></pause>
@@ -30131,7 +30253,7 @@
 									<span class="textunit"><face data-name="susie_52"></face><text><star></star>... man, we could've <br>been friends way before.</text></span>
 									<span class="textunit"><face data-name="susie_22"></face><text><star></star>Isn't that stupid...?</text></span>
 									<pause></pause>
-									<span class="textunit"><face data-name="susie_52"></face><text><star></star>... But yeah, maybe it's <br>not real. The dark <br>world.</text></span>
+									<lnk class="textunit" data-link="3_240_5"></lnk>
 								</li>
 								<li><choice>Your <br>friendships <br>are real</choice>
 									<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Hahahaha!</text></span>
@@ -30376,7 +30498,7 @@
 							<span class="textunit battlebubble"><face data-name="elnina"></face><text>Not to rain on your parade, <br>amore, but it's probably just <br>because you're first in the <br>order.</text></span>
 							<span class="textunit battlebubble"><face data-name="lanino"></face><text>R-right! You're right as rain, <br>sweet cloud o' mine.</text></span>
 							<pause></pause>
-							<span class="textunit battlebubble"><face data-name="lanino"></face><text>So... Um...</text></span>
+							<span class="textunit battlebubble"><face data-name="lanino"></face><text>So... um...</text></span>
 							<span class="textunit battlebubble"><face data-name="lanino"></face><text>Whose attack <br>did you like <br>better just now?</text></span>
 							<span class="textunit battlebubble"><face data-name="elnina"></face><text>Wh... what the! <br>Don't ask that!</text></span>
 							<span class="textunit battlebubble"><face data-name="lanino"></face><text>S-sorry!</text></span>
@@ -30807,7 +30929,7 @@
 					<br>
 					<add>Photo (smile, success)</add>
 					<span class="textunit battlebubble"><face data-name="shuttah"></face><text>Ooo la la. Was my <br>smile always so <br>beautiful?</text></span>
-					<span class="textunit battlebubble"><face data-name="shuttah"></face><text>The camera added <br>1O pounds of pure <br>happiness to my <br>teeth...</text></span>
+					<span class="textunit battlebubble"><face data-name="shuttah"></face><text>The camera added <br>10 pounds of pure <br>happiness to my <br>teeth...</text></span>
 					<br>
 					<add>Photo (smile, failure)</add>
 					<span class="textunit battlebubble"><face data-name="shuttah"></face><text>Oh, a miserable <br>picture. This is a <br>mistake.</text></span>
@@ -31467,7 +31589,7 @@
 					<span class="textunit"><face data-name="tenna_1">Tenna</face><text><star></star>H-HEY, ANYONE NOTICED MY HP <br>IS GOING DOWN!? ANYONE!?</text></span>
 				</pp>
 				<pp>
-					<span class="textunit battlebubble"><face data-name="tenna"></face><text>1OOO POINTS, <br>JUST 1OOO POINTS <br>AND I'LL GIVE IT UP!</text></span>
+					<span class="textunit battlebubble"><face data-name="tenna"></face><text>1000 POINTS, <br>JUST 1000 POINTS <br>AND I'LL GIVE IT UP!</text></span>
 					<span class="textunit battlebubble"><face data-name="tenna"></face><text>BUT DON'T THINK <br>IT'S GONNA <br>BE EASY!! <br>BECAUSE TODAY...</text></span>
 					<span class="textunit battlebubble"><face data-name="tenna"></face><text>WE'VE GOT AN <br>ALL-STAR CAST!</text></span>
 					<br>
@@ -31887,6 +32009,11 @@
 				
 			<br><hr><hr><br>
 			
+			<hr><roomname>SpinCake (7)</roomname>
+				<pp>
+					<span class="textunit"><text>A pastry in the shape of a top. <br>Heals 150 HP to the team.</text></span>
+					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>150HP</colspan></text></span>
+				</pp>
 			<hr><roomname>RottenTea (18-21)</roomname>
 				<pp>
 					<span class="textunit"><text>A tea that has deteriorated after a short while <br>due to its poor craftsmanship. +10HP</text></span>
@@ -32424,7 +32551,7 @@
 			
 		<hr><hr><chapter>CHAPTER 4</chapter>
 				
-			<hr><roomname>(15)</roomname>
+			<hr><roomname>[Kris's Room] (15)</roomname>
 				<pp><!--REMINDER: same dialogue whichever save point is interacted with first-->
 					<span class="textunit"><text><star></star>(You could barely see it. A <br>patch of sunlight that <br>shouldn't be there.)</text></span>
 					<span class="textunit"><text><star></star>(It felt different in your <br>hand. And you knew what it <br>was.)</text></span>
@@ -32480,7 +32607,7 @@
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Dammit. We're gonna be <br>late. Dammit.</text></span>
 				</pp>
-				<pp><add>Cell Phone - Call Home</add>
+				<pp><add>CELL - Call Home</add>
 					<span class="textunit"><text><star></star>Ring...</text></span>
 					<span class="textunit"><text><star></star>No one picked up.</text></span>
 				</pp>
@@ -32767,7 +32894,7 @@
 					<br>
 					<span class="textunit comicsans"><face data-name="sans_2">Sans</face><text><star></star>kris, thanks for showing <br>us hyper mode.</text></span>
 				</pp>
-				<pp><add>Cell Phone - Call Home</add>
+				<pp><add>CELL - Call Home</add>
 					<span class="textunit"><text><star></star>Ring...</text></span>
 					<span class="textunit"><text><star></star>(The phone is ringing, but you <br>can't get it.)</text></span>
 					<span class="textunit"><text><star></star>(You're already on the phone, <br>after all...)</text></span>
@@ -33034,7 +33161,7 @@
 					<br>
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>Wait, don't. Wait... don't!!!</text></span>
 				</pp>
-			<hr><roomname>(24)</roomname>
+			<hr><roomname>[Hometown] (24)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>(Ice E's P"E"ZZA, You're number <br>" 1" Spot for a piping hot <br>pe"E"ce of PEZZA.)</text></span>
 				</pp>
@@ -35559,7 +35686,7 @@
 					<span class="textunit"><face data-name="noelle_7"></face><text><star></star>... if... if you don't <br>mind, I mean.</text></span>
 					<span class="textunit"><face data-name="noelle_2"></face><text><star></star>I'll... be in my room, <br>okay?</text></span>
 				</pp>
-			<hr><roomname>(49)</roomname>
+			<hr><roomname>[Noelle's House] (49)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>(The fridge is packed with <br>festive foods.) <br><star></star>(... and a jar of pickles.)</text></span>
 				</pp>
@@ -36356,7 +36483,7 @@
 					<span class="textunit"><text><star></star>(There's a hole in the wall...)</text></span>
 					<span class="textunit"><text><star></star>(There's nothing inside.)</text></span>
 				</pp>
-			<hr><roomname>(65)</roomname>
+			<hr><roomname>[My Castle Town] (65)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Ralsei...!</text></span>
 					<pause></pause>
@@ -36521,20 +36648,20 @@
 				</pp>
 			<hr><roomname>(67)</roomname>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="top chef"></face><text><star></star>Hana fuda! I think it will be <br>my turn to bake next time!</text></span>
+					<span class="textunit"><face data-name="topchef"></face><text><star></star>Hana fuda! I think it will be <br>my turn to bake next time!</text></span>
 					<br>
-					<span class="textunit"><face data-name="top chef"></face><text><star></star>Soon, the building that looks <br>like my face will be my house!</text></span>
-					<span class="textunit"><face data-name="top chef"></face><text><star></star>That was always my dream!</text></span>
+					<span class="textunit"><face data-name="topchef"></face><text><star></star>Soon, the building that looks <br>like my face will be my house!</text></span>
+					<span class="textunit"><face data-name="topchef"></face><text><star></star>That was always my dream!</text></span>
 					<br>
-					<span class="textunit"><face data-name="top chef"></face><text><star></star>Lightners only want one thing <br>and it's disgusting. I mean <br>delicious.</text></span>
+					<span class="textunit"><face data-name="topchef"></face><text><star></star>Lightners only want one thing <br>and it's disgusting. I mean <br>delicious.</text></span>
 					<span class="textunit"><text><br><br></text><choice><span>SpinCake</span><span>Nothing</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>SpinCake</choice>
 							<span class="textunit"><text><star></star>(<yellow>Spincake</yellow> was added to your <br><yellow>ITEMs</yellow>.)</text></span>
 						</li>
 						<li><choice>SpinCake</choice><add>Not enough space</add>
-							<span class="textunit"><face data-name="top chef"></face><text><star></star>Oh, miba, oh mama! No rooms in <br>your pockets!? What's in <br>there!?</text></span>
-							<span class="textunit"><face data-name="top chef"></face><text><star></star>Boys and salesmen!? Oh, miba, <br>oh mama...</text></span>
+							<span class="textunit"><face data-name="topchef"></face><text><star></star>Oh, miba, oh mama! No rooms in <br>your pockets!? What's in <br>there!?</text></span>
+							<span class="textunit"><face data-name="topchef"></face><text><star></star>Boys and salesmen!? Oh, miba, <br>oh mama...</text></span>
 						</li>
 					</ul>
 				</pp>
@@ -37312,7 +37439,7 @@
 					<span class="textunit"><face data-name="susie_33"></face><text><star></star>Until, ugh, Noelle's mom <br>showed up, SUPER PISSED.</text></span>
 					<span class="textunit"><face data-name="susie_37"></face><text><star></star>... great. The hell are <br>we gonna go back there <br>now?</text></span>
 				</pp>
-			<hr><roomname>(108)</roomname>
+			<hr><roomname>[Dark Sanctuary - Atrium] (108)</roomname>
 				<pp class="darkworld">
 					<span class="textunit" id="4_108_1"><face data-name="susie_19">Susie</face><text><star></star>... What's with this <br>place?</text></span>
 					<pause></pause>
@@ -37447,7 +37574,7 @@
 					<pause></pause>
 					<span class="textunit"><face data-name="wicabel"></face><text><star></star>Ring, bell of disaster! Ring! <br>Ha ha, any moment now you shall <br>crumbell!</text></span>
 				</pp>
-			<hr><roomname>(115)</roomname>
+			<hr><roomname>[Dark Sanctuary - Study] (115)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="gerson"></face><text><star></star>Oh, so you decided to come by? <br>Thanks!</text></span>
 					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>(Dammit.)</text></span>
@@ -38359,7 +38486,7 @@
 					<span class="textunit"><face data-name="susie_52">Susie</face><text><star></star>... uh, yeah. Okay. Got <br>it.</text></span>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="susie_17">Susie</face><text><star></star>So, hey, uh, Gang's <br>together!</text></span>
+					<span class="textunit"><face data-name="susie_17">Susie</face><text><star></star>So, hey, uh, <fillin>Gang</fillin>'s <br>together!</text></span><!--REMINDER: fun gang and stuff. Check if $!$? squad is broken-->
 					<span class="textunit"><face data-name="susie_15"></face><text><star></star>We gonna, uh, pose now?</text></span>
 					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>Right! Um, sure!</text></span>
 					<pause></pause>
@@ -38562,7 +38689,7 @@
 					<span class="textunit"><face data-name="ralsei_44">Ralsei</face><text><star></star>(Phew... should be okay <br>until we reach the <br>study...)</text></span>
 					<span class="textunit"><face data-name="ralsei_29"></face><text><star></star>H-huh? Sorry, Kris! <br>Thanks for paying so <br>much attention to me!</text></span>
 				</pp>
-			<hr><roomname>(177)</roomname>
+			<hr><roomname>[Dark Sanctuary - Lower Left] (177)</roomname>
 				<pp class="legend">
 					<span class="textunit"><text>THE PROPHECY, WHICH WHISPERS <br>AMONG THE SHADOWS.</text></span>
 				</pp>
@@ -39547,7 +39674,7 @@
 					</ul>
 					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
 				</pp>
-			<hr><roomname>(218)</roomname>
+			<hr><roomname>[Dark Sanctuary - Small Piano] (218)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>Hmm... I wonder if we <br>need to play something <br>specific?</text></span>
 					<span class="textunit"><face data-name="ralsei_27"></face><text><star></star>Perhaps there's a hint <br>somewhere...</text></span>
@@ -39584,7 +39711,7 @@
 					<span class="textunit"><text><star></star>(The Blue Flame flickers with <br>the vision of a battle <br>unfinished...)</text></span>
 					<span class="textunit"><text><br></text><choice><span>Return to Dark</span><span>Do Not</span></choice></span>
 				</pp>
-			<hr><roomname>(219)</roomname>
+			<hr><roomname>[Dark Sanctuary - Library] (219)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(Stacks of books, with <br>characters that cannot be <br>read...)</text></span>
 					<span class="textunit"><text><star></star>(You are filled with the power <br>of not actually reading the <br>text.)</text></span>
@@ -39833,7 +39960,7 @@
 					<span class="textunit"><face data-name="ralsei_30">Ralsei</face><text><star></star>It sounded a bit like a <br>fireplace opening up.</text></span>
 					<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Dude, too specific. But <br>yeah.</text></span>
 				</pp>
-			<hr><roomname>(227)</roomname>
+			<hr><roomname>[Dark Sanctuary - Lower Right] (227)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="gerson"></face><text><star></star>Don't let me slow ya down!</text></span>
 					<br>
@@ -40682,7 +40809,7 @@
 					<span class="textunit"><face data-name="ralsei_19"></face><text><star></star>I can add it for you...!</text></span>
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>(He can't, though.)</text></span>
 				</pp>
-			<hr><roomname>(247)</roomname>
+			<hr><roomname>[2nd Sanctuary - Atrium] (247)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>Hey, is it me, or does <br>something seem... off?</text></span>
 					<span class="textunit"><face data-name="susie_18"></face><text><star></star>I guess it's like Ralsei <br>said...</text></span>
@@ -40798,7 +40925,7 @@
 					<span class="textunit"><face data-name="susie_50"></face><text><star></star>... heh, I... I wonder <br>what it says.</text></span>
 					<span class="textunit"><face data-name="susie_15"></face><text><star></star>C'mon.</text></span>
 				</pp>
-			<hr><roomname>(251)</roomname>
+			<hr><roomname>[2nd Sanctuary - Floor] (251)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(The lighting has changed.)</text></span>
 					<span class="textunit"><text><star></star>(But the power that fills you, <br>has not.)</text></span>
@@ -40870,7 +40997,7 @@
 				<pp class="legend"><!--REMINDER: sideways-->
 					<span class="textunit"><text>THE GIRL</text></span>
 				</pp>
-			<hr><roomname>(257)</roomname>
+			<hr><roomname>[2nd Sanctuary - Study] (257)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey, I was right!! It's <br>the old man's study!</text></span>
 					<span class="textunit"><face data-name="susie_50"></face><text><star></star>He must've been... <br>leading us here, right?</text></span>
@@ -41198,7 +41325,7 @@
 					</ul>
 					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
 				</pp>
-			<hr><roomname>(270)</roomname>
+			<hr><roomname>[3rd Sanctuary] (270)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(All around you, blue glass <br>glitters like crystals.)</text></span>
 					<span class="textunit"><text><star></star>(As you approach it, the <br>glowing light shines through <br>them...)</text></span>
@@ -41314,7 +41441,7 @@
 					</ul>
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>We are all liars now. Yes, it's <br>fun being a liar.</text></span>
 				</pp>
-			<hr><roomname>(277)</roomname>
+			<hr><roomname>[3rd Sanctuary - Stairs] (277)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a strange spring, with <br>many chalices.)</text></span>
 					<span class="textunit"><text><star></star>(When coins are added, the <br>liquid transforms...)</text></span>
@@ -41424,7 +41551,7 @@
 					<span class="textunit"><face data-name="ralsei_61">Ralsei</face><text><star></star>There's... there's no <br>time to explain!!</text></span>
 					<span class="textunit"><face data-name="ralsei_61"></face><text><star></star>Everyone, climb on! It <br>won't attack itself!!</text></span>
 				</pp>
-			<hr><roomname>(280)</roomname>
+			<hr><roomname>[3rd Sanctuary - Last Chamber] (280)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(A red flame... it glows <br>hesitatingly.)</text></span>
 					<span class="textunit"><text><br></text><choice><span>Return to <br>save point</span><span>Do Not</span></choice></span>
@@ -41634,7 +41761,7 @@
 					<span class="textunit"><text><star></star>"Knock You Down!!"! <br><star></star>Play it!?</text></span>
 					<span class="textunit"><text></text><choice><span>Play (Normal)</span><span>Do Not</span><span>Play (Hard)</span></choice></span>
 				</pp>
-			<hr><roomname>(298)</roomname>
+			<hr><roomname>[Castle Town - TV Building] (298)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="zapper"></face><text><star></star>Hello, boss. Welcome to TV <br>STUDIO.</text></span>
 					<span class="textunit"><face data-name="zapper"></face><text><star></star>Here you can play various <br>MiniGames.</text></span>
@@ -41711,7 +41838,7 @@
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>I heard something in between. <br>Something in between.</text></span>
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>It was mixed up.</text></span>
-					<span class="textunit"><face data-name="organikk"></face><text><star></star>the Lost grow, followed the <br>tail. where would children the <br>pointed forest</text></span><!--mixed up-->
+					<span class="textunit RAND_roots"><face data-name="organikk"></face><text><star></star>Lost where the forest would <br>grow, the children followed the <br>pointed tail.</text></span>
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>The poor children!</text></span>
 				</pp>
 			<hr><roomname>(301)</roomname>
@@ -41878,7 +42005,7 @@
 					<br>
 					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
 				</pp>
-			<hr><roomname>(304)</roomname>
+			<hr><roomname>[2nd Sanctuary - Study] (304)</roomname>
 				<pp class="darkworld">
 					<span class="textunit" id="4_304_1"><face data-name="susie_37">Susie</face><text><star></star>...It's a long way back <br>up...</text></span>
 				</pp>
@@ -42167,7 +42294,7 @@
 						</li>
 					</ul>
 				</pp>
-			<hr><roomname>(322)</roomname>
+			<hr><roomname>[MIKE ZONE] (322)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a very tall statue... It <br>has cat ears.)</text></span>
 					<span class="textunit"><text><br><br></text><choice><span>Pet it</span><span>Don't</span></choice></span>
@@ -42261,7 +42388,7 @@
 					<span class="textunit"><face data-name="small mike"></face><text><star></star>It was so hard doing what Tenna <br>wanted, I couldn't do it alone.</text></span>
 					<span class="textunit"><face data-name="small mike"></face><text><star></star>I needed more...</text></span>
 					<span class="textunit"><face data-name="small mike"></face><text><star></star>More Mikes!!! And along the <br>way, I forgot who I really was.</text></span>
-					<span class="textunit"><face data-name="small mike"></face><text><star></star>But you guys... Helped me <br>remember.</text></span>
+					<span class="textunit"><face data-name="small mike"></face><text><star></star>But you guys... Helped me <br>remember.</text></span><!--REMINDER: guys-less variant-->
 					<span class="textunit"><face data-name="small mike"></face><text><star></star>I'm the only Mike... The real <br>one.</text></span>
 					<span class="textunit"><face data-name="small mike"></face><text><star></star>These two guys...</text></span>
 					<span class="textunit"><face data-name="small mike"></face><text><star></star>Are fakes!!! Beat them up!!!</text></span>
@@ -42603,7 +42730,22 @@
 					<add>With Old Man</add>
 					<span class="textunit"><face data-name="susie_24">Susie</face><text><star></star>Damn, that stupid cane <br>made us get hit!</text></span>
 				</pp>
-				<pp>
+				<pp><!--REMINDER: incorrect offsets but blegh-->
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>鬼</imgalt><img class=inv src="img/guei_1.png" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>我鬼</imgalt><img class=inv src="img/guei_2.png" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>我很鬼</imgalt><img class=inv src="img/guei_3.png" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你鬼嗎</imgalt><img class=inv src="img/guei_4.png" /></text></span>
+					<br>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你喜歡鬼嗎</imgalt><img class=inv src="img/guei_5.png" /></text></span> <!--two more pixels than 6 despite same text-->
+					<!--<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你鬼不鬼？</imgalt><img class=inv src="img/guei_5.png" /></text></span> unused-->
+					<br>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你喜歡鬼嗎</imgalt><img class=inv src="img/guei_6.png" /></text></span>
+					<br>
+					<add>Exercism/<ralsei></ralsei>Xercism</add>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>哦 哦 哦！</imgalt><img class=inv src="img/guei_act.png" /></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Exercism</span><span><ralsei></ralsei>Xercism</span></choice></span>
@@ -42831,6 +42973,9 @@
 					<span class="textunit battlebubble"><face data-name="mizzle"></face><text>Water you <br>doing?</text></span>
 					<br>
 					<span class="textunit battlebubble"><face data-name="mizzle"></face><text>Am I still <br>dreaming?</text></span>
+					<br>
+					<add>Tired</add>
+					<span class="textunit battlebubble"><face data-name="mizzle"></face><text><imgalt>Z</imgalt><img class=inv src="img/mizzle_z.png" /></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Dazzle</span><span><susie></susie>Embezzle</span><span><ralsei></ralsei>Nuzzle</span><span><susie></susie><ralsei></ralsei>LullabyX</span></choice></span>
@@ -44360,6 +44505,11 @@
 					<choice>Battle</choice>
 					<span class="textunit"><text><star></star><fillin>Kris</fillin> used the DARKER CANDY!</text></span>
 				</pp>
+			<hr><roomname>SpinCake (7)</roomname>
+				<pp>
+					<span class="textunit"><text>A pastry in the shape of a top. <br>Heals 160 HP to the team.</text></span>
+					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>160HP</colspan></text></span>
+				</pp>
 			<hr><roomname>AncientSweet (60)</roomname>
 				<pp>
 					<span class="textunit"><text>A chocolatey cone etched with arcane <br>glyphs. Only Kris can eat it. +400 HP.</text></span>
@@ -44906,6 +45056,7 @@
 				'pippins':['small mike'],
 				'shadowguy':['cat mike'],
 				'zapper':['cowboy hat mike'],
+				'top chef':['topchef'],
 			};
 			var findch = document.querySelector('#find_chapter');
 			var findfa = document.querySelector('#find_face');
@@ -45143,7 +45294,7 @@
 						boxtext.innerHTML = '<ul><li>' + boxtext.innerHTML + '</li></ul>'; //REMINDER: should restrict stars to lines that actually have them
 						boxtext.innerHTML = boxtext.innerHTML.replaceAll('<star></star>', '</li><li>').replaceAll('<ul><li></li>', '<ul>').replaceAll('<li></li></ul>', '</ul>').replaceAll('<ul></ul>', '<ul><li></li></ul>'); //this is all really stupid
 					};
-					boxtext.querySelectorAll('.funnytext').forEach(function(v) {
+					boxtext.querySelectorAll('img').forEach(function(v) {
 						v.style.width = v.naturalWidth * 1.5 * num + 'px';
 					});
 					if (el.querySelector('choice')) {
@@ -45206,7 +45357,75 @@
 			function AnchorToClipboard() {
 				navigator.clipboard.writeText(window.location.href.replace(/\?.+/, '')+'?anchor='+ancopy.dataset.anchorcopy);
 				//ancopy.classList.add('anchorcopied');
-			}
+			};
+			
+			function Randomize() {
+				var ranbut = document.querySelector('#randomizer');
+				ranbut.className = 'rand'+(1+Math.floor(Math.random()*6));
+				
+				var zzt = document.querySelectorAll('.RAND_zzt text');
+				zzts = ['Z','T','!','B','G'];
+				zzt.forEach((v) => {
+					var zzarr = [];
+					var pre = Math.floor(Math.random()*4);
+					if (pre==0) {
+						zzarr = ['Z','Z','T','!'];
+					} else if (pre==1) {
+						zzarr = ['B','Z','Z','!'];
+					} else {
+						for (i=0; i<3; i++) {
+							zzarr.push(zzts[Math.floor(Math.random()*5)]);
+						};
+						zzarr.push('!');
+						if (Math.random()>1/3) {
+							zzarr[0] = 'Z';
+						};
+					};
+					var zzstr = '';
+					var zzstr2 = '';
+					zzarr.forEach((v2) => {
+						zzstr += v2;
+						zzstr2 += '<img class=inv src="img/werewire_'+v2+'.gif" />';
+					});
+					v.innerHTML = '<fillin><imgalt>'+zzstr+'</imgalt>'+zzstr2+'</fillin>';
+				});
+				
+				var mamma = document.querySelectorAll('.RAND_mamma~*:not(.RAND_mamma_end~*) text');
+				mammas = ['MAMMA ','MAMA MIA ','MA ','WHAT THE ','WOAH ','WOH ','HEY ','HECK ','WHAT\'S '];
+				mamma.forEach((v,k) => {
+					if (k<15 || k>16) {
+						var mamstr = '';
+						for (i=0; i<2+Math.floor(Math.random()*6); i++) {
+							mamstr += mammas[Math.floor(Math.random()*9)];
+						};
+						v.innerHTML = '<star></star><fillin>'+AutoBreak(mamstr.replace(/ $/, '')).replace(/ $/, '')+'</fillin>';
+					};
+				});
+				
+				var roots = document.querySelector('.RAND_roots text');
+				var rootbits = roots.innerHTML.replace(/<[^<>]+>/g, '').split(' ');
+				var newrb = [];
+				for (var i=rootbits.length; i>0; i--) {
+					var num = Math.floor(Math.random()*i);
+					newrb.push(rootbits[num]);
+					rootbits.splice(num, 1);
+				};
+				roots.innerHTML = '<star></star><fillin>'+AutoBreak(newrb.join(' ')).replace(/ $/, '')+'</fillin>';
+			};
+			function AutoBreak(str) {
+				var newstr = '';
+				var num = 0;
+				str.split(' ').forEach((v) => {
+					num += v.length+1;
+					if (num > 32) {
+						newstr += '<br>';
+						num = v.length+1;
+					};
+					newstr += v+' ';
+				});
+				return newstr;
+			};
+			Randomize();
 		</script>
 	</body>
 </html>
