@@ -542,15 +542,18 @@
 				content:var(--char-icon);
 				display:inline-grid;
 			}
-			imgalt {
-				position:absolute;
-				opacity:0;
-				~img {
+			text, #findresults { /*messy*/
+				imgalt {
+					position:absolute;
+					opacity:0;
+				}
+				img {
+					vertical-align:middle;
 					&.inv:not(#textbox.battlebubble *),
 					&.uninv:is(#textbox.battlebubble *) {
 						filter:invert(1) hue-rotate(180deg);
 					}
-					&[src^="img/werewire"] { /*needs weird custom css because the images are too wide*/
+					&[src^="img/werewire"] { /*needs weird custom css because the images are too wide. also upscaled here instead of in-editor*/
 						width:42px;
 						transform:translateX(100%) scaleX(3);
 						height:68px;
@@ -560,9 +563,8 @@
 						}
 					}
 					&.funnytext {
-						vertical-align:middle;
-						max-height:1em;
 						margin:-100% 0;
+						max-height:1em;
 					}
 				}
 			}
@@ -768,13 +770,13 @@
 					<div id="indexcont"></div>
 				</pp>
 				<div id="txtfindcont">
-					<input id="find_chapter" placeholder="chapter:" />
-					<input id="find_face" placeholder="speaker:" />
-					<input id="find_txt" placeholder="text:" required />
+					<input id="find_chapter" placeholder="chapter:"/>
+					<input id="find_face" placeholder="speaker:"/>
+					<input id="find_txt" placeholder="text:" required/>
 					<br>
-					<label for="find_full">Full words</label><input id="find_full" type="checkbox" name="find_full" />
-					<label for="find_case">Case-sensitive</label><input id="find_case" type="checkbox" name="find_case" />
-					<label for="find_regex">Regex</label><input id="find_regex" type="checkbox" name="find_regex" />
+					<label for="find_full">Full words</label><input id="find_full" type="checkbox" name="find_full"/>
+					<label for="find_case">Case-sensitive</label><input id="find_case" type="checkbox" name="find_case"/>
+					<label for="find_regex">Regex</label><input id="find_regex" type="checkbox" name="find_regex"/>
 					<div id="findresults"></div>
 					<div id="closefind" onclick="findres.innerHTML='';">X</div>
 				</div>
@@ -7355,17 +7357,17 @@
 				</pp>
 			<hr><roomname>Dummy (3)</roomname>
 				<pp class="darkworld">
-					<span class="textunit"><face data-name="ralsei_4">Ralsei</face><text><star></star>Let's try FIGHTing! <br>(<fight></fight>)</text></span>
+					<span class="textunit"><face data-name="ralsei_4">Ralsei</face><text><star></star>Let's try FIGHTing! <br>(<img src="img/icon_fight.png"/> )</text></span>
 					<br>
-					<span class="textunit"><text><star></star>Let's try FIGHTing! <br>(<fight></fight>)</text></span>
+					<span class="textunit"><text><star></star>Let's try FIGHTing! <br>(<img src="img/icon_fight.png"/> )</text></span>
 					<br>
-					<span class="textunit"><text><star></star>Let's try DEFENDing! <br>(<defend></defend>)</text></span>
+					<span class="textunit"><text><star></star>Let's try DEFENDing! <br>(<img src="img/icon_defend.png"/> )</text></span>
 					<br>
-					<span class="textunit"><text><star></star>Let's try SPELLs! <br>(<magic></magic>)</text></span>
+					<span class="textunit"><text><star></star>Let's try SPELLs! <br>(<img src="img/icon_spell.png"/> )</text></span>
 					<br>
-					<span class="textunit"><text><star></star>Let's ACT! <br>(<act></act>)</text></span>
+					<span class="textunit"><text><star></star>Let's ACT! <br>(<img src="img/icon_act.png"/> )</text></span>
 					<br>
-					<span class="textunit"><text><star></star>Let's SPARE! <br>(<spare></spare>)</text></span>
+					<span class="textunit"><text><star></star>Let's SPARE! <br>(<img src="img/icon_spare.png"/> )</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit" id="1_dummy_1"><face data-name="ralsei_3">Ralsei</face><text><star></star>See that <red>HEART</red>, Kris?</text></span>
@@ -7381,7 +7383,7 @@
 						<li>
 							<span class="textunit"><face data-name="ralsei_6"></face><text><star></star>Ouch, it's OK, Kris! <br>You're still learning!</text></span>
 							<span class="textunit" id="1_dummy_2"><face data-name="ralsei_4"></face><text><star></star>Anyhow, after the enemy <br>attacks, it's our turn, <br>Kris!</text></span>
-							<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>First, I'll teach you <br>how to <yellow>FIGHT</yellow> (<fight></fight>).</text></span>
+							<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>First, I'll teach you <br>how to <yellow>FIGHT</yellow> (<img src="img/icon_fight.png"/> ).</text></span>
 							<span class="textunit"><face data-name="ralsei_5"></face><text><star></star>Though <yellow>FIGHTing</yellow> is <br>unnecessary in this <br>world...</text></span>
 							<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>There's no harm in a <br>thorough lesson!</text></span>
 						</li>
@@ -7395,8 +7397,8 @@
 						<li><add>FIGHT (strong)</add>
 							<span class="textunit"><face data-name="ralsei_8">Ralsei</face><text><star></star>W-wow, Kris! <br><star></star>That was an amazing <br>attack!</text></span>
 							<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Have you done this <br>before or something...?</text></span>
-							<span class="textunit" id="1_dummy_3"><face data-name="ralsei_3"></face><text><star></star>OK, next let's try <br>DEFENDING. (<defend></defend>)</text></span>
-							<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Simply (<defend></defend>), and the <br>enemy's attack will hurt <br>you less...</text></span>
+							<span class="textunit" id="1_dummy_3"><face data-name="ralsei_3"></face><text><star></star>OK, next let's try <br>DEFENDING. (<img src="img/icon_defend.png"/> )</text></span>
+							<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Simply (<img src="img/icon_defend.png"/> ), and the <br>enemy's attack will hurt <br>you less...</text></span>
 							<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Not only that, but <br>you'll also gather <yellow>TP</yellow>!</text></span>
 							<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>(Watch the orange big <br>bar on the left! I'll <br>explain it next!)</text></span>
 							<br>
@@ -7452,14 +7454,14 @@
 											<span class="textunit" id="1_dummy_5"><face data-name="ralsei_3"></face><text><star></star>Now I have just a little <br>more to teach you!</text></span>
 											<ul class="choicelevel">
 												<li>
-													<span class="textunit"><face data-name="ralsei_3"></face><text><star></star><act></act>ing! Through this, <br>even the most violent <br>enemies...</text></span>
-													<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Can be defeated through <br>various <act></act>s of <br>kindness!</text></span>
+													<span class="textunit"><face data-name="ralsei_3"></face><text><star></star><img src="img/icon_act.png"/> ing! Through this, <br>even the most violent <br>enemies...</text></span>
+													<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Can be defeated through <br>various <img src="img/icon_act.png"/> s of <br>kindness!</text></span>
 													<span class="textunit"><face data-name="ralsei_6"></face><text><star></star>Kris, though it's just a <br>dummy, why not give it a <br>HUG?</text></span>
 												</li>
 												<li>
-													<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Remember when you <yellow>HUGGED</yellow> <br>the dummy by <act></act>ing on <br>it?</text></span>
+													<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Remember when you <yellow>HUGGED</yellow> <br>the dummy by <img src="img/icon_act.png"/> ing on <br>it?</text></span>
 													<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Because of that, its <br>name turned <yellow>YELLOW</yellow>!</text></span>
-													<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Now by using the <yellow>SPARE</yellow> <br>(<spare></spare>) command, you can <br>win!</text></span>
+													<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Now by using the <yellow>SPARE</yellow> <br>(<img src="img/icon_spare.png"/> ) command, you can <br>win!</text></span>
 												</li>
 											</ul>
 											<br>
@@ -7493,14 +7495,14 @@
 																	<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Let's move to the next <br>lesson, OK?</text></span>
 																	<ul class="choicelevel">
 																		<li>
-																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star><act></act>ing! Through this, <br>even the most violent <br>enemies...</text></span>
-																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Can be defeated through <br>various <act></act>s of <br>kindness!</text></span>
+																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star><img src="img/icon_act.png"/> ing! Through this, <br>even the most violent <br>enemies...</text></span>
+																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Can be defeated through <br>various <img src="img/icon_act.png"/> s of <br>kindness!</text></span>
 																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Kris, though it's just a <br>dummy, why not give it a <br>HUG?</text></span>
 																		</li>
 																		<li>
-																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Remember when you <yellow>HUGGED</yellow> <br>the dummy by <act></act>ing on <br>it?</text></span>
+																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Remember when you <yellow>HUGGED</yellow> <br>the dummy by <img src="img/icon_act.png"/> ing on <br>it?</text></span>
 																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Because of that, its <br>name turned <yellow>YELLOW</yellow>!</text></span>
-																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Now by using the <yellow>SPARE</yellow> <br>(<spare></spare>) command, you can <br>win!</text></span>
+																			<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Now by using the <yellow>SPARE</yellow> <br>(<img src="img/icon_spare.png"/> ) command, you can <br>win!</text></span>
 																		</li>
 																	</ul>
 																</li>
@@ -7706,8 +7708,8 @@
 									<span class="textunit"><face data-name="ralsei_8">Ralsei</face><text><star></star>Huh...? Kris, you'd <br>rather hug it out than <br>fight?</text></span>
 									<span class="textunit"><face data-name="ralsei_5"></face><text><star></star>...</text></span>
 									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>You know what, that's <br>fine! We don't need to <br>fight!</text></span>
-									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>OK, next let's try <br>DEFENDING. (<defend></defend>)</text></span>
-									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Simply (<defend></defend>), and the <br>enemy's attack will hurt <br>you less...</text></span>
+									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>OK, next let's try <br>DEFENDING. (<img src="img/icon_defend.png"/> )</text></span>
+									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Simply (<img src="img/icon_defend.png"/> ), and the <br>enemy's attack will hurt <br>you less...</text></span>
 									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>Not only that, but <br>you'll also gather <yellow>TP</yellow>!</text></span>
 									<span class="textunit"><face data-name="ralsei_4"></face><text><star></star>(Watch the orange big <br>bar on the left! I'll <br>explain it next!</text></span><!--REMINDER: in-game typo-->
 								</li>
@@ -7718,7 +7720,7 @@
 									<span class="textunit"><face data-name="ralsei_4">Ralsei</face><text><star></star>Aww, that's great, Kris!</text></span>
 									<span class="textunit"><face data-name="ralsei_3"></face><text><star></star>Each enemy has different <br>ACTs that satisfy them.</text></span>
 									<span class="textunit"><face data-name="ralsei_3">Ralsei</face><text><star></star>When an enemy is <br>satisfied, its name <br>turns <yellow>YELLOW</yellow>.</text></span>
-									<span class="textunit"><face data-name="ralsei_3">Ralsei</face><text><star></star>When that happens, you <br>can defeat it by SPARING <br>(<spare></spare>) it!</text></span>
+									<span class="textunit"><face data-name="ralsei_3">Ralsei</face><text><star></star>When that happens, you <br>can defeat it by SPARING <br>(<img src="img/spare.png"/> ) it!</text></span>
 									<span class="textunit"><face data-name="ralsei_3">Ralsei</face><text><star></star>If we <yellow>SPARE</yellow> all the <br>enemies we meet, we'll <br>never have to <yellow>FIGHT</yellow>!</text></span>
 								</li>
 								<li>
@@ -7871,15 +7873,15 @@
 					<span class="textunit"><text><star></star>Smorgasboard.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit battlebubble"><face data-name="hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_1.gif" /></text></span>
+					<span class="textunit battlebubble"><face data-name="hathy"></face><text><img class=inv src="img/hathy_1.gif"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_2.gif" /></text></span>
+					<span class="textunit battlebubble"><face data-name="hathy"></face><text><img class=inv src="img/hathy_2.gif"/></text></span>
 					<br>
 					<add>Flatter</add>
-					<span class="textunit battlebubble"><face data-name="hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_act1.gif" /></text></span>
+					<span class="textunit battlebubble"><face data-name="hathy"></face><text><img class=inv src="img/hathy_act1.gif"/></text></span>
 					<br>
 					<add><ralsei></ralsei>X-Flatter</add>
-					<span class="textunit battlebubble"><face data-name="hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_act2.gif" /></text></span>
+					<span class="textunit battlebubble"><face data-name="hathy"></face><text><img class=inv src="img/hathy_act2.gif"/></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><choice><span>Check</span><span>Flatter</span><span><ralsei></ralsei>X-Flatter</span></choice></span>
@@ -8716,15 +8718,15 @@
 					<span class="textunit"><text><star></star>Head Hathy's beat seems to <br>stutter.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><imgalt></imgalt><img class=inv src="img/headhathy_1.gif" /></text></span>
+					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><img class=inv src="img/headhathy_1.gif"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><imgalt></imgalt><img class=inv src="img/headhathy_2.gif" /></text></span>
+					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><img class=inv src="img/headhathy_2.gif"/></text></span>
 					<br>
 					<add>Flirt</add>
-					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_act1.gif" /></text></span>
+					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><img class=inv src="img/hathy_act1.gif"/></text></span>
 					<br>
 					<add><ralsei></ralsei>X-Flirt</add>
-					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><imgalt></imgalt><img class=inv src="img/hathy_act2.gif" /></text></span>
+					<span class="textunit battlebubble"><face data-name="head hathy"></face><text><img class=inv src="img/hathy_act2.gif"/></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><choice><span>Check</span><span>Flirt</span><span><susie></susie>X-Flirt</span></choice></span>
@@ -9432,7 +9434,7 @@
 				
 			<br><hr><hr><br>
 			<!--REMINDER: unused items would be cool considering Noelle. Also document unique stats at some point-->
-			<hr><roomname>Wood Blade (1)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> Wood Blade (1)</roomname>
 				<pp>
 					<span class="textunit"><text>A wooden practice blade with a carbon-<br>reinforced core.</text></span>
 				</pp>
@@ -9441,7 +9443,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>That's yours, Kris...</minitext></text></span>
 				</pp>
-			<hr><roomname>Mane Ax (2)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> Mane Ax (2)</roomname>
 				<pp>
 					<span class="textunit"><text>Beginner's ax forged from the <br>mane of a dragon whelp.</text></span>
 				</pp>
@@ -9450,7 +9452,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Ummm... it's a bit big.</minitext></text></span>
 				</pp>
-			<hr><roomname>Red Scarf (3)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> Red Scarf (3)</roomname>
 				<pp>
 					<span class="textunit"><text>A basic scarf made of lightly <br>magical fiber.</text></span>
 				</pp>
@@ -9459,34 +9461,40 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Comfy! Touch it, Kris!</minitext></text></span>
 				</pp>
-			<hr><roomname>Spookysword (5)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> Spookysword (5)</roomname>
 				<pp>
 					<span class="textunit"><text>A black-and-orange sword with a bat hilt.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> Spookiness UP</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Ugh, it's too small!</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Oh, it's too scary!</minitext></text></span>
 				</pp>
-			<hr><roomname>Brave Ax (6)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> Brave Ax (6)</roomname>
 				<pp>
 					<span class="textunit"><text>A glossy ax from a block warrior. <br>Suitable for heroes.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> Guts Up</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Well, if I have to.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>It's a bit too heavy...</minitext></text></span>
 				</pp>
-			<hr><roomname>Devilsknife (7)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> Devilsknife (7)</roomname>
 				<pp>
 					<span class="textunit"><text>Skull-emblazoned scythe-ax. <br>Reduces Rudebuster's cost by 10</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_6.png"/> Buster TP DOWN</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Let the games begin!</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>It's too, um, evil.</minitext></text></span>
 				</pp>
-			<hr><roomname>Ragger (9)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> Ragger (9)</roomname>
 				<pp>
 					<span class="textunit"><text>A rugged scarf that cuts enemies like a dagger.</text></span>
 				</pp>
@@ -9495,9 +9503,11 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Feels prickly... Nice!</minitext></text></span>
 				</pp>
-			<hr><roomname>DaintyScarf (10)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> DaintyScarf (10)</roomname>
 				<pp>
 					<span class="textunit"><text>Delicate scarf that increases healing <br>power but has no attack.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> Fluffiness UP</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>IT'S MADE OF DOILIES!</minitext></text></span>
@@ -9509,7 +9519,7 @@
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Hey, hands off!</minitext></text></span>
 				</pp>
-			<hr><roomname>Amber Card (1)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Amber Card (1)</roomname>
 				<pp>
 					<span class="textunit"><text>A thin square charm that sticks <br>to you, increasing defense.</text></span>
 				</pp>
@@ -9518,7 +9528,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>It's sticky, huh, Kris...</minitext></text></span>
 				</pp>
-			<hr><roomname>Dice Brace (2)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Dice Brace (2)</roomname>
 				<pp>
 					<span class="textunit"><text>A bracelet made out of various <br>symbol-inscribed cubes.</text></span>
 				</pp>
@@ -9527,16 +9537,18 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>It says "Friendship!"</minitext></text></span>
 				</pp>
-			<hr><roomname>White Ribbon (4)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> White Ribbon (4)</roomname>
 				<pp>
 					<span class="textunit"><text>A crinkly hair ribbon that slightly <br>increases your defense.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> Cuteness</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Nope. Not in 1st grade anymore.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Um... D-do I look cute...?</minitext></text></span>
 				</pp>
-			<hr><roomname>IronShackle (5)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> IronShackle (5)</roomname>
 				<pp>
 					<span class="textunit"><text>Shackle that ironically increases <br>your attack and defense.</text></span>
 				</pp>
@@ -9545,7 +9557,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>*jingle jangle*Haha!</minitext></text></span>
 				</pp>
-			<hr><roomname>Jevilstail (7)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Jevilstail (7)</roomname>
 				<pp>
 					<span class="textunit"><text>A J-shaped tail that gives you devilenergy.</text></span>
 				</pp>
@@ -9566,19 +9578,19 @@
 					<span class="textunit"><text>LV1 Bed Inspector <br>Inspects all beds <br>inexplicably.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>10</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>10</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>0</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>0</fillin></text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
 					<pause></pause>
-					<span class="textunit"><text>Dog:</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text>Dog: <img src="img/icon_dog.gif"/></text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
 					<br>
-					<span class="textunit"><text>Guts: 1</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">0% ACT</colspan></text></span>
@@ -9591,17 +9603,17 @@
 					<span class="textunit"><text>LV1 Dark Knight <br>Does damage using <br>dark energy.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>14</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>14</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>1</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>1</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Rudeness <fillin>100</fillin></text></span>
+					<span class="textunit"><img src="img/icon_13.png"/> <text>Rudeness <fillin>100</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Crudeness <fillin>100</fillin></text></span>
+					<span class="textunit"><img src="img/icon_13.png"/> <text>Crudeness <fillin>100</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Guts: 2</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/><img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">50% Rude Buster</colspan></text></span>
@@ -9616,19 +9628,19 @@
 					<span class="textunit"><text>LV1 Fluffy Prince <br>Weak, but has nice <br>healing powers.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>8</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>8</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>7</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>7</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Kindness 100</text></span>
+					<span class="textunit"><text><img src="img/icon_10.png"/> Kindness 100</text></span>
 					<pause></pause>
-					<span class="textunit"><text>Dogness 1</text></span>
+					<span class="textunit"><text><img src="img/icon_11.png"/> Dogness 1</text></span>
 					<br>
-					<span class="textunit"><text>Fluffiness <fillin>1</fillin></text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_12.png"/> Fluffiness <fillin><img src="img/icon_12.png"/></fillin></text></span>
 					<br>
-					<span class="textunit"><text>Guts:</text></span>
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts:</text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">16% Pacify</colspan></text></span>
@@ -19998,7 +20010,7 @@
 					<span class="textunit"><text><star></star>Round One!</text></span>
 				</pp>
 				<pp>
-					<span class="textunit battlebubble RAND_zzt"><face data-name="werewire"></face><text><imgalt>ZZT!</imgalt><img src="img/werewire_z.gif" /><img src="img/werewire_z.gif" /><img src="img/werewire_t.gif" /><img src="img/werewire_!.gif" /></text></span>
+					<span class="textunit battlebubble RAND_zzt"><face data-name="werewire"></face><text><imgalt>ZZT!</imgalt><img src="img/werewire_z.gif"/><img src="img/werewire_z.gif"/><img src="img/werewire_t.gif"/><img src="img/werewire_!.gif"/></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>JiggleJiggle</span><span><susie></susie>ThrowWire</span></choice></span>
@@ -21509,13 +21521,13 @@
 					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text>Chaos, chaos!? <br>No, no! Order, order! <br>Now get rid of that <br>silly Devilsknife!</text></span>
 					<br>
 					<add>Tasque Manager Says</add>
-					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>A</imgalt><img class=uninv src="img/tasquemanager_a.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>A</imgalt><img class=uninv src="img/tasquemanager_a.png"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>B</imgalt><img class=uninv src="img/tasquemanager_b.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>B</imgalt><img class=uninv src="img/tasquemanager_b.png"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>C</imgalt><img class=uninv src="img/tasquemanager_c.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>C</imgalt><img class=uninv src="img/tasquemanager_c.png"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>D</imgalt><img class=uninv src="img/tasquemanager_d.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="tasque manager"></face><text><imgalt>D</imgalt><img class=uninv src="img/tasquemanager_d.png"/></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Order</span><span><susie></susie><ralsei></ralsei>OrderX</span></choice></span>
@@ -21665,7 +21677,7 @@
 					<span class="textunit battlebubble"><face data-name="rouxls"></face><text>STOP HITTINGETH <br>ME AND PLAYETH <br>MY MINI-GAME, <br>YOU ROGUES!!!</text></span>
 					<br>
 					<add>End of song</add>
-					<span class="textunit battlebubble"><face data-name="rouxls"></face><text><imgalt>Hey</imgalt><img class=inv src="img/rouxls_hey.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="rouxls"></face><text><imgalt>Hey</imgalt><img class=inv src="img/rouxls_hey.png"/></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Take House</span><span>Take House 2</span><span><ralsei></ralsei>Take House 3</span><span><ralsei></ralsei>Take House 4</span></choice></span>
@@ -21767,7 +21779,7 @@
 					<span class="textunit"><text><star></star>Final Round!</text></span>
 				</pp>
 				<pp>
-					<span class="textunit battlebubble RAND_zzt"><face data-name="werewerewire"></face><text><imgalt>ZZT!</imgalt><img src="img/werewire_z.gif" /><img src="img/werewire_z.gif" /><img src="img/werewire_t.gif" /><img src="img/werewire_!.gif" /></text></span>
+					<span class="textunit battlebubble RAND_zzt"><face data-name="werewerewire"></face><text><imgalt>ZZT!</imgalt><img src="img/werewire_z.gif"/><img src="img/werewire_z.gif"/><img src="img/werewire_t.gif"/><img src="img/werewire_!.gif"/></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>BeCold</span><span><susie></susie>BeTough</span><span><ralsei></ralsei>BeSweet</span></choice></span>
@@ -22898,39 +22910,39 @@
 				
 			<br><hr><hr><br>
 			<!--REMINDER: unused items would be cool considering Noelle. Also document unique stats at some point-->
-			<hr><roomname>Wood Blade (1)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> Wood Blade (1)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>(It has bite marks...)</minitext></text></span>
 				</pp>
-			<hr><roomname>Mane Ax (2)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> Mane Ax (2)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>It... smells nice...</minitext></text></span>
 				</pp>
-			<hr><roomname>Red Scarf (3)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> Red Scarf (3)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>Huh? No, I'm not cold.</minitext></text></span>
 				</pp>
-			<hr><roomname>Spookysword (5)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> Spookysword (5)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>(It's kinda cool...)</minitext></text></span>
 				</pp>
-			<hr><roomname>Brave Ax (6)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> Brave Ax (6)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>(W-wow, what presence...)</minitext></text></span>
 				</pp>
-			<hr><roomname>Devilsknife (7)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> Devilsknife (7)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>...? It smiled at me?</minitext></text></span>
 				</pp>
-			<hr><roomname>Ragger (9)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> Ragger (9)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>Ouch! ... kind of nice</minitext></text></span>
 				</pp>
-			<hr><roomname>DaintyScarf (10)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> DaintyScarf (10)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>S-stop covering me with it!</minitext></text></span>
 				</pp>
-			<hr><roomname>SnowRing (12)</roomname>
+			<hr><roomname><img src="img/icon_14.png"/> SnowRing (12)</roomname>
 				<pp>
 					<span class="textunit"><text>A ring with the emblem of the <br>snowflake</text></span>
 				</pp>
@@ -22941,18 +22953,22 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>(Thank goodness...)</minitext></text></span>
 				</pp>
-			<hr><roomname>ThornRing (13)</roomname>
+			<hr><roomname><img src="img/icon_14.png"/> ThornRing (13)</roomname>
 				<pp>
 					<span class="textunit"><text>Wearer takes damage from pain <br>Reduces the TP cost of ice spells</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_14.png"/> Trance</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>A torture device?</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>...</minitext></text></span>
 				</pp>
-			<hr><roomname>BounceBlade (14)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> BounceBlade (14)</roomname>
 				<pp>
 					<span class="textunit"><text>A pink saber with a rubber blade. <br>Weak, but increases defence.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> Defense</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>What is this, rubber?</minitext></text></span>
@@ -22961,9 +22977,11 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>S-stop thwacking me!</minitext></text></span>
 				</pp>
-			<hr><roomname>MechaSaber (16)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> MechaSaber (16)</roomname>
 				<pp>
 					<span class="textunit"><text>The blade extends when you press the hilt. <br>CHA-CHK!</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_13.png"/> Annoying</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>*chk chk chk chk* Nah.</minitext></text></span>
@@ -22972,9 +22990,11 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>*chk* A-AHH! Scared myself...</minitext></text></span>
 				</pp>
-			<hr><roomname>AutoAxe (17)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> AutoAxe (17)</roomname>
 				<pp>
 					<span class="textunit"><text>Make sure to charge it by <br>plugging it into the wall.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_13.png"/> BadIdea</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>*chainsaw noises* Hahaha!!</minitext></text></span>
@@ -22983,9 +23003,11 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>*zrrt* A-AHH! Scared myself...</minitext></text></span>
 				</pp>
-			<hr><roomname>FiberScarf (18)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> FiberScarf (18)</roomname>
 				<pp>
 					<span class="textunit"><text>A scarf made of soft microfiber. <br>Balances attack and magic.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> Prickly</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>(Soft...)</minitext></text></span>
@@ -22994,7 +23016,7 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>Sure, I'll... huh? It's a weapon?</minitext></text></span>
 				</pp>
-			<hr><roomname>Ragger2 (19)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> Ragger2 (19)</roomname>
 				<pp>
 					<span class="textunit"><text>A sharp and scratchy scarf. <br>Worse healing, better attack.</text></span>
 				</pp>
@@ -23005,16 +23027,18 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>(It's like Santa's beard?)</minitext></text></span>
 				</pp>
-			<hr><roomname>BrokenSwd (20)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> BrokenSwd (20)</roomname>
 				<pp>
-					<span class="textunit"><text>A rejected sword cut into 2 pieces. <br>Not even you can equip this...</text></span>
+					<span class="textunit"><text>A rejected sword cut into 2 pieces. <br>Not even you can equip this...</text></span><!--
+					<br>
+					<span class="textunit"><text><img src="img/icon_6.png"/> Failure</text></span> unused-->
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>... this is trash.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Should we fix this...?</minitext></text></span>
 				</pp>
-			<hr><roomname>PuppetScarf (21)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> PuppetScarf (21)</roomname>
 				<pp>
 					<span class="textunit"><text>A scarf made of strange strings. <br>For those that abandon healing.</text></span>
 				</pp>
@@ -23023,7 +23047,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>If I have to fight...</minitext></text></span>
 				</pp>
-			<hr><roomname>FreezeRing (22)</roomname>
+			<hr><roomname><img src="img/icon_14.png"/> FreezeRing (22)</roomname>
 				<pp>
 					<span class="textunit"><text>A ring with a snowglobe on it. <br>... is that someone inside?</text></span>
 				</pp>
@@ -23035,17 +23059,19 @@
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>...</minitext></text></span>
 				</pp>
 			
-			<hr><roomname>Amber Card (1)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Amber Card (1)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>It's like a name-tag!</minitext></text></span>
 				</pp>
-			<hr><roomname>Dice Brace (2)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Dice Brace (2)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>Hey, y-you jumbled it...</minitext></text></span>
 				</pp>
-			<hr><roomname>Pink Ribbon (3)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Pink Ribbon (3)</roomname>
 				<pp>
 					<span class="textunit"><text>A cute hair ribbon that increases <br>the range bullets increase tension.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> GrazeArea</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>I said NO! C'mon already!</minitext></text></span>
@@ -23054,7 +23080,7 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>... feels familiar.</minitext></text></span>
 				</pp>
-			<hr><roomname>White Ribbon (4)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> White Ribbon (4)</roomname>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>I said NO! C'mon already!</minitext></text></span>
 					<br>
@@ -23062,17 +23088,19 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>... feels familiar.</minitext></text></span>
 				</pp>
-			<hr><roomname>IronShackle (5)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> IronShackle (5)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>I'm the ghost of holidays past!</minitext></text></span>
 				</pp>
-			<hr><roomname>Jevilstail (7)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Jevilstail (7)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>... (I like it...)</minitext></text></span>
 				</pp>
-			<hr><roomname>Silver Card (8)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Silver Card (8)</roomname>
 				<pp>
 					<span class="textunit"><text>A square charm that increases <br>dropped money by 5%</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> $ +5%</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Money, that's what I need.</minitext></text></span>
@@ -23081,16 +23109,18 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>It goes with my watch!</minitext></text></span>
 				</pp>
-			<hr><roomname>TwinRibbon (9)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> TwinRibbon (9)</roomname>
 				<pp>
 					<span class="textunit"><text>Two ribbons. You'll have to put <br>your hair into pigtails.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> GrazeArea</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>... it gets worse and worse.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Try around my horns!</minitext></text></span>
 				</pp>
-			<hr><roomname>GlowWrist (10)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> GlowWrist (10)</roomname>
 				<pp>
 					<span class="textunit"><text>A tough bracelet made of green wires, <br>and studded with sharp glowing lights.</text></span>
 				</pp>
@@ -23101,7 +23131,7 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>It's like holiday lights...</minitext></text></span>
 				</pp>
-			<hr><roomname>ChainMail (11)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> ChainMail (11)</roomname>
 				<pp>
 					<span class="textunit"><text>Chain-armor. Send it to 10 others <br>or it'll lose its defensive rating</text></span>
 				</pp>
@@ -23110,7 +23140,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>A letter?... For me...?</minitext></text></span>
 				</pp>
-			<hr><roomname>B.ShotBowtie (12)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> B.ShotBowtie (12)</roomname>
 				<pp>
 					<span class="textunit"><text>A handsome bowtie. Looks like the brand <br>name has been cut off.</text></span>
 				</pp>
@@ -23119,7 +23149,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Can I have suspenders?</minitext></text></span>
 				</pp>
-			<hr><roomname>SpikeBand (13)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> SpikeBand (13)</roomname>
 				<pp>
 					<span class="textunit"><text>A black wristband covered in spikes. <br>Has the tendency to get stuck to itself.</text></span>
 				</pp>
@@ -23128,9 +23158,11 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Um, do I... look tough?</minitext></text></span>
 				</pp>
-			<hr><roomname>Silver Watch (14)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Silver Watch (14)</roomname>
 				<pp>
 					<span class="textunit"><text>Grazing bullets affects <br>the turn length by 10% more</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> GrazeTime</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>It's clobbering time.</minitext></text></span>
@@ -23139,13 +23171,17 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>(Th-this was mine...)</minitext></text></span>
 				</pp>
-			<hr><roomname>TensionBow (15)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> TensionBow (15)</roomname>
 				<pp>
 					<span class="textunit"><text>Gain 10% more tension from <br>grazing bullets</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> TPGain</text></span>
 				</pp>
 			<hr><roomname>Mannequin (16)</roomname>
 				<pp>
 					<span class="textunit"><text>It's a mannequin with the clothes <br>permanently attached. Useless</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_4.png"/> ???</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Not even gonna ask.</minitext></text></span>
@@ -23154,7 +23190,7 @@
 					<br>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>(Why did they spend $300 on this!?)</minitext></text></span>
 				</pp>
-			<hr><roomname>FrayedBowtie (20)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> FrayedBowtie (20)</roomname>
 				<pp>
 					<span class="textunit"><text>An old bowtie. It seems to have <br>lost much of its defensive value.</text></span>
 				</pp>
@@ -23163,16 +23199,18 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>It's still wearable!</minitext></text></span>
 				</pp>
-			<hr><roomname>Dealmaker (21)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Dealmaker (21)</roomname>
 				<pp>
 					<span class="textunit"><text>Fashionable pink and yellow glasses. <br>Greatly increase $ gained, and...?</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> $ +30%</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Money, that's what I need.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Two pairs of glasses?</minitext></text></span>
 				</pp>
-			<hr><roomname>RoyalPin (22)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> RoyalPin (22)</roomname>
 				<pp>
 					<span class="textunit"><text>A brooch engraved with Queen's face. <br>Careful of the sharp part.</text></span>
 				</pp>
@@ -23200,19 +23238,19 @@
 					<span class="textunit"><text>LV<fillin>2</fillin> Leader <br>Commands.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>12</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>12</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>0</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>0</fillin></text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
 					<pause></pause>
-					<span class="textunit"><text>Dog:</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text>Dog: <img src="img/icon_dog.gif"/></text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
 					<br>
-					<span class="textunit"><text>Guts: 2</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/><img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">0% ACT</colspan></text></span>
@@ -23227,17 +23265,17 @@
 					<span class="textunit"><text>LV<fillin>2</fillin> Moss Enjoyer <br>Supports those <br>that find moss.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>16</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>16</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>1</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>1</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Rudeness 89</text></span>
+					<span class="textunit"><text><img src="img/icon_13.png"/> Rudeness 89</text></span>
 					<br>
-					<span class="textunit"><text>Purple Yes</text></span>
+					<span class="textunit"><text><img src="img/icon_13.png"/> Purple Yes</text></span>
 					<br>
-					<span class="textunit"><text>Guts: 2</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/><img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">50% Rude Buster</colspan></text></span>
@@ -23259,17 +23297,17 @@
 					<span class="textunit"><text>LV<fillin>2</fillin> Rude Prince <br>Friends with a <br>rude gesturer.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>10</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>10</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>9</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>9</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Sweetness 97</text></span>
+					<span class="textunit"><text><img src="img/icon_15.png"/> Sweetness 97</text></span>
 					<br>
-					<span class="textunit"><text>Fluffiness 2</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_12.png"/> Fluffiness <img src="img/icon_12.png"/><img src="img/icon_12.png"/></text></span>
 					<br>
-					<span class="textunit"><text>Guts:</text></span>
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts:</text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">16% Pacify</colspan></text></span>
@@ -23290,17 +23328,17 @@
 					<span class="textunit"><text>LV<fillin>2</fillin> Ice Trancer <br>Receives pain to <br>become stronger.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>3</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>3</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>6</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>6</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>12</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>12</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Coldness <fillin>47</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_17.png"/> Coldness <fillin>47</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Boldness <fillin>-12</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_16.png"/> Boldness <fillin>-12</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Guts:</text></span>
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts:</text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">32%    Heal Prayer</colspan></text></span>
@@ -23735,19 +23773,19 @@
 				</pp>
 			<hr><roomname>(95)</roomname>
 				<pp class="darkworld">
-					<span class="textunit" id="3_95_1"><face data-name="tenna"></face><text><star></star>What <imgalt>Lovely</imgalt><img class=funnytext src="img/funnytext_lovely.png" /> contestants <br>we've got today, folks---!!!</text></span>
+					<span class="textunit" id="3_95_1"><face data-name="tenna"></face><text><star></star>What <imgalt>Lovely</imgalt><img class=funnytext src="img/funnytext_lovely.png"/> contestants <br>we've got today, folks---!!!</text></span>
 					<span class="textunit"><face data-name="ralsei_37">Ralsei</face><text><star></star>Con... Contestants?</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>YES!!! You three are the <br><imgalt>STARS</imgalt><img class=funnytext src="img/funnytext_stars.png" /> of today's SHOW!!!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>YES!!! You three are the <br><imgalt>STARS</imgalt><img class=funnytext src="img/funnytext_stars.png"/> of today's SHOW!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Mr. Tenna's Marvelous Mystery <br>Board...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>TV TIME!</imgalt><img class=funnytext src="img/funnytext_tv_time.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>TV TIME!</imgalt><img class=funnytext src="img/funnytext_tv_time.png"/>!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_42">Susie</face><text><star></star>Wh... what!?</text></span>
 					<span class="textunit"><face data-name="susie_27"></face><text><star></star>What the hell are you <br>doing!?</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>What am <yellow>I</yellow> doing? You should be <br>wondering what <yellow>YOU'RE</yellow> doing!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You're about to play the <br>greatest game of YOUR life!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Answer CRAZY QUESTIONS!! Pass <br><imgalt>PHYSICAL CHALLENGES</imgalt><img class=funnytext src="img/funnytext_physical_challenges.gif" />...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>And you'll all win some <br>TV-Tastic <imgalt>PRIZES</imgalt><img class=funnytext src="img/funnytext_prizes.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Answer CRAZY QUESTIONS!! Pass <br><imgalt>PHYSICAL CHALLENGES</imgalt><img class=funnytext src="img/funnytext_physical_challenges.gif"/>...</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>And you'll all win some <br>TV-Tastic <imgalt>PRIZES</imgalt><img class=funnytext src="img/funnytext_prizes.png"/>!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>FLORAL COWBOY BATH CURTAINS!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>A BRAND NEW FAMILY CAR!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>BIG BRO'S TALKER-BACKER!!</text></span>
@@ -23760,18 +23798,18 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>ALL!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey Doctor Tennaville! What's <br>today's prescription?</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Why, it looks like a <br>prescription for... ONE <br><imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png" />!?</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Why, it looks like a <br>prescription for... ONE <br><imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png"/>!?</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>That's right! Today's <br><imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png" /> is this <br>season's MOST popular item...</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>That's right! Today's <br><imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png"/> is this <br>season's MOST popular item...</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text>Encased in our patented MYSTERY <br>BALL...</text></span><!--REMINDER: black-on-white-->
 					<span class="textunit"><face data-name="tenna"></face><text>This Dark World's ONE AND <br>GREATEST TREASURE!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey, bet you wanna know what's <br>INSIDE, don't ya, folks!?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Well, great news, CADOOS and <br>CADETTES! EVERYTHING can be <br>YOURS!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>All you have to do is...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>WIN!</imgalt><img class=funnytext src="img/funnytext_win_big.gif" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>WIN!</imgalt><img class=funnytext src="img/funnytext_win_big.gif"/></text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>WOW!!! I've never seen the <br><imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png" /> like THIS, <br>folks!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>WOW!!! I've never seen the <br><imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png"/> like THIS, <br>folks!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now don't touch that DIAL, <br>because TONIGHT, WE are gonna <br>have one HECK of a...</text></span>
 					<span class="textunit"><face data-name="susie_41">Susie</face><text><star></star>Who the hell is "WE"?</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Well, uh... this is a GAME <br>SHOW, and you guys are the <br>CONTESTANTs... right?</text></span>
@@ -23802,7 +23840,7 @@
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Oh, you WILL!?!? Oh, you <br>THRILL!?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Mike!! The lights!! The <br>sounds!! The whatzits!! The <br>doo-zits!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Turn 'em all on!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(And get me a cup of coffee.)</imgalt><img class=funnytext src="img/funnytext_coffee.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(And get me a cup of coffee.)</imgalt><img class=funnytext src="img/funnytext_coffee.png"/></text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Right over here, ladies and <br>germs!!</text></span>
 				</pp>
 			<hr><roomname>(96)</roomname>
@@ -23815,12 +23853,12 @@
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>That's right! Get out your <br>lighters for the LIGHTNERS, <br>ladies and germs!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Because it's time for a <br>crashing, banging, booming, <br>crooning...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>ROCK CONCERT</imgalt><img class=funnytext src="img/funnytext_rock_concert.gif" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>ROCK CONCERT</imgalt><img class=funnytext src="img/funnytext_rock_concert.gif"/>!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh, Kris! Remember DECEMBER? <br>Oh, that little musical <br>prodigy...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Remember when she'd grab the <br>remote and swap it from <br>cartoons...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>... to that WILD music video <br>channel Toriel FORBID you to <br>see?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Guess your mother's never been <br>a fan of alligators in bikinis.)</imgalt><img class=funnytext src="img/funnytext_alligator.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Guess your mother's never been <br>a fan of alligators in bikinis.)</imgalt><img class=funnytext src="img/funnytext_alligator.png"/></text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Dess, rocking her guitar and <br>singing along with those nasty, <br>nasty songs!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Didn't you all think she was <br>just so... COOL?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>HECK! Maybe you could get her <br>to come back and watch again <br>sometime!?</text></span>
@@ -23855,7 +23893,7 @@
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>RALSEI! Got those lyrics <br>ready!?</text></span>
 									<span class="textunit"><face data-name="ralsei_36">Ralsei</face><text><star></star>Umm, they seem a <br>little... inappropriate. <br>Do I have to...?</text></span>
 									<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>TOO BAD! NOW, AUDIENCE! Give it <br>up one last time...</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png"/></text></span>
 								</li>
 								<li>
 									<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Hey, Kris, way to make <br>us fail the song.</text></span>
@@ -23954,14 +23992,14 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>But don't worry. I, your loving <br>agent, have booked you ANOTHER <br>show!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>It starts in...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>What!? 3 seconds!?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Well, what are you doing!? Go <br>and <imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png" /> again!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Well, what are you doing!? Go <br>and <imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png"/> again!</text></span>
 					<br>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh no! Another GAME OVER!?</text></span>
 					<ul class="choicelevel">
 						<li>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>The audience would be throwing <br>tomatoes...</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>... if we didn't use them all <br>on the cooking show!</text></span>
-							<span class="textunit" id="3_96_3"><face data-name="tenna"></face><text><star></star>Alright, one more try! Let's <br><imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png" /> again!!</text></span>
+							<span class="textunit" id="3_96_3"><face data-name="tenna"></face><text><star></star>Alright, one more try! Let's <br><imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png"/> again!!</text></span>
 						</li>
 						<li>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey, this isn't time to <br>practice your free-form jazz!</text></span>
@@ -24178,8 +24216,8 @@
 					<span class="textunit"><face data-name="susie_56"></face><text><star></star>Just...</text></span>
 					<span class="textunit"><face data-name="susie_57"></face><text><star></star>... just...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wow, what an <br><imgalt>AMAZING</imgalt><img class="funnytext funtxt_amazing" src="img/funnytext_amazing_01.png" /> <br><span>performance!!!</span></text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>The audience has been brought <br>to <imgalt>TEARS</imgalt><img class=funnytext src="img/funnytext_tears.gif" />, folks!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wow, what an <br><imgalt>AMAZING</imgalt><img class="funnytext funtxt_amazing" src="img/funnytext_amazing_01.png"/> <br><span>performance!!!</span></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>The audience has been brought <br>to <imgalt>TEARS</imgalt><img class=funnytext src="img/funnytext_tears.gif"/>, folks!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>Who the HECK <br>are you!?</text><face data-name="ralsei_35">Ralsei</face></span><!--REMINDER: double face support required-->
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Haha, I was hoping you'd ask!</text></span>
@@ -24306,7 +24344,7 @@
 					<span class="textunit"><face data-name="susie_55"></face><text><star></star>We were so busy with the <br>game, I forgot she'd...</text></span>
 					<span class="textunit"><face data-name="susie_56"></face><text><star></star>Obviously she'd be part <br>of the Dark World, too!</text></span>
 					<span class="textunit"><face data-name="susie_55"></face><text><star></star>Damn, Kris, we have to <br>get to the Fountain <br>right now, or...</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Oh <imgalt>TORIEL</imgalt><img class=funnytext src="img/funnytext_toriel.gif" />...!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Oh <imgalt>TORIEL</imgalt><img class=funnytext src="img/funnytext_toriel.gif"/>...!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Phew! There you are, still <br>sleeping like a little angel!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Haha! Who the HECK knows what <br>I'D do if you woke up!</text></span>
@@ -24427,7 +24465,7 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You're INCREDIBLE! You're <br>AMAZING!! No... you're <br>MARVELOUS!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>I feel electric!! I feel like a <br>million bucks!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>This... this must be what HOPE <br>feels like!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>We're inventing a <br><imgalt>Hall of Fame</imgalt><img class=funnytext src="img/funnytext_hall_of_fame.png" /> just for you!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>We're inventing a <br><imgalt>Hall of Fame</imgalt><img class=funnytext src="img/funnytext_hall_of_fame.png"/> just for you!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>But... you gotta give <br>back Toriel.</text></span>
 					<span class="textunit"><face data-name="susie_51"></face><text><star></star>She's got people that <br>need her, too.</text></span>
@@ -24449,7 +24487,7 @@
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Audience, would you please <br>stand up and clap for our <br>winners!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>For outstanding kindness and <br>bravery, the Lightners have <br>won...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>THE <imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>THE <imgalt>GRAND PRIZE</imgalt><img class=funnytext src="img/funnytext_grand_prize.png"/>!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Here you go!! She's all yours, <br>folks!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>How wonderful!! The family's <br>all together again!!</text></span>
@@ -25693,14 +25731,14 @@
 					<span class="textunit"><face data-name="susie"></face><text><star></star>(Quit messing with your ears! <br>We're about to be on!)</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Would everyone please give a <br>warm welcome...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>To today's <imgalt>STAR</imgalt><img class=funnytext src="img/funnytext_star.png" /> <br>contestants!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>To today's <imgalt>STAR</imgalt><img class=funnytext src="img/funnytext_star.png"/> <br>contestants!!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Everyone! Please cheer their <br><imgalt>NAMES</imgalt><img class=funnytext src="img/funnytext_names.gif" />!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Everyone! Please cheer their <br><imgalt>NAMES</imgalt><img class=funnytext src="img/funnytext_names.gif"/>!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh, right.</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>CONTESTANTS!!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Your <imgalt>NAMES</imgalt><img class=funnytext src="img/funnytext_names.gif" /> please!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Your <imgalt>NAMES</imgalt><img class=funnytext src="img/funnytext_names.gif"/> please!!!</text></span>
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Sorry, you've <br>only got 3 letters <br>to work with!!</text></span>
 					<span class="textunit couchbubble"><face data-name="tenna"></face><text>I'd give you 4, <br>but the censors <br>would kill me!</text></span>
 					<span class="textunit" id="3_131_9"><face>(-)</face><text></text><choice class="fakechoice"><span>...</span></choice></span>
@@ -25723,15 +25761,15 @@
 								<li><add>KRS (default)</add>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>"KRS"? I told you! No KuRSing <br>or the censors will kill me!</text></span>
 									<span class="textunit" id="3_131_2"><face data-name="tenna"></face><text><star></star>Now that we've all been <br>(im)properly introduced...</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><star></star>Mike, the <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png" />, <br>please!</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>Mike, the <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png"/>, <br>please!</text></span>
 									<pause></pause>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's "GAME" SHOW will be... <br>A VIRTUAL ADVENTURE through TV <br>DESERT!</text></span>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>Each of you will use our <br>CUTTING EDGE, PROPRIETARY <br>CONTROLLER PADS...</text></span>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>To control FANTASY VERSIONS OF <br>YOURSELF in a world so REAL, <br>you'll forget IT'S NOT!</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><star></star>On your QUEST you will fight <br>BATTLES... quiz <imgalt>QUIZZES</imgalt><img class=funnytext src="img/funnytext_quizzes.png" />... <br>gain POINTs...</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><star></star>And maybe learn to <imgalt>LOVE</imgalt><img class=funnytext src="img/funnytext_love.png" /> <br>each other a little along the <br>way.</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>On your QUEST you will fight <br>BATTLES... quiz <imgalt>QUIZZES</imgalt><img class=funnytext src="img/funnytext_quizzes.png"/>... <br>gain POINTs...</text></span>
+									<span class="textunit"><face data-name="tenna"></face><text><star></star>And maybe learn to <imgalt>LOVE</imgalt><img class=funnytext src="img/funnytext_love.png"/> <br>each other a little along the <br>way.</text></span>
 									<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, don't TOUCH THAT DIAL, and <br>don't STOP THOSE SMILES!! <br>Because...</text></span>
-									<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span><!--REMINDER: could use a gif-->
+									<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png"/></text></span><!--REMINDER: could use a gif-->
 									<lnk class="textunit" data-link="3_193_1"></lnk>
 								</li>
 								<li><add>KRI</add>
@@ -25774,54 +25812,54 @@
 					<pause></pause>
 					<span class="textunit"><face>(-)</face><text>TV TIME CREDITS <br><br>Director <br>Mr. "Ant" Tenna <br><br>Special Thanks <br>Dark Fountain That Gives The World Form</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>STOP! STOP! <imgalt>STOP</imgalt><img class=funnytext src="img/funnytext_stop.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>STOP! STOP! <imgalt>STOP</imgalt><img class=funnytext src="img/funnytext_stop.png"/>!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>It CAN'T be over already!! NO!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>The <imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png" />'s still <br>only at 80%!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>The <imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png"/>'s still <br>only at 80%!!</text></span>
 					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>Huh?</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Ah, you see...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>That was just...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>... <imgalt>ROUND 1!</imgalt><img class=funnytext src="img/funnytext_round_1.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>... <imgalt>ROUND 1!</imgalt><img class=funnytext src="img/funnytext_round_1.png"/></text></span>
 					<span class="textunit"><face data-name="ralsei_37">Ralsei</face><text><star></star>There's... more than one <br>round...?</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Of course!! There's 2 <br><imgalt>ROUNDS</imgalt><img class=funnytext src="img/funnytext_rounds.png" />!! 2!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>You haven't ever heard of a <br>game show with just ONE <br><imgalt>ROUND</imgalt><img class=funnytext src="img/funnytext_round.png" />, have you!?</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Of course!! There's 2 <br><imgalt>ROUNDS</imgalt><img class=funnytext src="img/funnytext_rounds.png"/>!! 2!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>You haven't ever heard of a <br>game show with just ONE <br><imgalt>ROUND</imgalt><img class=funnytext src="img/funnytext_round.png"/>, have you!?</text></span>
 					<span class="textunit"><face data-name="susie_33">Susie</face><text><star></star>Uhh, nobody except <br>grandmas really even <br>watch -</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Exactly!! It's preposterous!! <br>Outrageous!! It'd be bad TV!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(And trust me. I know TV.)</imgalt><img class=funnytext src="img/funnytext_know_tv.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(And trust me. I know TV.)</imgalt><img class=funnytext src="img/funnytext_know_tv.png"/></text></span>
 					<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>... heh, well, I guess <br>we WERE having fun.</text></span>
 					<span class="textunit"><face data-name="ralsei_20">Ralsei</face><text><star></star>... Yeah! We can play <br>another round!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="ralsei_30"></face><text><star></star>Can we... change Susie's <br>name though?</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Great!! And no!! And now, a <br><imgalt>WORD</imgalt><img class=funnytext src="img/funnytext_word.png" /> from our sponsors!!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Great!! And no!! And now, a <br><imgalt>WORD</imgalt><img class=funnytext src="img/funnytext_word.png"/> from our sponsors!!</text></span>
 					<pause></pause>
 					<lnk class="textunit" data-link="3_135_1"></lnk>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit" id="3_131_4"><face data-name="tenna"></face><text><star></star>WELCOME back, everyone, to the <br>show that'll make you SCREAM at <br>your SCREEN,</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>TV TIME!</imgalt><img class=funnytext src="img/funnytext_tv_time.png" />!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>TV TIME!</imgalt><img class=funnytext src="img/funnytext_tv_time.png"/>!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's episode is brought to <br>you by our sponsor...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>The gushing pillar of darkness <br>that gives us all form - <br><imgalt>DARK FOUNTAIN</imgalt><img class=funnytext src="img/funnytext_dark_fountain.gif" />!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>The gushing pillar of darkness <br>that gives us all form - <br><imgalt>DARK FOUNTAIN</imgalt><img class=funnytext src="img/funnytext_dark_fountain.gif"/>!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now available in unsettling <br>obsidian and pulsating rainbow!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, MIKE, the <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png" />, <br>please!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, MIKE, the <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png"/>, <br>please!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Slather on that sunscreen, <br>everyone! Because...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's second - and FINAL - <br>board will be an aquatic <br>adventure to a desert island!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>That's right -- an all-expenses <br>paid trip to a beautiful <br>tropical paradise!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Haha! Wish I could go but I'm <br>just a big electric box <br>attached to the wall!! Haha!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Though I would look good with a tan.)</imgalt><img class=funnytext src="img/funnytext_tan.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Though I would look good with a tan.)</imgalt><img class=funnytext src="img/funnytext_tan.png"/></text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>For this BOARD's GOAL, you'll <br>be aiming to enter the floating <br>ATLANTIS STADIUM!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Legend has it, the best way <br>there is our super high budget <br>RAINBOW BRIDGE!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>However, the RAINBOW only <br>appears if TWO <imgalt>LOVERS</imgalt><img class=funnytext src="img/funnytext_lovers.gif" /> meet <br>at LOVER'S CLIFF!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>However, the RAINBOW only <br>appears if TWO <imgalt>LOVERS</imgalt><img class=funnytext src="img/funnytext_lovers.gif"/> meet <br>at LOVER'S CLIFF!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>By the way, don't forget to <br>take lots of PHOTOS while <br>you're on vacation!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, we're gonna have some real <br>fun in the sun today, SO DON'T <br>TOUCH THAT DIAL!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Well, okay, you can touch it. <br>Just be gentle.)</imgalt><img class=funnytext src="img/funnytext_gentle.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(Well, okay, you can touch it. <br>Just be gentle.)</imgalt><img class=funnytext src="img/funnytext_gentle.png"/></text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png"/></text></span>
 					<lnk class="textunit" data-link="3_141_1"></lnk>
 				</pp>
 				<pp class="darkworld">
@@ -25831,18 +25869,18 @@
 					<span class="textunit"><face data-name="susie_21"></face><text><star></star>We should have our own <br>band for REAL!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="ralsei_26">Ralsei</face><text><star></star>Okay!</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wow, folks! Looks like they've <br>reached the end of our <br>FINAL <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png" />!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wow, folks! Looks like they've <br>reached the end of our <br>FINAL <imgalt>BOARD</imgalt><img class=funnytext src="img/funnytext_board.png"/>!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>It's sad to say goodbye, but <br>when you gotta go... you gotta <br>go!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>MIKE, roll the credits...!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>STOP!!! <imgalt>BREAKING NEWS</imgalt><img class=funnytext src="img/funnytext_breaking_news.png" />!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>STOP!!! <imgalt>BREAKING NEWS</imgalt><img class=funnytext src="img/funnytext_breaking_news.png"/>!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Due to your SPEED, viewer <br>donations have been POURING <br>IN...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>And we have met the SPECIAL <br>INCENTIVE!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="ralsei_29">Ralsei</face><text><star></star>I... Incentive?</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>YES! The <imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png" /> <br>doesn't lie! The viewers' <br>voices are in...!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>YES! The <imgalt>FUN-O-METER</imgalt><img class=funnytext src="img/funnytext_fun_o_meter.png"/> <br>doesn't lie! The viewers' <br>voices are in...!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You've qualified for...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>The <imgalt>BONUS ROUND</imgalt><img class=funnytext src="img/funnytext_bonus_round.png" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>The <imgalt>BONUS ROUND</imgalt><img class=funnytext src="img/funnytext_bonus_round.png"/>!!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="ralsei_37">Ralsei</face><text><star></star>Err... there's ANOTHER <br>round...?</text></span>
 					<span class="textunit"><face data-name="susie_15">Susie</face><text><star></star>I mean, yeah, it was <br>FUN, but...</text></span>
@@ -25877,7 +25915,7 @@
 					<span class="textunit" id="3_131_6"><text><star></star>WELCOME BACK to another <br>ELECTRIFYING episode of TV <br>TIME!</text></span>
 					<span class="textunit"><face data-name="ralsei_37">Ralsei</face><text><star></star>W-wait a second...</text></span>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Today's board will take place <br>in beautiful TV CITY...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(But don't ask why the cars <br>don't have feet!)</imgalt><img class=funnytext src="img/funnytext_city_feet.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star><imgalt>(But don't ask why the cars <br>don't have feet!)</imgalt><img class=funnytext src="img/funnytext_city_feet.png"/></text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Collect two Q's from each <br>corner of the CITY, and...</text></span>
 					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>ENOUGH ALREADY!</text></span>
 					<span class="textunit"><face data-name="susie_16"></face><text><star></star>The game's over. Give <br>back Toriel and let us <br>go home. Now.</text></span>
@@ -25897,13 +25935,13 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Until you LIKE IT.</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_43">Susie</face><text><star></star>H-hey, what the heck are <br>you...</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star><imgalt>GAME OVER!?</imgalt><img class=funnytext src="img/funnytext_game_over.gif" /></text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>THE <imgalt>GAME</imgalt><img class=funnytext src="img/funnytext_game.gif" />'S never <imgalt>OVER</imgalt><img class=funnytext src="img/funnytext_over_small.gif" />!!!</text></span><!--REMINDER: gif colors are somehow broken-->
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star><imgalt>GAME OVER!?</imgalt><img class=funnytext src="img/funnytext_game_over.gif"/></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>THE <imgalt>GAME</imgalt><img class=funnytext src="img/funnytext_game.gif"/>'S never <imgalt>OVER</imgalt><img class=funnytext src="img/funnytext_over_small.gif"/>!!!</text></span><!--REMINDER: gif colors are somehow broken-->
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>And if YOU don't wanna play <br>anymore...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>It's time for ME to TAKE <br>CONTROL!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>MIKE, crank it all up to MAX!!!</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png"/></text></span>
 					<pause></pause>
 					<span class="textunit couchbubble"><face data-name="tenna"></face><text>Now it's <br>my turn <br>to play!!!</text></span>
 					<pause></pause>
@@ -26058,8 +26096,8 @@
 			<hr><roomname>[Green Room] (135)</roomname>
 				<pp class="darkworld">
 					<span class="textunit" id="3_135_1"><face data-name="ralsei_37">Ralsei</face><text><star></star>This place is...</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>How do you like my <br><imgalt>Green Room</imgalt><img class=funnytext src="img/funnytext_green_room.png" />?</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>It'll take some time before <br>round 2, so <imgalt>Relax and Enjoy...</imgalt><img class=funnytext src="img/funnytext_relax.gif" />!</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>How do you like my <br><imgalt>Green Room</imgalt><img class=funnytext src="img/funnytext_green_room.png"/>?</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>It'll take some time before <br>round 2, so <imgalt>Relax and Enjoy...</imgalt><img class=funnytext src="img/funnytext_relax.gif"/>!</text></span>
 					<br>
 					<span class="textunit" id="3_135_5"><face data-name="ralsei_53">Ralsei</face><text><star></star>I suppose... we should <br>get ready for the next <br>round.</text></span>
 					<pause></pause>
@@ -28209,11 +28247,11 @@
 				</pp>
 			<hr><roomname>(166)</roomname>
 				<pp class="darkworld">
-					<span class="textunit" id="3_166_1"><face data-name="tenna"></face><text><star></star>Welcome to EXTRA GAME! Tonight, <br>our <imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif" /> <br>will be...</text></span>
+					<span class="textunit" id="3_166_1"><face data-name="tenna"></face><text><star></star>Welcome to EXTRA GAME! Tonight, <br>our <imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif"/> <br>will be...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>W-Wait just a moment!! I'm <br>receiving an EMERGENCY <br>BROADCAST...</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Something MASSIVE has begun <br>ASSAULTING the CITY!!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Multiple buildings are up in <br><imgalt>FLAMES</imgalt><img class=funnytext src="img/funnytext_flames.gif" />!!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Multiple buildings are up in <br><imgalt>FLAMES</imgalt><img class=funnytext src="img/funnytext_flames.gif"/>!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>At this rate... everything... <br>EVERYONE will be destroyed!!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Can anyone PLEASE tell me who <br>this MONSTER IS!?</text></span>
 					<pause></pause>
@@ -28225,16 +28263,16 @@
 							<span class="textunit"><face data-name="susie_39">Susie</face><text><star></star>That's SusieZILLA, <br>chump.</text></span>
 							<span class="textunit"><face data-name="ralsei_20">Ralsei</face><text><star></star>Aww! Susie, your costume <br>is so adora... umm, <br>scary.</text></span>
 							<span class="textunit"><face data-name="susie_49">Susie</face><text><star></star>Heh, obviously.</text></span>
-							<span class="textunit" id="3_166_2"><face data-name="tenna">(-)</face><text><star></star>RIGHT! <imgalt>SUSIEZILLA</imgalt><img class=funnytext src="img/funnytext_susiezilla.gif" /> will be our <br>baddie smashing, hyper spinning <br>star of the day!</text></span>
+							<span class="textunit" id="3_166_2"><face data-name="tenna">(-)</face><text><star></star>RIGHT! <imgalt>SUSIEZILLA</imgalt><img class=funnytext src="img/funnytext_susiezilla.gif"/> will be our <br>baddie smashing, hyper spinning <br>star of the day!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Ms. Zilla!! You were watching <br>the monster marathon until you <br>fell asleep.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>I was so HAPPY to see someone <br>so excited to tune in!!!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>So this final event's a <br><imgalt>Special</imgalt><img class=funnytext src="img/funnytext_special.png" /> SERVICE just for you!!</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>So this final event's a <br><imgalt>Special</imgalt><img class=funnytext src="img/funnytext_special.png"/> SERVICE just for you!!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>And haha, by all means, please! <br>Come over to Kris's and watch <br>MORE TV ANYTIME!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>You don't even have to come in! <br>Stand outside and watch me <br>through the window!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>I won't tell anyone!! The <br>police will never know!! <br>Promise!! Hahaha!!</text></span>
 							<pause></pause>
 							<span class="textunit"><face data-name="susie_30">Susie</face><text><star></star>Uhh... so I do what. <br>Kick your ass?</text></span>
-							<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>No. Uhh, no. <imgalt>SUSIEZILLA</imgalt><img class=funnytext src="img/funnytext_susiezilla.gif" /> had a <br>change in her TV-loving heart.</text></span>
+							<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>No. Uhh, no. <imgalt>SUSIEZILLA</imgalt><img class=funnytext src="img/funnytext_susiezilla.gif"/> had a <br>change in her TV-loving heart.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>She may wreck the city, but <br>she'll protect me, TV statue, <br>with her life.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>For if the bad guys take me <br>down... There's no more TV!!!</text></span>
 							<ul class="choicelevel">
@@ -28255,7 +28293,7 @@
 											<pause></pause>
 											<span class="textunit" id="3_166_4"><face data-name="tenna"></face><text><star></star>Now, all READY!? Tail on <br>tight!? Taken your radioactive <br>breath mints!?</text></span>
 											<pause></pause>
-											<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+											<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png"/></text></span>
 										</li>
 										<li><choice>Let's go!</choice>
 											<lnk class="textunit" data-link="3_166_4"></lnk>
@@ -28495,32 +28533,32 @@
 					<span class="textunit"><face data-name="susie_27"></face><text><star></star>The hell did you do to <br>us!?</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Hon hon!! Cool your burners, <br>folks!!</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's <br><imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif" />...</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Today's <br><imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif"/>...</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Is the COOKING CHANNEL!</text></span>
 					<span class="textunit"><face data-name="susie_38">Susie</face><text><star></star>Oh, okay. That actually <br>makes sense.</text></span>
-					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Kris, your mother used to <br><imgalt>LOVE</imgalt><img class=funnytext src="img/funnytext_love.png" /> cooking shows, didn't <br>she?</text></span>
+					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Kris, your mother used to <br><imgalt>LOVE</imgalt><img class=funnytext src="img/funnytext_love.png"/> cooking shows, didn't <br>she?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Oh, how she'd LAUGH, glowingly, <br>along with each new recipe,</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Feverishly taking notes on each <br>step to make them for her <br>family...</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>As you and your <imgalt>BROTHER</imgalt><img class=funnytext src="img/funnytext_brother.gif" /> <br>pretended the chefs were <br>bungling the simplest parts!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>As you and your <imgalt>BROTHER</imgalt><img class=funnytext src="img/funnytext_brother.gif"/> <br>pretended the chefs were <br>bungling the simplest parts!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>"Darn!! I overcooked the <br>water!!"</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>"Oops!! No!! I keep breaking <br>the eggs!! Oops!!"</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>AHAHAHA!! Hahaha!! That sure <br>was <imgalt>FUN</imgalt><img class=funnytext src="img/funnytext_fun_loop.gif" />, wasn't it?</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>AHAHAHA!! Hahaha!! That sure <br>was <imgalt>FUN</imgalt><img class=funnytext src="img/funnytext_fun_loop.gif"/>, wasn't it?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Now, are you ready or what!?</text></span>
 					<span class="textunit"><text><br></text><choice><span>Instructions <br>please</span><span>Let's go</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>Instructions <br>please</choice>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Here are the instructions for <br>the <imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png" />.</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>Here are the instructions for <br>the <imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png"/>.</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>FOOD is FALLING! KRIS, CATCH <br>the food on your head to STACK <br>IT UP!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>THROW it to customers with [Z]! <br>If the food touches them, <br>they'll gobble it up!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>SPECIAL CUSTOMERS will <br>sometimes appear! They're worth <br><imgalt>BIG</imgalt><img class=funnytext src="img/funnytext_big.png" /> POINTs, don't miss 'em!</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>SPECIAL CUSTOMERS will <br>sometimes appear! They're worth <br><imgalt>BIG</imgalt><img class=funnytext src="img/funnytext_big.png"/> POINTs, don't miss 'em!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>SUSIE will probably cook <br>BURNING FIRE. JUMP over it with <br>[X]!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Missed food will also turn into <br>BURNING FIRE, so be careful!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Big stack, <imgalt>BIG</imgalt><img class=funnytext src="img/funnytext_big.png" /> POINTs! <br>But... You'll MOVE and JUMP <br>slower! Be careful!</text></span>
-							<span class="textunit"><face data-name="tenna"></face><text><star></star>Last until the end to <imgalt>WIN!</imgalt><img class=funnytext src="img/funnytext_win.gif" /> <br>But if the POPULARITY GAUGE <br>runs out, it's GAME OVER!</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>Big stack, <imgalt>BIG</imgalt><img class=funnytext src="img/funnytext_big.png"/> POINTs! <br>But... You'll MOVE and JUMP <br>slower! Be careful!</text></span>
+							<span class="textunit"><face data-name="tenna"></face><text><star></star>Last until the end to <imgalt>WIN!</imgalt><img class=funnytext src="img/funnytext_win.gif"/> <br>But if the POPULARITY GAUGE <br>runs out, it's GAME OVER!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Now don't touch that dial, OR <br>that fire!</text></span>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>Because...</text></span>
 							<pause></pause>
-							<span class="textunit" id="3_169_2"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+							<span class="textunit" id="3_169_2"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png"/></text></span>
 						</li>
 						<li><choice>Let's go</choice>
 							<span class="textunit"><face data-name="tenna"></face><text><star></star>THAT's what I like to hear!</text></span>
@@ -28547,7 +28585,7 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey, you know those famous <br>STARS they award to incredible <br>restaurants...?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You just got a NEGATIVE ONE!! <br>The world's first Anti-Good <br>Restaurant!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Gotta give it to ya, you're <br>trailblazers!</text></span>
-					<span class="textunit" id="3_169_3"><face data-name="tenna"></face><text><star></star>Alright, one more try! Let's <br><imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png" /> again!!</text></span>
+					<span class="textunit" id="3_169_3"><face data-name="tenna"></face><text><star></star>Alright, one more try! Let's <br><imgalt>CHALLENGE</imgalt><img class=funnytext src="img/funnytext_challenge.png"/> again!!</text></span>
 					<br>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You lost 2 TIMES?!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Can someone go check if the <br>fire is defective!?</text></span>
@@ -28891,7 +28929,7 @@
 					<span class="textunit" id="3_190_1"><face data-name="tenna"></face><text><star></star>And, I've been having SO much <br>fun playing with you all,</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>I... just don't want it to end!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>So... please... just say it <br>with me.</text></span>
-					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png" /></text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><br><imgalt>IT'S!! TV!! TIME!!!</imgalt><img class=funnytext src="img/funnytext_its_tv_time.png"/></text></span>
 					<span class="textunit"><face data-name="susie_27">Susie</face><text><star></star>Enough already!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="tenna">(-)</face><text><star></star>Wh-what are you doing!? I just <br>had this suit DE-AXED!!!</text></span>
@@ -28902,7 +28940,7 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Talking!! I've been doing too <br>much... TALKING!!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>NO MORE questions!! What you <br>need...</text></span>
 					<pause></pause>
-					<span class="textunit"><face data-name="tenna"></face><text><star></star>Is another <br><imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif" />!!</text></span>
+					<span class="textunit"><face data-name="tenna"></face><text><star></star>Is another <br><imgalt>PHYSICAL CHALLENGE</imgalt><img class=funnytext src="img/funnytext_physical_challenge.gif"/>!!</text></span>
 					<lnk class="textunit" data-link="3_tenna_1"></lnk>
 				</pp>
 			<hr><roomname>(192)</roomname>
@@ -30420,7 +30458,7 @@
 					<span class="textunit"><text></text><choice><span>Check</span><span>Boogie</span><span><susie></susie><ralsei></ralsei>Sharpshoot</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>Check</choice>
-							<span class="textunit"><text><star></star>SHADOWGUY - AT<sharp></sharp>DF<flat></flat> <br><star></star>Battling's just a side gig. <br>Playing on stage is the dream!</text></span><!--REMINDER: sharp and flat icons-->
+							<span class="textunit"><text><star></star>SHADOWGUY - AT<imgalt>♯</imgalt><img src="img/icon_sharp.png"/> DF<imgalt>♭</imgalt><img src="img/icon_flat.png"/> <br><star></star>Battling's just a side gig. <br>Playing on stage is the dream!</text></span>
 						</li>
 						<li><choice>Boogie</choice>
 							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Dance, <br>don't <br>get hit!</colspan></text></span>
@@ -30442,7 +30480,7 @@
 					<span class="textunit"><text></text><choice><span><susie></susie><ralsei></ralsei>Check</span><span><susie></susie><ralsei></ralsei>Boogie</span><span><susie></susie><ralsei></ralsei>Sharpshoot</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice><susie></susie><ralsei></ralsei>Check</choice>
-							<span class="textunit"><text><star></star>SHADOWGUY - AT<NIL>DF<NIL> <br><star></star>The "Sharpshoot" act can shoot <br>many things!</text></span><!--REMINDER: sharp and flat icons-->
+							<span class="textunit"><text><star></star>SHADOWGUY - AT<imgalt>♯</imgalt><img src="img/icon_sharp.png"/> DF<imgalt>♭</imgalt><img src="img/icon_flat.png"/> <br><star></star>The "Sharpshoot" act can shoot <br>many things!</text></span>
 						</li>
 						<li><choice><susie></susie><ralsei></ralsei>Sharpshoot</choice>
 							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Light <br>'em up</colspan></text></span>
@@ -30807,7 +30845,7 @@
 					<span class="textunit"><text></text><choice><span>Check</span><span>Bet</span><span><susie></susie>Cheat</span><span><ralsei></ralsei>Bribe</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>Check</choice>
-							<span class="textunit"><text><star></star>PIPPINS - AT<NIL>DF<NIL> <br><star></star>This crooked gambler from Card <br>Castle always bets it all!</text></span><!--REMINDER: missing icons-->
+							<span class="textunit"><text><star></star>PIPPINS - AT<imgalt>6</imgalt><img src="img/icon_dice6.png"/> DF<imgalt>3</imgalt><img src="img/icon_dice3.png"/> <br><star></star>This crooked gambler from Card <br>Castle always bets it all!</text></span>
 						</li>
 						<li><choice>Bet</choice>
 							<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Touch <br>Green <br>4 Mercy</colspan></text></span>
@@ -32177,7 +32215,7 @@
 			
 			<br><hr><hr><br>
 			
-			<hr><roomname>Saber10 (23)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> Saber10 (23)</roomname>
 				<pp>
 					<span class="textunit"><text>A saber made of 10 cactus needles. <br>Fortunately, can deal more than 10 damage.</text></span>
 				</pp>
@@ -32186,7 +32224,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>You want to... pierce my ears...?</minitext></text></span>
 				</pp>
-			<hr><roomname>ToxicAxe (24)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> ToxicAxe (24)</roomname>
 				<pp>
 					<span class="textunit"><text>An axe used to clear wastelands <br>in a fetid swamp. Not poison, but gross.</text></span>
 				</pp>
@@ -32195,7 +32233,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Could I wash it off first?</minitext></text></span>
 				</pp>
-			<hr><roomname>FlexScarf (25)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> FlexScarf (25)</roomname>
 				<pp>
 					<span class="textunit"><text>A scarf that is warm and fuzzy, but with <br>a metal core that lets it keep its shape.</text></span>
 				</pp>
@@ -32204,42 +32242,46 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>So pliable, like me!</minitext></text></span>
 				</pp>
-			<hr><roomname>BlackShard (26)</roomname>
+			<hr><roomname><img src="img/icon_18.png"/> BlackShard (26)</roomname>
 				<pp>
 					<span class="textunit"><text>A dagger-like shard of the Black Knife. <br>Strikes the weakness of dark-element enemies.</text></span>
 				</pp>
 			
-			<hr><roomname>Pink Ribbon (3)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Pink Ribbon (3)</roomname>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Nope. Not in 1st grade anymore.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Um... D-do I look cute...?</minitext></text></span>
 				</pp>
-			<hr><roomname>White Ribbon (4)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> White Ribbon (4)</roomname>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Nope. Not in 1st grade anymore.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Um... D-do I look cute...?</minitext></text></span>
 				</pp>
-			<hr><roomname>ShadowMantle (23)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> ShadowMantle (23)</roomname>
 				<pp>
 					<span class="textunit"><text>Shadows slip off like water. <br>Greatly protects against Dark and Star attacks.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Dark/Star</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Hell yeah, what's this?</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Sh-should I wear this...?</minitext></text></span>
 				</pp>
-			<hr><roomname>LodeStone (24)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> LodeStone (24)</roomname>
 				<pp>
 					<span class="textunit"><text>A lodestone token shaped like a snail's shell. <br>Enemy bullets give a bit more TP.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> TPGain</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Escargot? ... escargross.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>I have no opinions on snails!</minitext></text></span>
 				</pp>
-			<hr><roomname>GingerGuard (25)</roomname>
+			<hr><roomname><img src="img/icon_19.png"/> GingerGuard (25)</roomname>
 				<pp>
 					<span class="textunit"><text>A steel bangle tempered by extreme flame. <br>Its shape is humanoid in nature.</text></span>
 				</pp>
@@ -32248,9 +32290,11 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>A bigger one could make Kris!</minitext></text></span>
 				</pp>
-			<hr><roomname>BlueRibbon (26)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> BlueRibbon (26)</roomname>
 				<pp>
 					<span class="textunit"><text>A blue cheer bow. When the user uses a <br>healing move, it recovers slightly more HP.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> Heal+</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>ABSOLUTELY not.</minitext></text></span>
@@ -32287,7 +32331,7 @@
 					<br>
 					<span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Yeah!</minitext></text></span>
 				</pp>
-			<hr><roomname>TennaTie (27)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> TennaTie (27)</roomname>
 				<pp>
 					<span class="textunit"><text>A giant, heavy-duty, bullet-proof tie. <br>How to even wear it...?</text></span>
 				</pp>
@@ -32318,21 +32362,21 @@
 					<span class="textunit"><text>LV3 Enjoying <br>the youthful <br>days.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>14</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>14</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>0</fillin></text></span>
-					<br>
-					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
-					<pause></pause>
-					<span class="textunit"><text>Dog:</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>0</fillin></text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
 					<pause></pause>
-					<span class="textunit"><text><star></star> <fillin></fillin></text></span>
+					<span class="textunit"><text>Dog: <img src="img/icon_dog.gif"/></text></span>
 					<br>
-					<span class="textunit"><text>Guts: 2</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
+					<pause></pause>
+					<span class="textunit"><text>* <fillin></fillin></text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/><img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">0% ACT</colspan></text></span>
@@ -32345,19 +32389,19 @@
 					<span class="textunit"><text>LV3 Dark Actor <br>Participates in <br>occult ACTs.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>18</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>18</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Rudeness 100</text></span>
+					<span class="textunit"><text><img src="img/icon_13.png"/> Rudeness 100</text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
 					<pause></pause>
-					<span class="textunit"><text>Plucked <fillin></fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_plucked.gif"/> Plucked <fillin></fillin></text></span>
 					<br>
-					<span class="textunit"><text>Guts: 3</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/><img src="img/icon_9.png"/><img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">50% Rude Buster</colspan></text></span>
@@ -32379,19 +32423,19 @@
 					<span class="textunit"><text>LV3 Dark Prince <br>Dark-World being. <br>Has friends.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>12</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>12</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>11</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>11</fillin></text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
 					<pause></pause>
-					<span class="textunit"><text>Carried <fillin></fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_carried.png"/> Carried <fillin></fillin></text></span>
 					<br>
-					<span class="textunit"><text>Fluffiness 1</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_12.png"/> Fluffiness <img src="img/icon_12.png"/></text></span>
 					<br>
-					<span class="textunit"><text>Guts: 1</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">16% Pacify</colspan></text></span>
@@ -42731,21 +42775,21 @@
 					<span class="textunit"><face data-name="susie_24">Susie</face><text><star></star>Damn, that stupid cane <br>made us get hit!</text></span>
 				</pp>
 				<pp><!--REMINDER: incorrect offsets but blegh-->
-					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>鬼</imgalt><img class=inv src="img/guei_1.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>鬼</imgalt><img class=inv src="img/guei_1.png"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>我鬼</imgalt><img class=inv src="img/guei_2.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>我鬼</imgalt><img class=inv src="img/guei_2.png"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>我很鬼</imgalt><img class=inv src="img/guei_3.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>我很鬼</imgalt><img class=inv src="img/guei_3.png"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你鬼嗎</imgalt><img class=inv src="img/guei_4.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你鬼嗎</imgalt><img class=inv src="img/guei_4.png"/></text></span>
 					<br>
-					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你喜歡鬼嗎</imgalt><img class=inv src="img/guei_5.png" /></text></span> <!--two more pixels than 6 despite same text-->
-					<!--<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你鬼不鬼？</imgalt><img class=inv src="img/guei_5.png" /></text></span> unused-->
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你喜歡鬼嗎</imgalt><img class=inv src="img/guei_5.png"/></text></span> <!--two more pixels than 6 despite same text-->
+					<!--<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你鬼不鬼？</imgalt><img class=inv src="img/guei_5.png"/></text></span> unused-->
 					<br>
-					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你喜歡鬼嗎</imgalt><img class=inv src="img/guei_6.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>你喜歡鬼嗎</imgalt><img class=inv src="img/guei_6.png"/></text></span>
 					<br>
 					<add>Exercism/<ralsei></ralsei>Xercism</add>
-					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>哦 哦 哦！</imgalt><img class=inv src="img/guei_act.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="guei"></face><text><imgalt>哦 哦 哦！</imgalt><img class=inv src="img/guei_act.png"/></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Exercism</span><span><ralsei></ralsei>Xercism</span></choice></span>
@@ -42975,7 +43019,7 @@
 					<span class="textunit battlebubble"><face data-name="mizzle"></face><text>Am I still <br>dreaming?</text></span>
 					<br>
 					<add>Tired</add>
-					<span class="textunit battlebubble"><face data-name="mizzle"></face><text><imgalt>Z</imgalt><img class=inv src="img/mizzle_z.png" /></text></span>
+					<span class="textunit battlebubble"><face data-name="mizzle"></face><text><imgalt>Z</imgalt><img class=inv src="img/mizzle_z.png"/></text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Dazzle</span><span><susie></susie>Embezzle</span><span><ralsei></ralsei>Nuzzle</span><span><susie></susie><ralsei></ralsei>LullabyX</span></choice></span>
@@ -44668,22 +44712,27 @@
 				
 			<br><hr><hr><br>
 				
-			<hr><roomname>BlackShard (26)</roomname>
+			<hr><roomname><img src="img/icon_18.png"/> BlackShard (26)</roomname>
+				<pp>
+					<span class="textunit"><text><img src="img/icon_18.png"/> SlayDark</text></span>
+				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>... how is this a weapon?</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>I... shouldn't use it.</minitext></text></span>
 				</pp>
-			<hr><roomname>JingleBlade (50)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> JingleBlade (50)</roomname>
 				<pp>
 					<span class="textunit"><text>A lance-like sword with red-and-white stripes. <br>Perfect for jousting.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_10.png"/> Festive</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Sleigh the bad guys.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Mmm! Minty and festive!</minitext></text></span>
 				</pp>
-			<hr><roomname>ScarfMark (51)</roomname>
+			<hr><roomname><img src="img/icon_3.png"/> ScarfMark (51)</roomname>
 				<pp>
 					<span class="textunit"><text>A thin scarf with a deep sheen. Holy writing has <br>been pressed into it, imbuing it with magic.</text></span>
 				</pp>
@@ -44693,27 +44742,33 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>I'll keep my place.</minitext></text></span>
 				</pp>
-			<hr><roomname>JusticeAxe (52)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> JusticeAxe (52)</roomname>
 				<pp>
 					<span class="textunit"><text>It has no special powers. However, in order to <br>attain this item, you became much stronger!</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_5.png"/> ???</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Watch this, old man!</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>... isn't Susie amazing?</minitext></text></span>
 				</pp>
-			<hr><roomname>Winglade (53)</roomname>
+			<hr><roomname><img src="img/icon_1.png"/> Winglade (53)</roomname>
 				<pp>
 					<span class="textunit"><text>A majestic sword with a white feathered hilt. <br>Slightly increases money won.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> $ +5%</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Don't make me sneeze!</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Th-that tickles!</minitext></text></span>
 				</pp>
-			<hr><roomname>AbsorbAx (54)</roomname>
+			<hr><roomname><img src="img/icon_2.png"/> AbsorbAx (54)</roomname>
 				<pp>
 					<span class="textunit"><text>A long, curved axe with an indent. <br>Scoop up HP when you attack.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_13.png"/> Vampire</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Scoopin' time.</minitext></text></span>
@@ -44721,7 +44776,7 @@
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Don't scoop me!</minitext></text></span>
 				</pp>
 			
-			<hr><roomname>Waferguard (50)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> Waferguard (50)</roomname>
 				<pp>
 					<span class="textunit"><text>Although it looks brittle, it contains a magical <br>energy that blunts damage on impact. +4DF</text></span>
 				</pp>
@@ -44731,7 +44786,7 @@
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>It's got drool on it.</minitext></text></span>
 					<span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>(Too bad)</minitext></text></span>
 				</pp>
-			<hr><roomname>MysticBand (51)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> MysticBand (51)</roomname>
 				<pp>
 					<span class="textunit"><text>A silver armlet stained with amber. <br>Increases magic only. MAG +4</text></span>
 				</pp>
@@ -44740,7 +44795,7 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Behold! Heal Prayer!</minitext></text></span>
 				</pp>
-			<hr><roomname>PowerBand (52)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> PowerBand (52)</roomname>
 				<pp>
 					<span class="textunit"><text>A silver armlet stained with red essence. <br>Increases strength only. ATK +4</text></span>
 				</pp>
@@ -44749,18 +44804,22 @@
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>I'm juiced up!</minitext></text></span>
 				</pp>
-			<hr><roomname>PrincessRBN (53)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> PrincessRBN (53)</roomname>
 				<pp>
 					<span class="textunit"><text>Elegant lace ribbon with gloves, <br>delicate enough to see through. +4 DEF +2 ATK</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_7.png"/> Elegance</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Nah. Gloves don't fit.</minitext></text></span>
 					<br>
 					<add>Ralsei</add><span class="textunit"><face data-name="ralsei"></face><text><minitext><ralsei></ralsei>Cute! (Gloves don't fit)</minitext></text></span>
 				</pp>
-			<hr><roomname>GoldWidow (354)</roomname>
+			<hr><roomname><img src="img/icon_4.png"/> GoldWidow (354)</roomname>
 				<pp>
 					<span class="textunit"><text>A spider made of gold. It gathers coins <br>into it, reducing $ gained.</text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_6.png"/> $ -10%</text></span>
 				</pp>
 				<pp>
 					<add>Susie</add><span class="textunit"><face data-name="susie"></face><text><minitext><susie></susie>Spider on my head. K.</minitext></text></span>
@@ -44780,23 +44839,23 @@
 					<span class="textunit"><text>LV4 Dark Bead <br>Broken off, <br>but still locked.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>17</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>17</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>0</fillin></text></span>
-					<br>
-					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>0</fillin></text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
-					<pause></pause>
-					<span class="textunit"><text>Dog:</text></span><!--REMINDER: could use icon--><!--REMINDER: check if it's always in the second slot-->
-					<pause></pause>
-					<span class="textunit"><text><star></star>Purify <fillin></fillin></text></span>
-					<pause></pause>
-					<span class="textunit"><text><star></star>Slain <fillin></fillin></text></span>
 					<br>
-					<span class="textunit"><text>Guts: 3</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
+					<pause></pause>
+					<span class="textunit"><text>Dog: <img src="img/icon_dog.gif"/></text></span><!--REMINDER: check if it's always in the second slot-->
+					<pause></pause>
+					<span class="textunit"><text>* Purify <fillin></fillin></text></span>
+					<pause></pause>
+					<span class="textunit"><text>* Slain <fillin></fillin></text></span>
+					<br>
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/><img src="img/icon_9.png"/><img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">0% ACT</colspan></text></span>
@@ -44809,17 +44868,17 @@
 					<span class="textunit"><text>LV4 Axe of Justice <br>Faces fate <br>with the blade.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>22</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>22</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>3</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>3</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Rudeness 100</text></span>
+					<span class="textunit"><text><img src="img/icon_13.png"/> Rudeness 100</text></span>
 					<br>
-					<span class="textunit"><text>Healing <fillin>15</fillin></text></span>
+					<span class="textunit"><text>* Healing <fillin>15</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Guts: 4</text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts: <img src="img/icon_9.png"/><img src="img/icon_9.png"/><img src="img/icon_9.png"/><img src="img/icon_9.png"/></text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">50% Rude Buster</colspan></text></span>
@@ -44841,17 +44900,17 @@
 					<span class="textunit"><text>LV4 Stool Boy <br>Boy with stool <br>like abilities.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text>Attack: <fillin>15</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_1.png"/> Attack: <fillin>15</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Defense: <fillin>2</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_4.png"/> Defense: <fillin>2</fillin></text></span>
 					<br>
-					<span class="textunit"><text>Magic: <fillin>14</fillin></text></span>
+					<span class="textunit"><text><img src="img/icon_5.png"/> Magic: <fillin>14</fillin></text></span>
 					<br>
 					<span class="textunit"><text><colspan style="color:rgb(64,64,64)">???</colspan></text></span>
 					<br>
-					<span class="textunit"><text>Fluffiness <fillin>1</fillin></text></span><!--REMINDER: could use icon-->
+					<span class="textunit"><text><img src="img/icon_12.png"/> Fluffiness <img src="img/icon_12.png"/></text></span>
 					<br>
-					<span class="textunit"><text>Guts:</text></span>
+					<span class="textunit"><text><img src="img/icon_9.png"/> Guts:</text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">16% Pacify</colspan></text></span>
@@ -45030,8 +45089,8 @@
 					hrcount = 0;
 					chap++;
 				} else {
-					v.id = chap+'_'+v.innerHTML;
-					preindexcont += '<div data-indexlink="'+v.id+'" onclick="toroomindex()">'+v.innerHTML+'</div>';
+					v.id = chap+'_'+v.innerHTML.replace(/<img[^>]*?>/g, '');
+					preindexcont += '<div data-indexlink="'+v.id+'" onclick="toroomindex()">'+v.innerHTML.replace(/<img[^>]*?>/g, '')+'</div>';
 					hrcount = 0;
 				};
 			});
@@ -45385,7 +45444,7 @@
 					var zzstr2 = '';
 					zzarr.forEach((v2) => {
 						zzstr += v2;
-						zzstr2 += '<img class=inv src="img/werewire_'+v2+'.gif" />';
+						zzstr2 += '<img class=inv src="img/werewire_'+v2+'.gif"/>';
 					});
 					v.innerHTML = '<fillin><imgalt>'+zzstr+'</imgalt>'+zzstr2+'</fillin>';
 				});
