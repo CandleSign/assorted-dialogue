@@ -542,6 +542,9 @@
 				content:var(--char-icon);
 				display:inline-grid;
 			}
+			text {
+				position:relative;
+			}
 			text, #findresults { /*messy*/
 				imgalt {
 					position:absolute;
@@ -565,6 +568,44 @@
 					&.funnytext {
 						margin:-100% 0;
 						max-height:1em;
+					}
+				}
+			}
+			.tv-pose { /*why*/
+				background:url("img/tvpose.png");
+				width:131px;
+				height:149px;
+				position:absolute;
+				&.tv-pose-1 {
+					transform:scaleY(0.25);
+					top:-190px;
+					left:250px;
+				}
+				&.tv-pose-2 {
+					transform:scale(0.25);
+					top:-115px;
+					left:325px;
+				}
+				&.tv-pose-3, &.tv-pose-4, &.tv-pose-5, &.tv-pose-6 {
+					transform:scaleX(3) scaleY(2);
+					top:65px;
+					left:250px;
+				}
+				&:is(#textbox *) {
+					&.tv-pose-1 {
+						transform:scaleX(1.5) scaleY(0.375);
+						top:-220px;
+						left:410px;
+					}
+					&.tv-pose-2 {
+						transform:scale(0.375);
+						top:-115px;
+						left:520px;
+					}
+					&.tv-pose-3, &.tv-pose-4, &.tv-pose-5, &.tv-pose-6 {
+						transform:scaleX(4.5) scaleY(3);
+						top:150px;
+						left:410px;
 					}
 				}
 			}
@@ -30236,10 +30277,10 @@
 					<span class="textunit"><text><star></star>You couldn't find <br><br>your hand.</text></span>
 				</pp>
 			<hr><roomname>(239)</roomname>
-				<pp><!--transcript; missing images which are important in second case-->
-					<span class="textunit"><text><star></star>"T-V POSE" <br>Literally: Posing to a T. <br><br>Have you ever seen such a pose? This "victory pose" <br>is also rumored to be Tenna's "default pose," only <br>made when comfortable healthy. That it's his <br>"default" indicates he's "always winning", the "little <br>king" of his story, a true "sparker." <br><br>This pose's glory has some believing it may soon become a <br>phenomenon. Like everything Tenna, it's sure it will stay <br>relevant and amusing for ages to come!</text></span>
+				<pp>
+					<span class="textunit"><text><imgalt>"T-V POSE" <br>Literally: Posing to a T. <br><br>Have you ever seen such a pose? This "victory pose" <br>is also rumored to be Tenna's "default pose," only <br>made when comfortable healthy. That it's his <br>"default" indicates he's "always winning", the "little <br>king" of his story, a true "sparker." <br><br>This pose's glory has some believing it may soon become a <br>phenomenon. Like everything Tenna, it's sure it will stay <br>relevant and amusing for ages to come!</imgalt><img src="img/tvpose_explain_1.png"/></text></span>
 					<br>
-					<span class="textunit"><text><star></star>"T-V POSE" <br>Literally: <!--TV pose--> <br><br>Have you ever seen such a <!--TV pose-->?</text></span>
+					<span class="textunit"><text><imgalt>"T-V POSE" <br>Literally: <!--TV pose--> <br><br>Have you ever seen such a <!--TV pose-->? <br><!--TV pose--></imgalt><img src="img/tvpose_explain_2.png"/><div class="tv-pose tv-pose-1"></div><div class="tv-pose tv-pose-2"></div><div class="tv-pose tv-pose-3"></div><div class="tv-pose tv-pose-4"></div><div class="tv-pose tv-pose-5"></div><div class="tv-pose tv-pose-6"></div></text></span>
 				</pp>
 			<hr><roomname>(240)</roomname>
 				<pp class="darkworld">
@@ -44639,7 +44680,9 @@
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a bit hard to read the <br>characters, but it looks like <br>this...)</text></span>
-					<!--REMINDER: addimages (sprite is spr_dw_church_susiesnote)-->
+					<span class="textunit"><text><img src="img/susienotes_1.png"/></text></span>
+					<span class="textunit"><text><img src="img/susienotes_2.png"/></text></span>
+					<span class="textunit"><text><img src="img/susienotes_3.png"/></text></span>
 				</pp>
 			<hr><roomname>ClaimbClaws (31)</roomname>
 				<pp>
@@ -45416,6 +45459,23 @@
 			function AnchorToClipboard() {
 				navigator.clipboard.writeText(window.location.href.replace(/\?.+/, '')+'?anchor='+ancopy.dataset.anchorcopy);
 				//ancopy.classList.add('anchorcopied');
+			};
+			
+			var pitchnum = 0;
+			var tvpnum = 0;
+			setInterval(TVPoseUpdate, 33);
+			function TVPoseUpdate() {
+				//if ((focus && document.querySelector('#textbox .tv-pose')) || document.querySelector('.tv-pose-1').getBoundingClientRect().bottom > 0 || document.querySelector('.tv-pose-6').getBoundingClientRect()  ) {
+				pitchnum += (0.00004 + pitchnum/80);
+				if (pitchnum >= 0.8)
+					pitchnum = 0;
+				tvpnum += 1+(Math.random()*pitchnum*9-pitchnum*8);
+				document.querySelectorAll('.tv-pose-1').forEach((v) => v.style.backgroundPositionX = Math.floor(tvpnum/4)*131 + 'px');
+				document.querySelectorAll('.tv-pose-2').forEach((v) => v.style.backgroundPositionX = Math.floor(tvpnum/4+2)*131 + 'px');
+				document.querySelectorAll('.tv-pose-3').forEach((v) => v.style.backgroundPositionX = Math.floor(tvpnum/5-1)*131 + 'px');
+				document.querySelectorAll('.tv-pose-4').forEach((v) => v.style.backgroundPositionX = Math.floor(tvpnum/5)*131 + 'px');
+				document.querySelectorAll('.tv-pose-5').forEach((v) => v.style.backgroundPositionX = Math.floor(tvpnum/5+1)*131 + 'px');
+				document.querySelectorAll('.tv-pose-6').forEach((v) => v.style.backgroundPositionX = Math.floor(tvpnum/5+2)*131 + 'px');
 			};
 			
 			function Randomize() {
