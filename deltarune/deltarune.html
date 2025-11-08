@@ -392,7 +392,7 @@
 					}
 					.funnytext {
 						animation:0.2s steps(1,end) infinite shake;
-						max-height:unset;
+						max-height:unset !important;
 					}
 					.funtxt_amazing {
 						position:absolute;
@@ -741,6 +741,23 @@
 							filter:invert(1) hue-rotate(25deg) brightness(2);
 						}
 					}
+					#find_face_suggs {
+						position:absolute;
+						left:100px;
+						padding:3px;
+						background:#000c;
+						border:1px solid white;
+						border-radius:3px;
+						line-height:0.8em;
+						z-index:3;
+						&:empty {
+							display:none;
+						}
+						.find_face_sug:hover {
+							color:yellow;
+							cursor:pointer;
+						}
+					}
 					label, input[type="checkbox"] {
 						cursor:pointer;
 					}
@@ -775,11 +792,15 @@
 					}
 				}
 				#randomizer {
+					transition:0.1s;
 					&::before {
 						position:absolute;
 						right:0;
 						transform:translateY(5px);
 						cursor:pointer;
+					}
+					&:not(:hover) {
+						filter:brightness(0.8);
 					}
 					&.rand1::before {
 						content:url("data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"40\" viewBox=\"0 0 40 40\"%3E%3Crect xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"3\" fill=\"white\" stroke=\"white\" rx=\"3\" ry=\"3\" height=\"20\" width=\"20\" y=\"3\" x=\"3\"/%3E%3Ccircle r=\"3\" cx=\"13\" cy=\"13\" fill=\"black\"/%3E%3C/svg%3E");
@@ -813,11 +834,13 @@
 				<div id="txtfindcont">
 					<input id="find_chapter" placeholder="chapter:"/>
 					<input id="find_face" placeholder="speaker:"/>
+					<div id="find_face_suggs"></div>
 					<input id="find_txt" placeholder="text:" required/>
 					<br>
 					<label for="find_full">Full words</label><input id="find_full" type="checkbox" name="find_full"/>
 					<label for="find_case">Case-sensitive</label><input id="find_case" type="checkbox" name="find_case"/>
 					<label for="find_regex">Regex</label><input id="find_regex" type="checkbox" name="find_regex"/>
+					<label for="find_any">Any order</label><input id="find_any" type="checkbox" name="find_any"/>
 					<div id="findresults"></div>
 					<div id="closefind" onclick="findres.innerHTML='';">X</div>
 				</div>
@@ -33457,27 +33480,27 @@
 					<span class="textunit"><face data-name="mettaton"></face><text><star></star>Oh my, I think something just <br>awakened within me...</text></span>
 					<br>
 					<add>Tenna dead</add>
-					<span class="textunit"><text><star></star>Oh my... I'm so starved for <br>entertainment...</text></span>
-					<span class="textunit"><text><star></star>It greatly embarrasses me to <br>ask this, but...</text></span>
-					<span class="textunit"><text><star></star>Would you two have anything I <br>could watch?</text></span>
+					<span class="textunit"><face data-name="mettaton"></face><text><star></star>Oh my... I'm so starved for <br>entertainment...</text></span>
+					<span class="textunit"><face data-name="mettaton"></face><text><star></star>It greatly embarrasses me to <br>ask this, but...</text></span>
+					<span class="textunit"><face data-name="mettaton"></face><text><star></star>Would you two have anything I <br>could watch?</text></span>
 					<span class="textunit"><text><br><br></text><choice><span>Suggest Tenna</span><span>Don't suggest <br>anything</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>Suggest Tenna</choice>
 							<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>Actually, we have <br>like... this friend, <br>Tenna...</text></span>
-							<span class="textunit"><face>(-)</face><text><star></star>Oh? They're like a little video <br>boy?</text></span>
+							<span class="textunit"><face data-name="mettaton">(-)</face><text><star></star>Oh? They're like a little video <br>boy?</text></span>
 							<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>... I mean... <br>actually...</text></span>
 							<span class="textunit"><face data-name="susie_53"></face><text><star></star>They're kind of... <br>broken right now.</text></span>
 							<span class="textunit"><face data-name="susie_52"></face><text><star></star>Yeah, uh... nevermind.</text></span>
-							<span class="textunit"><face>(-)</face><text><star></star>Broken? Oh my, what are they, <br>some kind of robot...?</text></span>
+							<span class="textunit"><face data-name="mettaton">(-)</face><text><star></star>Broken? Oh my, what are they, <br>some kind of robot...?</text></span>
 							<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>No, they're just... I <br>mean, we'll fix him. I <br>think.</text></span>
 						</li>
 						<li><choice>Don't suggest <br>anything</choice>
 							<span class="textunit"><face data-name="mettaton"></face><text><star></star>I see... well, thank you, <br>darling.</text></span>
 						</li>
 					</ul>
-					<span class="textunit"><text><star></star>... sometimes... it's <br>difficult.</text></span>
-					<span class="textunit"><text><star></star>... not leaving this house for <br>days on end.</text></span>
-					<span class="textunit"><text><star></star>Darling, if you had anything, <br>I'd...</text></span>
+					<span class="textunit"><face data-name="mettaton"></face><text><star></star>... sometimes... it's <br>difficult.</text></span>
+					<span class="textunit"><face data-name="mettaton"></face><text><star></star>... not leaving this house for <br>days on end.</text></span>
+					<span class="textunit"><face data-name="mettaton"></face><text><star></star>Darling, if you had anything, <br>I'd...</text></span>
 					<br>
 					<span class="textunit"><text><star></star>(Knocking might wake somebody <br>up...)</text></span>
 				</pp>
@@ -42348,7 +42371,7 @@
 							</ul>
 						</li>
 					</ul>
-					<add>Tenna dead</add>
+					<add>Shadowguy/Pippins/Zapper not recruited</add>
 					<span class="textunit"><text><star></star>(Mystery game! Currently under <br>construction!)</text></span>
 				</pp>
 				<pp class="darkworld">
@@ -45657,9 +45680,8 @@
 			document.querySelectorAll('hr, roomname, chapter').forEach(function(v) {
 				if (v.tagName == 'HR') {
 					hrcount++;
-					if (hrcount == 2) {
+					if (hrcount == 2)
 						preindexcont += '<hr>';
-					};
 				} else if (v.tagName == 'CHAPTER') {
 					//if 
 					//	indexcont.innerHTML = 
@@ -45694,29 +45716,73 @@
 				'shadowguy':['cat mike'],
 				'zapper':['cowboy hat mike'],
 				'top chef':['topchef'],
+				'game':['none'],
+				'narrator':['none'],
 			};
+			var allnames = [];
+			document.querySelectorAll('face[data-name]').forEach((v) => {
+				var rfac = v.dataset.name.replace(/_\d+$/, '');
+				if (!allnames.find((v2) => v2==rfac))
+					allnames.push(rfac);
+			});
+			Object.keys(aliases).forEach((v) =>
+				allnames.push(v));
+			allnames.sort();
 			var findch = document.querySelector('#find_chapter');
 			var findfa = document.querySelector('#find_face');
+			var ffasug = document.querySelector('#find_face_suggs');
 			var findtx = document.querySelector('#find_txt');
+			
 			var findfu = document.querySelector('#find_full');
 			var findca = document.querySelector('#find_case');
 			var findre = document.querySelector('#find_regex');
+			var findan = document.querySelector('#find_any');
+			
 			var findres = document.querySelector('#findresults');
+			findfu.addEventListener('change', depcheck);
+			findan.addEventListener('change', depcheck);
+			function depcheck(ev) {
+				if (ev.currentTarget==findfu && !findfu.checked) {
+					findan.checked = false;
+				} else if (ev.currentTarget==findan && findan.checked) {
+					findfu.checked = true;
+				};
+			};
 			findch.addEventListener('keydown', findtext);
 			findfa.addEventListener('keydown', findtext);
+			findfa.addEventListener('input', namesugg);
+			findfa.addEventListener('blur', ((ev) => ffasug.innerHTML = ''));
 			findtx.addEventListener('keydown', findtext);
+			function namesugg(ev) {
+				ffasug.innerHTML = '';
+				if (findfa.value.length > 0) {
+					var reg = new RegExp('^'+findfa.value, 'i');
+					allnames.forEach((v) => {
+						if (v.match(reg)) {
+							var sug = Object.assign(document.createElement('div'), {classList:'find_face_sug',innerHTML:v});
+							sug.addEventListener('click', autofill);
+							ffasug.appendChild(sug);
+						};
+					});
+				};
+			};
+			function autofill(ev) {
+				findfa.value = ev.currentTarget.innerHTML;
+				ffasug.innerHTML = '';
+				findfa.focus();
+			};
 			function findtext(ev) {
 				if (ev.code != 'Enter' || !(findch.value || findfa.value || findtx.value))
 					return;
-				var rfindfa = findfa.value;
+				var rfindfa = findfa.value.trim();
 				//var rftx = (findre.checked?findtx.value:RegExp.escape(findtx.value));
 				var rftx = findtx.value || '';
 				if (!findre.checked) {
-					try { //RegExp.escape is recent baseline, workaround for Opera
-						rftx = RegExp.escape(rftx);
-					} catch(err) {
+					//try { //RegExp.escape is recent baseline, workaround for Opera
+					//	rftx = RegExp.escape(rftx); //unfortunately this messes way too much with findan RegMatchF
+					//} catch(err) {
 						rftx = rftx.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-					};
+					//};
 				};
 				index.classList.add('collapsed');
 				findres.innerHTML = '';
@@ -45725,7 +45791,7 @@
 				var regexprfa = new RegExp('\\b'+rfindfa.toLowerCase()+'\\b');
 				var regexprfa2 = new RegExp('\\b'+rfindfa.toLowerCase()+'_');//\d+$');
 				var regexprfa3 = [];
-				(aliases[rfindfa.toLowerCase()] || []).forEach(function(v) {
+				(aliases[rfindfa.toLowerCase()] || []).forEach((v) => {
 					regexprfa3.push(new RegExp('\\b'+v+'\\b'));
 					regexprfa3.push(new RegExp('\\b'+v+'_'));
 				});
@@ -45741,20 +45807,22 @@
 							fac = fac.previousElementSibling;
 						};
 						fac = fac?fac.dataset.name:'';
-						var regmatch = txt.match(regexpr);
+						var regmatch = RegMatchF(txt, findan.checked?rftx:regexpr, findan.checked);
 						//var fac = v.previousElementSibling && v.previousElementSibling.dataset.name || '';//.replace(/_.+/, '');
-						ref3check = false;
-						regexprfa3.forEach(function(v) {
-							ref3check = ref3check||fac.match(v);
+						var ref3check = false;
+						var nonecheck = rfindfa=='none';
+						(aliases[rfindfa.toLowerCase()] || []).forEach((v,k) => {
+							ref3check = ref3check||fac.match(regexprfa3[k*2])||fac.match(regexprfa3[k*2+1]);
+							nonecheck = nonecheck||v=='none';
 						});
-						if (regmatch && (!rfindfa || (rfindfa=='choice' && v.closest('.textunit')) || (rfindfa=='none' && !fac) || fac.match(regexprfa) || fac.match(regexprfa2) || ref3check) && (!findch.value || findch.value==v.closest('.textunit').dataset.chap)) {
-							if (rfindfa && rfindfa!='none' && v.classList.contains('choicelike') && fac.match('/')) {
+						if (regmatch && (!rfindfa || (rfindfa=='choice' && v.closest('.textunit')) || (nonecheck && !fac) || fac.match(regexprfa) || fac.match(regexprfa2) || ref3check) && (!findch.value || findch.value.trim()==v.closest('.textunit').dataset.chap)) {
+							if (rfindfa && !nonecheck && v.classList.contains('choicelike') && fac.match('/')) {
 								regmatch = false;
 								fac.match(/[^\/]+/).forEach(function(v2,i) {
 									if (v2.match(regexprfa) || v2.match(regexprfa2)) {
 										console.log(v.innerHTML);
 										txt = v.children.item(i).innerHTML.replace(/<br>/g, '');
-										regmatch = txt.match(regexpr);
+										regmatch = RegMatchF(txt, findan.checked?rftx:regexpr, findan.checked);
 									};
 								});
 							};
@@ -45774,9 +45842,8 @@
 					};
 				});
 				if (resarr.length <= 500) {
-					for (var i=0; i<resarr.length; i++) {
+					for (var i=0; i<resarr.length; i++)
 						findres.innerHTML += (findres.innerHTML?'<hr>':'')+resarr[i];
-					};
 					findres.innerHTML = '<p class="resnum">('+resarr.length+' results)</p>'+findres.innerHTML;
 				} else {
 					findres.innerHTML = 'OVERFLOW ('+resarr.length+' results)';
@@ -45784,6 +45851,24 @@
 			};
 			function resultjump() {
 				focusnum(Number(event.currentTarget.dataset.findlink));
+			};
+			function RegMatchF(txt, mat, any) {
+				if (any) {
+					var wrds = mat.split(' ') || [];
+					//var wrds = mat.match(/\w+/g) || [];
+					(txt.split(' ') || []).forEach((v) => {
+					//(txt.match(/[\w'-]+/g) || []).forEach((v) => { //REMINDER: there may be more punctuation signs worth adding
+						for (var i=wrds.length-1; i>=0; i--) {
+							var regexpr = new RegExp('\\b'+wrds[i]+'\\b', findca.checked?'':'i');
+							if (v.match(regexpr)) {
+								wrds.splice(i,1);
+							};
+						};
+					});
+					return wrds.length==0;
+				} else {
+					return txt.match(mat);
+				};
 			};
 			
 
@@ -45864,9 +45949,8 @@
 							for (var i2=0; i2<chstrs.length; i2++) {
 								if (event.currentTarget.innerHTML == chstrs[i2]) {
 									var el = chs[i].nextElementSibling;
-									while (el != null && el.dataset.id == null) {
+									while (el != null && el.dataset.id == null)
 										el = el.nextElementSibling;
-									};
 									if (el != null)
 										focusf(el);
 									return;
@@ -45931,15 +46015,13 @@
 						boxtext.innerHTML = '<ul><li>' + boxtext.innerHTML + '</li></ul>'; //REMINDER: should restrict stars to lines that actually have them
 						boxtext.innerHTML = boxtext.innerHTML.replaceAll('<star></star>', '</li><li>').replaceAll('<ul><li></li>', '<ul>').replaceAll('<li></li></ul>', '</ul>').replaceAll('<ul></ul>', '<ul><li></li></ul>'); //this is all really stupid
 					};
-					boxtext.querySelectorAll('img').forEach(function(v) {
-						v.style.width = v.naturalWidth * 1.5 * num + 'px';
-					});
+					boxtext.querySelectorAll('img').forEach((v) =>
+						v.style.width = v.naturalWidth * 1.5 * num + 'px');
 					if (el.querySelector('choice')) {
 						var cols = '';
 						var chnum = el.querySelector('choice').getElementsByTagName('span').length;
-						for (var i=0; i<chnum; i++) {
+						for (var i=0; i<chnum; i++)
 							cols += '1fr ';
-						};
 						boxtext.innerHTML = boxtext.innerHTML + '<div class="choicecols" data-origid="' + el.dataset.id + '">' + el.querySelector('choice').innerHTML.replaceAll('<span', '<div').replaceAll('</span', '</div') + '</div>';
 						boxtext.querySelector('.choicecols').style.gridTemplateColumns = cols;
 						if (!origtext.innerHTML && (chnum==3 || chnum==4)) {
@@ -46027,9 +46109,8 @@
 					dislikes.splice(num, 1);
 				};
 				likesel[Math.floor(Math.random()*3)] = likes[Math.floor(Math.random()*likes.length)];
-				cloverlikes.querySelectorAll('span').forEach((v,i) => {
-					v.innerHTML = likesel[i];
-				});
+				cloverlikes.querySelectorAll('span').forEach((v,i) =>
+					v.innerHTML = likesel[i]);
 				
 				var zzt = document.querySelectorAll('.RAND_zzt text');
 				zzts = ['Z','T','!','B','G'];
@@ -46041,13 +46122,11 @@
 					} else if (pre==1) {
 						zzarr = ['B','Z','Z','!'];
 					} else {
-						for (var i=0; i<3; i++) {
+						for (var i=0; i<3; i++)
 							zzarr.push(zzts[Math.floor(Math.random()*5)]);
-						};
 						zzarr.push('!');
-						if (Math.random()>1/3) {
+						if (Math.random()>1/3)
 							zzarr[0] = 'Z';
-						};
 					};
 					var zzstr = '';
 					var zzstr2 = '';
@@ -46061,9 +46140,8 @@
 				var drama = document.querySelector('.RAND_drama text');
 				var dramachars = ['?', '@', '!', '*', '&'];
 				var dramapost = '';
-				for (var i=0; i<4; i++) {
+				for (var i=0; i<4; i++)
 					dramapost += dramachars[Math.floor(Math.random()*4)];
-				};
 				drama.innerHTML = '<colspan style="color:rgb(255,0,0)"><fillin>'+dramapost+'</fillin></colspan>';
 				
 				var mamma = document.querySelectorAll('.RAND_mamma~*:not(.RAND_mamma_end~*) text');
@@ -46071,9 +46149,8 @@
 				mamma.forEach((v,k) => {
 					if (k<15 || k>16) {
 						var mamstr = '';
-						for (var i=0; i<2+Math.floor(Math.random()*6); i++) {
+						for (var i=0; i<2+Math.floor(Math.random()*6); i++)
 							mamstr += mammas[Math.floor(Math.random()*9)];
-						};
 						v.innerHTML = '<star></star><fillin>'+AutoBreak(mamstr.replace(/ $/, '')).replace(/ $/, '')+'</fillin>';
 					};
 				});
