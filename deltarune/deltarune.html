@@ -45710,7 +45710,7 @@
 				'game':['none'],
 				'narrator':['none'],
 			};
-			var allnames = [];
+			var allnames = ['none','choice'];
 			document.querySelectorAll('face[data-name]').forEach((v) => {
 				var rfac = v.dataset.name.replace(/_\d+$/, '');
 				rfac.split('/').forEach((v1) => {
@@ -45878,9 +45878,9 @@
 						//});
 						//if (regmatch && (!rfindfa || (rfindfa=='choice' && v.closest('.textunit')) || (nonecheck && !fac) || fac.match(regexprfa) || fac.match(regexprfa2) || ref3check) && (!findch.value || findch.value.trim()==v.closest('.textunit').dataset.chap)) {
 						var fmat = FacMatchF(fac,regexprfa);
-						if (regmatch && (!(rfindfa||nfindfa) || (rfindfa=='choice' && v.closest('.textunit')) || (fmat[1] && !fac) || fmat[0]) && (!findch.value || findch.value.trim()==v.closest('.textunit').dataset.chap)) {
+						if (regmatch && (!(rfindfa||nfindfa) || (rfindfa=='choice' && v.closest('.textunit')) || (fmat[1] && !fac) || (fmat[0] && fac)) && (!findch.value || findch.value.trim()==v.closest('.textunit').dataset.chap)) {
 							//if (rfindfa && !nonecheck && v.classList.contains('choicelike') && fac.match('/')) {
-							if (rfindfa && !fmat[1] && v.classList.contains('choicelike') && fac.match('/')) {
+							if (rfindfa && v.classList.contains('choicelike') && fac.match('/')) {
 								regmatch = false;
 								fac.match(/[^\/]+/g).forEach(function(v2,i) {
 									//if (v2.match(regexprfa) || v2.match(regexprfa2)) {
@@ -45924,7 +45924,7 @@
 				//	nonecheck = nonecheck||v=='none';
 				//});
 				var check = mat[0].length==0;
-				var nonecheck = false;
+				var nonecheck = mat[0].length==0;
 				for (var i=0; i<mat[0].length; i++) {
 					check = check||fac.match(mat[1][i])||fac.match(mat[2][i]);
 					nonecheck = nonecheck||mat[0][i]=='none';
