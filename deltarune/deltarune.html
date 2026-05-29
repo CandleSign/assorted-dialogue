@@ -468,6 +468,25 @@
 						text-shadow:-3px 0 white, 0 -3px white, 3px 0 white, 0 3px white;
 					}
 				}
+				&.eval {
+					text-align:center;
+					:is(.evalcols2, .evalcols3, .evalcols3_) {
+						text-align:left;
+						display:grid;
+						span {
+							display:block;
+						}
+					}
+					.evalcols2 {
+						grid-template-columns:2fr 1fr;
+					}
+					.evalcols3 {
+						grid-template-columns:3fr 1fr 1fr;
+					}
+					.evalcols3_ {
+						grid-template-columns:1fr 1fr 3fr;
+					}
+				}
 				#anchorcopy {
 					position:absolute;
 					top:calc(50% - 10px);;
@@ -609,9 +628,21 @@
 					}
 				}
 			}
-			hr:not(#uicont *) {
+			hr:not(#uicont *, .textunit *, #textbox *) {
 				margin-top:30px;
 				margin-bottom:15px;
+			}
+			hr:is(.textunit *, #textbox *) {
+				height:3px;
+				background:white;
+				border:white;
+				&:is(.textunit *) {
+					display:none;
+				}
+				&:is(#textbox *) {
+					height:4px;
+					margin:1rem 0;
+				}
 			}
 			chapter {
 				display:block;
@@ -946,10 +977,15 @@
 					<span class="textunit"><text><star></star>Your bed.</text></span>
 					<br><!--if chapter completed-->
 					<span class="textunit"><text><star></star>(It's your bed.)</text></span>
-					<span class="textunit"><text><star></star>(If you go back to sleep, <br><yellow>you may miss a lot of important <br>things</yellow>.)</text></span>
+					<span class="textunit"><text><star></star>(If you go back to sleep, <yellow>you <br>may miss a lot of important <br>things</yellow>.)</text></span>
 					<span class="textunit"><text><star></star>(Will you go to bed?)</text></span>
 					<span class="textunit"><text><br></text><choice><span>Sleep</span><span>Do not</span></choice></span>
 					<ul class="choicelevel">
+						<li><choice>Sleep</choice>
+							<span class="textunit"><text><star></star>(For some reason, you decided <br>to go back to sleep...)</text></span>
+							<pause></pause>
+							<span class="textunit"><text><star></star>(But, when you opened your <br>eyes...)</text></span>
+						</li>
 						<li><choice>Do not</choice>
 							<span class="textunit"><text><star></star>(You can sleep in class.)</text></span>
 						</li>
@@ -2390,7 +2426,7 @@
 				</pp>
 				<pp>
 					<span class="textunit"><face data-name="temmie"></face><text><star></star>gotta go to colleg... <br><star></star>so tem stuby... <br><star></star>HARD!!!!</text></span>
-					<span class="textunit"><face data-name="temmie"></face><text><star></star>(She's reading a comic full of <br>hot demon guys.)</text></span>
+					<span class="textunit"><text><star></star>(She's reading a comic full of <br>hot demon guys.)</text></span>
 				</pp>
 				<pp>
 					<span class="textunit"><text><star></star>(There's an anime review.) <br><star></star>(Read it?)</text></span>
@@ -9312,6 +9348,9 @@
 						</li>
 					</ul>
 				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><text><star></star>You won! <br><star></star>Got 0 EXP and <fillin></fillin> D$.</text></span>
+				</pp>
 				
 			<br><hr><hr><br>
 			
@@ -9567,6 +9606,7 @@
 					<span class="textunit"><text><star></star>It doesn't seem very useful.</text></span>
 				</pp>
 				
+				
 			<hr><roomname>Hot Chocolate (1)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>"Hot Chocolate" - Topped with <br>home-made marshmallows in the <br>shape of bunnies.</text></span>
@@ -9574,6 +9614,8 @@
 				<pp>
 					<span class="textunit"><text><star></star>You drank the hot chocolate. <br><star></star>It tasted wonderful. <br><star></star>Your throat tightened...</text></span>
 				</pp>
+			<hr><roomname>Pencil (2)</roomname>
+			<hr><roomname>Bandage (3)</roomname>
 			<hr><roomname>Bouquet (4)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>"Bouquet" - A bouquet of <br>beautiful flowers in many <br>colors.</text></span>
@@ -9604,6 +9646,7 @@
 						</li>
 					</ul>
 				</pp>
+			<hr><roomname>Halloween Pencil (6)</roomname>
 			<hr><roomname>Egg (8)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>"Egg" - Not too important, not <br>too unimportant.</text></span>
@@ -9638,7 +9681,15 @@
 				</pp>
 			<hr><roomname>(Default)</roomname>
 				<pp>
-					<span class="textunit"><text><star></star>The <fillin></fillin> was thrown away.</text></span><!--REMINDER: get rare throwaway dialogues-->
+					<span class="textunit"><text><star></star>The <fillin></fillin> was thrown away.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>You put the <fillin></fillin> on the ground <br>and gave it a little pat.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>You abandoned the <fillin></fillin>.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>You bid a quiet farewell to the <br><fillin></fillin>.</text></span>
+					<br>
+					<span class="textunit"><text><star></star>You threw the <fillin></fillin> on the <br>ground like the piece of trash <br>it is.</text></span>
 				</pp>
 				
 			<br><hr><hr><br>
@@ -13018,8 +13069,8 @@
 					<span class="textunit"><face data-name="malius"></face><text><star></star>But using my skills, I can FUSE <br>ITEMs to create NEW ONES.</text></span>
 					<span class="textunit" id="2_64_2"><text></text><choice><span>Fuse Items</span><span>Chat</span><span>Fix Us</span><span>Leave</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>Fuse Items</choice><!--REMINDER: document those-->
-							<span class="textunit"><face data-name="malius"></face><text><star></star>Huh-hah! Let's feel my <br>technique!</text></span>
+						<li><choice>Fuse Items</choice>
+							<span class="textunit" id="2_64_5"><face data-name="malius"></face><text><star></star>Huh-hah! Let's feel my <br>technique!</text></span>
 							<pause></pause>
 							<span class="textunit" id="2_64_3"><text><star></star>(You got <fillin></fillin>!)</text></span>
 						</li>
@@ -13044,6 +13095,28 @@
 					</ul><!--2nd time-->
 					<span class="textunit"><face data-name="malius"></face><text><star></star>Welcome to TOP BAKERY.</text></span>
 					<lnk class="textunit" data-link="2_64_2"></lnk>
+				</pp>
+				<pp><!--REMINDER: find a good presentation; unfortunately needs to be kept out of above because as a menu it doesn't have the dark world style--><!--the descriptions are the same as in item menus, no need to repeat-->
+					<span class="textunit"><text></text><choice class=choicelike><span>Result <hr>DD-Burger <br>&nbsp;</span><span>Ingredients <hr>Darkburger <br>Darkburger</span></choice></span>
+					<span class="textunit" id="2_64_4"><text>Really fuse it?</text><choice><span>Yes</span><span>No</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Yes</choice>
+							<lnk class="textunit" data-link="2_64_5"></lnk>
+						</li>
+					</ul>
+					<span class="textunit"><text></text><choice class=choicelike><span>Result <hr>Silver Card <br>&nbsp;</span><span>Ingredients <hr>Amber Card <br>Amber Card</span></choice></span>
+					<lnk class="textunit" data-link="2_64_4"></lnk>
+					<br>
+					<span class="textunit"><text></text><choice class=choicelike><span>Result <hr>TwinRibbon <br>&nbsp;</span><span>Ingredients <hr>Pink Ribbon <br>White Ribbon</span></choice></span>
+					<lnk class="textunit" data-link="2_64_4"></lnk>
+					<br>
+					<span class="textunit"><text></text><choice class=choicelike><span>Result <hr>SpikeBand <br>&nbsp;</span><span>Ingredients <hr>GlowWrist <br>IronShackle</span></choice></span>
+					<lnk class="textunit" data-link="2_64_4"></lnk>
+					<br>
+					<span class="textunit"><text></text><choice class=choicelike><span>Result <hr>TensionBow <br>&nbsp;</span><span>Ingredients <hr>B.ShotBowtie <br>TensionBit</span></choice></span>
+					<lnk class="textunit" data-link="2_64_4"></lnk>
+					<br>
+					<span class="textunit"><text></text><choice class=choicelike><span>Result <hr>TwistedSwd <br>&nbsp;</span><span>Ingredients <hr>ThornRing <br>PureCrystal</span></choice></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="topchef"></face><text><star></star>Mama miba!! I was rejected from <br>the cafe!! What can I do now...</text></span>
@@ -13267,10 +13340,13 @@
 					<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>We're gonna make you the <br>strongest, Boss!</text></span>
 					<span class="textunit" id="2_66_1"><text><br><br></text><choice><span>Challenge</span><span>Nothing</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>Challenge</choice><!--REMINDER: document those-->
+						<li><choice>Challenge</choice>
 						</li>
 						<li><choice>Nothing</choice>
 							<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>We'll be working on NEW <br>CHALLENGES, so check back in, <br>Boss!</text></span>
+						</li>
+						<li><choice>Nothing</choice><!--all challenges beaten-->
+							<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>No worries, Boss! We'll always <br>be here.</text></span>
 						</li>
 					</ul><!--2nd time-->
 					<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>Hey, boss! How can I help ya!?</text></span>
@@ -13326,6 +13402,26 @@
 					<br>
 					<add>Tasque Manager Says failure</add>
 					<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>Boss! Try to remember your <br>ABCs...!</text></span>
+				</pp>
+				<pp><!--REMINDER: find a good presentation-->
+					<!--<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Jigsaw Joe <br>Graze Challenge 1 <br>Clover Rematch <br>Tasque Manager Says <br>Ch2 All Stars</span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr>Joe's Life Savings <br>$100 <br>ClubsSandwich <br>$250 <br>TensionGem</span></choice></span>-->
+					<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Jigsaw Joe <br>Graze Challenge 1 <br>Clover Rematch <br>Tasque Manager Says <br>Ch2 All Stars</span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr><fillin>Joe's Life Savings/<colspan style="color:rgb(255,255,0)">Claimed!</colspan></fillin> <br><fillin>$100/<colspan style="color:rgb(255,255,0)">Claimed!</colspan></fillin> <br><fillin>ClubsSandwich/<colspan style="color:rgb(255,255,0)">Claimed!</colspan></fillin> <br><fillin>$250/<colspan style="color:rgb(255,255,0)">Claimed!</colspan></fillin> <br><fillin>TensionGem/<colspan style="color:rgb(255,255,0)">Claimed!</colspan></fillin></span></choice></span>
+					<span class="textunit"><text>Challenge?</text><choice><span>Yes</span><span>No</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Yes</choice>
+						</li>
+					</ul>
+					<!--<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Jigsaw Joe <br>Graze Challenge 1 <br>Clover Rematch <br>Tasque Manager Says <br>Ch2 All Stars</span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr><colspan style="color:rgb(255,255,0)">Claimed! <br>Claimed! <br>Claimed! <br>Claimed! <br>Claimed!</colspan></span></choice></span>
+					<br>-->
+					<add>Jigsaw Joe</add><span class="textunit"><face data-name="jigsaw joe"></face><text>Learn how to spare like a champ.</text></span>
+					<br>
+					<add>Graze Challenge 1</add><span class="textunit"><face data-name="jigsaw joe"></face><text>Get 100% TP without getting hit! <br>You can do it, boss!</text></span>
+					<br>
+					<add>Clover Rematch</add><span class="textunit"><face data-name="jigsaw joe"></face><text>It's not Clover's birthday anymore! <br>She won't go easy on you now!</text></span>
+					<br>
+					<add>Tasque Manager Says</add><span class="textunit"><face data-name="jigsaw joe"></face><text>Winning's as easy as A-B-C! <br>You've got three chances, boss!</text></span>
+					<br>
+					<add>Ch2 All Stars</add><span class="textunit"><face data-name="jigsaw joe"></face><text>Face everyone in a row! <br>It'll take some stamina...</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a bed for three people, <br>or one three-headed person.)</text></span>
@@ -14306,7 +14402,7 @@
 					<span class="textunit"><face data-name="k_k/sweet"></face><text><kk></kk>Does that mean we can be <br>friends? <br><sweet></sweet>K_K!! No!!</text></span>
 					<span class="textunit"><face data-name="cap'n/sweet"></face><text><capn></capn>Fighting's not really my style <br>anyways... <br><sweet></sweet>Yeah! Because you're a coward!</text></span>
 					<span class="textunit"><face data-name="sweet/k_k"></face><text><sweet></sweet>... I mean, it was fun <br>dancing, but... <br><kk></kk>Sweet. Don't worry.</text></span>
-					<span class="textunit"><face data-name="k_k/sweet/cap'n"></face><text><kk></kk>I think our dancing beat them.<br><sweet></sweet>Beat them...? <br><capn></capn>Yeah, all mercy-like.</text></span>
+					<span class="textunit"><face data-name="k_k/sweet/cap'n"></face><text><kk></kk>I think our dancing beat them. <br><sweet></sweet>Beat them...? <br><capn></capn>Yeah, all mercy-like.</text></span>
 					<span class="textunit"><face data-name="cap'n/sweet"></face><text><capn></capn>See, when we danced with them, <br>it convinced them we're cool. <br><sweet></sweet>Now they're on our side?</text></span>
 					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>Yes.</text></span>
 					<span class="textunit"><face data-name="sweet"></face><text><sweet></sweet>Hey!! You three!! Welcome to <br>the good side!!</text><minitext><face data-name="susie_27">Susie</face><text>WE ARE the good side!!!</text></minitext><minitext><face data-name="ralsei_27">Ralsei</face><text>Just go with it, Susie...</text></minitext></span><!--REMINDER: multi-minitext support required-->
@@ -17580,6 +17676,8 @@
 			<hr><roomname>(160)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="swatchling"></face><text><star></star>Please do not race the pottery.</text></span>
+					<br>
+					<span class="textunit"><face data-name="swatchling"></face><text><star></star>Yes, we see you. You are the <br>master of balance.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>Heh, not bad, Kris!</text></span>
@@ -17955,7 +18053,7 @@
 					<span class="textunit"><text><star></star>(You opened the treasure <br>chest.) <br><star></star>(Inside was <yellow><fillin>Dealmaker/Puppetscarf</fillin></yellow>.)</text></span>
 					<ul class="choicelevel">
 						<li>
-							<span class="textunit"><text><star></star>(<yellow><fillin>Dealmaker</fillin></yellow> was added to your <br><yellow><fillin>ARMOR/WEAPON</fillin>s</yellow>.)</text></span>
+							<span class="textunit"><text><star></star>(<yellow><fillin>Dealmaker/Puppetscarf</fillin></yellow> was added to your <br><yellow><fillin>ARMOR/WEAPON</fillin>s</yellow>.)</text></span>
 						</li>
 						<li><add>Not enough space</add>
 							<span class="textunit"><text><star></star>(You have too many <yellow><fillin>ARMOR/WEAPON</fillin>s</yellow> to <br>take <yellow><fillin>Dealmaker/Puppetscarf</fillin></yellow>.)</text></span>
@@ -19739,6 +19837,13 @@
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="sweet/cap'n/k_k"></face><text><sweet></sweet>See ya! <br><capn></capn>Smell ya! <br><kk></kk>Hear ya!</text></span>
 				</pp>
+				<pp><!--play music option--><!--find a good presentation, for UI in particular-->
+					<span class="textunit"><text>1 - My Castle <br>2 - A CYBER'S WORLD? <br>3 - Mini Studio <br>4 - Sound Studio <br>5 - Holiday Studio <br>6 - Welcome To The City</text></span>
+					<span class="textunit"><text>7 - Acid Tunnel of Love <br>8 - Rude Buster <br>9 - Smart Race <br>10 - Cool Beat <br>11 - Hip Shop <br>12 - I'm The Bad Guy!</text></span>
+					<span class="textunit"><text>13 - Pandora Palace <br>14 - Queen <br>15 - Cool Mixtape <br>16 - Rouxls Kaard <br>17 - It's Pronounced "Rules" <br>18 - Lantern</text></span>
+					<br>
+					<span class="textunit"><text><colspan style="color:rgb(192,192,192)">Page <fillin></fillin> / 3</colspan> <br><colspan style="color:rgb(0,255,0)">Now Playing <br><fillin></fillin></colspan> <br><colspan style="color:rgb(192,192,192)">Left / Right: <br>Change Pages. <br>Play songs <br>freely.</colspan></text></span>
+				</pp>
 				<pp class="darkworld"><!--lancer option-->
 					<span class="textunit"><face data-name="k_k"></face><text><kk></kk>Good song.</text></span>
 				</pp>
@@ -20522,7 +20627,7 @@
 						</li>
 					</ul>
 				</pp>
-				<add>Weird route</add>
+				<add>Weird route</add><!--I guess single-enemey encounter lines can be labelled as well-->
 				<pp class="darkworld">
 					<span class="textunit"><text></text><choice><span>Check</span><span>Petting</span><span><noelle></noelle>PettingX</span></choice></span>
 					<ul class="choicelevel">
@@ -22925,7 +23030,7 @@
 						</li>
 					</ul>
 				</pp>
-			<hr><roomname>(Default)</roomname>
+			<hr><roomname>(Default)</roomname><!--in general anything not repeated or overriden is the same as ch1-->
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>Try timing your attacks by <br>pressing [Z]!</text></span><!--REMINDER: apparently only for werewire-->
 				</pp>
@@ -22962,7 +23067,6 @@
 					</ul>
 				</pp>
 				<pp class="darkworld">
-					<span class="textunit"><text><star></star>You won! <br><star></star>Got 0 EXP and <fillin></fillin> D$.</text></span>
 					<br><!--violence-->
 					<span class="textunit"><text><star></star>You won! <br><star></star>Got <fillin></fillin> D$. <br><star></star>You became stronger.</text></span>
 					<br>
@@ -23413,6 +23517,9 @@
 					</ul><!--3rd time-->
 					<span class="textunit"><text><star></star>It doesn't seem very useful.</text></span>
 				</pp>
+			<hr><roomname>Eraser (12)</roomname>
+			<hr><roomname>Mech. Pencil (13)</roomname>
+			<hr><roomname>Wristwatch (14)</roomname>
 				
 			<br><hr><hr><br>
 			<!--REMINDER: unused items would be cool considering Noelle-->
@@ -23447,6 +23554,10 @@
 			<hr><roomname><img src="img/icon_3.png"/> DaintyScarf (10)</roomname>
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>S-stop covering me with it!</minitext></text></span>
+				</pp>
+			<hr><roomname><img src="img/icon_14.png"/> TwistedSwd (11)</roomname>
+				<pp>
+					<span class="textunit"><text>A strange blade</text></span>
 				</pp>
 			<hr><roomname><img src="img/icon_14.png"/> SnowRing (12)</roomname>
 				<pp>
@@ -24512,6 +24623,11 @@
 					<pause></pause>
 					<lnk class="textunit" data-link="3_131_5"></lnk>
 				</pp>
+				<pp class=mantlegame><!--REMINDER: make it better, this is really hacked together-->
+					<span class="textunit eval"><text>-----EVALUATION----- <br><span class=evalcols3><span>BATTLES <br>POINTS GAINED <br>CONCERT SCORE</span><span><fillin></fillin> <br><fillin></fillin> <br><fillin></fillin></span><span><colspan style="color:rgb(248,173,227)"><fillin></fillin>-RANK <br><fillin></fillin>-RANK <br><fillin></fillin>-RANK</colspan></span></span><fillin><span class=evalcols2><span>SECRET BONUS</span><span>EXTRA PHOTO!</span></span></fillin><fillin><span class=evalcols2><span>SECRET BONUS</span><span>ATE MOSS!</span></span></fillin><br><br>ROUND COMPLETE!! <br>YOU GOT <br><yellow><fillin></fillin>-RANK!!</yellow></text></span>
+					<br>
+					<span class="textunit eval"><text>-----CONCERT RESULTS----- <br><span class=evalcols2><span><colspan style="color:rgb(255,51,150)">MISSED NOTES</colspan> <br>NORMAL NOTES <br><colspan style="color:rgb(255,255,0)">GOLD NOTES</colspan> <br>LONGEST COMBO <br>TOTAL SCORE</span><span><colspan style="color:rgb(255,51,150)"><fillin></fillin></colspan> <br><fillin></fillin> <br><colspan style="color:rgb(255,255,0)"><fillin></fillin></colspan> <br><fillin></fillin> <br><fillin></fillin></span></span><yellow><fillin></fillin>-RANK</yellow> <br><colspan style="color:rgb(255,255,72)">PRESS ANY BUTTON</colspan></text></span>
+				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Ralsei! You sang brilliantly!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Unfortunately, everyone else <br>was... terrible!!</text></span>
@@ -25260,7 +25376,7 @@
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Quiz vortex! Watch <br>out!</text></span>
 				</pp>
 				<pp class="mantlegame">
-					<span class="textunit"><face data-name="tenna"></face><text>WHAT TIME IS IT RIGHT <br>NOW?</text><choice><span>TV-THIRTY!</span><span>TV TIME!!!</span><span>PAST MIDNIGHT</span><span>THURSDAY</span></choice></span>
+					<span class="textunit"><face data-name="tenna"></face><text>WHAT TIME IS IT RIGHT <br>NOW?</text><choice><span>TV-THIRTY!</span><span>TV TIME!!!</span><span>PAST MIDNIGHT</span><span><fillin>THURSDAY/WEDNESDAY</fillin></span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>TV-THIRTY!</choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>TV-THIRTY! Uh, sure! <br>A bit off, but we'll <br>go with it.</text></span>
@@ -25274,7 +25390,7 @@
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Uhh, I guess that's <br>technically right. Sure.</text></span>
 							<lnk class="textunit" data-link="3_112.4_1"></lnk>
 						</li>
-						<li><choice>THURSDAY</choice>
+						<li><choice><fillin>THURSDAY/WEDNESDAY</fillin></choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Aaaaand you got the only <br>wrong answer. Let's hear <br>some boo's, folks!</text></span>
 							<lnk class="textunit" data-link="3_112.4_1"></lnk>
 						</li>
@@ -25434,6 +25550,19 @@
 						</li>
 					</ul>
 				</pp>
+				<pp class=mantlegame><!--REMINDER: make it better i guess-->
+					<span class="textunit eval"><text><!--Results-->BONUS <br>+300 <br><br>PERFECT!!!</text></span>
+					<br>
+					<span class="textunit eval"><text><!--Results-->BONUS <br>+<fillin>200-150</fillin> <br><br>DECENT!!!</text></span>
+					<br>
+					<span class="textunit eval"><text><!--Results-->BONUS <br>+25 <br><br>NOT BAD!!!</text></span>
+					<br>
+					<span class="textunit eval"><text><!--Results-->BONUS <br>+0 <br><br>BARELY FORGIVABLE</text></span>
+					<br>
+					<span class="textunit eval"><text><!--Results-->BONUS <br>PAIN <br><br>YOU DID BAD</text></span>
+					<br>
+					<span class="textunit eval"><text><!--Results-->BONUS <br>PAIN <br><br>NOT ON MY CHANNEL!!!</text></span>
+				</pp>
 				<pp class="mantlegame">
 					<span class="textunit"><face data-name="tenna"></face><text>WELL DONE. FOR YOU <br>THAT KNOWS, A NOSE!</text></span>
 					<br>
@@ -25443,6 +25572,9 @@
 			<hr><roomname>(112.6)</roomname>
 				<pp class="mantlegame">
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Enemy!! Careful, <br>brave heroes!!</text></span>
+				</pp>
+				<pp class=mantlegame><!--REMINDER: make it better, this is really hacked together... and there's too much to be readable in the textbox. also missing icons blegh--><!--not copying this every tiùme...-->
+					<span class="textunit eval"><text>BATTLE RESULTS <br><span class=evalcols3_><span>TURNS <br>HURT <br>TP</span><span><fillin></fillin> <br><fillin></fillin>X <br><fillin></fillin></span><span><fillin><colspan style="color:rgb(255,160,64)">T!ULTIMATE!</colspan>/<colspan style="color:rgb(255,255,0)">S! PERFECT!</colspan>/<colspan style="color:rgb(255,255,255)">A! AWESOME!</colspan>/<colspan style="color:rgb(0,255,0)">B! NOT BAD!</colspan>/<colspan style="color:rgb(255,0,255)">KINDA SLOW!</colspan>/<colspan style="color:rgb(255,0,0)">VERY SLOW!</colspan>/<colspan style="color:rgb(255,0,0)">BAD CAR!</colspan></fillin> <br><fillin><colspan style="color:rgb(255,160,64)">T!ULTIMATE!</colspan>/<colspan style="color:rgb(255,255,0)">S! PERFECT!</colspan>/<colspan style="color:rgb(255,255,255)">A! AWESOME!</colspan>/<colspan style="color:rgb(0,255,0)">B! NOT BAD!</colspan>/<colspan style="color:rgb(255,0,255)">OUCH!</colspan>/<colspan style="color:rgb(128,128,128)">BIG OUCH!</colspan></fillin> <br><fillin><colspan style="color:rgb(255,160,64)">T!ULTIMATE!</colspan>/<colspan style="color:rgb(255,255,0)">S! PERFECT!</colspan>/<colspan style="color:rgb(255,255,255)">A! AWESOME!</colspan>/<colspan style="color:rgb(0,255,0)">B! NOT BAD!</colspan>/<colspan style="color:rgb(255,0,255)">SO THIRSTY!</colspan>/<colspan style="color:rgb(128,128,128)">SMALL NOSE!</colspan></fillin></span></span><br>YOU GET <fillin><colspan style="color:rgb(255,160,64)">T</colspan>/<colspan style="color:rgb(255,255,0)">S</colspan>/A/<colspan style="color:rgb(0,255,0)">B</colspan>/<colspan style="color:rgb(255,0,255)">C</colspan>/<colspan style="color:rgb(255,0,0)">Z</colspan></fillin> RANK <br>+<fillin></fillin> POINTS</text></span>
 				</pp>
 				<pp class="mantlegame">
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>A rousing battle! <br>Mike! Give them a <br>free tube yogurt!</text></span>
@@ -26504,7 +26636,7 @@
 						<li><choice>OF COURSE!</choice>
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>THAT'S WHAT I THOUGHT!</text></span>
 						</li>
-						<li><add>Waiting</add>
+						<li><add>Waiting</add><!--by the way the attack MISSes if it should kill-->
 							<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>OUT OF TIME!!! WRONG!!!</text></span>
 						</li>
 					</ul>
@@ -27523,11 +27655,14 @@
 					<span class="textunit"><face data-name="lanino/elnina"></face><text>BUT... I DON'T THINK <br>ANYONE'S COMING HERE <br>FOR ME...</text></span>
 				</pp>
 				<pp>
-					<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Done. Just gotta move <br>the other guy.</text></span>
-					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>YOU CAN'T USE KRIS <br>AND RALSEI!!</text></span>
-					<br>
 					<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Got two people.</text></span>
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>RALSEI DOESN'T <br>COUNT!!!</text></span>
+					<br>
+					<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Okay, got two people.</text></span>
+					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>KRIS DOESN'T COUNT!!!</text></span>
+					<br>
+					<span class="textunit couchbubble"><face data-name="susie">Susie</face><text>Done. Just gotta move <br>the other guy.</text></span>
+					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>YOU CAN'T USE KRIS <br>AND RALSEI!!</text></span>
 				</pp>
 				<pp>
 					<span class="textunit couchbubble"><face data-name="tenna">Tenna</face><text>Still only one lover!</text></span>
@@ -28987,6 +29122,9 @@
 					<add>Success</add>
 					<span class="textunit"><text>No TVs were harmed in the <br>making of this minigame.</text></span>
 				</pp>
+				<pp class=mantlegame><!--REMINDER: make it better, this is really hacked together-->
+					<span class="textunit eval"><text>-----SUSIEZILLA RESULTS----- <br><span class=evalcols2><span>CLEAR TIME <br>TOTAL SCORE</span><span><fillin></fillin>:<fillin></fillin>:<fillin></fillin> <br><fillin></fillin></span></span><br><yellow><fillin></fillin>-RANK</yellow> <br><br><colspan style="color:rgb(255,255,72)">PRESS ANY BUTTON</colspan></text></span>
+				</pp>
 			<hr><roomname>(167)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="zapper"></face><text><star></star>Oh, it's you... Let me check if <br>you're on the guest list.</text></span>
@@ -29215,6 +29353,11 @@
 					<pause></pause>
 					<lnk class="textunit" data-link="3_131_3"></lnk>
 				</pp>
+				<pp class=mantlegame><!--REMINDER: make it better, this is really hacked together-->
+					<span class="textunit eval"><text>-----EVALUATION----- <br><span class=evalcols3><span>BATTLES <br>POINTS GAINED <br>CHEF SCORE</span><span><fillin></fillin> <br><fillin></fillin> <br><fillin></fillin></span><span><colspan style="color:rgb(248,173,227)"><fillin></fillin>-RANK <br><fillin></fillin>-RANK <br><fillin></fillin>-RANK</colspan></span></span><fillin><span class=evalcols2><span>SECRET BONUS</span><span>EXTRA KEY! <fillin>x2</fillin></span></span></fillin><br><br>ROUND COMPLETE!! <br>YOU GOT <br><yellow><fillin></fillin>-RANK!!</yellow></text></span>
+					<br>
+					<span class="textunit eval"><text>-----CHEF RESULTS----- <br><span class=evalcols2><span>TALLEST STACK <br>FOODS WASTED <br>HAPPY CUSTOMERS <br>TOTAL SCORE</span><span><fillin><fillin></fillin>/<colspan style="color:rgb(255,255,0)"><fillin></fillin></colspan></fillin> <br><fillin></fillin> <br><fillin></fillin> <br><fillin></fillin></span></span><yellow><fillin></fillin>-RANK</yellow> <br><colspan style="color:rgb(255,255,72)">PRESS ANY BUTTON</colspan></text></span>
+				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Hey, you know those famous <br>STARS they award to incredible <br>restaurants...?</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>You just got a NEGATIVE ONE!! <br>The world's first Anti-Good <br>Restaurant!!</text></span>
@@ -29279,6 +29422,10 @@
 									<ul class="choicelevel">
 										<li><add>123</add>
 											<span class="textunit"><face data-name="ralsei_53">Ralsei</face><text><star></star>... hmm... I feel like <br>that was close, but...</text></span>
+										</li>
+										<li><add>123</add><!--after puzzle solved; previous triggers once if not done before-->
+											<span class="textunit"><face data-name="ralsei_53">Ralsei</face><text><star></star>Hmm... 1,2, and 3 seem <br>like the right numbers, <br>but...</text></span>
+											<span class="textunit"><face data-name="ralsei_39"></face><text><star></star>(Is the order... <br>different somehow?...)</text></span>
 										</li>
 									</ul>
 								</li>
@@ -29395,6 +29542,11 @@
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>... heh, I can't believe I'm <br>dealing with a criminal.</text></span>
 					<span class="textunit"><face data-name="pippins"></face><text><star></star>How about it? Want to buy a TV <br>Dinner?</text></span>
 					<lnk class="textunit" data-link="3_177_1"></lnk>
+				</pp>
+				<pp class="darkworld">
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>(Nobody talks to the tail.)</text></span>
+					<br>
+					<span class="textunit"><face data-name="unnamed"></face><text><star></star>(Are you listening?)</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a lone doorframe.) <br><star></star>(But for some reason, you can't <br>see through it...)</text></span>
@@ -29766,20 +29918,20 @@
 				</pp>
 			<hr><roomname>(197)</roomname>
 				<pp class="mantlegame">
-					<span class="textunit"><text><star></star>QUIZ!</text></span>
-					<span class="textunit"><text><star></star>GET <br>READY!</text></span>
-					<span class="textunit"><text><star></star>WHAT'S THE REWARD FOR <br>C-RANK?</text><choice class="fakechoice"><span>A <br>CANDY</span><span>B <br>COOLER</span></choice></span>
+					<span class="textunit"><text>QUIZ!</text></span>
+					<span class="textunit"><text>GET <br>READY!</text></span>
+					<span class="textunit"><text>WHAT'S THE REWARD FOR <br>C-RANK?</text><choice class="fakechoice"><span>A <br>CANDY</span><span>B <br>COOLER</span></choice></span>
 					<pause></pause>
-					<span class="textunit"><text><star></star>GET <br>READY!</text></span>
-					<span class="textunit"><text><star></star>WHO RUNS THE GREEN ROOM <br>CONCESSIONS?</text><choice class="fakechoice"><span>A <br>RAMB</span><span>B <br>ROMB</span></choice></span>
+					<span class="textunit"><text>GET <br>READY!</text></span>
+					<span class="textunit"><text>WHO RUNS THE GREEN ROOM <br>CONCESSIONS?</text><choice class="fakechoice"><span>A <br>RAMB</span><span>B <br>ROMB</span></choice></span>
 				</pp>
 				<pp class="mantlegame">
-					<span class="textunit"><text><star></star>QUIZ!</text></span>
-					<span class="textunit"><text><star></star>GET <br>READY!</text></span>
-					<span class="textunit"><text><star></star>KRIS'S LAST NAME!?</text><choice class="fakechoice"><span>A <br>DREEMURR</span><span>B <br>DREEMURE</span></choice></span>
+					<span class="textunit"><text>QUIZ!</text></span>
+					<span class="textunit"><text>GET <br>READY!</text></span>
+					<span class="textunit"><text>KRIS'S LAST NAME!?</text><choice class="fakechoice"><span>A <br>DREEMURR</span><span>B <br>DREEMURE</span></choice></span>
 					<pause></pause>
-					<span class="textunit"><text><star></star>GET <br>READY!</text></span>
-					<span class="textunit"><text><star></star>WHAT WAS YOUR RANK ON BOARD <br>1!?</text><choice class="fakechoice"><span>A <br><fillin></fillin></span><span>B <br><fillin></fillin></span></choice></span>
+					<span class="textunit"><text>GET <br>READY!</text></span>
+					<span class="textunit"><text>WHAT WAS YOUR RANK ON BOARD <br>1!?</text><choice class="fakechoice"><span>A <br><fillin></fillin></span><span>B <br><fillin></fillin></span></choice></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>WHAT DO YOU MEAN YOU HAVEN'T <br>FOUND THE LIGHTNERS YET!?</text></span>
@@ -30148,6 +30300,35 @@
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Fine! You think I care!? Haha! <br>Of course not! Not at all..</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>Because I'VE got something you <br>guys will NEVER have! Something <br>BIG! Something VERY SECRET!</text></span>
 					<span class="textunit"><face data-name="tenna"></face><text><star></star>HA!!!</text></span>
+				</pp>
+			<hr><roomname>(224)</roomname>
+				<pp class="mantlegame">
+					<span class="textunit"><text>QUIZ!</text></span>
+					<span class="textunit"><text>GET <br>READY!</text></span>
+					<ul class="choicelevel">
+						<li>
+							<span class="textunit"><text>WHAT LETTER DOES <br>APPLEBABABA END WITH?</text><choice class="fakechoice"><span>A</span><span>B</span></choice></span>
+							<pause></pause>
+							<span class="textunit" id="3_224_1"><text>GET <br>READY!</text></span>
+							<span class="textunit"><text>CHOOSE <fillin>A/B</fillin>!</text><choice class="fakechoice"><span>A</span><span>B</span></choice></span>
+						</li>
+						<li>
+							<span class="textunit"><text>WHAT LETTER DOES <br>BANANABABABA BEGIN WITH?</text><choice class="fakechoice"><span>A</span><span>B</span></choice></span>
+							<lnk class="textunit" data-link="3_224_1"></lnk>
+						</li>
+						<li>
+							<span class="textunit"><text>WHICH NUMBER IS <fillin>SMALLER/BIGGER</fillin>?</text><choice class="fakechoice"><span>A <br><fillin></fillin></span><span>B <br><fillin></fillin></span></choice></span><!--supposedly nothing prevents them from being equal, in which case B is the right answer-->
+							<lnk class="textunit" data-link="3_224_1"></lnk>
+						</li>
+						<li>
+							<span class="textunit"><text>WHAT LETTER DOES <fillin>BANANA/ABSORB</fillin> <br>BEGIN WITH?</text><choice class="fakechoice"><span>A</span><span>B</span></choice></span>
+							<lnk class="textunit" data-link="3_224_1"></lnk>
+						</li>
+						<li>
+							<span class="textunit"><text>WHAT LETTER DOES <fillin>BANANA/ABSORB</fillin> END <br>WITH?</text><choice class="fakechoice"><span>A</span><span>B</span></choice></span>
+							<lnk class="textunit" data-link="3_224_1"></lnk>
+						</li>
+					</ul>
 				</pp>
 			<hr><roomname>(225)</roomname>
 				<pp class="darkworld">
@@ -36718,133 +36899,137 @@
 							<span class="textunit"><face data-name="noelle"></face><text><star></star>I froze.</text></span>
 							<span class="textunit"><face data-name="noelle"></face><text><star></star>And then I heard your voice.</text></span>
 							<span class="textunit"><face data-name="noelle"></face><text><star></star>Kris's voice.</text></span>
-							<span class="textunit" id="4_52_2"><face data-name="noelle"></face><text><star></star>You said, sorry for being weird <br>yesterday, Noelle.</text></span>
-							<span class="textunit"><face data-name="noelle"></face><text><star></star>You said, it was all a stupid <br>prank.</text></span>
-							<span class="textunit"><face data-name="noelle"></face><text><star></star>You said, Berdly was going to <br>get better.</text></span>
-							<span class="textunit"><face data-name="noelle"></face><text><star></star>... Kris, your voice, your <br>deadpan, mumbly voice...</text></span>
-							<span class="textunit"><face data-name="noelle"></face><text><star></star>Even if you sounded kind of <br>weak and shaky...</text></span>
-							<span class="textunit"><face data-name="noelle"></face><text><star></star>I don't know why, but it felt <br>so long since I heard it.</text></span>
-							<span class="textunit"><face data-name="noelle"></face><text><star></star>I even started sniffling! Haha!</text></span>
-							<span class="textunit"><face data-name="noelle"></face><text><star></star>Kris, Kris, you're back...!</text></span>
-							<pause></pause>
-							<span class="textunit"><face data-name="noelle_9">Noelle</face><text><star></star>Kris, thank you... well, <br>NO thanks for pranking <br>me, but...</text></span>
-							<span class="textunit"><face data-name="noelle_2"></face><text><star></star>... Kris, can I... say <br>something else?</text></span>
-							<span class="textunit"><face>(-)</face><text><br><br></text><choice><span>Proceed</span><span>Please don't</span></choice></span>
 							<ul class="choicelevel">
-								<li><choice>Proceed</choice>
-									<span class="textunit"><face data-name="noelle_17">Noelle</face><text><star></star>...</text></span>
-									<span class="textunit"><face data-name="noelle_2"></face><text><star></star>Kris...</text></span>
-									<span class="textunit"><face data-name="noelle_5"></face><text><star></star>Kris, there... there was <br>something else you did.</text></span>
-									<span class="textunit"><face data-name="noelle_7"></face><text><star></star>Something else... I have <br>to ask you about.</text></span>
-									<span class="textunit"><face data-name="noelle_3"></face><text><star></star>After you said all of <br>that... you...</text></span>
-									<span class="textunit"><face data-name="noelle_5"></face><text><star></star>Took my hand... and...</text></span>
-									<span class="textunit"><face data-name="noelle_4"></face><text><star></star>Pulled... a thorn out of <br>my finger.</text></span>
-									<span class="textunit"><face data-name="noelle_5"></face><text><star></star>Then you said...</text></span>
-									<span class="textunit"><face data-name="noelle_4"></face><text><star></star>You said... you said <br>that when I saw you <br>again...</text></span>
+								<li>
+									<span class="textunit" id="4_52_2"><face data-name="noelle"></face><text><star></star>You said, sorry for being weird <br>yesterday, Noelle.</text></span>
+									<span class="textunit" id="4_52_4"><face data-name="noelle"></face><text><star></star>You said, it was all a stupid <br>prank.</text></span>
+									<span class="textunit"><face data-name="noelle"></face><text><star></star>You said, Berdly was going to <br>get better.</text></span>
+									<span class="textunit"><face data-name="noelle"></face><text><star></star>... Kris, your voice, your <br>deadpan, mumbly voice...</text></span>
+									<span class="textunit"><face data-name="noelle"></face><text><star></star>Even if you sounded kind of <br>weak and shaky...</text></span>
+									<span class="textunit"><face data-name="noelle"></face><text><star></star>I don't know why, but it felt <br>so long since I heard it.</text></span>
+									<span class="textunit"><face data-name="noelle"></face><text><star></star>I even started sniffling! Haha!</text></span>
+									<span class="textunit"><face data-name="noelle"></face><text><star></star>Kris, Kris, you're back...!</text></span>
+									<pause></pause>
+									<span class="textunit"><face data-name="noelle_9">Noelle</face><text><star></star>Kris, thank you... well, <br>NO thanks for pranking <br>me, but...</text></span>
+									<span class="textunit"><face data-name="noelle_2"></face><text><star></star>... Kris, can I... say <br>something else?</text></span>
+									<span class="textunit"><face>(-)</face><text><br><br></text><choice><span>Proceed</span><span>Please don't</span></choice></span>
 									<ul class="choicelevel">
-										<li>
-											<span class="textunit"><face data-name="noelle_13"></face><text><star></star>K... Kris!? Kris, what <br>are you...</text></span>
-										</li>
-										<li>
-											<span class="textunit"><face data-name="noelle_2"></face><text><star></star>You said... not to <br>mention you did any of <br>this... or...</text></span>
-											<pause></pause>
-											<span class="textunit"><face data-name="noelle_25"></face><text><star></star>?</text></span>
-											<pause></pause>
-											<span class="textunit"><face data-name="noelle_9"></face><text><star></star>Kris, it's okay! It's <br>just us!</text></span>
-											<span class="textunit"><face data-name="noelle_2"></face><text><star></star>You just said not to <br>mention any of that...</text></span>
-											<span class="textunit"><face data-name="noelle_4"></face><text><star></star>Because it'd get... <br>heard.</text></span>
-											<pause></pause>
-											<span class="textunit"><face data-name="noelle_9"></face><text><star></star>... Kris... Kris, it's <br>okay, it's just us.</text></span>
-											<span class="textunit"><face data-name="noelle_13"></face><text><star></star>Who...? Who's going to <br>hear?</text></span>
-											<span class="textunit"><face>(-)</face><text><br><br></text><choice><span>...</span><span>Me</span></choice></span>
+										<li><choice>Proceed</choice>
+											<span class="textunit"><face data-name="noelle_17">Noelle</face><text><star></star>...</text></span>
+											<span class="textunit"><face data-name="noelle_2"></face><text><star></star>Kris...</text></span>
+											<span class="textunit"><face data-name="noelle_5"></face><text><star></star>Kris, there... there was <br>something else you did.</text></span>
+											<span class="textunit"><face data-name="noelle_7"></face><text><star></star>Something else... I have <br>to ask you about.</text></span>
+											<span class="textunit"><face data-name="noelle_3"></face><text><star></star>After you said all of <br>that... you...</text></span>
+											<span class="textunit"><face data-name="noelle_5"></face><text><star></star>Took my hand... and...</text></span>
+											<span class="textunit"><face data-name="noelle_4"></face><text><star></star>Pulled... a thorn out of <br>my finger.</text></span>
+											<span class="textunit"><face data-name="noelle_5"></face><text><star></star>Then you said...</text></span>
+											<span class="textunit"><face data-name="noelle_4"></face><text><star></star>You said... you said <br>that when I saw you <br>again...</text></span>
 											<ul class="choicelevel">
-												<li><choice>...</choice>
-													<span class="textunit"><face data-name="noelle_25">Noelle</face><text><star></star>...</text></span>
-													<span class="textunit"><face data-name="noelle_9"></face><text><star></star>Fahaha!</text></span>
-													<span class="textunit"><face data-name="noelle_2"></face><text><star></star>Kris, you can't fool me!</text></span>
-													<span class="textunit"><face data-name="noelle_9"></face><text><star></star>Ugh, this had to be your <br>worst prank ever!</text></span>
-													<span class="textunit"><face data-name="noelle_4"></face><text><star></star>Never do something like <br>that again, okay?</text></span>
+												<li>
+													<span class="textunit"><face data-name="noelle_13"></face><text><star></star>K... Kris!? Kris, what <br>are you...</text></span>
 												</li>
-												<li><choice>Me</choice>
+												<li>
+													<span class="textunit"><face data-name="noelle_2"></face><text><star></star>You said... not to <br>mention you did any of <br>this... or...</text></span>
 													<pause></pause>
-													<span class="textunit"><face data-name="noelle_42">Noelle</face><text><star></star>Kris...?</text></span>
-													<span class="textunit"><face data-name="noelle_42"></face><text><star></star>K... Kris, your voice... <br>it...</text></span>
-													<span class="textunit"><face data-name="noelle_43"></face><text><star></star>Ha... ha... Kris, <br>that's... another joke, <br>right...?</text></span>
-													<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(That voice... how... <br>the voice from my <br>dream...)</text></span>
-													<span class="textunit"><face>(-)</face><text><br></text><choice><span>It was <br>a joke</span><span>Because it <br>wasn't <br>a dream</span></choice></span>
+													<span class="textunit"><face data-name="noelle_25"></face><text><star></star>?</text></span>
+													<pause></pause>
+													<span class="textunit"><face data-name="noelle_9"></face><text><star></star>Kris, it's okay! It's <br>just us!</text></span>
+													<span class="textunit"><face data-name="noelle_2"></face><text><star></star>You just said not to <br>mention any of that...</text></span>
+													<span class="textunit"><face data-name="noelle_4"></face><text><star></star>Because it'd get... <br>heard.</text></span>
+													<pause></pause>
+													<span class="textunit"><face data-name="noelle_9"></face><text><star></star>... Kris... Kris, it's <br>okay, it's just us.</text></span>
+													<span class="textunit"><face data-name="noelle_13"></face><text><star></star>Who...? Who's going to <br>hear?</text></span>
+													<span class="textunit"><face>(-)</face><text><br><br></text><choice><span>...</span><span>Me</span></choice></span>
 													<ul class="choicelevel">
-														<li><choice>It was <br>a joke</choice>
-															<pause></pause>
-															<span class="textunit" id="4_52_1"><face data-name="noelle"></face><text><star></star>THEN DON'T SCARE ME LIKE THAT <br>ANYMORE!</text></span><!--REMINDER: shaking; more of those here check when needed-->
-															<span class="textunit"><face data-name="noelle"></face><text><star></star>...</text></span><!--REMINDER: shaking-->
-															<span class="textunit"><face data-name="noelle"></face><text><star></star>S-sorry, Kris...</text></span>
-															<span class="textunit"><face data-name="noelle"></face><text><star></star>...</text></span>
-															<span class="textunit"><face data-name="noelle"></face><text><star></star>Let's... let's get back to <br>doing our projects, okay?</text></span>
+														<li><choice>...</choice>
+															<span class="textunit"><face data-name="noelle_25">Noelle</face><text><star></star>...</text></span>
+															<span class="textunit"><face data-name="noelle_9"></face><text><star></star>Fahaha!</text></span>
+															<span class="textunit"><face data-name="noelle_2"></face><text><star></star>Kris, you can't fool me!</text></span>
+															<span class="textunit"><face data-name="noelle_9"></face><text><star></star>Ugh, this had to be your <br>worst prank ever!</text></span>
+															<span class="textunit"><face data-name="noelle_4"></face><text><star></star>Never do something like <br>that again, okay?</text></span>
 														</li>
-														<li><choice>Because it <br>wasn't <br>a dream</choice>
+														<li><choice>Me</choice>
 															<pause></pause>
-															<span class="textunit"><face data-name="noelle_44">Noelle</face><text><star></star>S... Sorry, Kris... What <br>did you say? I must have <br>misheard you.</text></span>
-															<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(No... there's no way <br>they... they heard...)</text></span>
-															<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(There's no way they <br>heard... my thoughts.)</text></span>
-															<span class="textunit"><face>(-)</face><text><br></text><choice><span>Sorry, <br>just a prank</span><span>I heard</span></choice></span>
+															<span class="textunit"><face data-name="noelle_42">Noelle</face><text><star></star>Kris...?</text></span>
+															<span class="textunit"><face data-name="noelle_42"></face><text><star></star>K... Kris, your voice... <br>it...</text></span>
+															<span class="textunit"><face data-name="noelle_43"></face><text><star></star>Ha... ha... Kris, <br>that's... another joke, <br>right...?</text></span>
+															<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(That voice... how... <br>the voice from my <br>dream...)</text></span>
+															<span class="textunit"><face>(-)</face><text><br></text><choice><span>It was <br>a joke</span><span>Because it <br>wasn't <br>a dream</span></choice></span>
 															<ul class="choicelevel">
-																<li><choice>Sorry, <br>just a prank</choice>
+																<li><choice>It was <br>a joke</choice>
 																	<pause></pause>
-																	<lnk class="textunit" data-link="4_52_1"></lnk>
+																	<span class="textunit" id="4_52_1"><face data-name="noelle"></face><text><star></star>THEN DON'T SCARE ME LIKE THAT <br>ANYMORE!</text></span><!--REMINDER: shaking; more of those here check when needed-->
+																	<span class="textunit"><face data-name="noelle"></face><text><star></star>...</text></span><!--REMINDER: shaking-->
+																	<span class="textunit"><face data-name="noelle"></face><text><star></star>S-sorry, Kris...</text></span>
+																	<span class="textunit"><face data-name="noelle"></face><text><star></star>...</text></span>
+																	<span class="textunit"><face data-name="noelle"></face><text><star></star>Let's... let's get back to <br>doing our projects, okay?</text></span>
 																</li>
-																<li><choice>I heard</choice>
+																<li><choice>Because it <br>wasn't <br>a dream</choice>
 																	<pause></pause>
-																	<span class="textunit"><face data-name="noelle_45">Noelle</face><text><star></star>W... What are you <br>talking about, Kris?</text></span>
-																	<span class="textunit"><face data-name="noelle_46"></face><text><star></star>I... I didn't say <br>anything!</text></span>
-																	<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(It's impossible. That's <br>impossible.)</text></span>
-																	<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(It's just a <br>coincidence.)</text></span>
-																	<span class="textunit"><face>(-)</face><text><br></text><choice><span>Sorry, <br>just a prank</span><span>It's not a <br>coincidence</span></choice></span>
+																	<span class="textunit"><face data-name="noelle_44">Noelle</face><text><star></star>S... Sorry, Kris... What <br>did you say? I must have <br>misheard you.</text></span>
+																	<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(No... there's no way <br>they... they heard...)</text></span>
+																	<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(There's no way they <br>heard... my thoughts.)</text></span>
+																	<span class="textunit"><face>(-)</face><text><br></text><choice><span>Sorry, <br>just a prank</span><span>I heard</span></choice></span>
 																	<ul class="choicelevel">
 																		<li><choice>Sorry, <br>just a prank</choice>
 																			<pause></pause>
 																			<lnk class="textunit" data-link="4_52_1"></lnk>
 																		</li>
-																		<li><choice>It's not a <br>coincidence</choice>
+																		<li><choice>I heard</choice>
 																			<pause></pause>
-																			<span class="textunit"><face data-name="noelle_36">Noelle</face><text><star></star>(If you can...  hear <br>me...)</text></span>
-																			<span class="textunit"><face data-name="noelle_36"></face><text><star></star>(Say "red" or "blue".)</text></span>
-																			<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Red</span><span>Blue</span></choice></span>
-																			<span class="textunit"><face data-name="noelle_36">Noelle</face><text><star></star>(Say... "green" or <br>"black".)</text></span>
-																			<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Green</span><span>Black</span></choice></span>
-																			<span class="textunit"><face data-name="noelle_17">Noelle</face><text><star></star>(Say... say... "it <br>didn't happen." Say "it <br>didn't snow.")</text></span>
-																			<span class="textunit"><face>(-)</face><text><br></text><choice class="fakechoice"><span>It <br>snowed</span><span>It <br>happened</span></choice></span>
-																			<span class="textunit"><face data-name="noelle_32">Noelle</face><text><star></star>(You're... lying. You're <br>lying.)</text></span>
-																			<span class="textunit"><face>(-)</face><text></text><choice class="fakechoice"><span>Noelle <br>will get <br>stronger</span><span>Noelle <br>becomes <br>stronger</span></choice></span>
-																			<pause></pause>
-																			<span class="textunit"><face data-name="noelle_42">Noelle</face><text><star></star>K... Kris? Kris, what <br>did you say?</text></span>
-																			<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Equip</span><span>Equip</span></choice></span>
-																			<pause></pause>
-																			<span class="textunit"><face data-name="noelle_42">Noelle</face><text><star></star>K... Kris? Kris, what is <br>that?</text></span>
-																			<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Proceed</span><span>Proceed</span></choice></span>
-																			<pause></pause>
-																			<span class="textunit"><face data-name="noelle_43">Noelle</face><text><star></star>Kris... that's... not <br>the thorn, is it?</text></span>
-																			<span class="textunit"><face data-name="noelle_46"></face><text><star></star>That's not... the... <br>ThornRing, is it...?</text></span>
-																			<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Proceed</span><span>Proceed</span></choice></span>
-																			<pause></pause>
-																			<span class="textunit"><face data-name="noelle_44">Noelle</face><text><star></star>K... Kris... c'mon... <br>you... you still...</text></span>
-																			<span class="textunit"><face data-name="noelle_27"></face><text><star></star>What about... what about <br>last night? What <br>about...</text></span>
-																			<span class="textunit"><face data-name="noelle_27"></face><text><star></star>Didn't you... want to... <br>protect me...?</text></span>
-																			<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Proceed</span><span>Proceed</span></choice></span>
-																			<pause></pause>
-																			<span class="textunit"><face data-name="noelle_42">Noelle</face><text><star></star>(Why... can't... I... <br>move?)</text></span>
-																			<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(Why... can't I... <br>look... away?)</text></span>
-																			<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(NOELLE, DO <br>SOMETHING!!!)</text></span>
-																			<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Equip</span><span>Equip</span></choice></span>
-																			<span class="textunit"><face data-name="noelle_46">Noelle</face><text><star></star>Kris, I really think I</text></span>
-																			<span class="textunit"><face data-name="noelle_44"></face><text><star></star>I mean I just</text></span>
-																			<span class="textunit"><face data-name="noelle_43"></face><text><star></star>I think I need to</text></span>
-																			<span class="textunit"><face data-name="noelle_46"></face><text><star></star>G-gosh, I think I have <br>to</text></span>
-																			<pause></pause>
-																			<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Equip</span><span>Equip</span></choice></span>
-																			<pause></pause>
-																			<span class="textunit"><face data-name="noelle_45">Noelle</face><text><star></star>... K... Kris?</text></span>
-																			<pause></pause>
-																			<lnk class="textunit" data-link="4_50_1"></lnk>
+																			<span class="textunit"><face data-name="noelle_45">Noelle</face><text><star></star>W... What are you <br>talking about, Kris?</text></span>
+																			<span class="textunit"><face data-name="noelle_46"></face><text><star></star>I... I didn't say <br>anything!</text></span>
+																			<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(It's impossible. That's <br>impossible.)</text></span>
+																			<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(It's just a <br>coincidence.)</text></span>
+																			<span class="textunit"><face>(-)</face><text><br></text><choice><span>Sorry, <br>just a prank</span><span>It's not a <br>coincidence</span></choice></span>
+																			<ul class="choicelevel">
+																				<li><choice>Sorry, <br>just a prank</choice>
+																					<pause></pause>
+																					<lnk class="textunit" data-link="4_52_1"></lnk>
+																				</li>
+																				<li><choice>It's not a <br>coincidence</choice>
+																					<pause></pause>
+																					<span class="textunit"><face data-name="noelle_36">Noelle</face><text><star></star>(If you can...  hear <br>me...)</text></span>
+																					<span class="textunit"><face data-name="noelle_36"></face><text><star></star>(Say "red" or "blue".)</text></span>
+																					<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Red</span><span>Blue</span></choice></span>
+																					<span class="textunit"><face data-name="noelle_36">Noelle</face><text><star></star>(Say... "green" or <br>"black".)</text></span>
+																					<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Green</span><span>Black</span></choice></span>
+																					<span class="textunit"><face data-name="noelle_17">Noelle</face><text><star></star>(Say... say... "it <br>didn't happen." Say "it <br>didn't snow.")</text></span>
+																					<span class="textunit"><face>(-)</face><text><br></text><choice class="fakechoice"><span>It <br>snowed</span><span>It <br>happened</span></choice></span>
+																					<span class="textunit"><face data-name="noelle_32">Noelle</face><text><star></star>(You're... lying. You're <br>lying.)</text></span>
+																					<span class="textunit"><face>(-)</face><text></text><choice class="fakechoice"><span>Noelle <br>will get <br>stronger</span><span>Noelle <br>becomes <br>stronger</span></choice></span>
+																					<pause></pause>
+																					<span class="textunit"><face data-name="noelle_42">Noelle</face><text><star></star>K... Kris? Kris, what <br>did you say?</text></span>
+																					<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Equip</span><span>Equip</span></choice></span>
+																					<pause></pause>
+																					<span class="textunit"><face data-name="noelle_42">Noelle</face><text><star></star>K... Kris? Kris, what is <br>that?</text></span>
+																					<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Proceed</span><span>Proceed</span></choice></span>
+																					<pause></pause>
+																					<span class="textunit"><face data-name="noelle_43">Noelle</face><text><star></star>Kris... that's... not <br>the thorn, is it?</text></span>
+																					<span class="textunit"><face data-name="noelle_46"></face><text><star></star>That's not... the... <br>ThornRing, is it...?</text></span>
+																					<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Proceed</span><span>Proceed</span></choice></span>
+																					<pause></pause>
+																					<span class="textunit"><face data-name="noelle_44">Noelle</face><text><star></star>K... Kris... c'mon... <br>you... you still...</text></span>
+																					<span class="textunit"><face data-name="noelle_27"></face><text><star></star>What about... what about <br>last night? What <br>about...</text></span>
+																					<span class="textunit"><face data-name="noelle_27"></face><text><star></star>Didn't you... want to... <br>protect me...?</text></span>
+																					<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Proceed</span><span>Proceed</span></choice></span>
+																					<pause></pause>
+																					<span class="textunit"><face data-name="noelle_42">Noelle</face><text><star></star>(Why... can't... I... <br>move?)</text></span>
+																					<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(Why... can't I... <br>look... away?)</text></span>
+																					<span class="textunit"><face data-name="noelle_42"></face><text><star></star>(NOELLE, DO <br>SOMETHING!!!)</text></span>
+																					<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Equip</span><span>Equip</span></choice></span>
+																					<span class="textunit"><face data-name="noelle_46">Noelle</face><text><star></star>Kris, I really think I</text></span>
+																					<span class="textunit"><face data-name="noelle_44"></face><text><star></star>I mean I just</text></span>
+																					<span class="textunit"><face data-name="noelle_43"></face><text><star></star>I think I need to</text></span>
+																					<span class="textunit"><face data-name="noelle_46"></face><text><star></star>G-gosh, I think I have <br>to</text></span>
+																					<pause></pause>
+																					<span class="textunit"><face>(-)</face><text><br><br></text><choice class="fakechoice"><span>Equip</span><span>Equip</span></choice></span>
+																					<pause></pause>
+																					<span class="textunit"><face data-name="noelle_45">Noelle</face><text><star></star>... K... Kris?</text></span>
+																					<pause></pause>
+																					<lnk class="textunit" data-link="4_50_1"></lnk>
+																				</li>
+																			</ul>
 																		</li>
 																	</ul>
 																</li>
@@ -36854,14 +37039,18 @@
 												</li>
 											</ul>
 										</li>
+										<li><choice>Please don't</choice>
+											<span class="textunit"><face data-name="noelle_17">Noelle</face><text><star></star>...</text></span>
+											<span class="textunit"><face data-name="noelle_39"></face><text><star></star>(... I guess... I guess <br>I shouldn't.)</text></span>
+											<span class="textunit"><face data-name="noelle_32"></face><text><star></star>(I mean, I know you <br>didn't say anything, <br>but...)</text></span>
+											<span class="textunit"><face data-name="noelle_17"></face><text><star></star>(I guess let's just <br>leave it at...)</text></span>
+											<span class="textunit"><face data-name="noelle_41"></face><text><star></star>(I'm glad you're back.)</text></span>
+										</li>
 									</ul>
 								</li>
-								<li><choice>Please don't</choice>
-									<span class="textunit"><face data-name="noelle_17">Noelle</face><text><star></star>...</text></span>
-									<span class="textunit"><face data-name="noelle_39"></face><text><star></star>(... I guess... I guess <br>I shouldn't.)</text></span>
-									<span class="textunit"><face data-name="noelle_32"></face><text><star></star>(I mean, I know you <br>didn't say anything, <br>but...)</text></span>
-									<span class="textunit"><face data-name="noelle_17"></face><text><star></star>(I guess let's just <br>leave it at...)</text></span>
-									<span class="textunit"><face data-name="noelle_41"></face><text><star></star>(I'm glad you're back.)</text></span>
+								<li>
+									<span class="textunit" id="4_52_3"><face data-name="noelle"></face><text><star></star>You said, sorry for being weird <br>at the hospital, Noelle.</text></span>
+									<lnk class="textunit" data-link="4_52_4"></lnk>
 								</li>
 							</ul>
 						</li>
@@ -36871,10 +37060,17 @@
 							<span class="textunit"><face data-name="noelle"></face><text><star></star>And then I heard your voice.</text></span>
 							<span class="textunit"><face data-name="noelle"></face><text><star></star>Kris's voice.</text></span>
 							<span class="textunit"><face data-name="noelle"></face><text><star></star>You said, sorry for taking your <br>watch, Noelle.</text></span>
-							<span class="textunit"><face data-name="noelle"></face><text><star></star>You said, it was all a stupid <br>prank.</text></span>
+							<span class="textunit"><face data-name="noelle"></face><text><star></star>You said, it was all a stupid <br>prank.</text></span><!--very weird that stuff gets repeated but that's how it is, probably a mistake-->
 							<span class="textunit"><face data-name="noelle"></face><text><star></star>You said, Berdly is going to <br>get better.</text></span>
 							<span class="textunit"><face data-name="noelle"></face><text><star></star>And you put the watch back on <br>my wrist.</text></span>
-							<lnk class="textunit" data-link="4_52_2"></lnk><!--very weird link but that's how it is, probably a mistake-->
+							<ul class="choicelevel">
+								<li>
+									<lnk class="textunit" data-link="4_52_2"></lnk>
+								</li>
+								<li>
+									<lnk class="textunit" data-link="4_52_3"></lnk>
+								</li>
+							</ul>
 						</li>
 					</ul>
 				</pp>
@@ -37318,7 +37514,17 @@
 						<li><choice>Yes</choice>
 							<span class="textunit"><text><star></star>(You reached inside and found <br>something alongside a strange <br>piece of glass...)</text></span>
 							<span class="textunit"><text><star></star>(You got ShadowCrystal.)</text></span>
-							<span class="textunit"><text><star></star>(<yellow>BlackShard</yellow> was added to your <br><yellow>WEAPONs</yellow>.)</text></span>
+								<ul class="choicelevel"><!--not mutually exclusive-->
+									<li>
+										<span class="textunit"><text><star></star>(<yellow><fillin>Jevilstail/Devilsknife</fillin></yellow> was added to your <br><yellow><fillin>ARMORs/WEAPON</fillin>s</yellow>.)</text></span><!--ok i don't really know how these work but I did get them all-->
+									</li>
+									<li>
+										<span class="textunit"><text><star></star>(<yellow><fillin>Dealmaker/Puppetscarf</fillin></yellow> was added to your <br><yellow><fillin>ARMOR/WEAPON</fillin>s</yellow>.)</text></span>
+									</li>
+									<li>
+										<span class="textunit"><text><star></star>(<yellow>BlackShard</yellow> was added to your <br><yellow>WEAPONs</yellow>.)</text></span>
+									</li>
+								</ul>
 						</li>
 						<li><choice>Yes</choice><add>Not enough space</add>
 							<span class="textunit"><text><star></star>(You have too many <yellow>WEAPONs</yellow> to <br>take <yellow>BlackShard</yellow>.)</text></span>
@@ -37533,6 +37739,14 @@
 					<span class="textunit" id="4_67_1"><text></text><choice><span>Fuse Items</span><span>Chat</span><span>Fix Us</span><span>Leave</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>Fuse Items</choice>
+							<span class="textunit"><face data-name="malius"></face><text><star></star>Huh-hah! Let's feel my <br>technique!</text></span>
+							<pause></pause>
+							<span class="textunit" id="4_67_3"><text><star></star>(You got <fillin></fillin>!)</text></span>
+						</li>
+						<li><choice>Fuse Items</choice><!--2nd time-->
+							<span class="textunit"><face data-name="malius"></face><text><star></star>Let's pick up the pace.</text></span>
+							<pause></pause>
+							<lnk class="textunit" data-link="4_67_3"></lnk>
 						</li>
 						<li><choice>Chat</choice>
 							<pause></pause>
@@ -37562,6 +37776,7 @@
 					<span class="textunit"><face data-name="malius"></face><text><star></star>Welcome to TOP BAKERY.</text></span>
 					<lnk class="textunit" data-link="4_67_1"></lnk>
 				</pp>
+				<add>Fuse menu same as Chapter 2</add>
 			<hr><roomname>(68)</roomname>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="swatch"></face><text><star></star>Much to my chagrin, it seems <br>we've become a Cat Cafe.</text></span>
@@ -37744,10 +37959,13 @@
 					<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>Boss, you wanna do battle? With <br>lovers?</text></span>
 					<span class="textunit" id="4_69_1"><text><br><br></text><choice><span>Challenge</span><span>Nothing</span></choice></span>
 					<ul class="choicelevel">
-						<li><choice>Challenge</choice><!--REMINDER: document those-->
+						<li><choice>Challenge</choice>
 						</li>
 						<li><choice>Nothing</choice>
 							<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>We'll be working on NEW <br>CHALLENGES, so check back in, <br>Boss!</text></span>
+						</li>
+						<li><choice>Nothing</choice><!--all ch2 challenges beaten (yes! ch2! it's the same, with the same flags)-->
+							<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>No worries, Boss! We'll always <br>be here.</text></span>
 						</li>
 					</ul>
 					<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>Boss, you wanna do battle?</text></span>
@@ -37773,6 +37991,18 @@
 					</ul>
 					<add>Lanino&amp;Elnina failure</add>
 					<span class="textunit"><face data-name="jigsaw joe"></face><text><star></star>You beefed it! Better luck next <br>time, boss!</text></span>
+				</pp>
+				<pp><!--REMINDER: find a good presentation-->
+					<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Lanino&amp;Elnina <br><colspan style="color:rgb(128,128,128)">------------- <br>------------- <br>------------- <br>-------------</colspan></span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr><fillin>ExecBuffet/<colspan style="color:rgb(255,255,0)">Claimed!</colspan></fillin> <br>--- <br>--- <br>--- <br>---</span></choice></span>
+					<!--<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Lanino&amp;Elnina <br>Graze Challenge 1 <br>Clover Rematch <br>Tasque Manager Says <br>Ch2 All Stars</span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr>ExecBuffet <br>$100 <br>ClubsSandwich <br>$250 <br>TensionGem</span></choice></span>-->
+					<span class="textunit" id="2_64_4"><text>Challenge?</text><choice><span>Yes</span><span>No</span></choice></span>
+					<ul class="choicelevel">
+						<li><choice>Yes</choice>
+						</li>
+					</ul>
+					<!--<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Lanino&amp;Elnina <br><colspan style="color:rgb(128,128,128)">------------- <br>------------- <br>------------- <br>-------------</colspan></span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr><colspan style="color:rgb(255,255,0)">Claimed!</colspan> <br>--- <br>--- <br>--- <br>---</span></choice></span>
+					<br>-->
+					<add>Lanino&amp;Elnina</add><span class="textunit"><text>The weather always sticks together! <br>Predict the forecast and win!</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a bed for three people, <br>or one three-headed person.)</text></span>
@@ -40524,7 +40754,7 @@
 					<span class="textunit"><face data-name="gerson">(-)</face><text><star></star>Suppose that's right, suppose <br>that's right...</text></span>
 					<lnk class="textunit" data-link="4_215_2"></lnk>
 				</pp>
-				<pp class="darkworld">
+				<pp class="darkworld"><!--gerson's cane, if battle ended on same turn as first OldMan-->
 					<span class="textunit"><text><star></star>(Thar she blows...)</text></span>
 					<br>
 					<span class="textunit"><text><star></star>(It's going off to live a <br>better life now...)</text></span>
@@ -45760,6 +45990,7 @@
 				<pp>
 					<span class="textunit"><text><star></star>You equipped the BlackShard.</text></span>
 				</pp>
+			<hr><roomname>QuillPen (18)</roomname>
 			<hr><roomname>(Default)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>(Recently, seems like weapons <br>can't be thrown away so <br>easily.)</text></span><!--REMINDER: bugged and applies to everything; get glass's if fixed-->
@@ -46137,9 +46368,11 @@
 			var preindexcont = '';
 			document.querySelectorAll('hr, roomname, chapter').forEach(function(v) {
 				if (v.tagName == 'HR') {
-					hrcount++;
-					if (hrcount == 2)
-						preindexcont += '<hr>';
+					if (!v.closest('.textunit')) {
+						hrcount++;
+						if (hrcount == 2)
+							preindexcont += '<hr>';
+					};
 				} else if (v.tagName == 'CHAPTER') {
 					//if 
 					//	indexcont.innerHTML = 
@@ -46176,6 +46409,7 @@
 				'top chef':['topchef'],
 				'game':['none'],
 				'narrator':['none'],
+				'system':['none'],
 			};
 			var allnames = ['none','choice'];
 			document.querySelectorAll('face[data-name]').forEach((v) => {
@@ -46460,7 +46694,7 @@
 			});
 			var focus = null;
 			var textbox = document.getElementById('textbox');
-			var ancopy = document.getElementById('anchorcopy')
+			var ancopy = document.getElementById('anchorcopy');
 			
 			window.onkeydown = keyfromkey;
 			function keyfromkey(k) {
@@ -46470,20 +46704,25 @@
 				keyevents(null, o);
 			};
 			function keyevents(k, o) {
-				var kv = o || k.keyCode
+				//var kv = o || k.keyCode;
+				var kv = o || k.key;
 				if (!focus || document.activeElement == findfa || document.activeElement == findtx)
 					return;
-				if ((kv == 13 || kv == 39) && units[Number(focus)+1]) {
-					if (kv == 13 && units[focus].closest('ul') && !units[focus].nextElementSibling) {
+				//if ((kv == 13 || kv == 39) && units[Number(focus)+1]) {
+				if ((kv=='Enter' || kv=='ArrowRight') && units[Number(focus)+1]) {
+					//if (kv == 13 && units[focus].closest('ul') && !units[focus].nextElementSibling) {
+					if (kv=='Enter' && units[focus].closest('ul') && !units[focus].nextElementSibling) {
 						var tuns = document.querySelectorAll('ul:has([data-id="'+focus+'"]) [data-id]');
 						focusnum(Number(tuns[tuns.length-1].dataset.id)+1);
 					} else {
 						focusnum(Number(focus)+1);
 					};
 				};
-				if (kv == 37 && units[Number(focus)-1])
+				//if (kv == 37 && units[Number(focus)-1])
+				if (kv=='ArrowLeft' && units[Number(focus)-1])
 					focusnum(Number(focus)-1);
-				if (kv == 27)
+				//if (kv == 27)
+				if (kv=='Escape')
 					focusnum(Number(focus));
 			};
 
@@ -46501,7 +46740,8 @@
 			};
 			function focuschoice() {
 				if (event.currentTarget.parentNode.classList.contains('fakechoice')) {
-					keyoverride(13);
+					//keyoverride(13);
+					keyoverride('Enter');
 					return;
 				};
 				if (units[Number(event.currentTarget.parentNode.dataset.origid)].nextElementSibling != null) {
@@ -46550,7 +46790,7 @@
 					el.scrollIntoView({behavior:"smooth", block:"nearest"});
 			};
 			
-			const copyclass = ['darkworld', 'typer-666', 'battlebubble', 'couchbubble', 'tinynoelle', 'comicsans', 'mantlegame', 'musicvideo', 'legend'];
+			const copyclass = ['darkworld', 'typer-666', 'battlebubble', 'couchbubble', 'tinynoelle', 'comicsans', 'mantlegame', 'musicvideo', 'eval', 'legend'];
 			function updatetextbox(el, mini) {
 				copyclass.forEach(function(v) {
 					if ((el.classList.contains(v) || el.closest('pp').classList.contains(v)) != textbox.classList.contains(v))
@@ -46647,7 +46887,7 @@
 			if (window.location.href.match(/[\?&]anchor=[^&#]+/))
 				focusanchor(window.location.href.match(/[\?&]anchor=([^&#]+)/)[1]);
 			function AnchorToClipboard() {
-				navigator.clipboard.writeText(window.location.href.replace(/\?.+/, '')+'?anchor='+ancopy.dataset.anchorcopy);
+				navigator.clipboard.writeText(window.location.href.replace(/\?.+/, '')+'?anchor='+encodeURI(ancopy.dataset.anchorcopy));
 				//ancopy.classList.add('anchorcopied');
 			};
 			
@@ -46743,7 +46983,7 @@
 				var num = 0;
 				str.split(' ').forEach((v) => {
 					num += v.length+1;
-					if (num > 32) {
+					if (num > 32) { //31 + trailing space
 						newstr += '<br>';
 						num = v.length+1;
 					};
