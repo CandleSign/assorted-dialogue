@@ -966,8 +966,8 @@
 					</ul>
 				</pp>
 			<hr><roomname>[Kris's Room] (2)</roomname>
-				<add>Title: The Beginning</add><br><br>
 				<pp>
+					<add>Title: The Beginning</add>
 					<span class="textunit" id="1_2_1"><face data-name="toriel_1">Toriel</face><text><star></star>KRIS!</text></span>
 					<span class="textunit"><face data-name="toriel_1"></face><text><star></star>Kris, if you do not wake <br>up, we will be late for <br>school!</text></span>
 					<pause></pause>
@@ -3044,8 +3044,8 @@
 					<span class="textunit"><face data-name="susie_5"></face><text><star></star>The floor, it's...!</text></span>
 				</pp>
 			<hr><roomname>Unused Classroom (33)</roomname>
-				<add>Title: </add><br><br>
 				<pp>
+					<add>Title: </add>
 					<span class="textunit" id ="33_1"><face data-name="susie"></face><text><star></star>Wh... what happened!? <br><star></star>I can't see anything!!</text></span>
 					<pause></pause>
 					<span class="textunit"><face data-name="susie"></face><text><star></star>Hey, WATCH IT!</text></span>
@@ -7300,6 +7300,8 @@
 					<ul class="choicelevel">
 						<li><choice>YES</choice>
 							<span class="textunit typer-666"><face data-name="gaster"></face><text>THEN, THE FUTURE <br>IS IN YOUR HANDS.</text></span>
+							<pause></pause>
+							<add>Title: THE DARK</add>
 						</li>
 						<li><choice>NO</choice>
 							<span class="textunit typer-666"><face data-name="gaster"></face><text>THEN THE WORLD <br>WAS COVERED <br>IN DARKNESS.</text></span>
@@ -7314,7 +7316,19 @@
 				</pp>
 				<pp>
 					<span class="textunit"><text><colspan style="color:rgb(0,255,0)"><fillin>[EMPTY]</fillin></colspan></text></span>
-					<span class="textunit"><choice><span><colspan style="color:rgb(0,255,0)">BEGIN</span><span><colspan style="color:rgb(0,255,0)">BACK</colspan></span></choice></span>
+					<ul class="choicelevel">
+						<li>
+							<span class="textunit"><choice><span><colspan style="color:rgb(0,255,0)">BEGIN</span><span><colspan style="color:rgb(0,255,0)">BACK</colspan></span></choice></span>
+						</li>
+						<li>
+							<span class="textunit"><choice><span><colspan style="color:rgb(0,255,0)">CONTINUE</colspan></span><span><colspan style="color:rgb(0,255,0)">BACK</colspan></span></choice></span>
+							<ul class="choicelevel">
+								<li><choice><colspan style="color:rgb(0,255,0)">CONTINUE</colspan></choice>
+									<add>Title: THE DARK</add>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</pp>
 				<pp>
 					<span class="textunit"><choice><span><colspan style="color:rgb(0,255,0)">COPY</colspan></span><span><colspan style="color:rgb(0,255,0)">ERASE</colspan></span><span><colspan style="color:rgb(0,255,0)">CHAPTER SELECT</colspan></span><span><colspan style="color:rgb(0,255,0)">[...]</colspan></span><span><colspan style="color:rgb(0,255,0)">END PROGRAM</colspan></span></choice></span>
@@ -9454,7 +9468,7 @@
 					<choice>Battle</choice>
 					<span class="textunit"><text><star></star><fillin>Kris</fillin> used the TOPCAKE!</text></span>
 				</pp>
-			<hr><roomname>SpinCake (7)</roomname>
+			<hr><roomname>SpinCake/Spincake (7)</roomname>
 				<pp>
 					<span class="textunit"><text>A pastry in the shape of a top. <br>Heals 80 HP to the team.</text></span>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>80HP</colspan></text></span>
@@ -9495,7 +9509,7 @@
 					<choice>Battle</choice>
 					<span class="textunit"><text><star></star><fillin>Kris</fillin> used the LANCERCOOKIE!</text></span>
 				</pp>
-			<hr><roomname>Clubswich (11)</roomname>
+			<hr><roomname>Clubswich/ClubsSandwich (11)</roomname>
 				<pp>
 					<span class="textunit"><text>A sandwich that can be split into 3. <br>Heals 30 HP to the team.</text></span>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>30HP</colspan></text></span>
@@ -9627,6 +9641,11 @@
 			<hr><roomname>Ball of Junk (5)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>"Ball of Junk" - A small ball <br>of accumulated things.</text></span>
+					<ul class="choicelevel">
+						<li><add>Dark Candy</add>
+							<span class="textunit"><text><star></star>It smells like scratch'n'sniff <br>marshmallow stickers.</text></span>
+						</li>
+					</ul>
 				</pp>
 				<pp>
 					<span class="textunit"><text><star></star>You looked at the junk ball in <br>admiration. <br><star></star>Nothing happened.</text></span>
@@ -20154,7 +20173,7 @@
 					<span class="textunit"><face data-name="susie"></face><text>Kris, <br>get up...!</text></span>
 					<lnk class="textunit" data-link="2_235_1"></lnk>
 				</pp>
-			<hr><roomname>Load Menu 3 (237)</roomname>
+			<hr><roomname>Load Menu 3 (237)</roomname><!--REMINDER: supposedly most of it is the same as ch1-->
 				<pp>
 					<span class="textunit"><text>CHAPTER 2</text></span>
 				</pp>
@@ -23096,7 +23115,7 @@
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>Happy birthday! Haha!</minitext></text></span>
 				</pp>
-			<hr><roomname>SpinCake (7)</roomname>
+			<hr><roomname>SpinCake/Spincake (7)</roomname>
 				<pp>
 					<span class="textunit"><text>A pastry in the shape of a top. <br>Heals 140 HP to the team.</text></span>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>140HP</colspan></text></span>
@@ -23115,7 +23134,7 @@
 				<pp>
 					<add>Noelle</add><span class="textunit"><face data-name="noelle"></face><text><minitext><noelle></noelle>Umm, what is this? It's cute...</minitext></text></span>
 				</pp>
-			<hr><roomname>Clubswich (11)</roomname>
+			<hr><roomname>Clubswich/ClubsSandwich (11)</roomname>
 				<pp>
 					<span class="textunit"><text>A sandwich that can be split into 3. <br>Heals 70 HP to the team.</text></span>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>70HP</colspan></text></span>
@@ -23433,13 +23452,14 @@
 				<pp>
 					<span class="textunit"><text>The original                     <br>         (Starwalker)</text></span><!--REMINDER: copy spaces from code for maximal accuracy-->
 				</pp>
+			<hr><roomname>PureCrystal (15)</roomname>
 			
 			<hr><roomname>Ball of Junk (5)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>"Ball of Junk" - A small ball <br>of accumulated things in your <br>pocket.</text></span>
 					<ul class="choicelevel">
 						<li><add>Dark Candy</add>
-							<span class="textunit"><text><star></star>It smells like scratch'n'sniff <br>marshmallow stickers.</text></span><!--REMINDER: check if used in other chapters-->
+							<span class="textunit"><text><star></star>It smells like scratch'n'sniff <br>marshmallow stickers.</text></span>
 						</li>
 					</ul>
 				</pp>
@@ -25464,6 +25484,9 @@
 					<span class="textunit"><face data-name="pippins"></face><text>THE CACTUS THAT LIVED <br>UPSTAIRS LOVES YOU.</text></span>
 					<span class="textunit"><face data-name="pippins"></face><text>IT HAS A KEY <br>UNDERNEATH IT, SO <br>PLEASE PUSH IT ASIDE.</text></span>
 					<span class="textunit"><face data-name="pippins"></face><text>YOU CAN FIND IT IN THE <br>CACTUS FIELD.</text></span>
+					<br>
+					<span class="textunit"><face data-name="pippins"></face><text>GOOD, YOU PUSHED IT <br>ASIDE.</text></span>
+					<span class="textunit"><face data-name="pippins"></face><text>IT'S IMPORTANT TO PUSH <br>YOUR LOVED ONES AWAY, <br>SOMETIMES.</text></span>
 					<br>
 					<span class="textunit"><face data-name="pippins"></face><text>YOU PUSHED IT ASIDE, <br>BUT DIDN'T GET THE <br>KEY?</text></span>
 					<span class="textunit"><face data-name="pippins"></face><text>THAT SEEMS SILLY.</text></span>
@@ -32906,7 +32929,7 @@
 				
 			<br><hr><hr><br>
 			
-			<hr><roomname>SpinCake (7)</roomname>
+			<hr><roomname>SpinCake/Spincake (7)</roomname>
 				<pp>
 					<span class="textunit"><text>A pastry in the shape of a top. <br>Heals 150 HP to the team.</text></span>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>150HP</colspan></text></span>
@@ -37994,7 +38017,7 @@
 				</pp>
 				<pp><!--REMINDER: find a good presentation-->
 					<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Lanino&amp;Elnina <br><colspan style="color:rgb(128,128,128)">------------- <br>------------- <br>------------- <br>-------------</colspan></span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr><fillin>ExecBuffet/<colspan style="color:rgb(255,255,0)">Claimed!</colspan></fillin> <br>--- <br>--- <br>--- <br>---</span></choice></span>
-					<!--<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Lanino&amp;Elnina <br>Graze Challenge 1 <br>Clover Rematch <br>Tasque Manager Says <br>Ch2 All Stars</span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr>ExecBuffet <br>$100 <br>ClubsSandwich <br>$250 <br>TensionGem</span></choice></span>-->
+					<!--<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Lanino&amp;Elnina <br><colspan style="color:rgb(128,128,128)">------------- <br>------------- <br>------------- <br>-------------</colspan></span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr>ExecBuffet <br>--- <br>--- <br>--- <br>---</span></choice></span>-->
 					<span class="textunit" id="2_64_4"><text>Challenge?</text><choice><span>Yes</span><span>No</span></choice></span>
 					<ul class="choicelevel">
 						<li><choice>Yes</choice>
@@ -38002,7 +38025,7 @@
 					</ul>
 					<!--<span class="textunit"><text></text><choice class=choicelike><span><colspan style="color:rgb(128,128,128)">Challenge</colspan> <hr>Lanino&amp;Elnina <br><colspan style="color:rgb(128,128,128)">------------- <br>------------- <br>------------- <br>-------------</colspan></span><span><colspan style="color:rgb(128,128,128)">Prize</colspan> <hr><colspan style="color:rgb(255,255,0)">Claimed!</colspan> <br>--- <br>--- <br>--- <br>---</span></choice></span>
 					<br>-->
-					<add>Lanino&amp;Elnina</add><span class="textunit"><text>The weather always sticks together! <br>Predict the forecast and win!</text></span>
+					<add>Lanino&amp;Elnina</add><span class="textunit"><span class="textunit"><face data-name="jigsaw joe"></face><text>The weather always sticks together! <br>Predict the forecast and win!</text></span><!--assuming consistency with ch2 but nothing confirms it's jj saying it-->
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(It's a bed for three people, <br>or one three-headed person.)</text></span>
@@ -38591,7 +38614,7 @@
 				</pp>
 			<hr><roomname>(110)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>A WORLD BASKED IN PUREST LIGHT. <br>BENEATH IT, GREW ETERNAL NIGHT.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>A WORLD BASKED IN PUREST LIGHT. <br>BENEATH IT, GREW ETERNAL NIGHT.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>Hey, what're these... <br>word things we keep <br>seeing?</text></span>
@@ -38603,7 +38626,7 @@
 					<span class="textunit"><face data-name="ralsei_26"></face><text><star></star>(Just choose S-Action or <br>R-Action from our MAGIC <br>Menu in battle!)</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>IF FOUNTAINS FREED, THE ROARING CRIES. <br>AND TITANS SHAPE FROM DARKENED EYES.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>IF FOUNTAINS FREED, THE ROARING CRIES. <br>AND TITANS SHAPE FROM DARKENED EYES.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_20">Susie</face><text><star></star>Isn't this... kinda <br>different from the <br>prophecy you told us?</text></span>
@@ -38634,7 +38657,7 @@
 					<span class="textunit"><text><star></star>(Some red cups are blocking the <br>path.)</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey! It's us again!</text></span>
@@ -38674,7 +38697,7 @@
 					</ul>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_24">Susie</face><text><star></star>H... hey! What gives!?</text></span>
@@ -39209,7 +39232,7 @@
 				</pp>
 			<hr><roomname>(146)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>JOCKINGTON GROWS THE BEARD.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>JOCKINGTON GROWS THE BEARD.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>Come five o'clock, the shadow <br>will grow.</text></span>
@@ -39567,7 +39590,7 @@
 				</pp>
 			<hr><roomname>(171)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey!</text></span>
@@ -39665,7 +39688,7 @@
 					<pause></pause>
 					<span class="textunit"><face data-name="susie_19">Susie</face><text><star></star>...</text></span>
 					<br>
-					<span class="textunit"><face data-name="susie_17">Susie</face><text><star></star>So, hey, uh, The Fun <br>Gang's together!</text></span><!--specified due to bug that breaks some of them-->
+					<span class="textunit"><face data-name="susie_17">Susie</face><text><star></star>So, hey, uh, The Fun <br>Gang's together!</text></span><!--specified due to bug that breaks some of them (others are confirmed broken)-->
 					<lnk class="textunit" data-link="4_173_1"></lnk>
 				</pp>
 			<hr><roomname>(174)</roomname>
@@ -39691,7 +39714,7 @@
 					<span class="textunit"><face data-name="susie_58"></face><text><star></star>... KRIS...!!!</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE LEGEND OF THIS WORLD. <br>&lt;DELTARUNE.&gt;</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE LEGEND OF THIS WORLD. <br>&lt;DELTARUNE.&gt;</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="ralsei_27">Ralsei</face><text><star></star>Looks like... this is <br>the Fountain.</text></span>
@@ -39865,10 +39888,10 @@
 				</pp>
 			<hr><roomname>[Dark Sanctuary - Lower Left] (177)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE PROPHECY, WHICH WHISPERS <br>AMONG THE SHADOWS.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE PROPHECY, WHICH WHISPERS <br>AMONG THE SHADOWS.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE LEGEND OF THIS WORLD. <br>&lt;DELTARUNE.&gt;</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE LEGEND OF THIS WORLD. <br>&lt;DELTARUNE.&gt;</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(A glass tapestry rings above <br>you. Strangely, no matter how <br>you turn to look...)</text></span>
@@ -40134,7 +40157,7 @@
 					<lnk class="textunit" data-link="4_175_2"></lnk>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>A CONUNDRUM'S MULTITUDE TONES.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>A CONUNDRUM'S MULTITUDE TONES.</text></span>
 				</pp>
 			<hr><roomname>(184)</roomname>
 				<pp class="darkworld">
@@ -40576,13 +40599,13 @@
 				</pp>
 			<hr><roomname>(214)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE KNIGHT WHICH MAKES <br>WITH BLACKENED KNIFE.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE KNIGHT WHICH MAKES <br>WITH BLACKENED KNIFE.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE KNIGHT WHICH MAKES <br>WITH BLACKENED KNIFE.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE KNIGHT WHICH MAKES <br>WITH BLACKENED KNIFE.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>SHALL DUEL WITH HEROES <br>STRIFE BY STRIFE.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>SHALL DUEL WITH HEROES <br>STRIFE BY STRIFE.</text></span>
 				</pp>
 			<hr><roomname>(215)</roomname>
 				<pp class="darkworld">
@@ -40975,7 +40998,7 @@
 					<span class="textunit"><face data-name="unnamed"></face><text><star></star>Not that that's not important.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE QUEEN'S CHARIOT <br>CANNOT BE STOPPED.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE QUEEN'S CHARIOT <br>CANNOT BE STOPPED.</text></span>
 				</pp>
 			<hr><roomname>(222)</roomname>
 				<pp class="darkworld">
@@ -41220,7 +41243,7 @@
 				</pp>
 			<hr><roomname>(231)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE LAST PROPHECY. <br>THE STORY'S END.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE LAST PROPHECY. <br>THE STORY'S END.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="ralsei_62">Ralsei</face><text><star></star>No...</text></span>
@@ -41239,13 +41262,13 @@
 					</ul>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>AND THEN. WHEN ALL HOPE <br>IS LOST FOR THE TALE</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>AND THEN. WHEN ALL HOPE <br>IS LOST FOR THE TALE</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE FINAL TRAGEDY UNVEILS.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE FINAL TRAGEDY UNVEILS.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>TO SAVE THE WORLDS, <br>THERE IS ONLY ONE WAY.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>TO SAVE THE WORLDS, <br>THERE IS ONLY ONE WAY.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="ralsei_60">Ralsei</face><text><star></star>SUSIE, DON'T LOOK--</text></span>
@@ -41366,7 +41389,7 @@
 					<span class="textunit"><face data-name="ralsei_70"></face><text><star></star>You were cool when you <br>played the piano <br>earlier!</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>ONLY THEN, <br>WILL THE WORLDS BE SAVED.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>ONLY THEN, <br>WILL THE WORLDS BE SAVED.</text></span>
 				</pp>
 			<hr><roomname>(233)</roomname>
 				<pp>
@@ -41579,7 +41602,7 @@
 				</pp>
 			<hr><roomname>(238)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>A CONUNDRUM'S FIRST FOUR TONES.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>A CONUNDRUM'S FIRST FOUR TONES.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit" id="4_238_1"><face data-name="susie_20">Susie</face><text><star></star>Looks kinda like... <br>notes?</text></span>
@@ -41596,7 +41619,7 @@
 				</pp>
 			<hr><roomname>(239)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>A CONUNDRUM'S LAST FOUR TONES.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>A CONUNDRUM'S LAST FOUR TONES.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<lnk class="textunit" data-link="4_238_1"></lnk>
@@ -41605,10 +41628,10 @@
 				</pp>
 			<hr><roomname>(241)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE LIGHT AND DARK, BOTH BURNING DIRE. <br>A COUNTDOWN TO THE EARTH'S EXPIRE.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE LIGHT AND DARK, BOTH BURNING DIRE. <br>A COUNTDOWN TO THE EARTH'S EXPIRE.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE POINTY-HEADED WILL SAY <br>"TOOTHPASTE," AND THEN  "BOY."</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE POINTY-HEADED WILL SAY <br>"TOOTHPASTE," AND THEN  "BOY."</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Hahaha! Dude, that <br>totally happened!</text></span>
@@ -42026,7 +42049,7 @@
 				</pp>
 			<hr><roomname>(248)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>BUT LO, ON HOPES AND DREAMS THEY SEND. <br>THREE HEROES AT THE WORLD'S END.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>...There's that prophecy <br>again. The one with... <br>us.</text></span>
@@ -42036,10 +42059,10 @@
 					<span class="textunit"><face data-name="susie_37"></face><text><star></star>But that... I'm... part <br>of it too, I guess.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE LIGHT AND DARK, BOTH BURNING DIRE. <br>A COUNTDOWN TO THE EARTH'S EXPIRE.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE LIGHT AND DARK, BOTH BURNING DIRE. <br>A COUNTDOWN TO THE EARTH'S EXPIRE.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>IF FOUNTAINS FREED, THE ROARING CRIES. <br>AND TITANS SHAPE FROM DARKENED EYES.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>IF FOUNTAINS FREED, THE ROARING CRIES. <br>AND TITANS SHAPE FROM DARKENED EYES.</text></span>
 				</pp>
 			<hr><roomname>(249)</roomname>
 				<pp class="darkworld">
@@ -42092,7 +42115,7 @@
 					</ul>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE FIRST HERO. <br>THE CAGE, WITH HUMAN SOUL AND PARTS!</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE FIRST HERO. <br>THE CAGE, WITH HUMAN SOUL AND PARTS!</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Hey, this has gotta be <br>you...!</text></span>
@@ -42122,7 +42145,7 @@
 					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>AND LAST, WAS THE GIRL. <bR>AT LAST, WAS THE GIRL.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>AND LAST, WAS THE GIRL. <bR>AT LAST, WAS THE GIRL.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_37">Susie</face><text><star></star>... The girl...</text></span>
@@ -42138,7 +42161,7 @@
 				</pp>
 			<hr><roomname>(252)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE SECOND HERO. <br>THE GIRL, WITH HOPE CROSSED ON HER HEART.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE SECOND HERO. <br>THE GIRL, WITH HOPE CROSSED ON HER HEART.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_21">Susie</face><text><star></star>Kris! Kris...!</text></span>
@@ -42187,7 +42210,7 @@
 					<span class="textunit"><face data-name="susie"></face><text><star></star>Written somewhere no one can <br>erase!</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>LOVE FINDS ITS WAY TO THE GIRL.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>LOVE FINDS ITS WAY TO THE GIRL.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_60">Susie</face><text><star></star>H... hey...</text></span>
@@ -42198,10 +42221,10 @@
 				</pp>
 			<hr><roomname>(253)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE GIRL</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE GIRL</text></span>
 				</pp>
 				<pp class="legend"><!--REMINDER: sideways-->
-					<span class="textunit"><text>THE GIRL</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE GIRL</text></span>
 				</pp>
 			<hr><roomname>[2nd Sanctuary - Study] (257)</roomname>
 				<pp class="darkworld">
@@ -42637,7 +42660,7 @@
 				</pp>
 			<hr><roomname>(276)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE FLOWER MAN, <br>TRAPPED IN ASYLUM.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE FLOWER MAN, <br>TRAPPED IN ASYLUM.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>Treasure? There is no <br>treasure... only experience.</text></span>
@@ -42898,7 +42921,7 @@
 				</pp>
 			<hr><roomname>(296)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE THIRD HERO. <br>THE PRINCE, ALONE IN DEEPEST DARK</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE THIRD HERO. <br>THE PRINCE, ALONE IN DEEPEST DARK</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_22">Susie</face><text><star></star>Hey, Kris! Look, it's <br>Ralsei, when we first <br>met him!</text></span>
@@ -42933,7 +42956,7 @@
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>We know nothing. <br>We understand... nothing.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE LORD OF SCREENS <br>CLEAVED RED BY BLADE.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE LORD OF SCREENS <br>CLEAVED RED BY BLADE.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>It is a pile of particularly <br>sturdy books.</text></span>
@@ -43063,7 +43086,7 @@
 					</ul>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>ROOTS</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>ROOTS</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>I heard something in between. <br>Something in between.</text></span>
@@ -43180,7 +43203,7 @@
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>A beautiful specimen!</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>GALLERY</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>GALLERY</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>How rustic our ancestors were. <br>No headdress in sight.</text></span>
@@ -43325,13 +43348,13 @@
 					<span class="textunit"><face data-name="susie_59"></face><text><star></star>Let's... go.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>A WORLD BASKED IN PUREST LIGHT. <br>BENEATH IT, GREW ETERNAL NIGHT.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>A WORLD BASKED IN PUREST LIGHT. <br>BENEATH IT, GREW ETERNAL NIGHT.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THE LIGHT AND DARK, BOTH BURNING DIRE. <br>A COUNTDOWN TO THE EARTH'S EXPIRE.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE LIGHT AND DARK, BOTH BURNING DIRE. <br>A COUNTDOWN TO THE EARTH'S EXPIRE.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>IF FOUNTAINS FREED, THE ROARING CRIES. <br>AND TITANS SHAPE FROM DARKENED EYES.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>IF FOUNTAINS FREED, THE ROARING CRIES. <br>AND TITANS SHAPE FROM DARKENED EYES.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_59">Susie</face><text><star></star>End... of the line, huh.</text></span>
@@ -43408,10 +43431,10 @@
 				</pp>
 			<hr><roomname>(311)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THEY'LL HEAR THE RING OF HEAVEN'S CALL.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THEY'LL HEAR THE RING OF HEAVEN'S CALL.</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>THEY'LL SEE THE TAIL OF HELL TAKE CRAWL.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THEY'LL SEE THE TAIL OF HELL TAKE CRAWL.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><text><star></star>(You opened the treasure <br>chest.) <br><star></star>(Inside was <yellow>PrincessRBN</yellow>.)</text></span>
@@ -43426,7 +43449,7 @@
 					<span class="textunit"><text><star></star>(The chest is empty.)</text></span>
 				</pp>
 				<pp class="legend">
-					<span class="textunit"><text>JOCKINGTON GROWS THE BEARD.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>JOCKINGTON GROWS THE BEARD.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="organikk"></face><text><star></star>Before the clock strikes <br>midnight, the shadow will grow!</text></span>
@@ -43438,7 +43461,7 @@
 				</pp>
 			<hr><roomname>(312)</roomname>
 				<pp class="legend">
-					<span class="textunit"><text>THE ANGEL, BANISHED, WILL <br>FINALLY MEET WITH ITS DESIRE.</text></span>
+					<span class="textunit"><face data-name="prophecy"></face><text>THE ANGEL, BANISHED, WILL <br>FINALLY MEET WITH ITS DESIRE.</text></span>
 				</pp>
 				<pp class="darkworld">
 					<span class="textunit"><face data-name="susie_35">Susie</face><text><star></star>Hey, below the words, <br>that picture...</text></span>
@@ -45825,7 +45848,7 @@
 					<choice>Battle</choice>
 					<span class="textunit"><text><star></star><fillin>Kris</fillin> used the DARKER CANDY!</text></span>
 				</pp>
-			<hr><roomname>SpinCake (7)</roomname>
+			<hr><roomname>SpinCake/Spincake (7)</roomname>
 				<pp>
 					<span class="textunit"><text>A pastry in the shape of a top. <br>Heals 160 HP to the team.</text></span>
 					<span class="textunit"><text><colspan style="color:rgb(128,128,128)">Heals <br>team <br>160HP</colspan></text></span>
@@ -45928,12 +45951,15 @@
 				<pp>
 					<span class="textunit"><text><star></star>"Pencil" - Weapon 1 AT <br><star></star>Mightier than a sword? <br><star></star>Maybe equal at best.</text></span>
 				</pp>
-			<hr><roomname>Bandage (3)</roomname><!--can only get it on ch4 start, if replaced by noelle's watch in ch2-->
+				<pp>
+					<span class="textunit"><text><star></star>You equipped the Pencil.</text></span>
+				</pp>
+			<hr><roomname>Bandage (3)</roomname><!--can only get it on ch4 start, if replaced by noelle's watch in ch2--><!--REMINDER: should no longer be accessible by next update-->
 				<pp>
 					<span class="textunit"><text><star></star>"Bandage" - Heals 10 HP <br><star></star>It has cartoon characters on <br>it.</text></span>
 				</pp>
 				<pp>
-					<span class="textunit"><text><star></star>You re-applied the bandage. <br><star></star>Your HP was maxed out.</text></span>
+					<span class="textunit"><text><star></star>You re-applied the bandage. <br><star></star>Your HP was maxed out.</text></span><!--try after losing more than 10 HP-->
 				</pp>
 			<hr><roomname>Halloween Pencil (6)</roomname>
 				<pp>
@@ -45991,6 +46017,12 @@
 					<span class="textunit"><text><star></star>You equipped the BlackShard.</text></span>
 				</pp>
 			<hr><roomname>QuillPen (18)</roomname>
+				<pp>
+					<span class="textunit"><text><star></star>"QuillPen" - 1 AT <br><star></star>A pen fashioned from a white <br>feather.</text></span>
+				</pp>
+				<pp>
+					<span class="textunit"><text><star></star>You equipped the QuillPen.</text></span>
+				</pp>
 			<hr><roomname>(Default)</roomname>
 				<pp>
 					<span class="textunit"><text><star></star>(Recently, seems like weapons <br>can't be thrown away so <br>easily.)</text></span><!--REMINDER: bugged and applies to everything; get glass's if fixed-->
@@ -46410,6 +46442,7 @@
 				'game':['none'],
 				'narrator':['none'],
 				'system':['none'],
+				'legend':['prophecy'],
 			};
 			var allnames = ['none','choice'];
 			document.querySelectorAll('face[data-name]').forEach((v) => {
